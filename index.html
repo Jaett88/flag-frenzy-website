@@ -3,18 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flag Frenzy Football Camp</title>
+    <title>Welcome | Flag Frenzy Football</title>
 
-    <!-- Tailwind CSS CDN (optional for utility classes) -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Custom Styles -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -27,10 +22,9 @@
         </div>
         <nav>
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html" class="underline">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="faqs.html">FAQs</a></li>
+            <li><a href="camp/index.html">Camp</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
@@ -38,36 +32,75 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <img src="src/logo.png" alt="Flag Frenzy Logo" class="hero-logo" />
-        <h1 class="hero-title">FLAG FRENZY <br /><span>FOOTBALL CAMP</span></h1>
-        <p class="hero-tagline">Fun • Active • All Skill Levels Welcome</p>
-        <a href="register.html" class="hero-button">Register Now</a>
+    <section
+      class="relative h-[80vh] bg-cover bg-center flex items-center justify-center text-white"
+      style="background-image: url('src/hero-bg.jpg')"
+    >
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <div class="relative z-10 text-center px-4">
+        <img
+          src="src/logo.png"
+          alt="Flag Frenzy Logo"
+          class="w-24 sm:w-32 mx-auto mb-4"
+        />
+        <h1 class="text-3xl sm:text-5xl font-bold mb-2 leading-tight">
+          Welcome to<br /><span class="text-xl sm:text-3xl font-medium"
+            >Flag Frenzy Football</span
+          >
+        </h1>
+        <p class="text-lg sm:text-xl font-medium mt-4">
+          Fun. Safe. Inclusive. Flag Football for All Ages
+        </p>
+        <a
+          href="camp/index.html"
+          class="mt-6 inline-block bg-[#A73926] hover:bg-[#8f2f1d] text-white font-semibold py-3 px-6 rounded transition duration-300"
+          >Explore Camp</a
+        >
       </div>
     </section>
 
-    <!-- About Teaser -->
-    <section class="about-preview">
-      <div class="about-content">
-        <h2>What is Flag Frenzy?</h2>
-        <p>
-          Flag Frenzy is a non-contact flag football camp that teaches
-          fundamentals, teamwork, and fun through drills and games for kids aged
-          8–14.
-        </p>
-        <a href="about.html">Learn More</a>
+    <!-- Services Overview -->
+    <section class="py-12 bg-[#FFF8EF]">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h2 class="text-2xl font-bold text-[#3A6440] mb-6">What We Offer</h2>
+        <div class="grid md:grid-cols-3 gap-8 text-[#1E1C18]">
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-semibold text-[#A73926] mb-2">
+              Flag Football Camps
+            </h3>
+            <p>
+              Safe, non-contact camps designed to build confidence and football
+              skills in kids aged 8–14.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-semibold text-[#A73926] mb-2">
+              Trained Coaches
+            </h3>
+            <p>
+              Our staff are DBS checked, trained in safeguarding and first aid,
+              and passionate about youth development.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-semibold text-[#A73926] mb-2">
+              Easy Registration
+            </h3>
+            <p>
+              Secure online registration and payment options, plus quick access
+              to FAQs and contact support.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-      <p>&copy; 2025 Flag Frenzy Football Camp. All rights reserved.</p>
+      <p>&copy; 2025 Flag Frenzy Football Ltd. All rights reserved.</p>
       <p>Contact: info@flagfrenzy.com | Instagram: @flagfrenzy</p>
     </footer>
 
-    <!-- Custom JavaScript -->
     <script src="js/main.js"></script>
   </body>
 </html>

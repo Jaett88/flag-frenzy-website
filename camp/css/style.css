@@ -1,0 +1,153 @@
+/* style.css */
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f6eadb;
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  background-color: #3a6440;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.brand-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  position: relative;
+  background-image: url("../src/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+}
+
+.hero-logo {
+  width: 90px;
+  margin: 0 auto 1rem auto;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.hero-title span {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.hero-tagline {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.hero-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background-color: #a73926;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.hero-button:hover {
+  background-color: #8f2f1d;
+}
+
+.about-preview {
+  background-color: #fff8ef;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.about-preview h2 {
+  font-size: 1.75rem;
+  color: #3a6440;
+  margin-bottom: 0.5rem;
+}
+
+.about-preview p {
+  color: #1e1c18;
+  max-width: 700px;
+  margin: 0 auto 1rem auto;
+}
+
+.about-preview a {
+  color: #a73926;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.about-preview a:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  background-color: #3a6440;
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
