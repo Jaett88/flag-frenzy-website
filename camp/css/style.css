@@ -55,6 +55,18 @@ body {
   text-decoration: underline;
 }
 
+.back-link {
+  display: inline-block;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
 .hero {
   position: relative;
   background-image: url("../src/hero-bg.jpg");
