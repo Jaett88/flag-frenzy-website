@@ -38,17 +38,43 @@
           Camper Registration
         </h2>
 
-        <form
-          name="camper-register"
-          method="POST"
-          data-netlify="true"
-          class="space-y-6 bg-white p-6 rounded-lg shadow-md"
-        >
-          <input type="hidden" name="form-name" value="camper-register" />
+        <form <!-- Camper Info -->
+          <div>
+            <label class="font-semibold block mb-1">Camper Full Name</label>
+            <input
+              type="text"
+              name="camper-name"
+              required
+              class="w-full border rounded px-4 py-2"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="font-semibold block mb-1">Age</label>
+              <input
+                type="number"
+                name="camper-age"
+                min="7"
+                max="15"
+                required
+                class="w-full border rounded px-4 py-2"
+              />
+            </div>
+            <div>
+              <label class="font-semibold block mb-1">Date of Birth</label>
+              <input
+                type="date"
+                name="dob"
+                required
+                class="w-full border rounded px-4 py-2"
+              />
+            </div>
+          </div>
 
           <!-- Week Selection -->
           <div>
-            <label class="font-semibold block mb-1">Which Week?</label>
+            <label class="font-semibold block mb-1 mt-4">Which Week?</label>
             <select
               name="week"
               required
@@ -76,58 +102,56 @@
               ><input
                 type="radio"
                 name="attendance"
-                value="Choose Days"
+                value="Choose Dates"
                 onclick="toggleDaySelect(true)"
               />
-              Choose Specific Days</label
+              Choose Specific Dates</label
             >
           </div>
 
+          <!-- Updated to show real October half-term dates -->
           <div id="day-selector" class="mt-4 hidden">
-            <p class="font-semibold mb-2">Select days attending:</p>
+            <p class="font-semibold mb-2">Select dates attending:</p>
             <label
-              ><input type="checkbox" name="selected-days" value="Monday" />
-              Monday</label
+              ><input
+                type="checkbox"
+                name="selected-dates"
+                value="Mon 21 Oct"
+              />
+              Mon 27 Oct</label
             ><br />
             <label
-              ><input type="checkbox" name="selected-days" value="Tuesday" />
-              Tuesday</label
+              ><input
+                type="checkbox"
+                name="selected-dates"
+                value="Tue 22 Oct"
+              />
+              Tue 28 Oct</label
             ><br />
             <label
-              ><input type="checkbox" name="selected-days" value="Wednesday" />
-              Wednesday</label
+              ><input
+                type="checkbox"
+                name="selected-dates"
+                value="Wed 23 Oct"
+              />
+              Wed 29 Oct</label
             ><br />
             <label
-              ><input type="checkbox" name="selected-days" value="Thursday" />
-              Thursday</label
+              ><input
+                type="checkbox"
+                name="selected-dates"
+                value="Thu 24 Oct"
+              />
+              Thu 30 Oct</label
             ><br />
             <label
-              ><input type="checkbox" name="selected-days" value="Friday" />
-              Friday</label
+              ><input
+                type="checkbox"
+                name="selected-dates"
+                value="Fri 25 Oct"
+              />
+              Fri 31 Oct</label
             >
-          </div>
-
-          <!-- Camper Info -->
-          <div>
-            <label class="font-semibold block mb-1">Camper Full Name</label>
-            <input
-              type="text"
-              name="camper-name"
-              required
-              class="w-full border rounded px-4 py-2"
-            />
-          </div>
-
-          <div>
-            <label class="font-semibold block mb-1">Age</label>
-            <input
-              type="number"
-              name="camper-age"
-              min="7"
-              max="15"
-              required
-              class="w-full border rounded px-4 py-2"
-            />
           </div>
 
           <!-- Parent Info -->
@@ -164,6 +188,15 @@
           </div>
 
           <div>
+            <label class="font-semibold block mb-1"
+              >Emergency Contact Name & Number</label
+            >
+            <input
+              type="text"
+              name="emergency-contact"
+              required
+              class="w-full border rounded px-4 py-2"
+            />
             <label class="font-semibold block mb-1"
               >Emergency Contact Name & Number</label
             >
