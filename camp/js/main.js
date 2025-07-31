@@ -12,3 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+function toggleDaySelect(show) {
+  document.getElementById("day-selector").classList.toggle("hidden", !show);
+}

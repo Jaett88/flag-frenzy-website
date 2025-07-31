@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | Flag Frenzy Football Camp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="nav">
+      <div class="nav-container">
+        <div class="logo-wrap">
+          <img src="src/logo.png" alt="Flag Frenzy Logo" class="logo" />
+          <h1 class="brand-title">Flag Frenzy</h1>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="register.html" class="underline">Register</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Register Form -->
+    <section class="py-12 bg-[#F6EADB]">
+      <div class="max-w-2xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-[#3A6440] mb-8">
+          Camper Registration
+        </h2>
+
+        <form
+          name="camper-register"
+          method="POST"
+          data-netlify="true"
+          class="space-y-6 bg-white p-6 rounded-lg shadow-md"
+        >
+          <input type="hidden" name="form-name" value="camper-register" />
+
+          <!-- Week Selection -->
+          <div>
+            <label class="font-semibold block mb-1">Which Week?</label>
+            <select
+              name="week"
+              required
+              class="w-full border rounded px-4 py-2"
+            >
+              <option value="">Select a week</option>
+              <option value="Week 1">Week 1 (Oct 21–25)</option>
+              <option value="Week 2">Week 2 (Oct 28–Nov 1)</option>
+              <option value="Both">Both Weeks</option>
+            </select>
+          </div>
+
+          <!-- Day Selection -->
+          <div>
+            <label class="font-semibold block mb-2">Attendance Option</label>
+            <label
+              ><input
+                type="radio"
+                name="attendance"
+                value="Full Week"
+                required
+                onclick="toggleDaySelect(false)"
+              />
+              Full Week</label
+            ><br />
+            <label
+              ><input
+                type="radio"
+                name="attendance"
+                value="Choose Days"
+                onclick="toggleDaySelect(true)"
+              />
+              Choose Specific Days</label
+            >
+          </div>
+
+          <div id="day-selector" class="mt-4 hidden">
+            <p class="font-semibold mb-2">Select days attending:</p>
+            <label
+              ><input type="checkbox" name="selected-days" value="Monday" />
+              Monday</label
+            ><br />
+            <label
+              ><input type="checkbox" name="selected-days" value="Tuesday" />
+              Tuesday</label
+            ><br />
+            <label
+              ><input type="checkbox" name="selected-days" value="Wednesday" />
+              Wednesday</label
+            ><br />
+            <label
+              ><input type="checkbox" name="selected-days" value="Thursday" />
+              Thursday</label
+            ><br />
+            <label
+              ><input type="checkbox" name="selected-days" value="Friday" />
+              Friday</label
+            >
+          </div>
+
+          <!-- Camper Info -->
+          <div>
+            <label class="font-semibold block mb-1">Camper Full Name</label>
+            <input
+              type="text"
+              name="camper-name"
+              required
+              class="w-full border rounded px-4 py-2"
+            />
+          </div>
+
+          <div>
+            <label class="font-semibold block mb-1">Age</label>
+            <input
+              type="number"
+              name="camper-age"
+              min="7"
+              max="15"
+              required
+              class="w-full border rounded px-4 py-2"
+            />
+          </div>
+
+          <!-- Parent Info -->
+          <div>
+            <label class="font-semibold block mb-1"
+              >Parent/Guardian Full Name</label
+            >
+            <input
+              type="text"
+              name="parent-name"
+              required
+              class="w-full border rounded px-4 py-2"
+            />
+          </div>
+
+          <div>
+            <label class="font-semibold block mb-1">Parent Email</label>
+            <input
+              type="email"
+              name="parent-email"
+              required
+              class="w-full border rounded px-4 py-2"
+            />
+          </div>
+
+          <div>
+            <label class="font-semibold block mb-1">Phone Number</label>
+            <input
+              type="tel"
+              name="phone"
+              required
+              class="w-full border rounded px-4 py-2"
+            />
+          </div>
+
+          <div>
+            <label class="font-semibold block mb-1"
+              >Emergency Contact Name & Number</label
+            >
+            <input
+              type="text"
+              name="emergency-contact"
+              required
+              class="w-full border rounded px-4 py-2"
+            />
+          </div>
+
+          <!-- Health -->
+          <div>
+            <label class="font-semibold block mb-1"
+              >Allergies or Medical Info</label
+            >
+            <textarea
+              name="medical"
+              rows="3"
+              class="w-full border rounded px-4 py-2"
+              placeholder="Leave blank if none"
+            ></textarea>
+          </div>
+
+          <!-- Consent Checkboxes -->
+          <div class="space-y-3">
+            <label class="block">
+              <input
+                type="checkbox"
+                name="consent-participation"
+                required
+                class="mr-2"
+              />
+              I give permission for my child to participate in Flag Frenzy
+              Football Camp.
+            </label>
+            <label class="block">
+              <input
+                type="checkbox"
+                name="consent-medical"
+                required
+                class="mr-2"
+              />
+              I authorize staff to seek emergency medical treatment if
+              necessary.
+            </label>
+            <label class="block">
+              <input type="checkbox" name="consent-media" class="mr-2" />
+              I give permission for my child to appear in photos/videos used for
+              promotional purposes.
+            </label>
+            <label class="block">
+              <input
+                type="checkbox"
+                name="consent-policy"
+                required
+                class="mr-2"
+              />
+              I agree to the Flag Frenzy privacy policy and registration terms.
+            </label>
+          </div>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            class="bg-[#A73926] hover:bg-[#8f2f1d] text-white font-semibold px-6 py-3 rounded"
+          >
+            Submit Registration
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 Flag Frenzy Football Camp. All rights reserved.</p>
+      <p>Contact: info@flagfrenzy.com | Instagram: @flagfrenzy</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
