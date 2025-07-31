@@ -13,11 +13,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+function toggleDaySelect(show) {
+  const daySection = document.getElementById("day-selector");
+  if (daySection) {
+    daySection.classList.toggle("hidden", !show);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  toggleDaySelect(false); // Hide by default
   const radios = document.querySelectorAll("input[name='attendance']");
   radios.forEach((radio) => {
     radio.addEventListener("change", (e) => {
-      toggleDaySelect(e.target.value === "Choose Days");
+      toggleDaySelect(e.target.value === "Choose Dates");
     });
   });
 });
