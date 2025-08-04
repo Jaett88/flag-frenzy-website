@@ -142,3 +142,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// Store camper name before form submission
+const registrationForm = document.querySelector(
+  "form[name='camper-registration']"
+);
+if (registrationForm) {
+  registrationForm.addEventListener("submit", () => {
+    const camperName = document.querySelector("input[name='name']")?.value;
+    if (camperName) {
+      localStorage.setItem("camperName", camperName);
+    }
+  });
+}
