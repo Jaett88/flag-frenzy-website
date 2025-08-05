@@ -149,7 +149,9 @@ const registrationForm = document.querySelector(
 );
 if (registrationForm) {
   registrationForm.addEventListener("submit", () => {
-    const camperName = document.querySelector("input[name='name']")?.value;
+    const camperName = document.querySelector(
+      "input[name='camper-name']"
+    )?.value;
     if (camperName) {
       localStorage.setItem("camperName", camperName);
     }
