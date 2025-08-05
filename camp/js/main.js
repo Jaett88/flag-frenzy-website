@@ -39,19 +39,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Update payment when sibling discount changes
   siblingSelect?.addEventListener("change", updatePaymentSummary);
+});
 
-  // Auto-fill age and validate DOB
-  dobInput?.addEventListener("change", () => {
-    const dob = dobInput.value;
-    if (!dob) return;
+document.addEventListener("DOMContentLoaded", () => {
+  // Populate Day options (1–31)
+  const daySelect = document.getElementById("dob-day");
+  for (let d = 1; d <= 31; d++) {
+    const option = document.createElement("option");
+    option.value = d;
+    option.textContent = d;
+    daySelect.appendChild(option);
+  }
 
-    const age = calculateAge(dob);
-    ageInput.value = age;
+  // Populate Year options (7–15 years ago)
+  const yearSelect = document.getElementById("dob-year");
+  const thisYear = new Date().getFullYear();
+  for (let y = thisYear - 7; y >= thisYear - 15; y--) {
+    const option = document.createElement("option");
+    option.value = y;
+    option.textContent = y;
+    yearSelect.appendChild(option);
+  }
+
+  // Add event listener to the Date of Birth fields
+  const dobInputs = document.querySelectorAll(
+    "#dob-day, #dob-month, #dob-year"
+  );
+  dobInputs.forEach((input) => {
+    input.addEventListener("change", validateAge);
+  });
+
+  // Age validation function
+  function validateAge() {
+    const day = parseInt(document.getElementById("dob-day").value, 10);
+    const month = parseInt(document.getElementById("dob-month").value, 10);
+    const year = parseInt(document.getElementById("dob-year").value, 10);
+    const today = new Date();
+    const birthDate = new Date(year, month - 1, day); // months are 0-based in JavaScript
+
+    // Calculate age
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+
+    // Show age and validate range
+    const ageInput = document.querySelector("input[name='camper-age']");
+    if (ageInput) {
+      ageInput.value = age;
+    }
 
     if (age < 7 || age > 15) {
       alert("Sorry, campers must be between 7 and 15 years old.");
     }
-  });
+  }
 });
 
 // ===== Toggle Day Selector Visibility + Recalculate =====
@@ -63,24 +105,12 @@ function toggleDaySelect(show) {
   updatePaymentSummary(); // ✅ Ensures pricing adjusts when switching view
 }
 
-// ===== Age Calculation =====
-function calculateAge(dobStr) {
-  const today = new Date();
-  const dob = new Date(dobStr);
-  let age = today.getFullYear() - dob.getFullYear();
-  const m = today.getMonth() - dob.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
-    age--;
-  }
-  return age;
-}
-
 // ===== Payment Calculation =====
 const DAILY_RATE = 30;
 const FULL_WEEK_RATE = 135;
 const EARLY_BIRD_RATE = 120;
 const SIBLING_DISCOUNT_PERCENT = 0.1;
-const EARLY_BIRD_CUTOFF = new Date("2025-09-27T23:59:59");
+const EARLY_BIRD_CUTOFF = new Date("2025-09-13T23:59:59");
 
 function isEarlyBird() {
   return new Date() <= EARLY_BIRD_CUTOFF;
