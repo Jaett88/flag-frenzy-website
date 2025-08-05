@@ -41,11 +41,12 @@
         <form
           name="camper-registration"
           method="POST"
+          data-netlify="true"
           netlify
           netlify-honeypot="bot-field"
           action="/thank-you.html"
         >
-          <input type="hidden" name="form-name" value="camper-registration" />
+          <input type="hidden" name="name" value="camper-registration" />
           <p class="hidden">
             <label
               >Don’t fill this out if you're human: <input name="bot-field"
