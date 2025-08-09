@@ -1,153 +1,135 @@
-/* style.css */
+/* Flag Frenzy Football — MAIN SITE theme (matches logo) */
+:root {
+  --ff-blue: #002e5f; /* primary brand */
+  --ff-blue-700: #003a78; /* hover */
+  --ff-blue-900: #001b37; /* deep text */
+  --ff-accent: #843c11; /* brick red banner/accent */
+  --ff-bg: #f7fafc; /* soft page bg */
+}
 
+html,
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: #f6eadb;
-  margin: 0;
-  padding: 0;
+  height: 100%;
+}
+body {
+  font-family: "Poppins", system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--ff-bg);
+  color: #1f2937;
 }
 
-.nav {
-  background-color: #3a6440;
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-}
-
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-wrap {
-  display: flex;
+/* Buttons */
+.btn {
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.logo {
-  width: 40px;
-  height: 40px;
-}
-
-.brand-title {
   font-weight: 700;
-  font-size: 1.25rem;
+  border-radius: 1rem;
+  padding: 0.8rem 1rem;
+  transition: 0.2s;
+}
+.btn-primary {
+  background: var(--ff-blue);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(0, 46, 95, 0.25);
+}
+.btn-primary:hover {
+  background: var(--ff-blue-700);
+  transform: translateY(-1px);
+}
+.btn-outline {
+  border: 2px solid #bcd0e9;
+  color: var(--ff-blue-900);
+  background: #fff;
+}
+.btn-outline:hover {
+  border-color: #90b4e3;
+  transform: translateY(-1px);
+}
+.btn-accent {
+  background: var(--ff-accent);
+  color: #fff;
+}
+.btn-accent:hover {
+  filter: brightness(1.05);
 }
 
-.nav-links {
-  display: flex;
-  gap: 1rem;
-  list-style: none;
+/* Header / Nav */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
 }
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-}
-
-.nav-links a:hover {
-  text-decoration: underline;
-}
-
-.hero {
-  position: relative;
-  background-image: url("../src/hero-bg.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  color: white;
-  padding: 1rem;
-}
-
-.hero-logo {
-  width: 90px;
-  margin: 0 auto 1rem auto;
-}
-
-.hero-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  line-height: 1.2;
-}
-
-.hero-title span {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.hero-tagline {
-  font-size: 1.1rem;
-  margin-top: 0.5rem;
-}
-
-.hero-button {
-  display: inline-block;
-  margin-top: 1.5rem;
-  background-color: #a73926;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
+.nav-link {
   font-weight: 600;
 }
-
-.hero-button:hover {
-  background-color: #8f2f1d;
+.nav-link.active,
+.nav-link:hover {
+  color: var(--ff-blue);
 }
 
-.about-preview {
-  background-color: #fff8ef;
-  padding: 3rem 1rem;
-  text-align: center;
+/* Sections & cards */
+.section-title {
+  font-weight: 800;
+  color: var(--ff-blue-900);
+}
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
 }
 
-.about-preview h2 {
-  font-size: 1.75rem;
-  color: #3a6440;
-  margin-bottom: 0.5rem;
+/* Form */
+.label {
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+.input {
+  width: 100%;
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 0.8rem 0.9rem;
+  outline: none;
+}
+.input:focus {
+  border-color: #bcd0e9;
+  box-shadow: 0 0 0 4px rgba(0, 46, 95, 0.15);
 }
 
-.about-preview p {
-  color: #1e1c18;
-  max-width: 700px;
-  margin: 0 auto 1rem auto;
-}
-
-.about-preview a {
-  color: #a73926;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.about-preview a:hover {
-  text-decoration: underline;
-}
-
+/* Footer */
 .footer {
-  background-color: #3a6440;
-  color: white;
-  padding: 2rem 1rem;
-  text-align: center;
-  font-size: 0.9rem;
+  background: var(--ff-blue);
+  color: #e5e7eb;
+}
+.footer a {
+  color: #e5e7eb;
+}
+.footer a:hover {
+  color: #fff;
+}
+
+/* Utilities */
+.tick::before {
+  content: "✓";
+  font-weight: 900;
+  color: var(--ff-accent);
+  margin-right: 0.5rem;
+}
+.hero-bg {
+  background: radial-gradient(
+      60% 80% at 20% 0%,
+      rgba(0, 46, 95, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      70% 80% at 100% 0%,
+      rgba(132, 60, 17, 0.18),
+      transparent 60%
+    ),
+    linear-gradient(#ffffff, #f4f7fb 60%);
 }
