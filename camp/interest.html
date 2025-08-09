@@ -72,38 +72,26 @@
         >
         </iframe>
 
+        <!-- Jotform auto-resize script -->
         <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
         <script>
+          // Primary: Jotform’s handler
           window.jotformEmbedHandler(
             "#JotFormIFrame-252187034564054",
             "https://form.jotform.com/"
           );
+
+          // Fallback: if the postMessage doesn’t land, set a sensible height after load
           (function () {
             var ifr = document.getElementById("JotFormIFrame-252187034564054");
-            function setH(px) {
-              if (px && +px > 0) ifr.style.height = +px + "px";
+            function ensureHeight() {
+              // Only bump if still too small (e.g., 0px)
+              if (parseInt(ifr.style.height, 10) < 600) {
+                ifr.style.height = "1400px"; // adjust if your form grows later
+              }
             }
-            window.addEventListener("message", function (e) {
-              try {
-                var host = new URL(e.origin).hostname;
-                if (!/\.jotform\.(com|ms)$/.test(host)) return;
-              } catch (_) {
-                return;
-              }
-              if (e.data && typeof e.data === "object" && "height" in e.data)
-                setH(e.data.height);
-              if (
-                typeof e.data === "string" &&
-                e.data.indexOf("setHeight") > -1
-              ) {
-                setH(e.data.split(":").pop());
-              }
-            });
             ifr.addEventListener("load", function () {
-              setTimeout(function () {
-                if ((parseInt(ifr.style.height || "0", 10) || 0) < 600)
-                  ifr.style.height = "1400px";
-              }, 700);
+              setTimeout(ensureHeight, 600);
             });
           })();
         </script>
