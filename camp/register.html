@@ -10,31 +10,42 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
   </head>
-  <body>
+  <body class="bg-[#F6EADB] text-gray-800">
     <!-- Navigation -->
-    <header class="nav">
-      <div class="nav-container">
-        <div class="logo-wrap">
-          <img src="src/logo.png" alt="Flag Frenzy Logo" class="logo" />
-          <h1 class="brand-title">Flag Frenzy</h1>
+    <header class="bg-white shadow-md py-4 px-6">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="src/logo.png" alt="Flag Frenzy Logo" class="w-10 h-10" />
+          <h1 class="text-xl font-bold text-[#A73926]">Flag Frenzy</h1>
         </div>
         <nav>
-          <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="register.html" class="underline">Register</a></li>
-            <li><a href="faqs.html">FAQs</a></li>
-            <li><a href="contact.html">Contact</a></li>
+          <ul class="flex gap-6 text-sm font-medium">
+            <li><a href="index.html" class="hover:underline">Home</a></li>
+            <li><a href="about.html" class="hover:underline">About</a></li>
+            <li>
+              <a href="register.html" class="text-[#A73926] underline"
+                >Register</a
+              >
+            </li>
+            <li><a href="faqs.html" class="hover:underline">FAQs</a></li>
+            <li><a href="contact.html" class="hover:underline">Contact</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <!-- Register Form -->
-    <section class="py-12 bg-[#F6EADB]">
-      <div class="max-w-2xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-[#3A6440] mb-8">
+    <!-- Form Section -->
+    <section class="py-12 px-4">
+      <div
+        class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6 md:p-10 space-y-8"
+      >
+        <h2 class="text-3xl font-bold text-center text-[#3A6440]">
           Camper Registration Form
         </h2>
 
@@ -45,8 +56,9 @@
           netlify
           netlify-honeypot="bot-field"
           action="/camp/thank-you.html"
+          class="space-y-10"
         >
-          <input type="hidden" name="name" value="camper-registration" />
+          <input type="hidden" name="form-name" value="camper-registration" />
           <p class="hidden">
             <label
               >Don’t fill this out if you're human: <input name="bot-field"
@@ -54,136 +66,119 @@
           </p>
 
           <!-- Camper Info -->
-          <div>
-            <h3 class="text-lg font-semibold text-gray-800 mb-2">
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold text-gray-800">
               Camper Information
             </h3>
-            <label class="block mb-1">Full Name</label>
-            <input
-              type="text"
-              name="camper-name"
-              required
-              class="w-full border border-gray-300 rounded px-4 py-2"
-            />
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label class="block mb-1">Age</label>
+                <label class="block mb-1 font-medium">Full Name</label>
+                <input
+                  type="text"
+                  name="camper-name"
+                  required
+                  class="w-full border border-gray-300 rounded px-4 py-2"
+                />
+              </div>
+              <div>
+                <label class="block mb-1 font-medium">Age</label>
                 <input
                   type="number"
                   name="camper-age"
+                  id="camper-age"
                   min="7"
                   max="15"
                   required
                   class="w-full border border-gray-300 rounded px-4 py-2"
                 />
               </div>
-              <div>
-                <!-- Date of Birth (Day, Month, Year) -->
-                <div class="grid grid-cols-3 gap-4 mt-4">
-                  <div>
-                    <label class="block mb-1">Day</label>
-                    <select
-                      id="dob-day"
-                      name="dob-day"
-                      required
-                      class="w-full border border-gray-300 rounded px-2 py-2"
-                    >
-                      <option value="">Day</option>
-                      <!-- Days 1–31 will be populated by JavaScript -->
-                    </select>
-                  </div>
+            </div>
 
-                  <div>
-                    <label class="block mb-1">Month</label>
-                    <select
-                      id="dob-month"
-                      name="dob-month"
-                      required
-                      class="w-full border border-gray-300 rounded px-2 py-2"
-                    >
-                      <option value="">Month</option>
-                      <option value="1">January</option>
-                      <option value="2">February</option>
-                      <option value="3">March</option>
-                      <option value="4">April</option>
-                      <option value="5">May</option>
-                      <option value="6">June</option>
-                      <option value="7">July</option>
-                      <option value="8">August</option>
-                      <option value="9">September</option>
-                      <option value="10">October</option>
-                      <option value="11">November</option>
-                      <option value="12">December</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label class="block mb-1">Year</label>
-                    <select
-                      id="dob-year"
-                      name="dob-year"
-                      required
-                      class="w-full border border-gray-300 rounded px-2 py-2"
-                    >
-                      <option value="">Year</option>
-                      <!-- Years will be populated by JavaScript -->
-                    </select>
-                  </div>
-                </div>
+            <!-- DOB Dropdowns -->
+            <div>
+              <label class="block mb-1 font-medium">Date of Birth</label>
+              <div class="grid grid-cols-3 gap-2">
+                <select
+                  name="dob-day"
+                  id="dob-day"
+                  required
+                  class="w-full border border-gray-300 rounded px-4 py-2"
+                >
+                  <option value="">Day</option>
+                </select>
+                <select
+                  name="dob-month"
+                  id="dob-month"
+                  required
+                  class="w-full border border-gray-300 rounded px-4 py-2"
+                >
+                  <option value="">Month</option>
+                </select>
+                <select
+                  name="dob-year"
+                  id="dob-year"
+                  required
+                  class="w-full border border-gray-300 rounded px-4 py-2"
+                >
+                  <option value="">Year</option>
+                </select>
               </div>
             </div>
           </div>
 
-          <!-- Attendance -->
-          <div>
-            <h3 class="text-lg font-semibold text-gray-800 mb-2">Attendance</h3>
-            <label class="block mb-1">Which Week?</label>
-            <select
-              name="week"
-              required
-              class="w-full border border-gray-300 rounded px-4 py-2"
-            >
-              <option value="">Select week/s</option>
-              <option value="Week 1">Week 1 (Oct 27–31)</option>
-            </select>
+          <!-- Attendance Info -->
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">Attendance</h3>
 
-            <div class="mt-4">
-              <label class="block mb-1">Attendance Option</label>
-              <label
-                ><input
-                  type="radio"
-                  name="attendance"
-                  value="Full Week"
-                  required
-                  onclick="toggleDaySelect(false)"
-                  class="mr-2"
-                />
-                Full Week</label
-              ><br />
-              <label
-                ><input
-                  type="radio"
-                  name="attendance"
-                  value="Choose Dates"
-                  onclick="toggleDaySelect(true)"
-                  class="mr-2"
-                />
-                Choose Specific Dates</label
+            <div>
+              <label class="block mb-1 font-medium">Which Week?</label>
+              <select
+                name="week"
+                required
+                class="w-full border border-gray-300 rounded px-4 py-2 bg-white"
               >
+                <option value="">Select week</option>
+                <option value="Week 1">Week 1 (Oct 27–31)</option>
+              </select>
             </div>
 
-            <div id="day-selector" class="mt-4 hidden">
-              <p class="font-semibold mb-2">Select dates attending:</p>
-              <div class="space-y-1">
+            <div>
+              <label class="block mb-1 font-medium">Attendance Option</label>
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="attendance"
+                    value="Full Week"
+                    onclick="toggleDaySelect(false)"
+                    required
+                  />
+                  <label class="mb-0">Full Week</label>
+                </div>
+                <div class="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="attendance"
+                    value="Choose Dates"
+                    onclick="toggleDaySelect(true)"
+                  />
+                  <label class="mb-0">Choose Specific Dates</label>
+                </div>
+              </div>
+            </div>
+
+            <div id="day-selector" class="hidden">
+              <label class="block font-semibold mb-1 mt-3"
+                >Select Dates Attending:</label
+              >
+              <div class="space-y-1 text-sm">
                 <label
                   ><input
                     type="checkbox"
                     name="selected-dates"
                     value="Mon 27 Oct"
                     class="mr-2"
-                  />
-                  Mon 27 Oct</label
+                  />Mon 27 Oct</label
                 ><br />
                 <label
                   ><input
@@ -191,8 +186,7 @@
                     name="selected-dates"
                     value="Tue 28 Oct"
                     class="mr-2"
-                  />
-                  Tue 28 Oct</label
+                  />Tue 28 Oct</label
                 ><br />
                 <label
                   ><input
@@ -200,8 +194,7 @@
                     name="selected-dates"
                     value="Wed 29 Oct"
                     class="mr-2"
-                  />
-                  Wed 29 Oct</label
+                  />Wed 29 Oct</label
                 ><br />
                 <label
                   ><input
@@ -209,8 +202,7 @@
                     name="selected-dates"
                     value="Thu 30 Oct"
                     class="mr-2"
-                  />
-                  Thu 30 Oct</label
+                  />Thu 30 Oct</label
                 ><br />
                 <label
                   ><input
@@ -218,16 +210,15 @@
                     name="selected-dates"
                     value="Fri 31 Oct"
                     class="mr-2"
-                  />
-                  Fri 31 Oct</label
+                  />Fri 31 Oct</label
                 >
               </div>
             </div>
           </div>
 
           <!-- Sibling Discount -->
-          <div>
-            <h3 class="text-lg font-semibold text-gray-800 mb-2">
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">
               Sibling Discount
             </h3>
             <label class="block mb-1"
@@ -241,33 +232,27 @@
               <option value="no">No</option>
               <option value="yes">Yes</option>
             </select>
-
             <p class="text-sm text-gray-600 mt-2">
               Please submit a <strong>separate form</strong> for each child. The
               discount applies only to <strong>additional</strong> children.
             </p>
-
             <div class="mt-3">
-              <input
-                type="checkbox"
-                name="confirm-discount-policy"
-                id="confirm-discount-policy"
-                required
-                class="mr-2"
-              />
-              <label
-                for="confirm-discount-policy"
-                class="text-sm text-gray-700"
-              >
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="confirm-discount-policy"
+                  id="confirm-discount-policy"
+                  required
+                />
                 I understand the sibling discount applies only to additional
-                children registered separately. (Must be ticked)
+                children registered separately.
               </label>
             </div>
           </div>
 
           <!-- Parent/Guardian 1 -->
-          <div>
-            <h3 class="text-lg font-semibold text-gray-800 mb-2">
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">
               Parent/Guardian Contact (Required)
             </h3>
             <label class="block mb-1">Full Name</label>
@@ -293,9 +278,9 @@
             />
           </div>
 
-          <!-- Parent/Guardian 2 -->
-          <div>
-            <h3 class="text-lg font-semibold text-gray-800 mb-2">
+          <!-- Parent/Guardian 2 (Optional) -->
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">
               Additional Parent/Guardian (Optional)
             </h3>
             <label class="block mb-1">Full Name</label>
@@ -319,12 +304,13 @@
           </div>
 
           <!-- Emergency Contacts -->
-          <div>
-            <h3 class="text-lg font-semibold text-gray-800 mb-2">
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">
               Emergency Contacts (Required)
             </h3>
-            <!-- Emergency 1 -->
-            <div class="mb-4">
+
+            <!-- Emergency Contact 1 -->
+            <div class="mb-6">
               <label class="block mb-1">Full Name (Contact 1)</label>
               <input
                 type="text"
@@ -348,7 +334,7 @@
               />
             </div>
 
-            <!-- Emergency 2 -->
+            <!-- Emergency Contact 2 -->
             <div>
               <label class="block mb-1">Full Name (Contact 2)</label>
               <input
@@ -374,9 +360,9 @@
             </div>
           </div>
 
-          <!-- Health & Medical Info -->
-          <div class="mt-8">
-            <h3 class="text-lg font-semibold text-gray-800 mb-2">
+          <!-- Health & Medical -->
+          <div class="mt-10">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">
               Health & Medical Information
             </h3>
 
@@ -387,15 +373,14 @@
               >
             </label>
 
-            <div class="space-y-2 text-sm text-gray-700">
+            <div class="space-y-2 text-sm text-gray-700 mt-2">
               <label
                 ><input
                   type="checkbox"
                   name="medical-conditions"
                   value="None"
                   class="mr-2"
-                />
-                None</label
+                />None</label
               ><br />
               <label
                 ><input
@@ -403,8 +388,7 @@
                   name="medical-conditions"
                   value="Asthma"
                   class="mr-2"
-                />
-                Asthma</label
+                />Asthma</label
               ><br />
               <label
                 ><input
@@ -412,8 +396,7 @@
                   name="medical-conditions"
                   value="Severe Allergies"
                   class="mr-2"
-                />
-                Severe Allergies (e.g. nuts, bee stings)</label
+                />Severe Allergies</label
               ><br />
               <label
                 ><input
@@ -421,8 +404,7 @@
                   name="medical-conditions"
                   value="Epilepsy"
                   class="mr-2"
-                />
-                Epilepsy</label
+                />Epilepsy</label
               ><br />
               <label
                 ><input
@@ -430,8 +412,7 @@
                   name="medical-conditions"
                   value="Diabetes"
                   class="mr-2"
-                />
-                Diabetes</label
+                />Diabetes</label
               ><br />
               <label
                 ><input
@@ -439,14 +420,13 @@
                   name="medical-conditions"
                   value="Other"
                   class="mr-2"
-                />
-                Other (please explain below)</label
+                />Other (please explain below)</label
               >
             </div>
 
-            <label class="block mt-4 font-medium">
-              Additional Medical Details or Medications
-            </label>
+            <label class="block mt-4 font-medium"
+              >Additional Medical Details or Medications</label
+            >
             <textarea
               name="medical-details"
               rows="3"
@@ -456,45 +436,34 @@
           </div>
 
           <!-- Consent -->
-          <fieldset class="space-y-3 mt-6">
-            <legend class="font-semibold mb-2">Consent</legend>
-            <label class="block"
-              ><input
-                type="checkbox"
-                name="consent-participation"
-                required
-                class="mr-2"
-              />
-              I give permission for my child to participate.</label
-            >
-            <label class="block"
-              ><input
-                type="checkbox"
-                name="consent-medical"
-                required
-                class="mr-2"
-              />
-              I give permission for first aid to be administered if
-              necessary.</label
-            >
-            <label class="block"
-              ><input type="checkbox" name="consent-media" class="mr-2" /> I
-              give permission for my child to be included in
-              photos/videos.</label
-            >
-            <label class="block"
-              ><input
-                type="checkbox"
-                name="consent-policy"
-                required
-                class="mr-2"
-              />
-              I agree to the privacy policy and terms.</label
-            >
+          <fieldset class="space-y-3 mt-10">
+            <legend class="text-xl font-semibold text-gray-800 mb-2">
+              Consent
+            </legend>
+
+            <label class="flex items-center gap-2">
+              <input type="checkbox" name="consent-participation" required />
+              I give permission for my child to participate.
+            </label>
+
+            <label class="flex items-center gap-2">
+              <input type="checkbox" name="consent-medical" required />
+              I give permission for first aid to be administered if necessary.
+            </label>
+
+            <label class="flex items-center gap-2">
+              <input type="checkbox" name="consent-media" />
+              I give permission for my child to be included in photos/videos.
+            </label>
+
+            <label class="flex items-center gap-2">
+              <input type="checkbox" name="consent-policy" required />
+              I agree to the privacy policy and terms.
+            </label>
           </fieldset>
 
           <!-- Submit -->
-          <div class="pt-4">
+          <div class="pt-6">
             <button
               type="submit"
               class="bg-[#A73926] hover:bg-[#8f2f1d] text-white font-semibold px-6 py-3 rounded w-full"
@@ -506,9 +475,9 @@
               class="mt-4 text-lg font-semibold text-center text-[#3A6440]"
             >
               Total Due: £135<br />
-              <small class="text-sm text-gray-500"
-                >Sibling discounts apply to additional children only.</small
-              >
+              <small class="text-sm text-gray-500">
+                Sibling discounts apply to additional children only.
+              </small>
             </p>
           </div>
         </form>
@@ -518,9 +487,27 @@
     <!-- Footer -->
     <footer class="bg-gray-100 text-center py-6 text-sm text-gray-600">
       <p>&copy; 2025 Flag Frenzy Football Camp. All rights reserved.</p>
-      <p>Contact: info@flagfrenzy.com | Instagram: @flagfrenzy</p>
+      <p>Contact: info@flagfrenzyfootball.co.uk | Instagram: @flagfrenzycamp</p>
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+      // Apply Tailwind styling to all text/number/select/textarea inputs
+      document.addEventListener("DOMContentLoaded", () => {
+        const inputs = document.querySelectorAll("input, select, textarea");
+        inputs.forEach((el) => {
+          if (!el.classList.contains("input")) {
+            el.classList.add(
+              "w-full",
+              "border",
+              "border-gray-300",
+              "rounded",
+              "px-4",
+              "py-2"
+            );
+          }
+        });
+      });
+    </script>
   </body>
 </html>

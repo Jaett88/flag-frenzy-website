@@ -42,58 +42,67 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Populate Day options (1–31)
-  const daySelect = document.getElementById("dob-day");
+  const dobDay = document.getElementById("dob-day");
+  const dobMonth = document.getElementById("dob-month");
+  const dobYear = document.getElementById("dob-year");
+  const ageInput = document.querySelector("input[name='camper-age']");
+
+  // Populate day options (1–31)
   for (let d = 1; d <= 31; d++) {
-    const option = document.createElement("option");
-    option.value = d;
-    option.textContent = d;
-    daySelect.appendChild(option);
+    dobDay.innerHTML += `<option value="${d}">${d}</option>`;
   }
 
-  // Populate Year options (7–15 years ago)
-  const yearSelect = document.getElementById("dob-year");
-  const thisYear = new Date().getFullYear();
-  for (let y = thisYear - 7; y >= thisYear - 15; y--) {
-    const option = document.createElement("option");
-    option.value = y;
-    option.textContent = y;
-    yearSelect.appendChild(option);
-  }
-
-  // Add event listener to the Date of Birth fields
-  const dobInputs = document.querySelectorAll(
-    "#dob-day, #dob-month, #dob-year"
-  );
-  dobInputs.forEach((input) => {
-    input.addEventListener("change", validateAge);
+  // Populate month options (1–12)
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  months.forEach((month, i) => {
+    dobMonth.innerHTML += `<option value="${i + 1}">${month}</option>`;
   });
 
-  // Age validation function
-  function validateAge() {
-    const day = parseInt(document.getElementById("dob-day").value, 10);
-    const month = parseInt(document.getElementById("dob-month").value, 10);
-    const year = parseInt(document.getElementById("dob-year").value, 10);
-    const today = new Date();
-    const birthDate = new Date(year, month - 1, day); // months are 0-based in JavaScript
-
-    // Calculate age
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-
-    // Show age and validate range
-    const ageInput = document.querySelector("input[name='camper-age']");
-    if (ageInput) {
-      ageInput.value = age;
-    }
-
-    if (age < 7 || age > 15) {
-      alert("Sorry, campers must be between 7 and 15 years old.");
-    }
+  // Populate year options (2009 to current year)
+  const currentYear = new Date().getFullYear();
+  for (let y = 2009; y <= currentYear; y++) {
+    dobYear.innerHTML += `<option value="${y}">${y}</option>`;
   }
+
+  // Watch for changes to validate age
+  [dobDay, dobMonth, dobYear].forEach((el) => {
+    el.addEventListener("change", () => {
+      const day = parseInt(dobDay.value);
+      const month = parseInt(dobMonth.value) - 1; // JS months are 0-indexed
+      const year = parseInt(dobYear.value);
+
+      if (!day || !month || !year) return;
+
+      const dob = new Date(year, month, day);
+      const today = new Date();
+      let age = today.getFullYear() - dob.getFullYear();
+      const m = today.getMonth() - dob.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+        age--;
+      }
+
+      // Display age in input field
+      ageInput.value = age;
+
+      // Validate age range
+      if (age < 7 || age > 15) {
+        alert("Sorry, campers must be between 7 and 15 years old.");
+      }
+    });
+  });
 });
 
 // ===== Toggle Day Selector Visibility + Recalculate =====
