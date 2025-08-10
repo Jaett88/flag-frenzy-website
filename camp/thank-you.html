@@ -9,7 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/camp/assets/css/camp-styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -17,40 +17,71 @@
     <style>
       body {
         font-family: "Poppins", sans-serif;
+        background-color: var(--camp-cream);
       }
     </style>
   </head>
-  <body class="bg-[#F6EADB] min-h-screen flex flex-col">
+  <body class="flex flex-col min-h-screen">
     <!-- Header -->
-    <header class="bg-white shadow-md py-4 px-6">
-      <div class="max-w-7xl mx-auto flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <img src="src/logo.png" alt="Flag Frenzy Logo" class="w-10 h-10" />
-          <h1 class="text-xl font-bold text-[#A73926]">Flag Frenzy</h1>
+    <header class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="h-16 flex items-center justify-between">
+          <a href="/camp/index.html" class="flex items-center gap-3">
+            <img
+              src="/camp/src/logo.png"
+              alt="Flag Frenzy Football Camp logo"
+              class="h-10 w-10"
+            />
+            <span class="text-xl font-extrabold text-[var(--camp-red)]">
+              Flag Frenzy Football Camp
+            </span>
+          </a>
+          <button
+            id="menuBtn"
+            class="md:hidden p-2 rounded-lg border border-gray-200"
+            aria-label="Toggle menu"
+          >
+            ☰
+          </button>
+          <nav id="nav" class="hidden md:flex items-center gap-6">
+            <a class="nav-link" href="/camp/index.html">Home</a>
+            <a class="nav-link" href="/camp/about.html">About</a>
+            <a class="nav-link" href="/camp/register.html">Register</a>
+            <a class="nav-link" href="/camp/faqs.html">FAQs</a>
+            <a class="nav-link" href="/camp/contact.html">Contact</a>
+            <a class="btn btn-outline" href="/index.html">Main Site</a>
+          </nav>
         </div>
-        <nav class="hidden md:flex gap-6 text-sm font-medium">
-          <a href="index.html" class="hover:underline">Home</a>
-          <a href="about.html" class="hover:underline">About</a>
-          <a href="register.html" class="hover:underline">Register</a>
-          <a href="faqs.html" class="hover:underline">FAQs</a>
-          <a href="contact.html" class="hover:underline">Contact</a>
+        <!-- Mobile menu -->
+        <nav
+          id="mobileNav"
+          class="md:hidden hidden border-t border-[var(--camp-border)] py-3"
+        >
+          <div class="flex flex-col gap-3 font-medium">
+            <a class="nav-link" href="/camp/index.html">Home</a>
+            <a class="nav-link" href="/camp/about.html">About</a>
+            <a class="nav-link" href="/camp/register.html">Register</a>
+            <a class="nav-link" href="/camp/faqs.html">FAQs</a>
+            <a class="nav-link" href="/camp/contact.html">Contact</a>
+            <a class="btn btn-outline w-max" href="/index.html">Main Site</a>
+          </div>
         </nav>
       </div>
     </header>
 
     <!-- Main Content -->
     <main
-      class="flex-grow flex flex-col items-center justify-center px-6 text-center max-w-xl mx-auto"
+      class="flex-grow flex flex-col items-center justify-center px-6 text-center max-w-xl mx-auto py-12"
     >
       <img
-        src="src/logo.png"
+        src="/camp/src/logo.png"
         alt="Flag Frenzy Logo"
         class="mx-auto w-28 mb-6"
       />
 
       <h1
         id="thank-you-greeting"
-        class="text-3xl md:text-4xl font-bold text-[#3A6440] mb-4"
+        class="text-3xl md:text-4xl font-bold text-[var(--camp-green)] mb-4"
       >
         Thank you for registering!
       </h1>
@@ -62,18 +93,8 @@
       </p>
 
       <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <a
-          href="/camp/index.html"
-          class="bg-[#A73926] hover:bg-[#8f2f1d] text-white font-semibold py-3 px-6 rounded transition duration-200"
-        >
-          ← Back to Home
-        </a>
-        <a
-          href="/contact.html"
-          class="bg-white border border-[#A73926] text-[#A73926] hover:bg-[#f8d7d1] font-semibold py-3 px-6 rounded transition duration-200"
-        >
-          Contact Us
-        </a>
+        <a href="/camp/index.html" class="btn btn-primary"> ← Back to Home </a>
+        <a href="/camp/contact.html" class="btn btn-outline"> Contact Us </a>
       </div>
 
       <!-- Social Media -->
@@ -83,7 +104,7 @@
           <a
             href="mailto:info@flagfrenzyfootball.co.uk"
             aria-label="Email"
-            class="hover:text-[#A73926] transition"
+            class="hover:text-[var(--camp-red)] transition"
           >
             <i class="fas fa-envelope"></i>
           </a>
@@ -92,7 +113,7 @@
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            class="hover:text-[#A73926] transition"
+            class="hover:text-[var(--camp-red)] transition"
           >
             <i class="fab fa-instagram"></i>
           </a>
@@ -102,7 +123,10 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t py-6 text-center text-sm text-gray-500">
-      <p>&copy; 2025 Flag Frenzy Football Ltd. All rights reserved.</p>
+      <p>
+        &copy; <span id="year"></span> Flag Frenzy Football Ltd. All rights
+        reserved.
+      </p>
     </footer>
 
     <script>
@@ -113,9 +137,14 @@
         if (name && greeting) {
           const firstName = name.split(" ")[0];
           greeting.textContent = `Thank you for registering, ${firstName}!`;
-          // Optional: Clear so it doesn’t show again next visit
           localStorage.removeItem("camperName");
         }
+        document.getElementById("year").textContent = new Date().getFullYear();
+      });
+
+      // Mobile menu toggle
+      document.getElementById("menuBtn").addEventListener("click", () => {
+        document.getElementById("mobileNav").classList.toggle("hidden");
       });
     </script>
   </body>
