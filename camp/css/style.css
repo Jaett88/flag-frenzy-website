@@ -1,165 +1,215 @@
-/* style.css */
+/* Flag Frenzy Football — CAMP SITE theme
+   Matches main-site layout/spacing, but with camp colours. */
 
+/* ====== Brand Palette ====== */
+:root {
+  --camp-primary: #42643f; /* deep green */
+  --camp-primary-700: #3a5838; /* hover/depth */
+  --camp-primary-900: #22321d; /* headings */
+
+  --camp-accent: #a93e20; /* orange-red */
+  --camp-accent-dark: #832d10; /* deeper brick for hovers */
+
+  --camp-cream: #ecd6ad; /* light cream */
+  --camp-ink: #261c0e; /* very dark brown for strong text */
+
+  --camp-bg: #faf7f0; /* warm, light page background */
+  --camp-border: #e6e1d6; /* subtle borders */
+}
+
+/* ====== Base ====== */
+html,
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: #f6eadb;
-  margin: 0;
-  padding: 0;
+  height: 100%;
+}
+body {
+  font-family: "Poppins", system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--camp-bg);
+  color: #2b2b2b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.nav {
-  background-color: #3a6440;
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 50;
+/* Headings that echo the badge weight */
+.section-title {
+  font-weight: 800;
+  color: var(--camp-primary-900);
+}
+h1,
+h2,
+h3,
+h4 {
+  color: var(--camp-primary-900);
 }
 
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-wrap {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.logo {
-  width: 40px;
-  height: 40px;
-}
-
-.brand-title {
-  font-weight: 700;
-  font-size: 1.25rem;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1rem;
-  list-style: none;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-}
-
-.nav-links a:hover {
-  text-decoration: underline;
-}
-
-.back-link {
-  display: inline-block;
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-  color: whitesmoke;
-  text-decoration: none;
-}
-
-.back-link:hover {
-  text-decoration: underline;
-}
-
-.hero {
-  position: relative;
-  background-image: url("../src/hero-bg.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 80vh;
-  display: flex;
+/* ====== Buttons ====== */
+.btn {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  color: white;
-  padding: 1rem;
-}
-
-.hero-logo {
-  width: 90px;
-  margin: 0 auto 1rem auto;
-}
-
-.hero-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  line-height: 1.2;
-}
-
-.hero-title span {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.hero-tagline {
-  font-size: 1.1rem;
-  margin-top: 0.5rem;
-}
-
-.hero-button {
-  display: inline-block;
-  margin-top: 1.5rem;
-  background-color: #a73926;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.hero-button:hover {
-  background-color: #8f2f1d;
-}
-
-.about-preview {
-  background-color: #fff8ef;
-  padding: 3rem 1rem;
-  text-align: center;
-}
-
-.about-preview h2 {
-  font-size: 1.75rem;
-  color: #3a6440;
-  margin-bottom: 0.5rem;
-}
-
-.about-preview p {
-  color: #1e1c18;
-  max-width: 700px;
-  margin: 0 auto 1rem auto;
-}
-
-.about-preview a {
-  color: #a73926;
-  font-weight: 600;
+  gap: 0.5rem;
+  font-weight: 700;
+  border-radius: 1rem;
+  padding: 0.8rem 1rem;
+  transition: 0.2s;
   text-decoration: none;
 }
-
-.about-preview a:hover {
-  text-decoration: underline;
+.btn-primary {
+  background: var(--camp-primary);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(66, 100, 63, 0.25);
+}
+.btn-primary:hover {
+  background: var(--camp-primary-700);
+  transform: translateY(-1px);
 }
 
+.btn-outline {
+  border: 2px solid var(--camp-border);
+  background: #fff;
+  color: var(--camp-primary-900);
+}
+.btn-outline:hover {
+  border-color: #d6cfbf;
+  transform: translateY(-1px);
+}
+
+.btn-accent {
+  background: var(--camp-accent);
+  color: #fff;
+}
+.btn-accent:hover {
+  background: var(--camp-accent-dark);
+}
+
+/* ====== Header / Navigation ====== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: #fff;
+  border-bottom: 1px solid var(--camp-border);
+  backdrop-filter: saturate(180%) blur(6px);
+}
+.nav-link {
+  font-weight: 600;
+}
+.nav-link.active,
+.nav-link:hover {
+  color: var(--camp-primary);
+}
+
+/* Mobile menu container should exist in HTML with id="mobileNav" */
+
+/* ====== Cards / Surfaces ====== */
+.card {
+  background: #fff;
+  border: 1px solid var(--camp-border);
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+.section-note {
+  color: #5f5a50;
+}
+
+/* ====== Forms ====== */
+.label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+.input {
+  width: 100%;
+  background: #fff;
+  border: 1.5px solid var(--camp-border);
+  border-radius: 1rem;
+  padding: 0.8rem 0.9rem;
+  outline: none;
+}
+.input:focus {
+  border-color: #d6cfbf;
+  box-shadow: 0 0 0 4px rgba(169, 62, 32, 0.15); /* accent glow */
+}
+
+/* Textarea sizing helper */
+.input.h-36 {
+  min-height: 9rem;
+}
+
+/* ====== Footer ====== */
 .footer {
-  background-color: #3a6440;
-  color: white;
-  padding: 2rem 1rem;
-  text-align: center;
-  font-size: 0.9rem;
+  background: var(--camp-primary);
+  color: #f1f1f1;
+}
+.footer a {
+  color: #f1f1f1;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: #ffffff;
+}
+
+/* ====== Utility bits ====== */
+.tick::before {
+  content: "✓";
+  font-weight: 900;
+  color: var(--camp-accent);
+  margin-right: 0.5rem;
+}
+
+/* Subtle hero background with brand tint (optional) */
+.hero-bg {
+  background: radial-gradient(
+      60% 80% at 20% 0%,
+      rgba(66, 100, 63, 0.14),
+      transparent 60%
+    ),
+    radial-gradient(
+      70% 80% at 100% 0%,
+      rgba(169, 62, 32, 0.16),
+      transparent 60%
+    ),
+    linear-gradient(#ffffff, #f7f4ec 60%);
+}
+
+/* Prose container if you paste rich policy text */
+.prose {
+  line-height: 1.7;
+}
+.prose p {
+  margin: 0 0 1em;
+}
+.prose ul {
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin: 0 0 1em;
+}
+.prose ol {
+  list-style: decimal;
+  padding-left: 1.2rem;
+  margin: 0 0 1em;
+}
+.prose h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 1.2em 0 0.5em;
+  color: var(--camp-primary-900);
+}
+.prose h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 1em 0 0.4em;
+  color: var(--camp-primary-900);
+}
+
+/* Optional chips / tags */
+.tag {
+  display: inline-block;
+  background: var(--camp-cream);
+  color: var(--camp-ink);
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-weight: 600;
+  font-size: 0.85rem;
 }

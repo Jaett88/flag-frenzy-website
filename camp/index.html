@@ -2,75 +2,182 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flag Frenzy Football Camp</title>
-
-    <!-- Tailwind CSS CDN (optional for utility classes) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flag Frenzy Football Camp — Home</title>
+    <meta
+      name="description"
+      content="Flag Frenzy Football Camp — safe, non-contact American flag football for ages 7–15."
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Font -->
+    <!-- CAMP THEME (matches main-site structure with camp colours) -->
+    <link rel="stylesheet" href="/camp/assets/css/camp-styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!-- Navigation -->
-    <header class="nav">
-      <div class="nav-container">
-        <div class="logo-wrap">
-          <img src="src/logo.png" alt="Flag Frenzy Logo" class="logo" />
-          <h1 class="brand-title">Flag Frenzy</h1>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="h-16 flex items-center justify-between">
+          <a href="/camp/index.html" class="flex items-center gap-3">
+            <img
+              src="/camp/assets/img/logo-camp.png"
+              alt="Flag Frenzy Football Camp logo"
+              class="h-10 w-10"
+            />
+            <span
+              class="text-xl font-extrabold"
+              style="color: var(--camp-primary)"
+              >Flag Frenzy Football Camp</span
+            >
+          </a>
+          <button
+            id="menuBtn"
+            class="md:hidden p-2 rounded-lg border border-gray-200"
+            aria-label="Toggle menu"
+          >
+            ☰
+          </button>
+          <nav id="nav" class="hidden md:flex items-center gap-6">
+            <a class="nav-link" href="/camp/index.html">Home</a>
+            <a class="nav-link" href="/camp/register.html">Register</a>
+            <a class="nav-link" href="/camp/policies.html">Policies</a>
+            <a class="btn btn-outline" href="/index.html">Main Site</a>
+          </nav>
         </div>
-        <nav>
-          <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="faqs.html">FAQs</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
+        <!-- Mobile menu -->
+        <nav
+          id="mobileNav"
+          class="md:hidden hidden border-t border-[var(--camp-border)] py-3"
+        >
+          <div class="flex flex-col gap-3 font-medium">
+            <a class="nav-link" href="/camp/index.html">Home</a>
+            <a class="nav-link" href="/camp/register.html">Register</a>
+            <a class="nav-link" href="/camp/policies.html">Policies</a>
+            <a class="btn btn-outline w-max" href="/index.html">Main Site</a>
+          </div>
         </nav>
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <img src="src/logo.png" alt="Flag Frenzy Logo" class="hero-logo" />
-        <h1 class="hero-title">FLAG FRENZY <br /><span>FOOTBALL CAMP</span></h1>
-        <p class="hero-tagline">Fun • Active • All Skill Levels Welcome</p>
-        <a href="register.html" class="hero-button">Register Now</a>
+    <!-- Hero -->
+    <section class="hero-bg">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 grid lg:grid-cols-2 gap-10 items-center"
+      >
+        <div>
+          <h1
+            class="text-4xl sm:text-5xl font-extrabold leading-tight"
+            style="color: var(--camp-primary-900)"
+          >
+            Half‑term camps for ages 7–15
+          </h1>
+          <p class="mt-4 text-lg text-gray-700 max-w-prose">
+            Safe, non‑contact American flag football that builds confidence,
+            speed and teamwork. Inclusive, fun‑first sessions led by DBS‑checked
+            coaches.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a class="btn btn-primary" href="/camp/register.html"
+              >Book your place</a
+            >
+            <a class="btn btn-outline" href="/camp/policies.html"
+              >Parent info</a
+            >
+          </div>
+          <ul class="mt-8 grid grid-cols-2 gap-3 text-sm">
+            <li class="tick">Non‑contact & inclusive</li>
+            <li class="tick">DBS‑checked coaches</li>
+            <li class="tick">Ages 7–15</li>
+            <li class="tick">Limited spaces</li>
+          </ul>
+        </div>
+        <div class="relative">
+          <img
+            class="rounded-2xl shadow-2xl w-full h-auto object-cover border"
+            src="/camp/assets/img/hero-camp.jpg"
+            alt="Children playing flag football"
+          />
+        </div>
       </div>
     </section>
 
-    <!-- About Teaser -->
-    <section class="about-preview">
-      <div class="about-content">
-        <h2>What is Flag Frenzy?</h2>
-        <p>
-          Flag Frenzy is a non-contact flag football camp that teaches
-          fundamentals, teamwork, and fun through drills and games for kids aged
-          8–14.
+    <!-- What we do -->
+    <section class="py-16 bg-white/80 border-t border-[var(--camp-border)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="section-title text-3xl">What to expect</h2>
+        <div class="grid md:grid-cols-3 gap-6 mt-8">
+          <div class="card">
+            <h3
+              class="font-bold text-lg"
+              style="color: var(--camp-primary-900)"
+            >
+              Skill & speed
+            </h3>
+            <p class="mt-1 text-gray-700">
+              Agility, routes, catching and decision‑making through games and
+              drills.
+            </p>
+          </div>
+          <div class="card">
+            <h3
+              class="font-bold text-lg"
+              style="color: var(--camp-primary-900)"
+            >
+              Safety first
+            </h3>
+            <p class="mt-1 text-gray-700">
+              Clear behaviour standards, warm‑ups and age‑appropriate
+              activities.
+            </p>
+          </div>
+          <div class="card">
+            <h3
+              class="font-bold text-lg"
+              style="color: var(--camp-primary-900)"
+            >
+              Fun & friends
+            </h3>
+            <p class="mt-1 text-gray-700">
+              Positive culture where everyone belongs and improves at their
+              pace.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 text-center">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="section-title text-3xl">Ready to play?</h2>
+        <p class="max-w-2xl mx-auto mt-2 text-gray-700">
+          Secure your child’s spot before we sell out.
         </p>
-        <a href="about.html">Learn More</a>
+        <a class="btn btn-accent mt-6" href="/camp/register.html"
+          >Register now</a
+        >
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-      <p>&copy; 2025 Flag Frenzy Football Camp. All rights reserved.</p>
-      <p>Contact: info@flagfrenzy.com | Instagram: @flagfrenzy</p>
-      <a href="../index.html" class="back-link"
-        >← Return to Flag Frenzy Football Ltd
-      </a>
+    <footer class="footer mt-16">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm flex flex-col md:flex-row justify-between"
+      >
+        <span
+          >&copy; <span id="year"></span> Flag Frenzy Football Camp. All rights
+          reserved.</span
+        >
+        <span>Part of Flag Frenzy Football Ltd.</span>
+      </div>
     </footer>
 
-    <!-- Custom JavaScript -->
-    <script src="js/main.js"></script>
+    <!-- Shared Camp JS -->
+    <script src="/camp/assets/js/camp-site.js"></script>
   </body>
 </html>
