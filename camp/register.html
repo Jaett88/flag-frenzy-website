@@ -524,5 +524,22 @@
 
     <!-- Shared Camp JS -->
     <script src="/camp/js/main.js"></script>
+
+    <script>
+      // Save camper name to localStorage before form submission
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector('form[name="camper-registration"]');
+        if (form) {
+          form.addEventListener("submit", function () {
+            const camperNameField = document.querySelector(
+              'input[name="camper-name"]'
+            );
+            if (camperNameField && camperNameField.value.trim() !== "") {
+              localStorage.setItem("camperName", camperNameField.value.trim());
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>
