@@ -213,3 +213,11 @@ h4 {
   font-weight: 600;
   font-size: 0.85rem;
 }
+
+.faq-question {
+  @apply font-semibold text-xl mb-2;
+  color: var(--camp-accent);
+}
+.faq-answer {
+  @apply text-gray-800;
+}

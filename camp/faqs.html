@@ -2,73 +2,127 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FAQs | Flag Frenzy Football Camp</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FAQs — Flag Frenzy Football Camp</title>
+    <meta
+      name="description"
+      content="Frequently asked questions about Flag Frenzy Football Camp."
+    />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css" />
+    <!-- CAMP THEME -->
+    <link rel="stylesheet" href="/camp/css/style.css" />
   </head>
   <body>
-    <!-- Navigation -->
-    <header class="nav">
-      <div class="nav-container">
-        <div class="logo-wrap">
-          <img src="src/logo.png" alt="Flag Frenzy Logo" class="logo" />
-          <h1 class="brand-title">Flag Frenzy</h1>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="h-16 flex items-center justify-between">
+          <a href="/camp/index.html" class="flex items-center gap-3">
+            <img
+              src="/camp/src/logo.png"
+              alt="Flag Frenzy Football Camp logo"
+              class="h-10 w-10"
+            />
+            <span
+              class="text-xl font-extrabold"
+              style="color: var(--camp-primary)"
+              >Flag Frenzy Football Camp</span
+            >
+          </a>
+          <button
+            id="menuBtn"
+            class="md:hidden p-2 rounded-lg border border-gray-200"
+            aria-label="Toggle menu"
+          >
+            ☰
+          </button>
+          <nav id="nav" class="hidden md:flex items-center gap-6">
+            <a class="nav-link" href="/camp/index.html">Home</a>
+            <a class="nav-link" href="/camp/about.html">About</a>
+            <a class="nav-link" href="/camp/register.html">Register</a>
+            <a class="nav-link" href="/camp/policies.html">Policies</a>
+            <a class="nav-link" href="/camp/faqs.html">FAQs</a>
+            <a class="nav-link" href="/camp/contact.html">Contact</a>
+            <a class="btn btn-outline" href="/index.html">Main Site</a>
+          </nav>
         </div>
-        <nav>
-          <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="faqs.html" class="underline">FAQs</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
+        <!-- Mobile menu -->
+        <nav
+          id="mobileNav"
+          class="md:hidden hidden border-t border-[var(--camp-border)] py-3"
+        >
+          <div class="flex flex-col gap-3 font-medium">
+            <a class="nav-link" href="/camp/index.html">Home</a>
+            <a class="nav-link" href="/camp/about.html">About</a>
+            <a class="nav-link" href="/camp/register.html">Register</a>
+            <a class="nav-link" href="/camp/policies.html">Policies</a>
+            <a class="nav-link" href="/camp/faqs.html">FAQs</a>
+            <a class="nav-link" href="/camp/contact.html">Contact</a>
+            <a class="btn btn-outline w-max" href="/index.html">Main Site</a>
+          </div>
         </nav>
       </div>
     </header>
 
     <!-- FAQs Section -->
-    <section class="py-12 bg-[#FFF8EF]">
-      <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-[#3A6440] mb-10">
+    <section class="py-14 hero-bg">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1
+          class="text-4xl font-extrabold text-center"
+          style="color: var(--camp-primary-900)"
+        >
           Frequently Asked Questions
-        </h2>
-
-        <div class="space-y-6 text-[#1E1C18]">
+        </h1>
+        <div class="mt-10 space-y-8">
           <div>
-            <h3 class="font-semibold text-xl mb-2 text-[#A73926]">
-              ❓ What age groups can attend?
-            </h3>
-            <p>
-              Flag Frenzy is for children aged 8 to 14. We group players by age
-              and ability to ensure everyone has fun and stays safe.
+            <h2 class="faq-question">❓ What age groups can attend?</h2>
+            <p class="faq-answer">
+              Flag Frenzy is for children aged 7–15. We group players by age and
+              ability to ensure everyone has fun and stays safe.
             </p>
           </div>
 
           <div>
-            <h3 class="font-semibold text-xl mb-2 text-[#A73926]">
-              ❓ What should my child bring?
-            </h3>
-            <p>
+            <h2 class="faq-question">❓ What should my child bring?</h2>
+            <p class="faq-answer">
               Please bring water, comfortable sports clothing, trainers, and any
-              necessary medical items (e.g. inhalers). We'll provide the flag
+              necessary medical items (e.g. inhalers). We’ll provide the flag
               belts and equipment.
             </p>
           </div>
 
           <div>
-            <h3 class="font-semibold text-xl mb-2 text-[#A73926]">
-              ❓ What if it rains?
-            </h3>
-            <p></p>
+            <h2 class="faq-question">❓ What if it rains?</h2>
+            <p class="faq-answer">
+              Sessions will go ahead in light rain. In severe weather, we’ll
+              pause for safety or move to an alternative activity plan, and
+              notify parents via the contact details provided at registration.
+            </p>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="footer mt-16">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm flex flex-col md:flex-row justify-between"
+      >
+        <span
+          >&copy; <span id="year"></span> Flag Frenzy Football Camp. All rights
+          reserved.</span
+        >
+        <span>Part of Flag Frenzy Football Ltd.</span>
+      </div>
+    </footer>
+
+    <!-- Shared Camp JS -->
+    <script src="/camp/js/main.js"></script>
   </body>
 </html>

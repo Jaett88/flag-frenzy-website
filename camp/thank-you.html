@@ -9,22 +9,39 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-
     <style>
       body {
         font-family: "Poppins", sans-serif;
       }
     </style>
   </head>
-  <body
-    class="bg-[#F6EADB] min-h-screen flex flex-col items-center justify-center px-6"
-  >
-    <main class="text-center max-w-xl w-full">
+  <body class="bg-[#F6EADB] min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="src/logo.png" alt="Flag Frenzy Logo" class="w-10 h-10" />
+          <h1 class="text-xl font-bold text-[#A73926]">Flag Frenzy</h1>
+        </div>
+        <nav class="hidden md:flex gap-6 text-sm font-medium">
+          <a href="index.html" class="hover:underline">Home</a>
+          <a href="about.html" class="hover:underline">About</a>
+          <a href="register.html" class="hover:underline">Register</a>
+          <a href="faqs.html" class="hover:underline">FAQs</a>
+          <a href="contact.html" class="hover:underline">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main
+      class="flex-grow flex flex-col items-center justify-center px-6 text-center max-w-xl mx-auto"
+    >
       <img
         src="src/logo.png"
         alt="Flag Frenzy Logo"
@@ -83,6 +100,23 @@
       </div>
     </main>
 
-    <script src="js/thanks.js"></script>
+    <!-- Footer -->
+    <footer class="bg-white border-t py-6 text-center text-sm text-gray-500">
+      <p>&copy; 2025 Flag Frenzy Football Ltd. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Personalised greeting if name saved from form
+      document.addEventListener("DOMContentLoaded", function () {
+        const greeting = document.getElementById("thank-you-greeting");
+        const name = localStorage.getItem("camperName");
+        if (name && greeting) {
+          const firstName = name.split(" ")[0];
+          greeting.textContent = `Thank you for registering, ${firstName}!`;
+          // Optional: Clear so it doesn’t show again next visit
+          localStorage.removeItem("camperName");
+        }
+      });
+    </script>
   </body>
 </html>
