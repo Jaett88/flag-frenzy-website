@@ -220,3 +220,47 @@ h3 {
 .faq-answer {
   color: #444;
 }
+
+/* ===== Footer Styles — Camp Site ===== */
+.footer {
+  background-color: var(--camp-red);
+  color: white;
+  margin-top: 4rem;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer h3,
+.footer h4 {
+  color: white;
+  font-weight: 600;
+}
+
+.footer .border-top {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer .footer-bottom {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+}
+
+/* Grid layout for footer links */
+.footer .grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .footer .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
