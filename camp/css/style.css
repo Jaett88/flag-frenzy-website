@@ -1,16 +1,19 @@
-/* Flag Frenzy Football — CAMP SITE theme
-   Matches main-site layout/spacing, but with camp colours. */
-
+/* ===== Variables ===== */
 :root {
   --camp-red: #a73926;
   --camp-green: #3a6440;
   --camp-cream: #f6eadb;
+  --camp-border: #d6cfbf;
+  --camp-accent: #a73926;
+  --camp-ink: #1e1c18;
 }
 
+/* ===== Base ===== */
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--camp-cream);
-  color: #1e1c18;
+  color: var(--camp-ink);
+  margin: 0;
 }
 
 /* ===== Navigation ===== */
@@ -55,7 +58,6 @@ header.nav {
   color: #444;
   transition: color 0.2s ease-in-out;
 }
-
 .nav-links a:hover,
 .nav-links a.underline {
   color: var(--camp-red);
@@ -96,7 +98,6 @@ footer {
   text-align: center;
   border-top: 1px solid #eee;
 }
-
 footer a {
   color: var(--camp-red);
   text-decoration: none;
@@ -112,9 +113,7 @@ h3 {
   color: var(--camp-green);
 }
 
-/* Mobile menu container should exist in HTML with id="mobileNav" */
-
-/* ====== Cards / Surfaces ====== */
+/* ===== Cards / Surfaces ===== */
 .card {
   background: #fff;
   border: 1px solid var(--camp-border);
@@ -126,7 +125,7 @@ h3 {
   color: #5f5a50;
 }
 
-/* ====== Forms ====== */
+/* ===== Forms ===== */
 .label {
   display: block;
   font-weight: 700;
@@ -141,16 +140,14 @@ h3 {
   outline: none;
 }
 .input:focus {
-  border-color: #d6cfbf;
-  box-shadow: 0 0 0 4px rgba(169, 62, 32, 0.15); /* accent glow */
+  border-color: var(--camp-border);
+  box-shadow: 0 0 0 4px rgba(169, 62, 32, 0.15);
 }
-
-/* Textarea sizing helper */
 .input.h-36 {
   min-height: 9rem;
 }
 
-/* ====== Utility bits ====== */
+/* ===== Utility ===== */
 .tick::before {
   content: "✓";
   font-weight: 900;
@@ -158,7 +155,6 @@ h3 {
   margin-right: 0.5rem;
 }
 
-/* Subtle hero background with brand tint (optional) */
 .hero-bg {
   background: radial-gradient(
       60% 80% at 20% 0%,
@@ -173,37 +169,37 @@ h3 {
     linear-gradient(#ffffff, #f7f4ec 60%);
 }
 
-/* Prose container if you paste rich policy text */
+/* ===== Prose ===== */
 .prose {
   line-height: 1.7;
 }
-.prose p {
-  margin: 0 0 1em;
+.prose p,
+.prose ul,
+.prose ol {
+  margin-bottom: 1em;
 }
 .prose ul {
   list-style: disc;
   padding-left: 1.2rem;
-  margin: 0 0 1em;
 }
 .prose ol {
   list-style: decimal;
   padding-left: 1.2rem;
-  margin: 0 0 1em;
 }
 .prose h2 {
   font-size: 1.5rem;
   font-weight: 800;
   margin: 1.2em 0 0.5em;
-  color: var(--camp-primary-900);
+  color: var(--camp-green);
 }
 .prose h3 {
   font-size: 1.25rem;
   font-weight: 700;
   margin: 1em 0 0.4em;
-  color: var(--camp-primary-900);
+  color: var(--camp-green);
 }
 
-/* Optional chips / tags */
+/* ===== Tags ===== */
 .tag {
   display: inline-block;
   background: var(--camp-cream);
@@ -214,10 +210,13 @@ h3 {
   font-size: 0.85rem;
 }
 
+/* ===== FAQ ===== */
 .faq-question {
-  @apply font-semibold text-xl mb-2;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
   color: var(--camp-accent);
 }
 .faq-answer {
-  @apply text-gray-800;
+  color: #444;
 }
