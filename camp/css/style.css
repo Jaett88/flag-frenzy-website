@@ -1,102 +1,115 @@
 /* Flag Frenzy Football — CAMP SITE theme
    Matches main-site layout/spacing, but with camp colours. */
 
-/* ====== Brand Palette ====== */
 :root {
-  --camp-primary: #42643f; /* deep green */
-  --camp-primary-700: #3a5838; /* hover/depth */
-  --camp-primary-900: #22321d; /* headings */
-
-  --camp-accent: #a93e20; /* orange-red */
-  --camp-accent-dark: #832d10; /* deeper brick for hovers */
-
-  --camp-cream: #ecd6ad; /* light cream */
-  --camp-ink: #261c0e; /* very dark brown for strong text */
-
-  --camp-bg: #faf7f0; /* warm, light page background */
-  --camp-border: #e6e1d6; /* subtle borders */
+  --camp-red: #a73926;
+  --camp-green: #3a6440;
+  --camp-cream: #f6eadb;
 }
 
-/* ====== Base ====== */
-html,
 body {
-  height: 100%;
-}
-body {
-  font-family: "Poppins", system-ui, Segoe UI, Roboto, Arial, sans-serif;
-  background: var(--camp-bg);
-  color: #2b2b2b;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--camp-cream);
+  color: #1e1c18;
 }
 
-/* Headings that echo the badge weight */
-.section-title {
-  font-weight: 800;
-  color: var(--camp-primary-900);
-}
-h1,
-h2,
-h3,
-h4 {
-  color: var(--camp-primary-900);
+/* ===== Navigation ===== */
+header.nav {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 1rem 1.5rem;
 }
 
-/* ====== Buttons ====== */
-.btn {
-  display: inline-flex;
+.nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-weight: 700;
-  border-radius: 1rem;
-  padding: 0.8rem 1rem;
-  transition: 0.2s;
-  text-decoration: none;
+  justify-content: space-between;
 }
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.brand-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--camp-red);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  font-weight: 500;
+}
+
+.nav-links a {
+  color: #444;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-links a:hover,
+.nav-links a.underline {
+  color: var(--camp-red);
+}
+
+/* ===== Buttons ===== */
+.btn {
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease-in-out;
+  display: inline-block;
+}
+
 .btn-primary {
-  background: var(--camp-primary);
-  color: #fff;
-  box-shadow: 0 10px 24px rgba(66, 100, 63, 0.25);
+  background-color: var(--camp-red);
+  color: white;
 }
 .btn-primary:hover {
-  background: var(--camp-primary-700);
-  transform: translateY(-1px);
+  background-color: #8f2f1d;
 }
 
 .btn-outline {
-  border: 2px solid var(--camp-border);
-  background: #fff;
-  color: var(--camp-primary-900);
+  background-color: white;
+  border: 2px solid var(--camp-red);
+  color: var(--camp-red);
 }
 .btn-outline:hover {
-  border-color: #d6cfbf;
-  transform: translateY(-1px);
+  background-color: #f8d7d1;
 }
 
-.btn-accent {
-  background: var(--camp-accent);
-  color: #fff;
-}
-.btn-accent:hover {
-  background: var(--camp-accent-dark);
+/* ===== Footer ===== */
+footer {
+  background-color: white;
+  padding: 1.5rem;
+  font-size: 0.875rem;
+  color: #555;
+  text-align: center;
+  border-top: 1px solid #eee;
 }
 
-/* ====== Header / Navigation ====== */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  background: #fff;
-  border-bottom: 1px solid var(--camp-border);
-  backdrop-filter: saturate(180%) blur(6px);
+footer a {
+  color: var(--camp-red);
+  text-decoration: none;
 }
-.nav-link {
-  font-weight: 600;
+footer a:hover {
+  text-decoration: underline;
 }
-.nav-link.active,
-.nav-link:hover {
-  color: var(--camp-primary);
+
+/* ===== Headings ===== */
+h1,
+h2,
+h3 {
+  color: var(--camp-green);
 }
 
 /* Mobile menu container should exist in HTML with id="mobileNav" */
@@ -135,19 +148,6 @@ h4 {
 /* Textarea sizing helper */
 .input.h-36 {
   min-height: 9rem;
-}
-
-/* ====== Footer ====== */
-.footer {
-  background: var(--camp-primary);
-  color: #f1f1f1;
-}
-.footer a {
-  color: #f1f1f1;
-  text-decoration: none;
-}
-.footer a:hover {
-  color: #ffffff;
 }
 
 /* ====== Utility bits ====== */
