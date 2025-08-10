@@ -15,12 +15,17 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <!-- CAMP THEME -->
     <link rel="stylesheet" href="/camp/assets/css/camp-styles.css" />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--camp-cream);
+      }
+    </style>
   </head>
   <body>
     <!-- Header -->
-    <header class="site-header">
+    <header class="site-header bg-white shadow-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="h-16 flex items-center justify-between">
           <a href="/camp/index.html" class="flex items-center gap-3">
@@ -29,11 +34,9 @@
               alt="Flag Frenzy Football Camp logo"
               class="h-10 w-10"
             />
-            <span
-              class="text-xl font-extrabold"
-              style="color: var(--camp-primary)"
-              >Flag Frenzy Football Camp</span
-            >
+            <span class="text-xl font-extrabold text-[var(--camp-red)]">
+              Flag Frenzy Football Camp
+            </span>
           </a>
           <button
             id="menuBtn"
@@ -45,7 +48,9 @@
           <nav id="nav" class="hidden md:flex items-center gap-6">
             <a class="nav-link" href="/camp/index.html">Home</a>
             <a class="nav-link" href="/camp/about.html">About</a>
-            <a class="nav-link" href="/camp/register.html">Register</a>
+            <a class="nav-link underline" href="/camp/register.html"
+              >Register</a
+            >
             <a class="nav-link" href="/camp/policies.html">Policies</a>
             <a class="nav-link" href="/camp/faqs.html">FAQs</a>
             <a class="nav-link" href="/camp/contact.html">Contact</a>
@@ -73,10 +78,7 @@
     <!-- Hero -->
     <section class="py-14 hero-bg">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1
-          class="text-4xl font-extrabold"
-          style="color: var(--camp-primary-900)"
-        >
+        <h1 class="text-4xl font-extrabold text-[var(--camp-green)]">
           🏈 Coming Soon!
         </h1>
         <p class="mt-4 text-lg text-gray-800">
@@ -86,9 +88,9 @@
       </div>
     </section>
 
-    <!-- Jotform Embed -->
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <div class="w-full rounded-xl shadow-lg overflow-visible bg-white p-4">
+    <!-- Jotform Embed in Card -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="card bg-white p-6">
         <iframe
           id="JotFormIFrame-252187034564054"
           title="Register Your Interest – Flag Frenzy Football Camp"
@@ -112,14 +114,14 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer mt-16">
+    <footer class="bg-white border-t mt-16">
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm flex flex-col md:flex-row justify-between"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm flex flex-col md:flex-row justify-between text-gray-500"
       >
-        <span
-          >&copy; <span id="year"></span> Flag Frenzy Football Camp. All rights
-          reserved.</span
-        >
+        <span>
+          &copy; <span id="year"></span> Flag Frenzy Football Camp. All rights
+          reserved.
+        </span>
         <span>Part of Flag Frenzy Football Ltd.</span>
       </div>
     </footer>
@@ -142,6 +144,7 @@
           setTimeout(ensureHeight, 600);
         });
       })();
+      document.getElementById("year").textContent = new Date().getFullYear();
     </script>
     <script src="/camp/assets/js/camp-site.js"></script>
   </body>
