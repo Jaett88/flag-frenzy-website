@@ -89,6 +89,21 @@ header.nav {
   background-color: #f8d7d1;
 }
 
+/* Accent (primary red) button — matches Register CTA */
+.btn-accent {
+  background: var(--camp-red);
+  color: #fff;
+}
+.btn-accent:hover {
+  background: #8f2f1d; /* slightly darker red */
+}
+
+/* (nice to have) focus ring for accessibility */
+.btn:focus-visible {
+  outline: 3px solid rgba(167, 57, 38, 0.35);
+  outline-offset: 2px;
+}
+
 /* ===== Footer ===== */
 footer {
   background-color: white;
