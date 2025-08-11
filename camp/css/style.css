@@ -66,48 +66,35 @@ header.nav {
 /* ===== Buttons ===== */
 .btn {
   font-weight: 600;
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.2rem; /* unified padding across all buttons */
   border-radius: 0.5rem;
-  transition: background-color 0.2s ease-in-out;
   display: inline-block;
+  transition: all 0.25s ease;
 }
 
-/* Camp Button Styles */
-.btn-primary {
+/* Primary solid button */
+.btn-primary,
+.btn-accent {
   background-color: var(--camp-red);
   color: white;
-  padding: 0.6rem 1.2rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  transition: background-color 0.25s ease;
 }
-.btn-primary:hover {
-  background-color: #a82222; /* darker red hover */
+.btn-primary:hover,
+.btn-accent:hover {
+  background-color: #8f2f1d; /* slightly darker red */
 }
 
+/* Outline button */
 .btn-outline {
   border: 2px solid var(--camp-green);
   color: var(--camp-green);
-  padding: 0.6rem 1.2rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  transition: all 0.25s ease;
+  background: transparent;
 }
 .btn-outline:hover {
   background-color: var(--camp-green);
   color: white;
 }
 
-/* Accent (primary red) button — matches Register CTA */
-.btn-accent {
-  background: var(--camp-red);
-  color: #fff;
-}
-.btn-accent:hover {
-  background: #8f2f1d; /* slightly darker red */
-}
-
-/* (nice to have) focus ring for accessibility */
+/* Focus ring for accessibility */
 .btn:focus-visible {
   outline: 3px solid rgba(167, 57, 38, 0.35);
   outline-offset: 2px;
