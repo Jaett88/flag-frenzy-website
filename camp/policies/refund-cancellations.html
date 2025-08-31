@@ -42,44 +42,81 @@
   </head>
   <body>
     <!-- Header -->
-    <header class="site-header">
+    <header class="bg-white shadow-md">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="h-16 flex items-center justify-between">
           <a href="/camp/index.html" class="flex items-center gap-3">
-            <img src="/camp/src/logo.png" alt="Camp Logo" class="h-10 w-10" />
-            <span class="text-xl font-extrabold"
+            <img
+              src="/camp/src/logo.png"
+              alt="Flag Frenzy Football Camp logo"
+              class="h-10 w-10"
+            />
+            <span class="text-xl font-extrabold" style="color: var(--camp-red)"
               >Flag Frenzy Football Camp</span
             >
           </a>
+
           <button
             id="menuBtn"
             class="md:hidden p-2 rounded-lg border border-gray-200"
+            aria-label="Toggle menu"
           >
             ☰
           </button>
-          <button
-            onclick="window.print()"
-            class="no-print inline-flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm shadow-sm hover:shadow transition"
+
+          <nav
+            id="nav"
+            class="hidden md:flex items-center gap-6 text-sm font-medium"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="w-4 h-4"
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
+              >Home</a
             >
-              <path
-                d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
-              />
-            </svg>
-            Print
-          </button>
-          <nav id="nav" class="hidden md:flex items-center gap-6">
-            <a class="nav-link" href="/camp/index.html">Home</a>
-            <a class="nav-link" href="/camp/register.html">Register</a>
-            <a class="nav-link" href="/camp/policies.html">Policies</a>
-            <a class="nav-link" href="/index.html">Main Site</a>
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
+              >About</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/register.html"
+              >Register</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
+              >Policies</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
+              >FAQs</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
+              >Contact</a
+            >
+            <a class="btn btn-outline" href="/index.html">Main Site</a>
           </nav>
         </div>
+
+        <!-- Mobile Nav -->
+        <nav
+          id="mobileNav"
+          class="hidden md:hidden border-t border-[var(--camp-border)] py-3"
+        >
+          <div class="flex flex-col gap-3 font-medium">
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
+              >Home</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
+              >About</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/register.html"
+              >Register</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
+              >Policies</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
+              >FAQs</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
+              >Contact</a
+            >
+            <a class="btn btn-outline w-max" href="/index.html">Main Site</a>
+          </div>
+        </nav>
       </div>
     </header>
 
