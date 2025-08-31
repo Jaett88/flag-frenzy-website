@@ -40,7 +40,7 @@
       }
     </style>
   </head>
-  <body>
+  <body class="bg-[#F6EADB] text-gray-800">
     <!-- Header -->
     <header class="bg-white shadow-md">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -121,6 +121,35 @@
     </header>
 
     <main class="max-w-4xl mx-auto px-4 py-8">
+      <div class="no-print flex items-center justify-between mb-6">
+        <h1 class="text-2xl sm:text-3xl font-extrabold">
+          Refunds & Cancellations
+          <span class="text-gray-600 text-base font-semibold"
+            >(For Parents/Guardians)</span
+          >
+        </h1>
+
+        <!-- Desktop print button -->
+        <button
+          onclick="window.print()"
+          class="hidden md:inline-flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm shadow-sm hover:shadow transition"
+          aria-label="Print this policy"
+        >
+          <!-- printer icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
+            />
+          </svg>
+          Print
+        </button>
+      </div>
+
       <section class="card bg-white rounded-2xl shadow p-6 sm:p-8">
         <div class="mb-6">
           <p class="text-sm text-gray-600">Flag Frenzy Football Camp</p>
@@ -230,8 +259,14 @@
             refunds, credits, and changes to bookings are handled for Flag
             Frenzy Football Camp ("we", "us", "our"). By registering your child,
             you ("you", "parent/guardian") agree to the terms below. This policy
-            should be read alongside our Terms & Conditions, Code of
-            Conduct/Behaviour Policy, and Safeguarding Policy.
+            should be read alongside our
+            <a class="underline" href="/camp/terms.html">Terms & Conditions</a>,
+            <a class="underline" href="/camp/behaviour.html"
+              >Code of Conduct/Behaviour Policy</a
+            >,
+            <a class="underline" href="/camp/safeguarding.html"
+              >and Safeguarding Policy</a
+            >.
           </p>
         </section>
 
@@ -551,8 +586,6 @@
             <a class="underline" href="https://flagfrenzyfootball.co.uk"
               >flagfrenzyfootball.co.uk</a
             ><br />
-            Company number:
-            <span class="text-gray-600">(insert if desired)</span>
           </address>
         </section>
 
@@ -633,5 +666,25 @@
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
     <script src="/camp/js/main.js"></script>
+
+    <!-- Mobile floating print button -->
+    <button
+      onclick="window.print()"
+      class="no-print md:hidden fixed bottom-4 right-4 rounded-full border bg-white p-3 shadow-lg hover:shadow-xl transition"
+      aria-label="Print this policy"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-5 h-5"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
+        />
+      </svg>
+      <span class="sr-only">Print this policy</span>
+    </button>
   </body>
 </html>
