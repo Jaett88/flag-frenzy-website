@@ -607,37 +607,73 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-16">
+    <footer class="mt-16 bg-white/70">
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid gap-8 md:grid-cols-3"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid gap-6 md:grid-cols-3"
       >
-        <!-- Column 1 -->
+        <!-- Col 1 -->
         <div>
-          <h3 class="font-semibold text-lg">Flag Frenzy Football Camp</h3>
+          <h3 class="text-sm font-semibold tracking-wide text-gray-700">
+            Flag Frenzy Football Camp
+          </h3>
+          <!-- optional tiny blurb -->
+          <!-- <p class="mt-2 text-xs text-gray-500">Flag football camps for ages 7–15.</p> -->
         </div>
 
-        <!-- Column 2 -->
+        <!-- Col 2 -->
         <div>
-          <h4 class="font-semibold">Quick Links</h4>
-          <ul class="mt-2 space-y-2">
-            <li><a href="/camp/policies.html">Policies</a></li>
-            <li><a href="/camp/about.html">About</a></li>
-            <li><a href="/camp/contact.html">Contact</a></li>
-            <li><a href="/index.html">Main Site</a></li>
+          <h4 class="text-sm font-semibold tracking-wide text-gray-700">
+            Quick Links
+          </h4>
+          <ul class="mt-2 space-y-1.5">
+            <li>
+              <a
+                class="text-sm text-gray-600 hover:text-[var(--camp-red)] hover:underline"
+                href="/camp/policies.html"
+                >Policies</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-sm text-gray-600 hover:text-[var(--camp-red)] hover:underline"
+                href="/camp/about.html"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-sm text-gray-600 hover:text-[var(--camp-red)] hover:underline"
+                href="/camp/contact.html"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-sm text-gray-600 hover:text-[var(--camp-red)] hover:underline"
+                href="/index.html"
+                >Main Site</a
+              >
+            </li>
           </ul>
         </div>
 
-        <!-- Column 3 -->
+        <!-- Col 3 -->
         <div>
-          <h4 class="font-semibold">Contact</h4>
-          <ul class="mt-2 space-y-2">
+          <h4 class="text-sm font-semibold tracking-wide text-gray-700">
+            Contact
+          </h4>
+          <ul class="mt-2 space-y-1.5">
             <li>
-              <a href="mailto:info@flagfrenzyfootball.co.uk">
+              <a
+                class="text-sm text-gray-600 hover:text-[var(--camp-red)] hover:underline"
+                href="mailto:info@flagfrenzyfootball.co.uk"
+              >
                 info@flagfrenzyfootball.co.uk
               </a>
             </li>
             <li>
               <a
+                class="text-sm text-gray-600 hover:text-[var(--camp-red)] hover:underline"
                 target="_blank"
                 rel="noopener"
                 href="https://instagram.com/flagfrenzycamp"
@@ -649,21 +685,22 @@
         </div>
       </div>
 
-      <!-- Bottom Bar -->
-      <div class="border-top">
+      <!-- Bottom bar -->
+      <div class="border-t border-gray-200/70">
         <div
-          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 footer-bottom flex flex-col md:flex-row justify-between"
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
         >
-          <div>
-            <span
-              >&copy; <span id="year"></span> Flag Frenzy Football Ltd. All
-              rights reserved.</span
-            >
-            <div class="mt-2 text-xs leading-relaxed text-gray-500">
-              Flag Frenzy Football Ltd — Company No. 12345678<br />
-              Registered in England & Wales<br />
-              Registered Office: 10 Example Street, London, SE1 2AB
-            </div>
+          <span class="text-xs text-gray-500"
+            >&copy; <span id="year"></span> Flag Frenzy Football Ltd. All rights
+            reserved.</span
+          >
+          <div class="text-[11px] leading-5 text-gray-500">
+            Flag Frenzy Football Ltd — Company No. 12345678<br
+              class="sm:hidden"
+            />
+            <span class="hidden sm:inline">•</span> Registered in England &amp;
+            Wales <span class="hidden sm:inline">•</span> Registered Office: 10
+            Example Street, London, SE1 2AB
           </div>
         </div>
       </div>
