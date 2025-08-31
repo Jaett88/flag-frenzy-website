@@ -10,6 +10,35 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/camp/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+        body {
+          color: #000;
+          background: #fff;
+        }
+        a {
+          text-decoration: none;
+          color: #000;
+        }
+        .card {
+          box-shadow: none !important;
+          border: 1px solid #ddd;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Header -->
@@ -28,6 +57,22 @@
           >
             ☰
           </button>
+          <button
+            onclick="window.print()"
+            class="no-print inline-flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm shadow-sm hover:shadow transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-4 h-4"
+            >
+              <path
+                d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
+              />
+            </svg>
+            Print
+          </button>
           <nav id="nav" class="hidden md:flex items-center gap-6">
             <a class="nav-link" href="/camp/index.html">Home</a>
             <a class="nav-link" href="/camp/register.html">Register</a>
@@ -38,19 +83,458 @@
       </div>
     </header>
 
-    <section class="py-14">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl font-extrabold">Refunds & Cancellations</h1>
-        <p class="mt-3 text-lg">Last updated: [Date]</p>
-        <div class="mt-8 prose max-w-none">
-          <p>
-            Insert your camp refund and cancellation policy here. Include
-            timelines for refund eligibility, processing times, and
-            non-refundable situations.
+    <main class="max-w-4xl mx-auto px-4 py-8">
+      <section class="card bg-white rounded-2xl shadow p-6 sm:p-8">
+        <div class="mb-6">
+          <p class="text-sm text-gray-600">Flag Frenzy Football Camp</p>
+          <p class="text-sm text-gray-600">
+            Effective date: <span id="effective-date">29 August 2025</span>
           </p>
+          <p class="text-sm text-gray-600">Location: United Kingdom</p>
         </div>
-      </div>
-    </section>
+
+        <nav class="no-print grid sm:grid-cols-2 gap-3 mb-8 text-sm">
+          <a
+            href="#overview"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Overview</a
+          >
+          <a
+            href="#definitions"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Definitions</a
+          >
+          <a
+            href="#booking"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Booking & Payment</a
+          >
+          <a
+            href="#cooling"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Cooling‑off (UK)</a
+          >
+          <a
+            href="#parent-cancel"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Parent Cancellations</a
+          >
+          <a
+            href="#changes"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Changes & Transfers</a
+          >
+          <a
+            href="#medical"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Medical</a
+          >
+          <a
+            href="#camp-cancel"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Camp Cancellations</a
+          >
+          <a
+            href="#behaviour"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Behaviour & Safety</a
+          >
+          <a
+            href="#nonref"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Non‑Refundable</a
+          >
+          <a
+            href="#refunds"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Refund Method</a
+          >
+          <a
+            href="#chargebacks"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Chargebacks</a
+          >
+          <a
+            href="#request"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >How to Request</a
+          >
+          <a
+            href="#discounts"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Discounts & Offers</a
+          >
+          <a
+            href="#privacy"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Data & Privacy</a
+          >
+          <a
+            href="#updates"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Policy Updates</a
+          >
+          <a
+            href="#contact"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Contact</a
+          >
+          <a
+            href="#disclaimer"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Disclaimer</a
+          >
+        </nav>
+
+        <section id="overview" class="space-y-4">
+          <h2 class="text-xl font-bold">Overview</h2>
+          <p>
+            We know plans can change. This policy explains how cancellations,
+            refunds, credits, and changes to bookings are handled for Flag
+            Frenzy Football Camp ("we", "us", "our"). By registering your child,
+            you ("you", "parent/guardian") agree to the terms below. This policy
+            should be read alongside our Terms & Conditions, Code of
+            Conduct/Behaviour Policy, and Safeguarding Policy.
+          </p>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="definitions" class="space-y-2">
+          <h2 class="text-xl font-bold">Definitions</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Camp week</strong> means a full-week booking for the
+              published dates.
+            </li>
+            <li>
+              <strong>Single-day booking</strong> means booking one or more
+              individual days (not the full week).
+            </li>
+            <li>
+              <strong>Camp start date</strong> means the first day of your
+              child’s booked attendance (for a week, the Monday of that week;
+              for single-day bookings, the specific booked day).
+            </li>
+            <li>
+              <strong>Administrative fee</strong> means a non-refundable fee
+              charged to cover booking and processing costs.
+            </li>
+            <li>
+              <strong>Credit</strong> means a non-cash balance that can be
+              applied to a future Flag Frenzy Football Camp within 12 months
+              (subject to availability).
+            </li>
+          </ul>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="booking" class="space-y-2">
+          <h2 class="text-xl font-bold">1) Booking Confirmation & Payment</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              A place is confirmed once payment is received and you receive our
+              confirmation email.
+            </li>
+            <li>
+              We may limit numbers for safety and staffing; once full, a waiting
+              list may operate.
+            </li>
+            <li>
+              Prices may vary for early-bird offers, sibling discounts, and
+              standard rates; the price at the time you complete checkout is the
+              price that applies to that booking.
+            </li>
+          </ul>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="cooling" class="space-y-2">
+          <h2 class="text-xl font-bold">2) Statutory Cooling‑Off (UK)</h2>
+          <p>
+            Our services are leisure activities scheduled on specific dates.
+            Under the UK Consumer Contracts Regulations 2013, the usual 14‑day
+            cooling‑off right generally does not apply to such services when
+            tied to a specific date or period. This section is provided for
+            transparency only and is not legal advice.
+          </p>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="parent-cancel" class="space-y-2">
+          <h2 class="text-xl font-bold">3) Cancellations by Parent/Guardian</h2>
+          <p>
+            Applies to the total of your booking (weekly or single days). For
+            single-day bookings, timelines are measured against the specific
+            day.
+          </p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              <strong>14+ days</strong> before camp start date: Full refund
+              minus a £10 administrative fee.
+            </li>
+            <li>
+              <strong>7–13 days</strong> before camp start date: 50% refund of
+              the affected booking (the other 50% is forfeited).
+            </li>
+            <li>
+              <strong>Less than 7 days</strong> before camp start date: No
+              refund.
+            </li>
+            <li>
+              <strong>No-shows / missed days / early departures:</strong> No
+              refund or credit.
+            </li>
+          </ul>
+          <p class="text-sm text-gray-600">
+            Note: If your booking included discounts (e.g., sibling or
+            early-bird) and a cancellation means the remaining booking no longer
+            qualifies, we will recalculate fees and refunds at the correct
+            undiscounted rate.
+          </p>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="changes" class="space-y-2">
+          <h2 class="text-xl font-bold">
+            4) Changes & Transfers (instead of cancelling)
+          </h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Switching to another day in the same week:</strong> Free
+              with 72+ hours’ notice, if spaces are available; otherwise we’ll
+              place you on a waiting list.
+            </li>
+            <li>
+              <strong>Transferring the place to another child:</strong>
+              Permitted with 48+ hours’ notice if (a) the new child meets
+              age/eligibility criteria and (b) updated registration, medical and
+              consent forms are completed. No fee. Maximum two transfers per
+              original booking.
+            </li>
+            <li>
+              <strong
+                >Switching from single days to a week pass (or vice
+                versa):</strong
+              >
+              We’ll recalculate the total and collect any difference. Refund
+              rules in section 3 still apply to any portion being cancelled.
+            </li>
+            <li>
+              We cannot guarantee changes requested with less than 48 hours’
+              notice.
+            </li>
+          </ul>
+          <p class="text-sm text-gray-600">
+            All change requests must be emailed (see “How to request” below).
+          </p>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="medical" class="space-y-2">
+          <h2 class="text-xl font-bold">5) Medical Cancellations</h2>
+          <p>
+            If your child cannot attend due to illness or injury, we may offer a
+            credit (not a cash refund) for the unused portion of the booking
+            when you provide a doctor’s note dated within 7 days of the missed
+            session(s). Credits are valid for 12 months and are subject to
+            availability. For contagious illnesses, please follow public health
+            guidance; we may require a clearance note before returning.
+          </p>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="camp-cancel" class="space-y-2">
+          <h2 class="text-xl font-bold">
+            6) Cancellations by Flag Frenzy Football Camp
+          </h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Full cancellation before start:</strong> If we cancel the
+              camp in its entirety (e.g., low enrolment, venue closure, or
+              government restrictions), you may choose a full refund or a
+              credit.
+            </li>
+            <li>
+              <strong>Partial cancellation / mid-week disruption:</strong> If
+              sessions are cancelled after the week starts due to extreme
+              weather, safety concerns, venue issues or other force majeure
+              events, we will offer a proportionate credit for the cancelled
+              session(s). Cash refunds are not guaranteed once camp has started.
+            </li>
+            <li>
+              <strong>Weather:</strong> We operate in varied weather with
+              safety-first adaptations. Only in unsafe conditions would we
+              cancel a session.
+            </li>
+          </ul>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="behaviour" class="space-y-2">
+          <h2 class="text-xl font-bold">7) Behaviour, Safety & Safeguarding</h2>
+          <p>
+            We reserve the right to refuse admission or require a child to be
+            collected if behaviour, safety, or safeguarding concerns arise that
+            pose risk to themselves or others, or there is a serious breach of
+            our Code of Conduct. In such cases, no refund is due for the day(s)
+            concerned. Persistent breaches may result in removal from the
+            remainder of the week without refund.
+          </p>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="nonref" class="space-y-2">
+          <h2 class="text-xl font-bold">
+            8) What Fees/Items Are Non‑Refundable
+          </h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>The £10 administrative fee where applicable.</li>
+            <li>
+              Third-party transaction/processing fees (e.g., card/PayPal fees)
+              retained by the provider.
+            </li>
+            <li>Merchandise, uniforms, or add-ons once collected/used.</li>
+            <li>Any portion already delivered (e.g., days attended).</li>
+          </ul>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="refunds" class="space-y-2">
+          <h2 class="text-xl font-bold">9) Refund Method & Timing</h2>
+          <p>
+            Where a refund is due, it will be processed to the original payment
+            method. We aim to process approved refunds within 7–10 business
+            days; bank processing times may vary. We cannot refund to a
+            different card/account.
+          </p>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="chargebacks" class="space-y-2">
+          <h2 class="text-xl font-bold">10) Chargebacks & Returned Payments</h2>
+          <p>
+            If a payment is disputed or reversed (chargeback), the booking is
+            suspended. You are responsible for any third‑party dispute fees we
+            incur. We will attempt to resolve with you first; unresolved
+            chargebacks may result in refusal of future bookings until settled.
+          </p>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="request" class="space-y-2">
+          <h2 class="text-xl font-bold">
+            11) How to Request a Cancellation, Change, or Refund
+          </h2>
+          <p class="mb-2">
+            Please email:
+            <a class="underline" href="mailto:info@flagfrenzyfootball.co.uk"
+              >info@flagfrenzyfootball.co.uk</a
+            >
+          </p>
+          <p>Include:</p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Parent/guardian full name and phone number</li>
+            <li>Child’s full name and DOB</li>
+            <li>Booking reference (if available) and dates booked</li>
+            <li>
+              What you’re requesting (cancel, switch day(s), transfer to another
+              child, medical credit, etc.)
+            </li>
+            <li>Any supporting documents (e.g., doctor’s note)</li>
+          </ul>
+          <p class="text-sm text-gray-600">
+            Requests are actioned once we confirm receipt. Requests made via
+            social media/DMs aren’t monitored for cancellations.
+          </p>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="discounts" class="space-y-2">
+          <h2 class="text-xl font-bold">12) Discounts & Offers</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Sibling discounts:</strong> If cancelling one child means
+              the discount no longer applies to the remaining child(ren), we
+              will recalculate the price and any refund accordingly.
+            </li>
+            <li>
+              <strong>Early-bird pricing:</strong> If you cancel and rebook
+              after the early-bird period, the current price at the time of
+              rebooking applies.
+            </li>
+          </ul>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="privacy" class="space-y-2">
+          <h2 class="text-xl font-bold">13) Data & Privacy</h2>
+          <p>
+            We will handle your information according to our Privacy Policy (see
+            website footer). Some information may be shared with payment
+            processors strictly to complete refunds or credits.
+          </p>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="updates" class="space-y-2">
+          <h2 class="text-xl font-bold">14) Policy Updates</h2>
+          <p>
+            We may update this policy for clarity, law, or operational reasons.
+            The version in place at the time you booked applies to that booking.
+            The latest version will always be posted on our website.
+          </p>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="contact" class="space-y-2">
+          <h2 class="text-xl font-bold">Contact</h2>
+          <address class="not-italic">
+            Flag Frenzy Football Ltd<br />
+            Email:
+            <a class="underline" href="mailto:info@flagfrenzyfootball.co.uk"
+              >info@flagfrenzyfootball.co.uk</a
+            ><br />
+            Website:
+            <a class="underline" href="https://flagfrenzyfootball.co.uk"
+              >flagfrenzyfootball.co.uk</a
+            ><br />
+            Company number:
+            <span class="text-gray-600">(insert if desired)</span>
+          </address>
+        </section>
+
+        <hr class="my-6" />
+
+        <section id="disclaimer" class="space-y-2">
+          <h2 class="text-xl font-bold">Disclaimer</h2>
+          <p>
+            This policy is for general guidance only and is not legal advice.
+            Consider seeking independent legal review to ensure it suits your
+            circumstances.
+          </p>
+        </section>
+      </section>
+
+      <p class="text-xs text-gray-500 mt-6">
+        © <span id="year"></span> Flag Frenzy Football Ltd. All rights reserved.
+      </p>
+    </main>
 
     <!-- Footer -->
     <footer class="footer mt-16">
@@ -65,6 +549,9 @@
       </div>
     </footer>
 
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
     <script src="/camp/js/main.js"></script>
   </body>
 </html>
