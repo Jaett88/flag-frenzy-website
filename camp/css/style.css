@@ -100,23 +100,6 @@ header.nav {
   outline-offset: 2px;
 }
 
-/* ===== Footer ===== */
-footer {
-  background-color: white;
-  padding: 1.5rem;
-  font-size: 0.875rem;
-  color: #555;
-  text-align: center;
-  border-top: 1px solid #eee;
-}
-footer a {
-  color: var(--camp-red);
-  text-decoration: none;
-}
-footer a:hover {
-  text-decoration: underline;
-}
-
 /* ===== Headings ===== */
 h1,
 h2,
