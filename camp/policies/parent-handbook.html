@@ -51,28 +51,81 @@
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased">
     <!-- Top bar / breadcrumb -->
-    <header class="bg-[color:var(--accent)] text-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <nav aria-label="Breadcrumb" class="text-white/90 text-sm no-print">
-          <ol class="flex flex-wrap gap-2">
-            <li>
-              <a
-                href="/camp/policies/"
-                class="underline decoration-white/40 hover:decoration-white"
-                >Policies Hub</a
-              >
-            </li>
-            <li aria-hidden="true">/</li>
-            <li class="font-medium">Parent Handbook</li>
-          </ol>
+    <header class="bg-white shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="h-16 flex items-center justify-between">
+          <a href="/camp/index.html" class="flex items-center gap-3">
+            <img
+              src="/camp/src/logo.png"
+              alt="Flag Frenzy Football Camp logo"
+              class="h-10 w-10"
+            />
+            <span class="text-xl font-extrabold" style="color: var(--camp-red)"
+              >Flag Frenzy Football Camp</span
+            >
+          </a>
+
+          <button
+            id="menuBtn"
+            class="md:hidden p-2 rounded-lg border border-gray-200"
+            aria-label="Toggle menu"
+          >
+            ☰
+          </button>
+
+          <nav
+            id="nav"
+            class="hidden md:flex items-center gap-6 text-sm font-medium"
+          >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
+              >Home</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
+              >About</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/register.html"
+              >Register</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
+              >Policies</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
+              >FAQs</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
+              >Contact</a
+            >
+            <a class="btn btn-outline" href="/index.html">Main Site</a>
+          </nav>
+        </div>
+
+        <!-- Mobile Nav -->
+        <nav
+          id="mobileNav"
+          class="hidden md:hidden border-t border-[var(--camp-border)] py-3"
+        >
+          <div class="flex flex-col gap-3 font-medium">
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
+              >Home</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
+              >About</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/register.html"
+              >Register</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
+              >Policies</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
+              >FAQs</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
+              >Contact</a
+            >
+            <a class="btn btn-outline w-max" href="/index.html">Main Site</a>
+          </div>
         </nav>
-        <h1 class="mt-2 text-3xl sm:text-4xl font-bold tracking-tight">
-          Parent Handbook
-        </h1>
-        <p class="mt-2 text-white/90">Play fast. Play smart. Play flag.</p>
-        <p class="mt-1 text-white/80 text-sm">
-          Last updated: <time datetime="2025-09-01">1 September 2025</time>
-        </p>
       </div>
     </header>
 
