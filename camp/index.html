@@ -358,5 +358,25 @@
 
     <!-- Shared Camp JS -->
     <script src="/camp/js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        new Swiper(".hero-swiper", {
+          loop: true,
+          speed: 700,
+          grabCursor: true,
+          autoplay: { delay: 4000, disableOnInteraction: false },
+          keyboard: { enabled: true },
+          pagination: {
+            el: ".hero-swiper .swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".hero-swiper .swiper-button-next",
+            prevEl: ".hero-swiper .swiper-button-prev",
+          },
+          a11y: { enabled: true },
+        });
+      });
+    </script>
   </body>
 </html>
