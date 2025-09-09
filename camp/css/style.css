@@ -258,3 +258,122 @@ h3 {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* ===== Tagline Styling ===== */
+.tagline {
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.75rem, 3.2vw + 0.6rem, 3rem); /* responsive 28–48px */
+}
+
+.tagline .fast {
+  color: var(--camp-red);
+}
+.tagline .smart {
+  color: var(--camp-green);
+}
+.tagline .flag {
+  color: var(--camp-ink);
+}
+
+.tagline .hl {
+  position: relative;
+  display: inline-block;
+  padding: 0 0.08em;
+}
+.tagline .hl::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.08em;
+  height: 0.22em;
+  z-index: -1;
+  background: linear-gradient(
+    to right,
+    rgba(167, 57, 38, 0.22),
+    rgba(58, 100, 64, 0.22)
+  );
+  border-radius: 4px;
+}
+
+/* Animation for staggered entrance */
+.tagline .w {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: rise-fade 0.6s ease-out forwards;
+}
+.tagline .w:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.tagline .w:nth-child(2) {
+  animation-delay: 0.18s;
+}
+.tagline .w:nth-child(3) {
+  animation-delay: 0.31s;
+}
+
+@keyframes rise-fade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Fallback Styles ===== */
+
+/* If animations are not supported */
+@supports not (animation: name) {
+  .tagline .w {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .tagline .w {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Center hero text block on mobile */
+@media (max-width: 768px) {
+  .hero-bg h1,
+  .hero-bg .tagline,
+  .hero-bg p,
+  .hero-bg .btn,
+  .hero-bg ul {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Buttons row stacked neatly */
+  .hero-bg .flex.flex-wrap {
+    justify-content: center;
+  }
+
+  /* Tick list grid stays neat */
+  .hero-bg ul {
+    max-width: 20rem; /* stops it stretching too wide */
+  }
+}
+
+/* Make tagline slightly bigger on mobile */
+@media (max-width: 768px) {
+  .tagline {
+    font-size: clamp(2rem, 6vw, 2.5rem); /* ~32–40px */
+  }
+}
+
+/* Tighter line-height for tagline on mobile */
+@media (max-width: 768px) {
+  .tagline {
+    font-size: clamp(2rem, 6vw, 2.5rem); /* already added */
+    line-height: 1.05; /* tighter spacing between lines */
+  }
+}
