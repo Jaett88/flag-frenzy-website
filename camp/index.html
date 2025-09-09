@@ -144,12 +144,51 @@
             <li class="tick">Limited spaces</li>
           </ul>
         </div>
+        <!-- Right column: hero carousel preview -->
         <div class="relative">
-          <img
-            class="rounded-2xl shadow-2xl w-full h-auto object-cover border"
-            src="/camp/assets/img/hero-camp.jpg"
-            alt="Children playing flag football"
-          />
+          <div
+            class="swiper hero-swiper rounded-2xl shadow-2xl border overflow-hidden"
+          >
+            <div class="swiper-wrapper">
+              <!-- Slide 1 -->
+              <div class="swiper-slide">
+                <img
+                  src="/camp/assets/img/hero-1.jpg"
+                  alt="Kids huddle from behind on a grass field"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 2 -->
+              <div class="swiper-slide">
+                <img
+                  src="/camp/assets/img/hero-2.jpg"
+                  alt="Close-up of flag belts on waist during practice"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 3 -->
+              <div class="swiper-slide">
+                <img
+                  src="/camp/assets/img/hero-3.jpg"
+                  alt="Children running with flags in a park, faces out of frame"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 4 -->
+              <div class="swiper-slide">
+                <img
+                  src="/camp/assets/img/hero-4.jpg"
+                  alt="Low-angle flag pull action; no faces visible"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            <!-- Pagination & arrows -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev" aria-label="Previous"></div>
+            <div class="swiper-button-next" aria-label="Next"></div>
+          </div>
         </div>
       </div>
     </section>
