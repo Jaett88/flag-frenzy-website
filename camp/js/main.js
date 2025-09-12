@@ -115,11 +115,11 @@ function toggleDaySelect(show) {
 }
 
 // ===== Payment Calculation =====
-const DAILY_RATE = 30;
-const FULL_WEEK_RATE = 135;
-const EARLY_BIRD_RATE = 120;
-const SIBLING_DISCOUNT_PERCENT = 0.1;
-const EARLY_BIRD_CUTOFF = new Date("2025-09-13T23:59:59");
+const DAILY_RATE = 35;
+const FULL_WEEK_RATE = 150; // standard week
+const EARLY_BIRD_RATE = 135; // early-bird week
+const SIBLING_DISCOUNT_PERCENT = 0.1; // keep as-is for now (10%)
+const EARLY_BIRD_CUTOFF = new Date("2025-09-27T23:59:59");
 
 function isEarlyBird() {
   return new Date() <= EARLY_BIRD_CUTOFF;
@@ -145,12 +145,25 @@ function updatePaymentSummary() {
     baseTotal = selectedDates.length * DAILY_RATE;
   }
 
+  // Apply sibling % discount if chosen (kept from your current logic)
   if (sibling === "yes") {
     baseTotal -= baseTotal * SIBLING_DISCOUNT_PERCENT;
   }
 
   if (paymentDisplay) {
-    paymentDisplay.textContent = `Total Due: £${baseTotal.toFixed(2)}`;
+    // Build the main total line
+    let message = `Total Due: £${baseTotal.toFixed(2)}`;
+
+    // Append early-bird reminder if still active and "Full Week" selected
+    if (attendance === "Full Week" && isEarlyBird()) {
+      const cutoffStr = EARLY_BIRD_CUTOFF.toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+      });
+      message += `\n(Early-bird ends ${cutoffStr})`;
+    }
+
+    paymentDisplay.textContent = message;
   }
 }
 
