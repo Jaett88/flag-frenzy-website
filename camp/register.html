@@ -136,527 +136,541 @@
           so we can keep you updated.
         </p>
       </div>
-      <form
-        name="camper-registration"
-        method="POST"
-        data-netlify="true"
-        netlify
-        netlify-honeypot="bot-field"
-        action="/camp/thank-you.html"
-        class="mt-6 grid gap-6 bg-white/95 border border-[var(--camp-border)] rounded-2xl p-6 md:p-8 shadow-sm"
-      >
-        <input type="hidden" name="form-name" value="camper-registration" />
-        <p class="hidden">
-          <label
-            >Don’t fill this out if you're human: <input name="bot-field"
-          /></label>
-        </p>
+      <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
+        <form
+          name="camper-registration"
+          method="POST"
+          data-netlify="true"
+          netlify
+          netlify-honeypot="bot-field"
+          action="/camp/thank-you.html"
+          class="form form-card mt-6 grid gap-5"
+        >
+          <input type="hidden" name="form-name" value="camper-registration" />
+          <p class="hidden">
+            <label
+              >Don’t fill this out if you're human: <input name="bot-field"
+            /></label>
+          </p>
 
-        <!-- Camper info -->
-        <div>
-          <h2 class="section-title text-2xl">Camper information</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-4">
-            <div>
-              <label class="label" for="camper-name">Full name</label>
-              <input
-                class="input"
-                type="text"
-                id="camper-name"
-                name="camper-name"
-                required
-              />
-            </div>
-            <div>
-              <label class="label" for="camper-age">Age</label>
-              <input
-                class="input"
-                type="number"
-                id="camper-age"
-                name="camper-age"
-                min="7"
-                max="15"
-                required
-              />
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <label class="label">Date of birth</label>
-            <div class="grid grid-cols-3 gap-3">
-              <select class="input" id="dob-day" name="dob-day" required>
-                <option value="">Day</option>
-              </select>
-              <select class="input" id="dob-month" name="dob-month" required>
-                <option value="">Month</option>
-              </select>
-              <select class="input" id="dob-year" name="dob-year" required>
-                <option value="">Year</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <!-- Attendance -->
-        <div>
-          <h2 class="section-title text-2xl">Attendance</h2>
-          <div class="mt-4">
-            <label class="label" for="week">Which week?</label>
-            <select class="input bg-white" id="week" name="week" required>
-              <option value="">Select week</option>
-              <option value="Week 1">Week 1 (27–31 Oct)</option>
-            </select>
-          </div>
-
-          <div class="mt-4">
-            <span class="label">Attendance option</span>
-            <div class="space-y-2">
-              <label class="flex items-center gap-2">
+          <!-- Camper info -->
+          <div>
+            <h2 class="section-title text-2xl">Camper information</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-4">
+              <div>
+                <label class="label" for="camper-name">Full name</label>
                 <input
-                  type="radio"
-                  name="attendance"
-                  value="Full Week"
+                  class="input"
+                  type="text"
+                  id="camper-name"
+                  name="camper-name"
                   required
                 />
-                <span>Full week</span>
-              </label>
-              <label class="flex items-center gap-2">
-                <input type="radio" name="attendance" value="Choose Dates" />
-                <span>Choose specific dates</span>
-              </label>
+              </div>
+              <div>
+                <label class="label" for="camper-age">Age</label>
+                <input
+                  class="input"
+                  type="number"
+                  id="camper-age"
+                  name="camper-age"
+                  min="7"
+                  max="15"
+                  required
+                />
+              </div>
             </div>
 
-            <div id="day-selector" class="hidden">
-              <label class="label mt-4">Select dates attending</label>
-              <div class="space-y-2 text-sm">
-                <label
-                  ><input
-                    type="checkbox"
-                    name="selected-dates"
-                    value="Mon 27 Oct"
-                    class="mr-2"
-                  />Mon 27 Oct</label
-                ><br />
-                <label
-                  ><input
-                    type="checkbox"
-                    name="selected-dates"
-                    value="Tue 28 Oct"
-                    class="mr-2"
-                  />Tue 28 Oct</label
-                ><br />
-                <label
-                  ><input
-                    type="checkbox"
-                    name="selected-dates"
-                    value="Wed 29 Oct"
-                    class="mr-2"
-                  />Wed 29 Oct</label
-                ><br />
-                <label
-                  ><input
-                    type="checkbox"
-                    name="selected-dates"
-                    value="Thu 30 Oct"
-                    class="mr-2"
-                  />Thu 30 Oct</label
-                ><br />
-                <label
-                  ><input
-                    type="checkbox"
-                    name="selected-dates"
-                    value="Fri 31 Oct"
-                    class="mr-2"
-                  />Fri 31 Oct</label
-                >
+            <div class="mt-4">
+              <label class="label">Date of birth</label>
+              <div class="grid grid-cols-3 gap-3">
+                <select class="input" id="dob-day" name="dob-day" required>
+                  <option value="">Day</option>
+                </select>
+                <select class="input" id="dob-month" name="dob-month" required>
+                  <option value="">Month</option>
+                </select>
+                <select class="input" id="dob-year" name="dob-year" required>
+                  <option value="">Year</option>
+                </select>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Sibling discount -->
-        <div>
-          <h2 class="section-title text-2xl">Sibling discount</h2>
-          <label class="label" for="sibling-discount"
-            >Does this camper have a sibling also attending?</label
-          >
-          <select class="input" name="sibling-discount" id="sibling-discount">
-            <option value="no">No</option>
-            <option value="yes">Yes</option>
-          </select>
-          <p class="text-sm text-gray-600 mt-2">
-            Please submit a <strong>separate form</strong> for each child. The
-            discount applies only to <strong>additional</strong> children.
-          </p>
-          <label class="flex items-center gap-2 text-sm text-gray-700 mt-3">
-            <input
-              type="checkbox"
-              name="confirm-discount-policy"
-              id="confirm-discount-policy"
-              required
-            />
-            I understand the sibling discount applies only to additional
-            children registered separately.
-          </label>
-        </div>
+          <!-- Attendance -->
+          <div>
+            <h2 class="section-title text-2xl">Attendance</h2>
+            <div class="mt-4">
+              <label class="label" for="week">Which week?</label>
+              <select class="input bg-white" id="week" name="week" required>
+                <option value="">Select week</option>
+                <option value="Week 1">Week 1 (27–31 Oct)</option>
+              </select>
+            </div>
 
-        <!-- Parent/Guardian 1 -->
-        <div>
-          <h2 class="section-title text-2xl">Parent/guardian (required)</h2>
-          <div class="grid md:grid-cols-2 gap-5 mt-4">
-            <div>
-              <label class="label" for="parent-name">Full name</label>
-              <input
-                class="input"
-                type="text"
-                id="parent-name"
-                name="parent-name"
-                required
-              />
-            </div>
-            <div>
-              <label class="label" for="parent-phone">Phone number</label>
-              <input
-                class="input"
-                type="tel"
-                id="parent-phone"
-                name="parent-phone"
-                required
-              />
-            </div>
-          </div>
-          <div class="mt-4">
-            <label class="label" for="parent-email">Email address</label>
-            <input
-              class="input"
-              type="email"
-              id="parent-email"
-              name="parent-email"
-              required
-            />
-          </div>
-        </div>
+            <div class="mt-4">
+              <span class="label">Attendance option</span>
+              <div class="space-y-2">
+                <label class="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="attendance"
+                    value="Full Week"
+                    required
+                  />
+                  <span>Full week</span>
+                </label>
+                <label class="flex items-center gap-2">
+                  <input type="radio" name="attendance" value="Choose Dates" />
+                  <span>Choose specific dates</span>
+                </label>
+              </div>
 
-        <!-- Parent/Guardian 2 (optional) -->
-        <div>
-          <h2 class="section-title text-2xl">
-            Additional parent/guardian (optional)
-          </h2>
-          <div class="grid md:grid-cols-2 gap-5 mt-4">
-            <div>
-              <label class="label" for="second-parent-name">Full name</label>
-              <input
-                class="input"
-                type="text"
-                id="second-parent-name"
-                name="second-parent-name"
-              />
-            </div>
-            <div>
-              <label class="label" for="second-parent-phone"
-                >Phone number</label
-              >
-              <input
-                class="input"
-                type="tel"
-                id="second-parent-phone"
-                name="second-parent-phone"
-              />
+              <div id="day-selector" class="hidden">
+                <label class="label mt-4">Select dates attending</label>
+                <div class="space-y-2 text-sm">
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="selected-dates"
+                      value="Mon 27 Oct"
+                      class="mr-2"
+                    />Mon 27 Oct</label
+                  ><br />
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="selected-dates"
+                      value="Tue 28 Oct"
+                      class="mr-2"
+                    />Tue 28 Oct</label
+                  ><br />
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="selected-dates"
+                      value="Wed 29 Oct"
+                      class="mr-2"
+                    />Wed 29 Oct</label
+                  ><br />
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="selected-dates"
+                      value="Thu 30 Oct"
+                      class="mr-2"
+                    />Thu 30 Oct</label
+                  ><br />
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="selected-dates"
+                      value="Fri 31 Oct"
+                      class="mr-2"
+                    />Fri 31 Oct</label
+                  >
+                </div>
+              </div>
             </div>
           </div>
-          <div class="mt-4">
-            <label class="label" for="second-parent-email">Email address</label>
-            <input
-              class="input"
-              type="email"
-              id="second-parent-email"
-              name="second-parent-email"
-            />
-          </div>
-        </div>
 
-        <!-- Emergency contacts -->
-        <div>
-          <h2 class="section-title text-2xl">Emergency contacts (required)</h2>
-
-          <div class="mt-4 grid md:grid-cols-2 gap-6">
-            <div class="card">
-              <h3 class="font-bold mb-2" style="color: var(--camp-primary-900)">
-                Contact 1
-              </h3>
-              <label class="label" for="emergency1-name">Full name</label>
-              <input
-                class="input"
-                type="text"
-                id="emergency1-name"
-                name="emergency1-name"
-                required
-              />
-              <label class="label mt-3" for="emergency1-phone"
-                >Phone number</label
-              >
-              <input
-                class="input"
-                type="tel"
-                id="emergency1-phone"
-                name="emergency1-phone"
-                required
-              />
-              <label class="label mt-3" for="emergency1-relationship"
-                >Relationship</label
-              >
-              <input
-                class="input"
-                type="text"
-                id="emergency1-relationship"
-                name="emergency1-relationship"
-                required
-              />
-            </div>
-
-            <div class="card">
-              <h3 class="font-bold mb-2" style="color: var(--camp-primary-900)">
-                Contact 2
-              </h3>
-              <label class="label" for="emergency2-name">Full name</label>
-              <input
-                class="input"
-                type="text"
-                id="emergency2-name"
-                name="emergency2-name"
-                required
-              />
-              <label class="label mt-3" for="emergency2-phone"
-                >Phone number</label
-              >
-              <input
-                class="input"
-                type="tel"
-                id="emergency2-phone"
-                name="emergency2-phone"
-                required
-              />
-              <label class="label mt-3" for="emergency2-relationship"
-                >Relationship</label
-              >
-              <input
-                class="input"
-                type="text"
-                id="emergency2-relationship"
-                name="emergency2-relationship"
-                required
-              />
-            </div>
-          </div>
-        </div>
-
-        <!-- Health & Medical -->
-        <div>
-          <h2 class="section-title text-2xl">Health & medical</h2>
-          <p class="section-note mt-1">Please select all that apply.</p>
-
-          <div class="mt-3 space-y-2 text-sm text-gray-800">
-            <label
-              ><input
-                type="checkbox"
-                name="medical-conditions"
-                value="None"
-                class="mr-2"
-              />None</label
-            ><br />
-            <label
-              ><input
-                type="checkbox"
-                name="medical-conditions"
-                value="Asthma"
-                class="mr-2"
-              />Asthma</label
-            ><br />
-            <label
-              ><input
-                type="checkbox"
-                name="medical-conditions"
-                value="Severe Allergies"
-                class="mr-2"
-              />Severe Allergies</label
-            ><br />
-            <label
-              ><input
-                type="checkbox"
-                name="medical-conditions"
-                value="Epilepsy"
-                class="mr-2"
-              />Epilepsy</label
-            ><br />
-            <label
-              ><input
-                type="checkbox"
-                name="medical-conditions"
-                value="Diabetes"
-                class="mr-2"
-              />Diabetes</label
-            ><br />
-            <label
-              ><input
-                type="checkbox"
-                name="medical-conditions"
-                value="Other"
-                class="mr-2"
-              />Other (please explain below)</label
+          <!-- Sibling discount -->
+          <div>
+            <h2 class="section-title text-2xl">Sibling discount</h2>
+            <label class="label" for="sibling-discount"
+              >Does this camper have a sibling also attending?</label
             >
+            <select class="input" name="sibling-discount" id="sibling-discount">
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+            <p class="text-sm text-gray-600 mt-2">
+              Please submit a <strong>separate form</strong> for each child. The
+              discount applies only to <strong>additional</strong> children.
+            </p>
+            <label class="flex items-center gap-2 text-sm text-gray-700 mt-3">
+              <input
+                type="checkbox"
+                name="confirm-discount-policy"
+                id="confirm-discount-policy"
+                required
+              />
+              I understand the sibling discount applies only to additional
+              children registered separately.
+            </label>
           </div>
 
-          <label class="label mt-4" for="medical-details"
-            >Additional medical details or medications</label
-          >
-          <textarea
-            class="input h-36"
-            id="medical-details"
-            name="medical-details"
-            placeholder="Include EpiPen needs, inhalers, recent injuries, etc."
-          ></textarea>
-        </div>
+          <!-- Parent/Guardian 1 -->
+          <div>
+            <h2 class="section-title text-2xl">Parent/guardian (required)</h2>
+            <div class="grid md:grid-cols-2 gap-5 mt-4">
+              <div>
+                <label class="label" for="parent-name">Full name</label>
+                <input
+                  class="input"
+                  type="text"
+                  id="parent-name"
+                  name="parent-name"
+                  required
+                />
+              </div>
+              <div>
+                <label class="label" for="parent-phone">Phone number</label>
+                <input
+                  class="input"
+                  type="tel"
+                  id="parent-phone"
+                  name="parent-phone"
+                  required
+                />
+              </div>
+            </div>
+            <div class="mt-4">
+              <label class="label" for="parent-email">Email address</label>
+              <input
+                class="input"
+                type="email"
+                id="parent-email"
+                name="parent-email"
+                required
+              />
+            </div>
+          </div>
 
-        <!-- Inclusion & Additional Needs -->
-        <div>
-          <h2 class="section-title text-2xl">Inclusion & additional needs</h2>
-          <p class="section-note mt-1">
-            Help us support your child from day one.
-          </p>
-
-          <div class="mt-4 grid md:grid-cols-2 gap-5">
-            <div>
-              <label class="label" for="pronouns"
-                >Child’s pronouns (optional)</label
+          <!-- Parent/Guardian 2 (optional) -->
+          <div>
+            <h2 class="section-title text-2xl">
+              Additional parent/guardian (optional)
+            </h2>
+            <div class="grid md:grid-cols-2 gap-5 mt-4">
+              <div>
+                <label class="label" for="second-parent-name">Full name</label>
+                <input
+                  class="input"
+                  type="text"
+                  id="second-parent-name"
+                  name="second-parent-name"
+                />
+              </div>
+              <div>
+                <label class="label" for="second-parent-phone"
+                  >Phone number</label
+                >
+                <input
+                  class="input"
+                  type="tel"
+                  id="second-parent-phone"
+                  name="second-parent-phone"
+                />
+              </div>
+            </div>
+            <div class="mt-4">
+              <label class="label" for="second-parent-email"
+                >Email address</label
               >
               <input
                 class="input"
-                type="text"
-                id="pronouns"
-                name="pronouns"
-                placeholder="e.g. she/her, he/him, they/them"
-              />
-            </div>
-
-            <div>
-              <label class="label" for="language"
-                >Primary language / communication notes</label
-              >
-              <input
-                class="input"
-                type="text"
-                id="language"
-                name="language"
-                placeholder="e.g. English, uses visual prompts"
+                type="email"
+                id="second-parent-email"
+                name="second-parent-email"
               />
             </div>
           </div>
 
-          <div class="mt-4 grid md:grid-cols-2 gap-5">
-            <div>
-              <label class="label" for="send"
-                >SEND / diagnosed conditions</label
-              >
-              <select class="input bg-white" id="send" name="send">
-                <option value="">Please select</option>
-                <option value="none">None</option>
-                <option value="suspected">Suspected / under assessment</option>
-                <option value="diagnosed">Diagnosed</option>
-              </select>
-            </div>
+          <!-- Emergency contacts -->
+          <div>
+            <h2 class="section-title text-2xl">
+              Emergency contacts (required)
+            </h2>
 
-            <div>
-              <label class="label" for="ehcp">EHCP in place?</label>
-              <select class="input bg-white" id="ehcp" name="ehcp">
-                <option value="">Please select</option>
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
-              </select>
+            <div class="mt-4 grid md:grid-cols-2 gap-6">
+              <div class="card">
+                <h3
+                  class="font-bold mb-2"
+                  style="color: var(--camp-primary-900)"
+                >
+                  Contact 1
+                </h3>
+                <label class="label" for="emergency1-name">Full name</label>
+                <input
+                  class="input"
+                  type="text"
+                  id="emergency1-name"
+                  name="emergency1-name"
+                  required
+                />
+                <label class="label mt-3" for="emergency1-phone"
+                  >Phone number</label
+                >
+                <input
+                  class="input"
+                  type="tel"
+                  id="emergency1-phone"
+                  name="emergency1-phone"
+                  required
+                />
+                <label class="label mt-3" for="emergency1-relationship"
+                  >Relationship</label
+                >
+                <input
+                  class="input"
+                  type="text"
+                  id="emergency1-relationship"
+                  name="emergency1-relationship"
+                  required
+                />
+              </div>
+
+              <div class="card">
+                <h3
+                  class="font-bold mb-2"
+                  style="color: var(--camp-primary-900)"
+                >
+                  Contact 2
+                </h3>
+                <label class="label" for="emergency2-name">Full name</label>
+                <input
+                  class="input"
+                  type="text"
+                  id="emergency2-name"
+                  name="emergency2-name"
+                  required
+                />
+                <label class="label mt-3" for="emergency2-phone"
+                  >Phone number</label
+                >
+                <input
+                  class="input"
+                  type="tel"
+                  id="emergency2-phone"
+                  name="emergency2-phone"
+                  required
+                />
+                <label class="label mt-3" for="emergency2-relationship"
+                  >Relationship</label
+                >
+                <input
+                  class="input"
+                  type="text"
+                  id="emergency2-relationship"
+                  name="emergency2-relationship"
+                  required
+                />
+              </div>
             </div>
           </div>
 
-          <div class="mt-4">
-            <label class="label" for="access-needs"
-              >Access needs / reasonable adjustments</label
+          <!-- Health & Medical -->
+          <div>
+            <h2 class="section-title text-2xl">Health & medical</h2>
+            <p class="section-note mt-1">Please select all that apply.</p>
+
+            <div class="mt-3 space-y-2 text-sm text-gray-800">
+              <label
+                ><input
+                  type="checkbox"
+                  name="medical-conditions"
+                  value="None"
+                  class="mr-2"
+                />None</label
+              ><br />
+              <label
+                ><input
+                  type="checkbox"
+                  name="medical-conditions"
+                  value="Asthma"
+                  class="mr-2"
+                />Asthma</label
+              ><br />
+              <label
+                ><input
+                  type="checkbox"
+                  name="medical-conditions"
+                  value="Severe Allergies"
+                  class="mr-2"
+                />Severe Allergies</label
+              ><br />
+              <label
+                ><input
+                  type="checkbox"
+                  name="medical-conditions"
+                  value="Epilepsy"
+                  class="mr-2"
+                />Epilepsy</label
+              ><br />
+              <label
+                ><input
+                  type="checkbox"
+                  name="medical-conditions"
+                  value="Diabetes"
+                  class="mr-2"
+                />Diabetes</label
+              ><br />
+              <label
+                ><input
+                  type="checkbox"
+                  name="medical-conditions"
+                  value="Other"
+                  class="mr-2"
+                />Other (please explain below)</label
+              >
+            </div>
+
+            <label class="label mt-4" for="medical-details"
+              >Additional medical details or medications</label
             >
             <textarea
               class="input h-36"
-              id="access-needs"
-              name="access-needs"
-              placeholder="Tell us about any support, strategies, triggers, mobility or sensory needs, 1:1 support, break plans, etc."
+              id="medical-details"
+              name="medical-details"
+              placeholder="Include EpiPen needs, inhalers, recent injuries, etc."
             ></textarea>
           </div>
 
-          <div class="mt-4">
-            <label class="label" for="pickup"
-              >Authorised pick-up adults (names & relationship)</label
+          <!-- Inclusion & Additional Needs -->
+          <div>
+            <h2 class="section-title text-2xl">Inclusion & additional needs</h2>
+            <p class="section-note mt-1">
+              Help us support your child from day one.
+            </p>
+
+            <div class="mt-4 grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="label" for="pronouns"
+                  >Child’s pronouns (optional)</label
+                >
+                <input
+                  class="input"
+                  type="text"
+                  id="pronouns"
+                  name="pronouns"
+                  placeholder="e.g. she/her, he/him, they/them"
+                />
+              </div>
+
+              <div>
+                <label class="label" for="language"
+                  >Primary language / communication notes</label
+                >
+                <input
+                  class="input"
+                  type="text"
+                  id="language"
+                  name="language"
+                  placeholder="e.g. English, uses visual prompts"
+                />
+              </div>
+            </div>
+
+            <div class="mt-4 grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="label" for="send"
+                  >SEND / diagnosed conditions</label
+                >
+                <select class="input bg-white" id="send" name="send">
+                  <option value="">Please select</option>
+                  <option value="none">None</option>
+                  <option value="suspected">
+                    Suspected / under assessment
+                  </option>
+                  <option value="diagnosed">Diagnosed</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="label" for="ehcp">EHCP in place?</label>
+                <select class="input bg-white" id="ehcp" name="ehcp">
+                  <option value="">Please select</option>
+                  <option value="no">No</option>
+                  <option value="yes">Yes</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <label class="label" for="access-needs"
+                >Access needs / reasonable adjustments</label
+              >
+              <textarea
+                class="input h-36"
+                id="access-needs"
+                name="access-needs"
+                placeholder="Tell us about any support, strategies, triggers, mobility or sensory needs, 1:1 support, break plans, etc."
+              ></textarea>
+            </div>
+
+            <div class="mt-4">
+              <label class="label" for="pickup"
+                >Authorised pick-up adults (names & relationship)</label
+              >
+              <textarea
+                class="input h-28"
+                id="pickup"
+                name="pickup"
+                placeholder="e.g. Taylor Smith (Mum), Jordan Smith (Grandad)"
+              ></textarea>
+              <p class="text-xs text-gray-600 mt-1">
+                We may ask for ID at pick-up.
+              </p>
+            </div>
+
+            <div class="mt-4">
+              <label class="label" for="other-notes"
+                >Anything else we should know?</label
+              >
+              <textarea
+                class="input h-28"
+                id="other-notes"
+                name="other-notes"
+                placeholder="Behaviour strategies that work well, allergies not requiring medication, religious/cultural considerations, etc."
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Consent -->
+          <fieldset class="space-y-3">
+            <legend class="section-title text-2xl">Consent</legend>
+            <label class="flex items-center gap-2"
+              ><input type="checkbox" name="consent-participation" required /> I
+              give permission for my child to participate.</label
             >
-            <textarea
-              class="input h-28"
-              id="pickup"
-              name="pickup"
-              placeholder="e.g. Taylor Smith (Mum), Jordan Smith (Grandad)"
-            ></textarea>
-            <p class="text-xs text-gray-600 mt-1">
-              We may ask for ID at pick-up.
+            <label class="flex items-center gap-2"
+              ><input type="checkbox" name="consent-medical" required /> I give
+              permission for first aid to be administered if necessary.</label
+            >
+            <label class="flex items-center gap-2"
+              ><input type="checkbox" name="consent-media" /> I give permission
+              for my child to be included in photos/videos.</label
+            >
+            <label class="flex items-center gap-2"
+              ><input type="checkbox" name="consent-policy" required /> I agree
+              to the privacy policy and terms.</label
+            >
+          </fieldset>
+
+          <!-- Submit -->
+          <div class="pt-2">
+            <button type="submit" class="btn btn-accent w-full sm:w-auto">
+              Register
+            </button>
+            <p
+              id="payment-summary"
+              class="mt-4 text-lg font-semibold text-center"
+              style="color: var(--camp-primary)"
+            >
+              Total due: £135<br />
+              <small class="text-sm text-gray-600">
+                Full week: £150 &nbsp;•&nbsp; Early-bird:
+                <strong>£135</strong> until
+                <strong>26 Sep</strong> &nbsp;•&nbsp; Day rate: £35
+                <br />
+                Sibling discount: <strong>£10</strong> for additional children
+                only.
+              </small>
             </p>
           </div>
-
-          <div class="mt-4">
-            <label class="label" for="other-notes"
-              >Anything else we should know?</label
-            >
-            <textarea
-              class="input h-28"
-              id="other-notes"
-              name="other-notes"
-              placeholder="Behaviour strategies that work well, allergies not requiring medication, religious/cultural considerations, etc."
-            ></textarea>
-          </div>
-        </div>
-
-        <!-- Consent -->
-        <fieldset class="space-y-3">
-          <legend class="section-title text-2xl">Consent</legend>
-          <label class="flex items-center gap-2"
-            ><input type="checkbox" name="consent-participation" required /> I
-            give permission for my child to participate.</label
-          >
-          <label class="flex items-center gap-2"
-            ><input type="checkbox" name="consent-medical" required /> I give
-            permission for first aid to be administered if necessary.</label
-          >
-          <label class="flex items-center gap-2"
-            ><input type="checkbox" name="consent-media" /> I give permission
-            for my child to be included in photos/videos.</label
-          >
-          <label class="flex items-center gap-2"
-            ><input type="checkbox" name="consent-policy" required /> I agree to
-            the privacy policy and terms.</label
-          >
-        </fieldset>
-
-        <!-- Submit -->
-        <div class="pt-2">
-          <button type="submit" class="btn btn-accent w-full sm:w-auto">
-            Register
-          </button>
-          <p
-            id="payment-summary"
-            class="mt-4 text-lg font-semibold text-center"
-            style="color: var(--camp-primary)"
-          >
-            Total due: £135<br />
-            <small class="text-sm text-gray-600">
-              Full week: £150 &nbsp;•&nbsp; Early-bird:
-              <strong>£135</strong> until <strong>26 Sep</strong> &nbsp;•&nbsp;
-              Day rate: £35
-              <br />
-              Sibling discount: <strong>£10</strong> for additional children
-              only.
-            </small>
-          </p>
-        </div>
-      </form>
+        </form>
+      </section>
     </section>
 
     <!-- Footer -->
