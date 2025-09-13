@@ -516,6 +516,104 @@
           ></textarea>
         </div>
 
+        <!-- Inclusion & Additional Needs -->
+        <div>
+          <h2 class="section-title text-2xl">Inclusion & additional needs</h2>
+          <p class="section-note mt-1">
+            Help us support your child from day one.
+          </p>
+
+          <div class="mt-4 grid md:grid-cols-2 gap-5">
+            <div>
+              <label class="label" for="pronouns"
+                >Child’s pronouns (optional)</label
+              >
+              <input
+                class="input"
+                type="text"
+                id="pronouns"
+                name="pronouns"
+                placeholder="e.g. she/her, he/him, they/them"
+              />
+            </div>
+
+            <div>
+              <label class="label" for="language"
+                >Primary language / communication notes</label
+              >
+              <input
+                class="input"
+                type="text"
+                id="language"
+                name="language"
+                placeholder="e.g. English, uses visual prompts"
+              />
+            </div>
+          </div>
+
+          <div class="mt-4 grid md:grid-cols-2 gap-5">
+            <div>
+              <label class="label" for="send"
+                >SEND / diagnosed conditions</label
+              >
+              <select class="input bg-white" id="send" name="send">
+                <option value="">Please select</option>
+                <option value="none">None</option>
+                <option value="suspected">Suspected / under assessment</option>
+                <option value="diagnosed">Diagnosed</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="label" for="ehcp">EHCP in place?</label>
+              <select class="input bg-white" id="ehcp" name="ehcp">
+                <option value="">Please select</option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <label class="label" for="access-needs"
+              >Access needs / reasonable adjustments</label
+            >
+            <textarea
+              class="input h-36"
+              id="access-needs"
+              name="access-needs"
+              placeholder="Tell us about any support, strategies, triggers, mobility or sensory needs, 1:1 support, break plans, etc."
+            ></textarea>
+          </div>
+
+          <div class="mt-4">
+            <label class="label" for="pickup"
+              >Authorised pick-up adults (names & relationship)</label
+            >
+            <textarea
+              class="input h-28"
+              id="pickup"
+              name="pickup"
+              placeholder="e.g. Taylor Smith (Mum), Jordan Smith (Grandad)"
+            ></textarea>
+            <p class="text-xs text-gray-600 mt-1">
+              We may ask for ID at pick-up.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <label class="label" for="other-notes"
+              >Anything else we should know?</label
+            >
+            <textarea
+              class="input h-28"
+              id="other-notes"
+              name="other-notes"
+              placeholder="Behaviour strategies that work well, allergies not requiring medication, religious/cultural considerations, etc."
+            ></textarea>
+          </div>
+        </div>
+
         <!-- Consent -->
         <fieldset class="space-y-3">
           <legend class="section-title text-2xl">Consent</legend>
