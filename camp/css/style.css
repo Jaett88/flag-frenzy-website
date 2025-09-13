@@ -437,3 +437,41 @@ h3 {
     transform: translateY(0);
   }
 }
+
+/* --- Softer form card + typography (camp forms) --- */
+.form-card {
+  background: color-mix(in oklab, var(--camp-cream) 80%, white 20%);
+  border: 1px solid var(--camp-border);
+  border-radius: 14px;
+  padding: clamp(18px, 2.6vw, 28px);
+  box-shadow: none;
+  backdrop-filter: blur(1px);
+}
+
+.form h2.section-title {
+  font-size: 1.25rem; /* text-xl */
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
+  color: var(--camp-green);
+}
+
+.form .label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.form .input {
+  border-radius: 12px;
+  border: 1.25px solid var(--camp-border);
+  padding: 0.7rem 0.9rem;
+}
+.form .input:focus {
+  border-color: #d9d2c2;
+  box-shadow: 0 0 0 3px rgba(167, 57, 38, 0.12);
+}
+
+/* tighten vertical rhythm */
+.form .group-gap {
+  margin-top: 0.75rem;
+}
