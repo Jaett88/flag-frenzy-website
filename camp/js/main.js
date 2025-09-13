@@ -1,128 +1,25 @@
-// ===== Scroll to top when logo clicked =====
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Flag Frenzy homepage loaded!");
+// ===============================
+// Flag Frenzy — Registration JS
+// ===============================
 
-  const logo = document.querySelector(".logo");
-  if (logo) {
-    logo.style.cursor = "pointer";
-    logo.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  }
+// ===== Pricing Settings =====
+const DAILY_RATE = 35;
+const FULL_WEEK_RATE = 150;
+const EARLY_BIRD_RATE = 135;
+const SIBLING_DISCOUNT_FLAT = 10; // <-- flat £10 off
+const EARLY_BIRD_CUTOFF = new Date("2025-09-26T23:59:59");
 
-  toggleDaySelect(false); // Hide day checkboxes by default
+// ===== Utility Functions =====
+function isEarlyBird() {
+  return new Date() <= EARLY_BIRD_CUTOFF;
+}
 
-  const attendanceRadios = document.querySelectorAll(
-    "input[name='attendance']"
-  );
-  const dateCheckboxes = document.querySelectorAll(
-    "input[name='selected-dates']"
-  );
-  const dobInput = document.querySelector("input[name='dob']");
-  const ageInput = document.querySelector("input[name='camper-age']");
-  const siblingSelect = document.querySelector(
-    "select[name='sibling-discount']"
-  );
-
-  // Toggle visibility and recalculate when attendance changes
-  attendanceRadios.forEach((radio) => {
-    radio.addEventListener("change", (e) => {
-      toggleDaySelect(e.target.value === "Choose Dates");
-      updatePaymentSummary();
-    });
-  });
-
-  // Update payment when dates change
-  dateCheckboxes.forEach((cb) => {
-    cb.addEventListener("change", updatePaymentSummary);
-  });
-
-  // Update payment when sibling discount changes
-  siblingSelect?.addEventListener("change", updatePaymentSummary);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const dobDay = document.getElementById("dob-day");
-  const dobMonth = document.getElementById("dob-month");
-  const dobYear = document.getElementById("dob-year");
-  const ageInput = document.querySelector("input[name='camper-age']");
-
-  // Populate day options (1–31)
-  for (let d = 1; d <= 31; d++) {
-    dobDay.innerHTML += `<option value="${d}">${d}</option>`;
-  }
-
-  // Populate month options (1–12)
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  months.forEach((month, i) => {
-    dobMonth.innerHTML += `<option value="${i + 1}">${month}</option>`;
-  });
-
-  // Populate year options (2009 to current year)
-  const currentYear = new Date().getFullYear();
-  for (let y = 2009; y <= currentYear; y++) {
-    dobYear.innerHTML += `<option value="${y}">${y}</option>`;
-  }
-
-  // Watch for changes to validate age
-  [dobDay, dobMonth, dobYear].forEach((el) => {
-    el.addEventListener("change", () => {
-      const day = parseInt(dobDay.value);
-      const month = parseInt(dobMonth.value) - 1; // JS months are 0-indexed
-      const year = parseInt(dobYear.value);
-
-      if (!day || !month || !year) return;
-
-      const dob = new Date(year, month, day);
-      const today = new Date();
-      let age = today.getFullYear() - dob.getFullYear();
-      const m = today.getMonth() - dob.getMonth();
-      if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
-        age--;
-      }
-
-      // Display age in input field
-      ageInput.value = age;
-
-      // Validate age range
-      if (age < 7 || age > 15) {
-        alert("Sorry, campers must be between 7 and 15 years old.");
-      }
-    });
-  });
-});
-
-// ===== Toggle Day Selector Visibility + Recalculate =====
 function toggleDaySelect(show) {
   const daySection = document.getElementById("day-selector");
   if (daySection) {
     daySection.classList.toggle("hidden", !show);
   }
-  updatePaymentSummary(); // ✅ Ensures pricing adjusts when switching view
-}
-
-// ===== Payment Calculation =====
-const DAILY_RATE = 35;
-const FULL_WEEK_RATE = 150; // standard week
-const EARLY_BIRD_RATE = 135; // early-bird week
-const SIBLING_DISCOUNT_PERCENT = 0.1; // keep as-is for now (10%)
-const EARLY_BIRD_CUTOFF = new Date("2025-09-27T23:59:59");
-
-function isEarlyBird() {
-  return new Date() <= EARLY_BIRD_CUTOFF;
+  updatePaymentSummary();
 }
 
 function updatePaymentSummary() {
@@ -145,13 +42,12 @@ function updatePaymentSummary() {
     baseTotal = selectedDates.length * DAILY_RATE;
   }
 
-  // Apply sibling % discount if chosen (kept from your current logic)
+  // Flat sibling discount (applies once to total for additional children)
   if (sibling === "yes") {
-    baseTotal -= baseTotal * SIBLING_DISCOUNT_PERCENT;
+    baseTotal = Math.max(0, baseTotal - SIBLING_DISCOUNT_FLAT);
   }
 
   if (paymentDisplay) {
-    // Build the main total line
     let message = `Total Due: £${baseTotal.toFixed(2)}`;
 
     // Append early-bird reminder if still active and "Full Week" selected
@@ -167,8 +63,102 @@ function updatePaymentSummary() {
   }
 }
 
-// ===== Handle 'None' checkbox logic for medical conditions =====
+// ===== DOMContentLoaded =====
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("Flag Frenzy registration page loaded!");
+
+  // Scroll to top when logo clicked (if present)
+  const logo = document.querySelector(".logo");
+  if (logo) {
+    logo.style.cursor = "pointer";
+    logo.addEventListener("click", () =>
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    );
+  }
+
+  // Attendance radios
+  const attendanceRadios = document.querySelectorAll(
+    "input[name='attendance']"
+  );
+  attendanceRadios.forEach((radio) => {
+    radio.addEventListener("change", (e) => {
+      toggleDaySelect(e.target.value === "Choose Dates");
+      updatePaymentSummary();
+    });
+  });
+
+  // Day checkboxes
+  const dateCheckboxes = document.querySelectorAll(
+    "input[name='selected-dates']"
+  );
+  dateCheckboxes.forEach((cb) =>
+    cb.addEventListener("change", updatePaymentSummary)
+  );
+
+  // Sibling discount select
+  const siblingSelect = document.querySelector(
+    "select[name='sibling-discount']"
+  );
+  siblingSelect?.addEventListener("change", updatePaymentSummary);
+
+  // DOB dropdowns (dynamic population)
+  const dobDay = document.getElementById("dob-day");
+  const dobMonth = document.getElementById("dob-month");
+  const dobYear = document.getElementById("dob-year");
+  const ageInput = document.querySelector("input[name='camper-age']");
+
+  if (dobDay && dobMonth && dobYear && ageInput) {
+    for (let d = 1; d <= 31; d++)
+      dobDay.innerHTML += `<option value="${d}">${d}</option>`;
+
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    months.forEach((month, i) => {
+      dobMonth.innerHTML += `<option value="${i + 1}">${month}</option>`;
+    });
+
+    const currentYear = new Date().getFullYear();
+    const youngestYear = currentYear - 7;
+    const oldestYear = currentYear - 15;
+    for (let y = youngestYear; y >= oldestYear; y--) {
+      dobYear.innerHTML += `<option value="${y}">${y}</option>`;
+    }
+
+    [dobDay, dobMonth, dobYear].forEach((el) => {
+      el.addEventListener("change", () => {
+        const day = parseInt(dobDay.value);
+        const month = parseInt(dobMonth.value) - 1;
+        const year = parseInt(dobYear.value);
+        if (!day || !dobMonth.value || !year) return;
+
+        const dob = new Date(year, month, day);
+        const today = new Date();
+        let age = today.getFullYear() - dob.getFullYear();
+        const m = today.getMonth() - dob.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
+
+        ageInput.value = age;
+
+        if (age < 7 || age > 15) {
+          alert("Sorry, campers must be between 7 and 15 years old.");
+        }
+      });
+    });
+  }
+
+  // Medical conditions ("None" logic)
   const noneCheckbox = document.querySelector(
     "input[name='medical-conditions'][value='None']"
   );
@@ -177,40 +167,31 @@ document.addEventListener("DOMContentLoaded", () => {
   ).filter((cb) => cb.value !== "None");
 
   if (noneCheckbox) {
-    // When 'None' is selected, uncheck others
     noneCheckbox.addEventListener("change", () => {
-      if (noneCheckbox.checked) {
+      if (noneCheckbox.checked)
         otherCheckboxes.forEach((cb) => (cb.checked = false));
-      }
     });
-
-    // If any other box is checked, uncheck 'None'
     otherCheckboxes.forEach((cb) => {
       cb.addEventListener("change", () => {
-        if (cb.checked) {
-          noneCheckbox.checked = false;
-        }
+        if (cb.checked) noneCheckbox.checked = false;
       });
     });
   }
-});
 
-// Store camper name before form submission
-const registrationForm = document.querySelector(
-  "form[name='camper-registration']"
-);
-if (registrationForm) {
-  registrationForm.addEventListener("submit", () => {
-    const camperName = document.querySelector(
-      "input[name='camper-name']"
-    )?.value;
-    if (camperName) {
-      localStorage.setItem("camperName", camperName);
-    }
-  });
-}
+  // Store camper name (for thank-you greeting)
+  const registrationForm = document.querySelector(
+    "form[name='camper-registration']"
+  );
+  if (registrationForm) {
+    registrationForm.addEventListener("submit", () => {
+      const camperName = document.querySelector(
+        "input[name='camper-name']"
+      )?.value;
+      if (camperName) localStorage.setItem("camperName", camperName.trim());
+    });
+  }
 
-document.addEventListener("DOMContentLoaded", () => {
+  // Mobile menu toggle
   const menuBtn = document.getElementById("menuBtn");
   const mobileNav = document.getElementById("mobileNav");
   if (menuBtn && mobileNav) {
@@ -218,12 +199,12 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileNav.classList.toggle("hidden")
     );
   }
-});
 
-// Auto-update footer year
-document.addEventListener("DOMContentLoaded", function () {
+  // Footer year
   const yearEl = document.getElementById("year");
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Initial UI state
+  toggleDaySelect(false);
+  updatePaymentSummary();
 });
