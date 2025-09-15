@@ -118,9 +118,130 @@
       </section>
     </main>
 
-    <footer class="bg-white border-t py-6 text-center text-sm text-gray-500">
-      &copy; 2025 Flag Frenzy Football Ltd. All rights reserved.
+    <!-- Camp Footer -->
+    <footer class="footer mt-16 bg-[var(--camp-red)] text-white">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid gap-8 md:grid-cols-3"
+      >
+        <div>
+          <h3 class="font-semibold text-lg text-white">
+            Flag Frenzy Football Camp
+          </h3>
+          <p class="mt-2 text-white/80">Play fast. Play smart. Play flag.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-white">Quick Links</h4>
+          <ul class="mt-2 space-y-2">
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
+                href="/camp/policies.html"
+                >Policies</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
+                href="/camp/about.html"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
+                href="/camp/register.html"
+                >Register</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
+                href="/camp/contact.html"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
+                href="/index.html"
+                >Main Site</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-white">Contact</h4>
+          <ul class="mt-2 space-y-2">
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
+                href="mailto:info@flagfrenzyfootball.co.uk"
+                >info@flagfrenzyfootball.co.uk</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
+                target="_blank"
+                rel="noopener"
+                href="https://instagram.com/flagfrenzycamp"
+                >@flagfrenzycamp</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="border-t border-white/20">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-white/80 flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
+        >
+          <div>
+            <span
+              >&copy; <span id="year"></span> Flag Frenzy Football Ltd. All
+              rights reserved.</span
+            >
+            <div class="mt-2 text-xs leading-relaxed text-white/60">
+              Flag Frenzy Football Ltd — Company No. 12345678<br
+                class="sm:hidden"
+              />
+              <span class="hidden sm:inline">•</span> Registered in England
+              &amp; Wales <span class="hidden sm:inline">•</span> Registered
+              Office: 10 Example Street, London, SE1 2AB
+            </div>
+          </div>
+
+          <span class="text-white/80">Built for the community.</span>
+        </div>
+      </div>
     </footer>
+
+    <!-- Mobile floating print button -->
+    <button
+      onclick="window.print()"
+      class="no-print md:hidden fixed bottom-4 right-4 rounded-full border bg-white p-3 shadow-lg hover:shadow-xl transition"
+      aria-label="Print this policy"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-5 h-5"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
+        />
+      </svg>
+      <span class="sr-only">Print this policy</span>
+    </button>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 
     <script src="/camp/js/main.js"></script>
   </body>
