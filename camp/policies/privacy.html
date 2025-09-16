@@ -2,15 +2,611 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Flag Frenzy Football Camp</title>
     <meta
-      name="viewport"
-      content="width=
-    , initial-scale=1.0"
+      name="description"
+      content="Privacy Policy for Flag Frenzy Football Ltd: what we collect, how we use it, lawful bases, sharing, retention, security, children’s privacy, and your rights under UK GDPR."
     />
-    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/camp/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+      :root {
+        --camp-red: #c7352d;
+        --camp-border: rgba(20, 20, 20, 0.12);
+      }
+      @media print {
+        .no-print,
+        header,
+        footer,
+        #mobileNav {
+          display: none !important;
+        }
+        body {
+          color: #000;
+          background: #fff;
+        }
+        a {
+          text-decoration: none;
+          color: #000;
+        }
+        .card {
+          box-shadow: none !important;
+          border: 1px solid #ddd;
+        }
+        main {
+          max-width: 100% !important;
+          padding: 0 !important;
+        }
+      }
+    </style>
   </head>
-  <body>
-    <!-- Camp Footer -->
+  <body class="bg-[#F6EADB] text-gray-800">
+    <!-- Skip link -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white border rounded px-3 py-2 shadow"
+      >Skip to content</a
+    >
+
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="h-16 flex items-center justify-between">
+          <a href="/camp/index.html" class="flex items-center gap-3">
+            <img
+              src="/camp/src/logo.png"
+              alt="Flag Frenzy Football Camp logo"
+              class="h-10 w-10"
+            />
+            <span class="text-xl font-extrabold" style="color: var(--camp-red)"
+              >Flag Frenzy Football Camp</span
+            >
+          </a>
+          <button
+            id="menuBtn"
+            class="md:hidden p-2 rounded-lg border border-gray-200"
+            aria-label="Toggle menu"
+            aria-controls="mobileNav"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+          <nav
+            id="nav"
+            class="hidden md:flex items-center gap-6 text-sm font-medium"
+          >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
+              >Home</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
+              >About</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/register.html"
+              >Register</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
+              >Policies</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
+              >FAQs</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
+              >Contact</a
+            >
+            <a
+              class="inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
+              href="/index.html"
+              >Main Site</a
+            >
+          </nav>
+        </div>
+        <!-- Mobile Nav -->
+        <nav
+          id="mobileNav"
+          class="hidden md:hidden border-t border-[var(--camp-border)] py-3"
+        >
+          <div class="flex flex-col gap-3 font-medium">
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
+              >Home</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
+              >About</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/register.html"
+              >Register</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
+              >Policies</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
+              >FAQs</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
+              >Contact</a
+            >
+            <a
+              class="w-max inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
+              href="/index.html"
+              >Main Site</a
+            >
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="max-w-4xl mx-auto px-4 py-8">
+      <div class="no-print flex items-center justify-between mb-6">
+        <h1 class="text-2xl sm:text-3xl font-extrabold">Privacy Policy</h1>
+        <button
+          onclick="window.print()"
+          class="hidden md:inline-flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm shadow-sm hover:shadow transition"
+          aria-label="Print this policy"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
+            />
+          </svg>
+          Print
+        </button>
+      </div>
+
+      <section class="card bg-white rounded-2xl shadow p-6 sm:p-8">
+        <div class="mb-6">
+          <p class="text-sm text-gray-600">Flag Frenzy Football Camp</p>
+          <p class="text-sm text-gray-600">
+            Effective date: <span id="effective-date">31 August 2025</span>
+          </p>
+          <p class="text-sm text-gray-600">Location: United Kingdom</p>
+          <p class="text-sm text-neutral-500">
+            Last updated: <span id="last-updated">15 September 2025</span>
+          </p>
+          <p class="mt-3 text-neutral-700">
+            This Privacy Policy explains how Flag Frenzy Football Ltd ("we",
+            "our", "us") collects, uses and protects your information when you
+            visit our websites or register for camps.
+          </p>
+        </div>
+
+        <!-- Quick nav pills -->
+        <nav class="no-print grid sm:grid-cols-2 gap-3 mb-8 text-sm">
+          <a
+            href="#scope"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Scope</a
+          >
+          <a
+            href="#who-we-are"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Who We Are</a
+          >
+          <a
+            href="#data-we-collect"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Data We Collect</a
+          >
+          <a
+            href="#purposes-bases"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >How We Use Data & Bases</a
+          >
+          <a
+            href="#communications"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Emails & Marketing</a
+          >
+          <a
+            href="#sharing"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Sharing & Processors</a
+          >
+          <a
+            href="#cookies"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Cookies & Analytics</a
+          >
+          <a
+            href="#international"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >International Transfers</a
+          >
+          <a
+            href="#retention"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Retention</a
+          >
+          <a
+            href="#security"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Security</a
+          >
+          <a
+            href="#children"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Children’s Privacy</a
+          >
+          <a
+            href="#rights"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Your Rights</a
+          >
+          <a
+            href="#how-to-exercise"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >How to Exercise Rights</a
+          >
+          <a
+            href="#complaints"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Complaints (ICO)</a
+          >
+          <a
+            href="#changes"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Policy Changes</a
+          >
+          <a
+            href="#contact"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Contact</a
+          >
+        </nav>
+
+        <section id="scope" class="space-y-4">
+          <h2 class="text-xl font-bold">1. Scope</h2>
+          <p>
+            This notice explains how we collect, use, store, and protect
+            personal data when you visit our websites or register a child for
+            Flag Frenzy Football Camp. It applies to parents/guardians and
+            website visitors.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="who-we-are" class="space-y-4">
+          <h2 class="text-xl font-bold">2. Who We Are (Data Controller)</h2>
+          <p>
+            <strong>Flag Frenzy Football Ltd</strong> is the data controller.
+            Registered in England &amp; Wales. Registered Office:
+            <span class="font-medium">[Registered Office]</span>. Company No:
+            <span class="font-medium">[Company Number]</span>. Contact:
+            <a class="underline" href="mailto:info@flagfrenzyfootball.co.uk"
+              >info@flagfrenzyfootball.co.uk</a
+            >.
+          </p>
+          <p>
+            Data Protection Lead: <span class="font-medium">[Name/Role]</span> —
+            <a class="underline" href="mailto:info@flagfrenzyfootball.co.uk"
+              >info@flagfrenzyfootball.co.uk</a
+            >.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="data-we-collect" class="space-y-4">
+          <h2 class="text-xl font-bold">3. What Information We Collect</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              <span class="font-medium">Parent/guardian details</span>: name,
+              email, phone, address.
+            </li>
+            <li>
+              <span class="font-medium">Child details</span>: name, date of
+              birth, age, attendance choices.
+            </li>
+            <li>
+              <span class="font-medium">Medical & emergency</span>: relevant
+              medical information (e.g., allergies), GP/emergency contacts.
+            </li>
+            <li>
+              <span class="font-medium">Payment</span>: processed securely by
+              providers (e.g., Stripe/PayPal); we do not store full card
+              details.
+            </li>
+            <li>
+              <span class="font-medium">Website usage</span>: cookies/analytics
+              (aggregated, non-identifiable where possible).
+            </li>
+            <li>
+              <span class="font-medium">Communications</span>: emails/messages
+              you send us and our replies.
+            </li>
+          </ul>
+          <p class="text-sm text-neutral-600">
+            We collect data directly from you (e.g., registration forms, emails)
+            and from systems we use to deliver services.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="purposes-bases" class="space-y-4">
+          <h2 class="text-xl font-bold">
+            4. How We Use Your Information & Lawful Bases
+          </h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              <span class="font-medium"
+                >Camp registration & administration</span
+              >
+              — to process bookings, take payment, allocate places, manage
+              attendance. <em>Basis:</em> Contract.
+            </li>
+            <li>
+              <span class="font-medium">Safety, safeguarding & medical</span> —
+              to keep children safe and meet safeguarding obligations.
+              <em>Basis:</em> Legal obligation; Vital interests (emergencies).
+            </li>
+            <li>
+              <span class="font-medium">Operational communications</span> —
+              schedules, cancellations, essential updates.
+              <em>Basis:</em> Contract; Legitimate interests.
+            </li>
+            <li>
+              <span class="font-medium">Service improvement & analytics</span> —
+              to improve camps and websites. <em>Basis:</em> Legitimate
+              interests (balance with privacy).
+            </li>
+            <li>
+              <span class="font-medium">Marketing updates</span> (optional) —
+              newsletters or future camp news. <em>Basis:</em> Consent (you can
+              withdraw any time).
+            </li>
+            <li>
+              <span class="font-medium">Photos/videos</span> (optional) — for
+              promotion if consent is given or you do not object where
+              applicable. <em>Basis:</em> Consent/Legitimate interests (with
+              opt-out).
+            </li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="communications" class="space-y-4">
+          <h2 class="text-xl font-bold">5. Emails & Marketing</h2>
+          <p>
+            We may email you about your booking, schedules, and important
+            reminders. If you opt-in to marketing, you may receive future camp
+            news. You can unsubscribe using the link in our emails or by
+            contacting us.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="sharing" class="space-y-4">
+          <h2 class="text-xl font-bold">
+            6. Sharing Your Information & Processors
+          </h2>
+          <p>We don’t sell your data. We share only when necessary:</p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              <span class="font-medium">Payment processing</span>: Stripe and/or
+              PayPal (for secure transactions).
+            </li>
+            <li>
+              <span class="font-medium">Forms/hosting</span>: Netlify (hosting &
+              Netlify Forms).
+            </li>
+            <li>
+              <span class="font-medium">Automation</span>: Zapier (to move
+              registration data securely to internal systems).
+            </li>
+            <li>
+              <span class="font-medium">Productivity/storage</span>: Google
+              (e.g., Sheets/Drive) for registration lists, attendance, and
+              admin.
+            </li>
+            <li>
+              <span class="font-medium">Email</span>: our email service provider
+              for transactional messages.
+            </li>
+            <li>
+              <span class="font-medium">Emergency services</span>: if needed to
+              protect vital interests.
+            </li>
+            <li>
+              <span class="font-medium">Legal/safeguarding</span>: when required
+              by law or to fulfil safeguarding duties.
+            </li>
+          </ul>
+          <p class="text-sm text-neutral-600">
+            Each provider is expected to meet UK GDPR standards and appropriate
+            security measures.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="cookies" class="space-y-4">
+          <h2 class="text-xl font-bold">7. Cookies & Analytics</h2>
+          <p>
+            We may use essential cookies to make the site work and optional
+            analytics to understand usage (e.g., page views). Where required,
+            we’ll ask for consent. You can clear or block cookies via your
+            browser. If you disable cookies, some features may not work.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="international" class="space-y-4">
+          <h2 class="text-xl font-bold">8. International Transfers</h2>
+          <p>
+            Some providers (e.g., Netlify, Google, Stripe, PayPal) may store
+            data outside the UK/EEA. Where this occurs, we use appropriate
+            safeguards such as adequacy decisions or UK-approved Standard
+            Contractual Clauses to protect your information.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="retention" class="space-y-4">
+          <h2 class="text-xl font-bold">9. How Long We Keep Your Data</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border border-neutral-200">
+              <thead>
+                <tr class="bg-neutral-50 text-left">
+                  <th class="p-2 border-b">Record type</th>
+                  <th class="p-2 border-b">Typical retention</th>
+                  <th class="p-2 border-b">Reason</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="p-2 border-b">Registration & attendance</td>
+                  <td class="p-2 border-b">Up to 1 year after camp</td>
+                  <td class="p-2 border-b">Running camps & handling queries</td>
+                </tr>
+                <tr>
+                  <td class="p-2 border-b">Medical & consent forms</td>
+                  <td class="p-2 border-b">
+                    Up to 1 year after camp (longer if required by guidance)
+                  </td>
+                  <td class="p-2 border-b">Safety/incident reference</td>
+                </tr>
+                <tr>
+                  <td class="p-2 border-b">Incident/safeguarding records</td>
+                  <td class="p-2 border-b">As required by law/insurers</td>
+                  <td class="p-2 border-b">Legal compliance</td>
+                </tr>
+                <tr>
+                  <td class="p-2 border-b">Financial/transaction records</td>
+                  <td class="p-2 border-b">6 years</td>
+                  <td class="p-2 border-b">HMRC/legal obligation</td>
+                </tr>
+                <tr>
+                  <td class="p-2">Marketing preferences</td>
+                  <td class="p-2">Until you withdraw consent</td>
+                  <td class="p-2">Respecting your choices</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm text-neutral-600">
+            After these periods, data is securely deleted or anonymised unless
+            we need to keep it for a legal claim or investigation.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="security" class="space-y-4">
+          <h2 class="text-xl font-bold">10. Security</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Password-protected systems and role-based access for staff.</li>
+            <li>
+              Use of reputable providers with encryption in transit and at rest
+              where available.
+            </li>
+            <li>
+              Internal procedures for handling sensitive data and devices.
+            </li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="children" class="space-y-4">
+          <h2 class="text-xl font-bold">11. Children’s Privacy & Photos</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              We collect children’s data from parents/guardians to run the camp
+              safely.
+            </li>
+            <li>
+              Photo/video use is optional and controlled by your consent/opt-out
+              on registration; we respect your choice.
+            </li>
+            <li>
+              Do not send unnecessary sensitive data. Tell us only what we need
+              to keep your child safe.
+            </li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="rights" class="space-y-4">
+          <h2 class="text-xl font-bold">12. Your Rights (UK GDPR)</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Access a copy of your data</li>
+            <li>Correct inaccurate data</li>
+            <li>Delete your data (where applicable)</li>
+            <li>Restrict or object to processing</li>
+            <li>Data portability</li>
+            <li>Withdraw consent at any time (for marketing/photos)</li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="how-to-exercise" class="space-y-4">
+          <h2 class="text-xl font-bold">13. How to Exercise Your Rights</h2>
+          <p>
+            Email
+            <a class="underline" href="mailto:info@flagfrenzyfootball.co.uk"
+              >info@flagfrenzyfootball.co.uk</a
+            >
+            with your name, child’s name, what you’re asking for, and any
+            relevant booking details. We’ll respond as soon as possible and
+            within the time required by law.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="complaints" class="space-y-4">
+          <h2 class="text-xl font-bold">14. Complaints</h2>
+          <p>
+            Please contact us first so we can help. If you’re not satisfied, you
+            can complain to the Information Commissioner’s Office (ICO):
+            <a class="underline" href="https://ico.org.uk/make-a-complaint/"
+              >ico.org.uk/make-a-complaint/</a
+            >.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="changes" class="space-y-4">
+          <h2 class="text-xl font-bold">15. Changes to This Policy</h2>
+          <p>
+            We may update this policy for operational, legal or regulatory
+            reasons. The latest version will be posted on our website. Material
+            changes will be highlighted for a reasonable period.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="contact" class="space-y-4">
+          <h2 class="text-xl font-bold">Contact</h2>
+          <address class="not-italic">
+            Flag Frenzy Football Ltd<br />
+            Email:
+            <a class="underline" href="mailto:info@flagfrenzyfootball.co.uk"
+              >info@flagfrenzyfootball.co.uk</a
+            ><br />
+            Website:
+            <a class="underline" href="https://flagfrenzyfootball.co.uk"
+              >flagfrenzyfootball.co.uk</a
+            >
+          </address>
+        </section>
+      </section>
+
+      <p class="text-xs text-gray-500 mt-6">
+        © <span id="year"></span> Flag Frenzy Football Ltd. All rights reserved.
+      </p>
+    </main>
+
+    <!-- Footer -->
     <footer class="footer mt-16 bg-[var(--camp-red)] text-white">
       <div
         class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid gap-8 md:grid-cols-3"
@@ -21,7 +617,6 @@
           </h3>
           <p class="mt-2 text-white/80">Play fast. Play smart. Play flag.</p>
         </div>
-
         <div>
           <h4 class="font-semibold text-white">Quick Links</h4>
           <ul class="mt-2 space-y-2">
@@ -62,7 +657,6 @@
             </li>
           </ul>
         </div>
-
         <div>
           <h4 class="font-semibold text-white">Contact</h4>
           <ul class="mt-2 space-y-2">
@@ -85,8 +679,6 @@
           </ul>
         </div>
       </div>
-
-      <!-- Bottom bar -->
       <div class="border-t border-white/20">
         <div
           class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-white/80 flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
@@ -97,15 +689,14 @@
               rights reserved.</span
             >
             <div class="mt-2 text-xs leading-relaxed text-white/60">
-              Flag Frenzy Football Ltd — Company No. 12345678<br
-                class="sm:hidden"
-              />
-              <span class="hidden sm:inline">•</span> Registered in England
-              &amp; Wales <span class="hidden sm:inline">•</span> Registered
-              Office: 10 Example Street, London, SE1 2AB
+              Flag Frenzy Football Ltd — Company No.
+              <span class="font-medium">[Company Number]</span
+              ><br class="sm:hidden" />
+              <span class="hidden sm:inline">•</span> Registered in England &
+              Wales <span class="hidden sm:inline">•</span> Registered Office:
+              <span class="font-medium">[Registered Office]</span>
             </div>
           </div>
-
           <span class="text-white/80">Built for the community.</span>
         </div>
       </div>
@@ -132,10 +723,31 @@
     </button>
 
     <script>
+      // Footer year
       document.getElementById("year").textContent = new Date().getFullYear();
+      // Auto "Last updated" (UK format)
+      (function () {
+        const node = document.getElementById("last-updated");
+        if (node) {
+          const d = new Date();
+          node.textContent = d.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+          });
+        }
+        // Mobile nav toggle fallback
+        const btn = document.getElementById("menuBtn");
+        const mob = document.getElementById("mobileNav");
+        if (btn && mob) {
+          btn.addEventListener("click", () => {
+            const isHidden = mob.classList.contains("hidden");
+            mob.classList.toggle("hidden", !isHidden);
+            btn.setAttribute("aria-expanded", String(isHidden));
+          });
+        }
+      })();
     </script>
-
-    <!-- Camp JS -->
     <script src="/camp/js/main.js"></script>
   </body>
 </html>
