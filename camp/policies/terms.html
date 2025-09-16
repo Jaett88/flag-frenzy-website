@@ -21,7 +21,14 @@
       body {
         font-family: "Poppins", sans-serif;
       }
+      :root {
+        --camp-red: #c7352d;
+        --camp-border: rgba(20, 20, 20, 0.12);
+      }
       @media print {
+        header,
+        footer,
+        #mobileNav,
         .no-print {
           display: none !important;
         }
@@ -37,10 +44,20 @@
           box-shadow: none !important;
           border: 1px solid #ddd;
         }
+        main {
+          max-width: 100% !important;
+          padding: 0 !important;
+        }
       }
     </style>
   </head>
   <body class="bg-[#F6EADB] text-gray-800">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white border rounded px-3 py-2 shadow"
+      >Skip to content</a
+    >
+
     <!-- Header -->
     <header class="bg-white shadow-md">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,15 +72,15 @@
               >Flag Frenzy Football Camp</span
             >
           </a>
-
           <button
             id="menuBtn"
             class="md:hidden p-2 rounded-lg border border-gray-200"
             aria-label="Toggle menu"
+            aria-controls="mobileNav"
+            aria-expanded="false"
           >
             ☰
           </button>
-
           <nav
             id="nav"
             class="hidden md:flex items-center gap-6 text-sm font-medium"
@@ -86,11 +103,13 @@
             <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
               >Contact</a
             >
-            <a class="btn btn-outline" href="/index.html">Main Site</a>
+            <a
+              class="inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
+              href="/index.html"
+              >Main Site</a
+            >
           </nav>
         </div>
-
-        <!-- Mobile Nav -->
         <nav
           id="mobileNav"
           class="hidden md:hidden border-t border-[var(--camp-border)] py-3"
@@ -114,13 +133,17 @@
             <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
               >Contact</a
             >
-            <a class="btn btn-outline w-max" href="/index.html">Main Site</a>
+            <a
+              class="w-max inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
+              href="/index.html"
+              >Main Site</a
+            >
           </div>
         </nav>
       </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 py-8">
+    <main id="main-content" class="max-w-4xl mx-auto px-4 py-8">
       <div class="no-print flex items-center justify-between mb-6">
         <h1 class="text-2xl sm:text-3xl font-extrabold">
           Terms and Conditions
@@ -128,14 +151,11 @@
             >(For Parents/Guardians)</span
           >
         </h1>
-
-        <!-- Desktop print button -->
         <button
           onclick="window.print()"
           class="hidden md:inline-flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm shadow-sm hover:shadow transition"
           aria-label="Print this policy"
         >
-          <!-- printer icon -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="w-4 h-4"
@@ -158,91 +178,87 @@
           </p>
           <p class="text-sm text-gray-600">Location: United Kingdom</p>
           <p class="text-sm text-neutral-500">
-            Last updated: 15 September 2025
-          </p>
-
-          <p class="mt-3 text-neutral-600">
-            These Terms apply to both our main website (<span
-              class="font-medium"
-              >Flag Frenzy Football Ltd</span
-            >) and our camp site (<span class="font-medium"
-              >Flag Frenzy Football Camp</span
-            >). By using our websites, registering for a camp, or purchasing any
-            services, you agree to these Terms.
+            Last updated: <span id="last-updated">15 September 2025</span>
           </p>
         </div>
 
-        <!-- Quick nav -->
-        <nav class="mb-10 border border-neutral-200 rounded-lg p-4 bg-white">
-          <h2
-            class="text-sm font-semibold text-neutral-800 uppercase tracking-wide"
+        <!-- Quick nav (match Refunds & Cancellations style) -->
+        <nav class="no-print grid sm:grid-cols-2 gap-3 mb-8 text-sm">
+          <a
+            href="#about-us"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >About Us</a
           >
-            On this page
-          </h2>
-          <ul class="mt-3 grid gap-2 text-neutral-700 text-sm">
-            <li><a class="hover:underline" href="#about-us">1. About Us</a></li>
-            <li>
-              <a class="hover:underline" href="#eligibility">2. Eligibility</a>
-            </li>
-            <li>
-              <a class="hover:underline" href="#registration-payment"
-                >3. Registration &amp; Payment</a
-              >
-            </li>
-            <li>
-              <a class="hover:underline" href="#refunds"
-                >4. Refunds &amp; Cancellations</a
-              >
-            </li>
-            <li>
-              <a class="hover:underline" href="#safety"
-                >5. Safety &amp; Behaviour</a
-              >
-            </li>
-            <li>
-              <a class="hover:underline" href="#medical"
-                >6. Medical &amp; Emergency</a
-              >
-            </li>
-            <li>
-              <a class="hover:underline" href="#liability">7. Liability</a>
-            </li>
-            <li>
-              <a class="hover:underline" href="#media"
-                >8. Photography &amp; Media</a
-              >
-            </li>
-            <li>
-              <a class="hover:underline" href="#website-use">9. Website Use</a>
-            </li>
-            <li>
-              <a class="hover:underline" href="#ip"
-                >10. Intellectual Property</a
-              >
-            </li>
-            <li>
-              <a class="hover:underline" href="#privacy"
-                >11. Privacy &amp; Data Protection</a
-              >
-            </li>
-            <li>
-              <a class="hover:underline" href="#complaints">12. Complaints</a>
-            </li>
-            <li>
-              <a class="hover:underline" href="#changes"
-                >13. Changes to these Terms</a
-              >
-            </li>
-            <li>
-              <a class="hover:underline" href="#law">14. Governing Law</a>
-            </li>
-          </ul>
+          <a
+            href="#eligibility"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Eligibility</a
+          >
+          <a
+            href="#registration-payment"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Registration &amp; Payment</a
+          >
+          <a
+            href="#refunds"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Refunds &amp; Cancellations</a
+          >
+          <a
+            href="#safety"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Safety &amp; Behaviour</a
+          >
+          <a
+            href="#medical"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Medical &amp; Emergency</a
+          >
+          <a
+            href="#liability"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Liability</a
+          >
+          <a
+            href="#media"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Photography &amp; Media</a
+          >
+          <a
+            href="#website-use"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Website Use</a
+          >
+          <a
+            href="#ip"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Intellectual Property</a
+          >
+          <a
+            href="#privacy"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Privacy &amp; Data</a
+          >
+          <a
+            href="#complaints"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Complaints</a
+          >
+          <a
+            href="#changes"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Changes</a
+          >
+          <a
+            href="#law"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Governing Law</a
+          >
         </nav>
 
-        <!-- 1. About Us -->
-        <section id="about-us" class="mb-10">
-          <h2 class="text-xl font-bold text-neutral-900">1. About Us</h2>
-          <div class="mt-3 space-y-2 text-neutral-700">
+        <section id="about-us" class="space-y-4">
+          <h2 class="text-xl font-bold">1. About Us</h2>
+          <div class="space-y-2 text-neutral-700">
             <p>
               <span class="font-medium">Flag Frenzy Football Ltd</span> (“we”,
               “our”, “us”) is a company registered in England &amp; Wales.
@@ -256,19 +272,17 @@
             </p>
             <p>
               Contact:
-              <a
-                href="mailto:info@flagfrenzyfootball.co.uk"
-                class="text-neutral-900 underline"
+              <a href="mailto:info@flagfrenzyfootball.co.uk" class="underline"
                 >info@flagfrenzyfootball.co.uk</a
               >
             </p>
           </div>
         </section>
+        <hr class="my-6" />
 
-        <!-- 2. Eligibility -->
-        <section id="eligibility" class="mb-10">
-          <h2 class="text-xl font-bold text-neutral-900">2. Eligibility</h2>
-          <ul class="mt-3 list-disc list-inside space-y-2 text-neutral-700">
+        <section id="eligibility" class="space-y-4">
+          <h2 class="text-xl font-bold">2. Eligibility</h2>
+          <ul class="list-disc pl-5 space-y-1 text-neutral-700">
             <li>
               Camps are open to children aged
               <span class="font-medium">7–15 years old</span>.
@@ -283,22 +297,18 @@
             </li>
           </ul>
         </section>
+        <hr class="my-6" />
 
-        <!-- 3. Registration & Payment -->
-        <section id="registration-payment" class="mb-10">
-          <h2 class="text-xl font-bold text-neutral-900">
-            3. Registration &amp; Payment
-          </h2>
-          <div class="mt-3 space-y-3 text-neutral-700">
+        <section id="registration-payment" class="space-y-4">
+          <h2 class="text-xl font-bold">3. Registration &amp; Payment</h2>
+          <div class="space-y-3 text-neutral-700">
             <p>
               Places are offered on a first-come, first-served basis and are
               limited to <span class="font-medium">25</span>. A waiting list may
               operate when capacity is reached.
             </p>
-
-            <!-- Pricing Card -->
             <div class="rounded-lg border border-neutral-200 bg-white p-4">
-              <h3 class="text-lg font-semibold text-neutral-900">Camp Fees</h3>
+              <h3 class="text-lg font-semibold">Camp Fees</h3>
               <div class="mt-3 overflow-x-auto">
                 <table class="w-full text-sm">
                   <thead>
@@ -350,8 +360,7 @@
                 All prices are in GBP and include any applicable VAT if charged.
               </p>
             </div>
-
-            <ul class="list-disc list-inside space-y-2">
+            <ul class="list-disc pl-5 space-y-1">
               <li>
                 Payment is taken at registration via secure checkout (e.g.,
                 Stripe/PayPal).
@@ -376,30 +385,26 @@
             </ul>
           </div>
         </section>
+        <hr class="my-6" />
 
-        <!-- 4. Refunds & Cancellations -->
-        <section id="refunds" class="mb-10">
-          <h2 class="text-xl font-bold text-neutral-900">
-            4. Refunds &amp; Cancellations
-          </h2>
-          <p class="mt-3 text-neutral-700">
+        <section id="refunds" class="space-y-4">
+          <h2 class="text-xl font-bold">4. Refunds &amp; Cancellations</h2>
+          <p>
             Our refunds and cancellations are governed by our
             <a
               data-policy-link="refunds"
               href="/camp/policies/refund-cancellations.html"
-              class="underline text-neutral-900"
+              class="underline"
               >Refunds &amp; Cancellations Policy</a
             >. Where these Terms and that policy differ, the policy will apply
             to refund amounts and timelines.
           </p>
         </section>
+        <hr class="my-6" />
 
-        <!-- 5. Safety & Behaviour -->
-        <section id="safety" class="mb-10">
-          <h2 class="text-xl font-bold text-neutral-900">
-            5. Safety &amp; Behaviour
-          </h2>
-          <ul class="mt-3 list-disc list-inside space-y-2 text-neutral-700">
+        <section id="safety" class="space-y-4">
+          <h2 class="text-xl font-bold">5. Safety &amp; Behaviour</h2>
+          <ul class="list-disc pl-5 space-y-1 text-neutral-700">
             <li>
               All staff/volunteers involved with camps are DBS-checked and
               follow safeguarding procedures.
@@ -417,26 +422,24 @@
               <a
                 data-policy-link="safeguarding"
                 href="/camp/policies/safeguarding.html"
-                class="underline text-neutral-900"
+                class="underline"
                 >Safeguarding Policy</a
               >
               and
               <a
                 data-policy-link="health-safety"
                 href="/camp/policies/health-and-safety.html"
-                class="underline text-neutral-900"
+                class="underline"
                 >Health &amp; Safety Policy</a
               >.
             </li>
           </ul>
         </section>
+        <hr class="my-6" />
 
-        <!-- 6. Medical & Emergency -->
-        <section id="medical" class="mb-10">
-          <h2 class="text-xl font-bold text-neutral-900">
-            6. Medical &amp; Emergency
-          </h2>
-          <ul class="mt-3 list-disc list-inside space-y-2 text-neutral-700">
+        <section id="medical" class="space-y-4">
+          <h2 class="text-xl font-bold">6. Medical &amp; Emergency</h2>
+          <ul class="list-disc pl-5 space-y-1 text-neutral-700">
             <li>
               Parents/guardians must provide accurate medical, allergy, and
               emergency contact details during registration and keep them up to
@@ -455,18 +458,18 @@
               <a
                 data-policy-link="medical"
                 href="/camp/policies/medical-consent.html"
-                class="underline text-neutral-900"
+                class="underline"
                 >Medical &amp; Inclusion Policies</a
               >
               for more detail.
             </li>
           </ul>
         </section>
+        <hr class="my-6" />
 
-        <!-- 7. Liability -->
-        <section id="liability" class="mb-10">
-          <h2 class="text-xl font-bold text-neutral-900">7. Liability</h2>
-          <ul class="mt-3 list-disc list-inside space-y-2 text-neutral-700">
+        <section id="liability" class="space-y-4">
+          <h2 class="text-xl font-bold">7. Liability</h2>
+          <ul class="list-disc pl-5 space-y-1 text-neutral-700">
             <li>
               We hold Public Liability Insurance appropriate for youth sports
               activities.
@@ -481,25 +484,23 @@
             </li>
           </ul>
         </section>
+        <hr class="my-6" />
 
-        <!-- 8. Photography & Media -->
-        <section id="media" class="mb-10">
-          <h2 class="text-xl font-bold text-neutral-900">
-            8. Photography &amp; Media
-          </h2>
-          <p class="mt-3 text-neutral-700">
+        <section id="media" class="space-y-4">
+          <h2 class="text-xl font-bold">8. Photography &amp; Media</h2>
+          <p>
             We may take photos/videos during camp for promotional purposes. You
             can opt out on the registration form and/or by contacting us at any
             time. We will respect your choice.
           </p>
         </section>
+        <hr class="my-6" />
 
-        <!-- 9. Website Use -->
-        <section id="website-use" class="mb-10">
-          <h2 class="text-xl font-bold text-neutral-900">
+        <section id="website-use" class="space-y-4">
+          <h2 class="text-xl font-bold">
             9. Website Use (Main Site &amp; Camp Site)
           </h2>
-          <ul class="mt-3 list-disc list-inside space-y-2 text-neutral-700">
+          <ul class="list-disc pl-5 space-y-1 text-neutral-700">
             <li>
               Information on our websites is provided in good faith; we aim for
               accuracy but cannot guarantee completeness or real-time updates.
@@ -513,72 +514,68 @@
             </li>
           </ul>
         </section>
+        <hr class="my-6" />
 
-        <!-- 10. IP -->
-        <section id="ip" class="mb-10">
-          <h2 class="text-xl font-bold text-neutral-900">
-            10. Intellectual Property
-          </h2>
-          <p class="mt-3 text-neutral-700">
+        <section id="ip" class="space-y-4">
+          <h2 class="text-xl font-bold">10. Intellectual Property</h2>
+          <p>
             Logos, branding, copy, images, and other materials are the property
             of Flag Frenzy Football Ltd (or our licensors). You may not copy,
             distribute, or reuse them without written permission.
           </p>
         </section>
+        <hr class="my-6" />
 
-        <!-- 11. Privacy -->
-        <section id="privacy" class="mb-10">
-          <h2 class="text-xl font-bold text-neutral-900">
-            11. Privacy &amp; Data Protection
-          </h2>
-          <p class="mt-3 text-neutral-700">
+        <section id="privacy" class="space-y-4">
+          <h2 class="text-xl font-bold">11. Privacy &amp; Data Protection</h2>
+          <p>
             We process personal data in line with our
             <a
               data-policy-link="privacy"
               href="/camp/policies/privacy.html"
-              class="underline text-neutral-900"
+              class="underline"
               >Privacy Policy</a
             >. By registering, you consent to us using your data to administer
             bookings, communicate important updates, and ensure safety.
           </p>
         </section>
+        <hr class="my-6" />
 
-        <!-- 12. Complaints -->
-        <section id="complaints" class="mb-10">
-          <h2 class="text-xl font-bold text-neutral-900">12. Complaints</h2>
-          <p class="mt-3 text-neutral-700">
+        <section id="complaints" class="space-y-4">
+          <h2 class="text-xl font-bold">12. Complaints</h2>
+          <p>
             If you have a concern or complaint, please email
-            <a
-              href="mailto:info@flagfrenzyfootball.co.uk"
-              class="underline text-neutral-900"
+            <a href="mailto:info@flagfrenzyfootball.co.uk" class="underline"
               >info@flagfrenzyfootball.co.uk</a
             >. We aim to acknowledge within 5 working days and respond as
             quickly as possible.
           </p>
         </section>
+        <hr class="my-6" />
 
-        <!-- 13. Changes -->
-        <section id="changes" class="mb-10">
-          <h2 class="text-xl font-bold text-neutral-900">
-            13. Changes to these Terms
-          </h2>
-          <p class="mt-3 text-neutral-700">
+        <section id="changes" class="space-y-4">
+          <h2 class="text-xl font-bold">13. Changes to these Terms</h2>
+          <p>
             We may update these Terms occasionally. The effective date will be
             shown at the top of this page. Material changes will be highlighted
             for a reasonable period.
           </p>
         </section>
+        <hr class="my-6" />
 
-        <!-- 14. Law -->
-        <section id="law">
-          <h2 class="text-xl font-bold text-neutral-900">14. Governing Law</h2>
-          <p class="mt-3 text-neutral-700">
+        <section id="law" class="space-y-4">
+          <h2 class="text-xl font-bold">14. Governing Law</h2>
+          <p>
             These Terms are governed by the laws of England &amp; Wales. The
             courts of England &amp; Wales have exclusive jurisdiction over any
             dispute.
           </p>
         </section>
       </section>
+
+      <p class="text-xs text-gray-500 mt-6">
+        © <span id="year"></span> Flag Frenzy Football Ltd. All rights reserved.
+      </p>
     </main>
 
     <!-- Camp Footer -->
@@ -592,7 +589,6 @@
           </h3>
           <p class="mt-2 text-white/80">Play fast. Play smart. Play flag.</p>
         </div>
-
         <div>
           <h4 class="font-semibold text-white">Quick Links</h4>
           <ul class="mt-2 space-y-2">
@@ -633,7 +629,6 @@
             </li>
           </ul>
         </div>
-
         <div>
           <h4 class="font-semibold text-white">Contact</h4>
           <ul class="mt-2 space-y-2">
@@ -656,8 +651,6 @@
           </ul>
         </div>
       </div>
-
-      <!-- Bottom bar -->
       <div class="border-t border-white/20">
         <div
           class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-white/80 flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
@@ -668,21 +661,19 @@
               rights reserved.</span
             >
             <div class="mt-2 text-xs leading-relaxed text-white/60">
-              Flag Frenzy Football Ltd — Company No. 12345678<br
-                class="sm:hidden"
-              />
+              Flag Frenzy Football Ltd — Company No.
+              <span class="font-medium">[Company Number]</span
+              ><br class="sm:hidden" />
               <span class="hidden sm:inline">•</span> Registered in England
               &amp; Wales <span class="hidden sm:inline">•</span> Registered
-              Office: 10 Example Street, London, SE1 2AB
+              Office: <span class="font-medium">[Registered Office]</span>
             </div>
           </div>
-
           <span class="text-white/80">Built for the community.</span>
         </div>
       </div>
     </footer>
 
-    <!-- Mobile floating print button -->
     <button
       onclick="window.print()"
       class="no-print md:hidden fixed bottom-4 right-4 rounded-full border bg-white p-3 shadow-lg hover:shadow-xl transition"
@@ -704,9 +695,27 @@
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+      (function () {
+        const node = document.getElementById("last-updated");
+        if (node) {
+          const d = new Date();
+          node.textContent = d.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+          });
+        }
+        const btn = document.getElementById("menuBtn");
+        const mob = document.getElementById("mobileNav");
+        if (btn && mob) {
+          btn.addEventListener("click", () => {
+            const isHidden = mob.classList.contains("hidden");
+            mob.classList.toggle("hidden", !isHidden);
+            btn.setAttribute("aria-expanded", String(isHidden));
+          });
+        }
+      })();
     </script>
-
-    <!-- Camp JS -->
     <script src="/camp/js/main.js"></script>
   </body>
 </html>
