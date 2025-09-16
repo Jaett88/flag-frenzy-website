@@ -21,8 +21,16 @@
       body {
         font-family: "Poppins", sans-serif;
       }
+      /* Fallbacks (in case CSS variables aren't set in /camp/css/style.css) */
+      :root {
+        --camp-red: #c7352d;
+        --camp-border: rgba(20, 20, 20, 0.12);
+      }
       @media print {
-        .no-print {
+        .no-print,
+        header,
+        footer,
+        #mobileNav {
           display: none !important;
         }
         body {
@@ -37,10 +45,21 @@
           box-shadow: none !important;
           border: 1px solid #ddd;
         }
+        main {
+          max-width: 100% !important;
+          padding: 0 !important;
+        }
       }
     </style>
   </head>
   <body class="bg-[#F6EADB] text-gray-800">
+    <!-- Skip link for accessibility -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white border rounded px-3 py-2 shadow"
+      >Skip to content</a
+    >
+
     <!-- Header -->
     <header class="bg-white shadow-md">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,15 +74,15 @@
               >Flag Frenzy Football Camp</span
             >
           </a>
-
           <button
             id="menuBtn"
             class="md:hidden p-2 rounded-lg border border-gray-200"
             aria-label="Toggle menu"
+            aria-controls="mobileNav"
+            aria-expanded="false"
           >
             ☰
           </button>
-
           <nav
             id="nav"
             class="hidden md:flex items-center gap-6 text-sm font-medium"
@@ -86,10 +105,14 @@
             <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
               >Contact</a
             >
-            <a class="btn btn-outline" href="/index.html">Main Site</a>
+            <!-- Inline Tailwind button for reliability -->
+            <a
+              class="inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
+              href="/index.html"
+              >Main Site</a
+            >
           </nav>
         </div>
-
         <!-- Mobile Nav -->
         <nav
           id="mobileNav"
@@ -114,13 +137,17 @@
             <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
               >Contact</a
             >
-            <a class="btn btn-outline w-max" href="/index.html">Main Site</a>
+            <a
+              class="w-max inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
+              href="/index.html"
+              >Main Site</a
+            >
           </div>
         </nav>
       </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 py-8">
+    <main id="main-content" class="max-w-4xl mx-auto px-4 py-8">
       <div class="no-print flex items-center justify-between mb-6">
         <h1 class="text-2xl sm:text-3xl font-extrabold">
           Code of Conduct/Behaviour
@@ -128,14 +155,12 @@
             >(For Parents/Guardians)</span
           >
         </h1>
-
         <!-- Desktop print button -->
         <button
           onclick="window.print()"
           class="hidden md:inline-flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm shadow-sm hover:shadow transition"
           aria-label="Print this policy"
         >
-          <!-- printer icon -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="w-4 h-4"
@@ -158,6 +183,9 @@
             Effective date: <span id="effective-date">31 August 2025</span>
           </p>
           <p class="text-sm text-gray-600">Location: United Kingdom</p>
+          <p class="text-sm text-neutral-500">
+            Last updated: <span id="last-updated">15 September 2025</span>
+          </p>
         </div>
 
         <nav class="no-print grid sm:grid-cols-2 gap-3 mb-8 text-sm">
@@ -196,6 +224,11 @@
             class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
             >Reporting</a
           >
+          <a
+            href="#agreement"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Agreement</a
+          >
         </nav>
 
         <section id="purpose" class="space-y-4">
@@ -207,7 +240,6 @@
             enjoyable environment where every child can learn and thrive.
           </p>
         </section>
-
         <hr class="my-6" />
 
         <section id="children" class="space-y-3">
@@ -238,7 +270,6 @@
             </li>
           </ul>
         </section>
-
         <hr class="my-6" />
 
         <section id="parents" class="space-y-3">
@@ -264,7 +295,6 @@
             </li>
           </ul>
         </section>
-
         <hr class="my-6" />
 
         <section id="staff" class="space-y-3">
@@ -286,7 +316,6 @@
             </li>
           </ul>
         </section>
-
         <hr class="my-6" />
 
         <section id="prohibited" class="space-y-3">
@@ -304,7 +333,6 @@
             <li>Damage to property or deliberate misuse of equipment.</li>
           </ul>
         </section>
-
         <hr class="my-6" />
 
         <section id="consequences" class="space-y-3">
@@ -326,7 +354,6 @@
             </li>
           </ol>
         </section>
-
         <hr class="my-6" />
 
         <section id="reporting" class="space-y-3">
@@ -349,7 +376,6 @@
             </li>
           </ul>
         </section>
-
         <hr class="my-6" />
 
         <section id="agreement" class="space-y-3">
@@ -377,7 +403,6 @@
           </h3>
           <p class="mt-2 text-white/80">Play fast. Play smart. Play flag.</p>
         </div>
-
         <div>
           <h4 class="font-semibold text-white">Quick Links</h4>
           <ul class="mt-2 space-y-2">
@@ -418,7 +443,6 @@
             </li>
           </ul>
         </div>
-
         <div>
           <h4 class="font-semibold text-white">Contact</h4>
           <ul class="mt-2 space-y-2">
@@ -453,15 +477,14 @@
               rights reserved.</span
             >
             <div class="mt-2 text-xs leading-relaxed text-white/60">
-              Flag Frenzy Football Ltd — Company No. 12345678<br
-                class="sm:hidden"
-              />
-              <span class="hidden sm:inline">•</span> Registered in England
-              &amp; Wales <span class="hidden sm:inline">•</span> Registered
-              Office: 10 Example Street, London, SE1 2AB
+              Flag Frenzy Football Ltd — Company No.
+              <span class="font-medium">[Company Number]</span
+              ><br class="sm:hidden" />
+              <span class="hidden sm:inline">•</span> Registered in England &
+              Wales <span class="hidden sm:inline">•</span> Registered Office:
+              <span class="font-medium">[Registered Office]</span>
             </div>
           </div>
-
           <span class="text-white/80">Built for the community.</span>
         </div>
       </div>
@@ -488,7 +511,30 @@
     </button>
 
     <script>
+      // Footer year
       document.getElementById("year").textContent = new Date().getFullYear();
+      // Auto "Last updated" (UK format)
+      (function () {
+        const node = document.getElementById("last-updated");
+        if (node) {
+          const d = new Date();
+          node.textContent = d.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+          });
+        }
+        // Mobile nav toggle fallback
+        const btn = document.getElementById("menuBtn");
+        const mob = document.getElementById("mobileNav");
+        if (btn && mob) {
+          btn.addEventListener("click", () => {
+            const isHidden = mob.classList.contains("hidden");
+            mob.classList.toggle("hidden", !isHidden);
+            btn.setAttribute("aria-expanded", String(isHidden));
+          });
+        }
+      })();
     </script>
     <script src="/camp/js/main.js"></script>
   </body>
