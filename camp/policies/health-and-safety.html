@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Health & Safety — Flag Frenzy Football Camp</title>
+    <meta
+      name="description"
+      content="Health & Safety policy for Flag Frenzy Football Camp, including responsibilities, venue safety, first aid, supervision and review."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/camp/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+      /* Fallbacks in case CSS variables aren't defined in /camp/css/style.css */
+      :root {
+        --camp-red: #c7352d;
+        --camp-border: rgba(20, 20, 20, 0.12);
+      }
+      @media print {
+        .no-print,
+        header,
+        footer,
+        #mobileNav {
+          display: none !important;
+        }
+        body {
+          color: #000;
+          background: #fff;
+        }
+        a {
+          text-decoration: none;
+          color: #000;
+        }
+        .card {
+          box-shadow: none !important;
+          border: 1px solid #ddd;
+        }
+        main {
+          max-width: 100% !important;
+          padding: 0 !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-[#F6EADB] text-gray-800">
+    <!-- Skip link -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white border rounded px-3 py-2 shadow"
+      >Skip to content</a
+    >
+
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="h-16 flex items-center justify-between">
+          <a href="/camp/index.html" class="flex items-center gap-3">
+            <img
+              src="/camp/src/logo.png"
+              alt="Flag Frenzy Football Camp logo"
+              class="h-10 w-10"
+            />
+            <span class="text-xl font-extrabold" style="color: var(--camp-red)"
+              >Flag Frenzy Football Camp</span
+            >
+          </a>
+          <button
+            id="menuBtn"
+            class="md:hidden p-2 rounded-lg border border-gray-200"
+            aria-label="Toggle menu"
+            aria-controls="mobileNav"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+          <nav
+            id="nav"
+            class="hidden md:flex items-center gap-6 text-sm font-medium"
+          >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
+              >Home</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
+              >About</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/register.html"
+              >Register</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
+              >Policies</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
+              >FAQs</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
+              >Contact</a
+            >
+            <!-- Inline Tailwind button for consistency with other pages -->
+            <a
+              class="inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
+              href="/index.html"
+              >Main Site</a
+            >
+          </nav>
+        </div>
+        <!-- Mobile Nav -->
+        <nav
+          id="mobileNav"
+          class="hidden md:hidden border-t border-[var(--camp-border)] py-3"
+        >
+          <div class="flex flex-col gap-3 font-medium">
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
+              >Home</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
+              >About</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/register.html"
+              >Register</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
+              >Policies</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
+              >FAQs</a
+            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
+              >Contact</a
+            >
+            <a
+              class="w-max inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
+              href="/index.html"
+              >Main Site</a
+            >
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="max-w-4xl mx-auto px-4 py-8">
+      <div class="no-print flex items-center justify-between mb-6">
+        <h1 class="text-2xl sm:text-3xl font-extrabold">
+          Health & Safety Policy
+          <span class="text-gray-600 text-base font-semibold"
+            >(For Parents/Guardians)</span
+          >
+        </h1>
+        <button
+          onclick="window.print()"
+          class="hidden md:inline-flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm shadow-sm hover:shadow transition"
+          aria-label="Print this policy"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
+            />
+          </svg>
+          Print
+        </button>
+      </div>
+
+      <section class="card bg-white rounded-2xl shadow p-6 sm:p-8">
+        <div class="mb-6">
+          <p class="text-sm text-gray-600">Flag Frenzy Football Camp</p>
+          <p class="text-sm text-gray-600">
+            Effective date: <span id="effective-date">31 August 2025</span>
+          </p>
+          <p class="text-sm text-gray-600">Location: United Kingdom</p>
+          <p class="text-sm text-neutral-500">
+            Last updated: <span id="last-updated">15 September 2025</span>
+          </p>
+        </div>
+
+        <!-- Quick nav pills -->
+        <nav class="no-print grid sm:grid-cols-2 gap-3 mb-8 text-sm">
+          <a
+            href="#overview"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Overview</a
+          >
+          <a
+            href="#responsibilities"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Responsibilities</a
+          >
+          <a
+            href="#venue-equipment"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Venue & Equipment</a
+          >
+          <a
+            href="#emergencies-first-aid"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Emergencies & First Aid</a
+          >
+          <a
+            href="#child-supervision"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Child Supervision</a
+          >
+          <a
+            href="#review"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Review</a
+          >
+          <a
+            href="#related"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Related Policies</a
+          >
+          <a
+            href="#contact"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Contact</a
+          >
+        </nav>
+
+        <section id="overview" class="space-y-4">
+          <h2 class="text-xl font-bold">Overview</h2>
+          <p>
+            Flag Frenzy Football Ltd is committed to providing a safe and
+            enjoyable environment for all participants, staff and visitors at
+            our camps. This Health & Safety Policy sets out how we manage safety
+            before and during camp.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="responsibilities" class="space-y-2">
+          <h2 class="text-xl font-bold">1. Responsibilities</h2>
+          <ul class="mt-3 list-disc pl-5 text-neutral-700 space-y-2">
+            <li>
+              The Camp Director holds overall responsibility for health and
+              safety.
+            </li>
+            <li>
+              All staff are trained in safeguarding, first aid and emergency
+              procedures.
+            </li>
+            <li>
+              Parents/guardians must provide accurate medical and emergency
+              details.
+            </li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="venue-equipment" class="space-y-2">
+          <h2 class="text-xl font-bold">2. Venue & Equipment Safety</h2>
+          <ul class="mt-3 list-disc pl-5 text-neutral-700 space-y-2">
+            <li>Venues are risk-assessed before camp begins.</li>
+            <li>Playing areas are checked daily for hazards.</li>
+            <li>
+              Equipment is age-appropriate, regularly inspected, and used
+              safely.
+            </li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="emergencies-first-aid" class="space-y-2">
+          <h2 class="text-xl font-bold">3. Emergencies & First Aid</h2>
+          <ul class="mt-3 list-disc pl-5 text-neutral-700 space-y-2">
+            <li>A qualified first aider is present at all times.</li>
+            <li>First aid kits are accessible at every camp location.</li>
+            <li>
+              In serious cases, emergency services will be contacted immediately
+              and parents informed.
+            </li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="child-supervision" class="space-y-2">
+          <h2 class="text-xl font-bold">4. Child Supervision</h2>
+          <ul class="mt-3 list-disc pl-5 text-neutral-700 space-y-2">
+            <li>
+              Staff-to-child ratios meet or exceed recommended guidelines.
+            </li>
+            <li>Children are supervised at all times during activities.</li>
+            <li>
+              Clear procedures are in place for drop-off, pick-up, and
+              sign-in/out.
+            </li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="review" class="space-y-2">
+          <h2 class="text-xl font-bold">5. Review</h2>
+          <p class="mt-3 text-neutral-700">
+            This policy is reviewed before each camp and updated if needed to
+            ensure ongoing compliance and best practice.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="related" class="space-y-2">
+          <h2 class="text-xl font-bold">Related Policies</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              <a class="underline" href="/camp/policies/safeguarding.html"
+                >Safeguarding Policy</a
+              >
+            </li>
+            <li>
+              <a class="underline" href="/camp/policies/medical-consent.html"
+                >Medical & Inclusion Policies</a
+              >
+            </li>
+            <li>
+              <a class="underline" href="/camp/policies/behaviour.html"
+                >Code of Conduct/Behaviour</a
+              >
+            </li>
+            <li>
+              <a
+                class="underline"
+                href="/camp/policies/refund-cancellations.html"
+                >Refunds & Cancellations</a
+              >
+            </li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="contact" class="space-y-2">
+          <h2 class="text-xl font-bold">Contact</h2>
+          <address class="not-italic">
+            Flag Frenzy Football Ltd<br />
+            Email:
+            <a class="underline" href="mailto:info@flagfrenzyfootball.co.uk"
+              >info@flagfrenzyfootball.co.uk</a
+            ><br />
+            Website:
+            <a class="underline" href="https://flagfrenzyfootball.co.uk"
+              >flagfrenzyfootball.co.uk</a
+            >
+          </address>
+        </section>
+      </section>
+
+      <p class="text-xs text-gray-500 mt-6">
+        © <span id="year"></span> Flag Frenzy Football Ltd. All rights reserved.
+      </p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-16 bg-[var(--camp-red)] text-white">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid gap-8 md:grid-cols-3"
+      >
+        <div>
+          <h3 class="font-semibold text-lg text-white">
+            Flag Frenzy Football Camp
+          </h3>
+          <p class="mt-2 text-white/80">Play fast. Play smart. Play flag.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white">Quick Links</h4>
+          <ul class="mt-2 space-y-2">
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
+                href="/camp/policies.html"
+                >Policies</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
+                href="/camp/about.html"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
+                href="/camp/register.html"
+                >Register</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
+                href="/camp/contact.html"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
+                href="/index.html"
+                >Main Site</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white">Contact</h4>
+          <ul class="mt-2 space-y-2">
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
+                href="mailto:info@flagfrenzyfootball.co.uk"
+                >info@flagfrenzyfootball.co.uk</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
+                target="_blank"
+                rel="noopener"
+                href="https://instagram.com/flagfrenzycamp"
+                >@flagfrenzycamp</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/20">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-white/80 flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
+        >
+          <div>
+            <span
+              >&copy; <span id="year"></span> Flag Frenzy Football Ltd. All
+              rights reserved.</span
+            >
+            <div class="mt-2 text-xs leading-relaxed text-white/60">
+              Flag Frenzy Football Ltd — Company No.
+              <span class="font-medium">[Company Number]</span
+              ><br class="sm:hidden" />
+              <span class="hidden sm:inline">•</span> Registered in England &
+              Wales <span class="hidden sm:inline">•</span> Registered Office:
+              <span class="font-medium">[Registered Office]</span>
+            </div>
+          </div>
+          <span class="text-white/80">Built for the community.</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile floating print button -->
+    <button
+      onclick="window.print()"
+      class="no-print md:hidden fixed bottom-4 right-4 rounded-full border bg-white p-3 shadow-lg hover:shadow-xl transition"
+      aria-label="Print this policy"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-5 h-5"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
+        />
+      </svg>
+      <span class="sr-only">Print this policy</span>
+    </button>
+
+    <script>
+      // Footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+      // Auto "Last updated" (UK format)
+      (function () {
+        const node = document.getElementById("last-updated");
+        if (node) {
+          const d = new Date();
+          node.textContent = d.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+          });
+        }
+        // Mobile nav toggle fallback
+        const btn = document.getElementById("menuBtn");
+        const mob = document.getElementById("mobileNav");
+        if (btn && mob) {
+          btn.addEventListener("click", () => {
+            const isHidden = mob.classList.contains("hidden");
+            mob.classList.toggle("hidden", !isHidden);
+            btn.setAttribute("aria-expanded", String(isHidden));
+          });
+        }
+      })();
+    </script>
+    <script src="/camp/js/main.js"></script>
+  </body>
+</html>
