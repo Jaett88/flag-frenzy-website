@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Medical & Parental Consent | Flag Frenzy Football Camp</title>
+    <title>Medical & Inclusion — Flag Frenzy Football Camp</title>
+    <meta
+      name="description"
+      content="Medical, inclusion and parental consent policy for Flag Frenzy Football Camp: allergies, medication, emergency care, SEND adjustments, illness, return-to-play, and data handling."
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/camp/css/style.css" />
     <link
@@ -11,8 +15,39 @@
       rel="stylesheet"
     />
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         font-family: "Poppins", sans-serif;
+      }
+      :root {
+        --camp-red: #c7352d;
+        --camp-border: rgba(20, 20, 20, 0.12);
+      }
+      @media print {
+        .no-print,
+        header,
+        footer,
+        #mobileNav {
+          display: none !important;
+        }
+        body {
+          color: #000;
+          background: #fff;
+        }
+        a {
+          text-decoration: none;
+          color: #000;
+        }
+        .card {
+          box-shadow: none !important;
+          border: 1px solid #ddd;
+        }
+        main {
+          max-width: 100% !important;
+          padding: 0 !important;
+        }
       }
     </style>
   </head>
@@ -31,15 +66,15 @@
               >Flag Frenzy Football Camp</span
             >
           </a>
-
           <button
             id="menuBtn"
             class="md:hidden p-2 rounded-lg border border-gray-200"
             aria-label="Toggle menu"
+            aria-controls="mobileNav"
+            aria-expanded="false"
           >
             ☰
           </button>
-
           <nav
             id="nav"
             class="hidden md:flex items-center gap-6 text-sm font-medium"
@@ -62,10 +97,13 @@
             <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
               >Contact</a
             >
-            <a class="btn btn-outline" href="/index.html">Main Site</a>
+            <a
+              class="inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
+              href="/index.html"
+              >Main Site</a
+            >
           </nav>
         </div>
-
         <!-- Mobile Nav -->
         <nav
           id="mobileNav"
@@ -90,107 +128,447 @@
             <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
               >Contact</a
             >
-            <a class="btn btn-outline w-max" href="/index.html">Main Site</a>
+            <a
+              class="w-max inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
+              href="/index.html"
+              >Main Site</a
+            >
           </div>
         </nav>
       </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-6 py-10 space-y-8">
-      <section class="bg-white rounded-2xl shadow p-6 md:p-8">
-        <h2 class="text-3xl font-bold mb-2">Medical & Parental Consent</h2>
-        <p class="text-gray-700">
-          This policy explains how we gather and use medical information to keep
-          campers safe, and the consents we request from parents/guardians.
-        </p>
-        <div class="mt-6 grid gap-5 md:grid-cols-2">
-          <div class="bg-[#FDF6EE] rounded-xl p-5">
-            <h3 class="font-semibold mb-2">Our commitments</h3>
-            <ul class="list-disc pl-5 space-y-2 text-sm">
-              <li>
-                Collect only essential health info; store securely; share with
-                authorised staff only.
-              </li>
-              <li>
-                Follow parent instructions for medication and allergy
-                management.
-              </li>
-              <li>
-                Respond to incidents using trained first aiders and notify
-                parents promptly.
-              </li>
-            </ul>
-          </div>
-          <div class="bg-[#FDF6EE] rounded-xl p-5">
-            <h3 class="font-semibold mb-2">What we ask from you</h3>
-            <ul class="list-disc pl-5 space-y-2 text-sm">
-              <li>
-                Provide accurate, up-to-date medical details and emergency
-                contacts.
-              </li>
-              <li>Supply labeled medication with clear instructions.</li>
-              <li>Update us of any changes before/during camp.</li>
-            </ul>
-          </div>
-        </div>
-
-        <h3 class="text-xl font-bold mt-8 mb-3">
-          Allergy & Medical Management
-        </h3>
-        <ul class="list-disc pl-6 space-y-2">
-          <li>
-            <strong>Allergies:</strong> We maintain an allergy register; staff
-            are briefed daily. No food sharing. Epipens/inhalers must be on site
-            and accessible.
-          </li>
-          <li>
-            <strong>Medication:</strong> Only administered with written
-            consent/instructions. We record time/dose/staff signature.
-          </li>
-          <li>
-            <strong>Illness & injury:</strong> First aid given; incidents
-            logged. We call emergency contacts for anything beyond minor first
-            aid.
-          </li>
-        </ul>
-
-        <h3 class="text-xl font-bold mt-8 mb-3">Emergency Care & Consent</h3>
-        <p class="mb-3">
-          By providing consent, you allow us to administer first aid and, if
-          required, to seek emergency treatment on your child’s behalf. We will
-          always attempt to contact you first unless urgent action is needed.
-        </p>
-
-        <h3 class="text-xl font-bold mt-8 mb-3">
-          Photography & Media (optional)
-        </h3>
-        <p class="mb-3">
-          With separate consent, we may capture photos/videos for camp updates
-          and marketing. Consent can be withdrawn at any time by emailing
-          <a class="underline" href="mailto:info@flagfrenzyfootball.co.uk"
-            >info@flagfrenzyfootball.co.uk</a
-          >.
-        </p>
-
-        <h3 class="text-xl font-bold mt-8 mb-3">Data Protection</h3>
-        <p>
-          Medical data is processed under our
-          <a class="underline" href="/camp/data-security.html"
-            >Security & Data Handling Policy</a
-          >. Sensitive data is restricted to authorised staff.
-        </p>
-
-        <div class="mt-8">
-          <a
-            href="/camp/medical-consent-form.html"
-            class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold"
-            >Complete Medical & Consent Form</a
+    <main class="max-w-4xl mx-auto px-4 py-8">
+      <div class="no-print flex items-center justify-between mb-6">
+        <h1 class="text-2xl sm:text-3xl font-extrabold">
+          Medical & Inclusion
+          <span class="text-gray-600 text-base font-semibold"
+            >(For Parents/Guardians)</span
           >
+        </h1>
+        <button
+          onclick="window.print()"
+          class="hidden md:inline-flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm shadow-sm hover:shadow transition"
+          aria-label="Print this policy"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
+            />
+          </svg>
+          Print
+        </button>
+      </div>
+
+      <section class="card bg-white rounded-2xl shadow p-6 sm:p-8">
+        <div class="mb-6">
+          <p class="text-sm text-gray-600">Flag Frenzy Football Camp</p>
+          <p class="text-sm text-gray-600">
+            Effective date: <span id="effective-date">31 August 2025</span>
+          </p>
+          <p class="text-sm text-gray-600">Location: United Kingdom</p>
+          <p class="text-sm text-neutral-500">
+            Last updated: <span id="last-updated">15 September 2025</span>
+          </p>
         </div>
+
+        <!-- Quick nav pills -->
+        <nav class="no-print grid sm:grid-cols-2 gap-3 mb-8 text-sm">
+          <a
+            href="#overview"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Overview</a
+          >
+          <a
+            href="#scope"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Scope</a
+          >
+          <a
+            href="#commitments"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Our Commitments</a
+          >
+          <a
+            href="#parents"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >What We Ask of Parents</a
+          >
+          <a
+            href="#allergies"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Allergies & Medical</a
+          >
+          <a
+            href="#medication"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Medication Procedure</a
+          >
+          <a
+            href="#inclusion"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Inclusion & SEND</a
+          >
+          <a
+            href="#careplans"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Care Plans</a
+          >
+          <a
+            href="#emergency"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Emergency Care & Consent</a
+          >
+          <a
+            href="#illness"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Illness & Infection</a
+          >
+          <a
+            href="#return"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Return‑to‑Play</a
+          >
+          <a
+            href="#records"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Incidents & Records</a
+          >
+          <a
+            href="#data"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Data & Privacy</a
+          >
+          <a
+            href="#forms"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Forms & Contacts</a
+          >
+          <a
+            href="#related"
+            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
+            >Related Policies</a
+          >
+        </nav>
+
+        <section id="overview" class="space-y-3">
+          <h2 class="text-xl font-bold">Overview</h2>
+          <p>
+            We’re committed to a safe, inclusive environment for every child.
+            This page explains how we collect and use medical information, how
+            we manage allergies and medication, and how we support children with
+            additional needs (SEND) and disabilities.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="scope" class="space-y-3">
+          <h2 class="text-xl font-bold">Scope</h2>
+          <p>
+            Applies to all participants, parents/guardians, staff and volunteers
+            at Flag Frenzy Football Camp.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="commitments" class="space-y-3">
+          <h2 class="text-xl font-bold">Our Commitments</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              Collect only essential health information, store securely, and
+              share on a need‑to‑know basis.
+            </li>
+            <li>
+              Follow parent/clinician instructions for allergy and medical
+              management.
+            </li>
+            <li>
+              Provide trained first aiders on site; respond promptly to
+              incidents and inform parents.
+            </li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="parents" class="space-y-3">
+          <h2 class="text-xl font-bold">What We Ask of Parents/Guardians</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              Provide accurate medical details and at least one reachable
+              emergency contact.
+            </li>
+            <li>
+              Supply clearly labelled medication (name, dose, timing) and hand
+              it to staff at sign‑in.
+            </li>
+            <li>
+              Update us immediately if details change before or during camp.
+            </li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="allergies" class="space-y-3">
+          <h2 class="text-xl font-bold">Allergies & Medical Management</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Allergies:</strong> We maintain an allergy register and
+              brief staff daily. We discourage food sharing. Adrenaline
+              auto‑injectors/inhalers must be on site and accessible.
+            </li>
+            <li>
+              <strong>Illness & injuries:</strong> First aid is provided and
+              incidents logged. We contact emergency contacts for anything
+              beyond minor first aid.
+            </li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="medication" class="space-y-3">
+          <h2 class="text-xl font-bold">Medication Administration Procedure</h2>
+          <ol class="list-decimal pl-5 space-y-1">
+            <li>
+              Parent hands over medication at sign‑in with written instructions
+              (captured in registration notes or handed in as written
+              directions).
+            </li>
+            <li>
+              Medication is stored securely but quickly accessible;
+              temperature‑sensitive items follow manufacturer guidance.
+            </li>
+            <li>
+              Two‑step check at administration (dose/time/child) where
+              practicable; record kept (time, dose, staff initials).
+            </li>
+            <li>
+              We do not give the first‑ever dose of a new medication at camp.
+            </li>
+          </ol>
+          <p class="text-sm text-neutral-600">
+            Template:
+            <a class="underline" href="/camp/forms/medication-record.pdf"
+              >Medication Administration Record</a
+            >
+            (optional download).
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="inclusion" class="space-y-3">
+          <h2 class="text-xl font-bold">Inclusion & SEND</h2>
+          <p>
+            We welcome children with additional needs and disabilities. Our
+            approach is to plan reasonable adjustments so each child can
+            participate safely and enjoyably.
+          </p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              Please share details during registration; we may arrange a
+              pre‑camp conversation to agree adjustments.
+            </li>
+            <li>
+              Examples include activity adaptations, visual schedules, quiet
+              spaces, flexible transitions, or additional supervision.
+            </li>
+            <li>
+              If 1:1 support is essential, we’ll discuss safe options (our staff
+              capacity, or a parent‑provided support adult subject to
+              suitability checks and site procedures).
+            </li>
+            <li>
+              Where a need cannot be safely met despite reasonable adjustments,
+              we will explore alternatives (different group, modified timetable,
+              or credit/refund options consistent with our refund policy).
+            </li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="careplans" class="space-y-3">
+          <h2 class="text-xl font-bold">Care Plans (EAP/IHP)</h2>
+          <p>
+            For ongoing conditions (e.g., asthma, epilepsy, diabetes, severe
+            allergies), we may create an <em>Emergency Action Plan (EAP)</em> or
+            <em>Individual Healthcare Plan (IHP)</em> with you.
+          </p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              Plan includes triggers, signs, step‑by‑step actions, medication,
+              and emergency contacts.
+            </li>
+            <li>
+              Reviewed daily at sign‑in; any updates noted on the register.
+            </li>
+          </ul>
+          <p class="text-sm text-neutral-600">
+            Template:
+            <a class="underline" href="/camp/forms/care-plan-template.pdf"
+              >Care Plan (EAP/IHP)</a
+            >
+            (optional download).
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="emergency" class="space-y-3">
+          <h2 class="text-xl font-bold">Emergency Care & Consent</h2>
+          <p>
+            By completing registration, you give consent for us to administer
+            basic first aid and, if required, seek emergency treatment on your
+            child’s behalf. We will always try to contact you first unless
+            urgent action is needed.
+          </p>
+          <p class="text-sm text-neutral-600">
+            Consent is captured within the
+            <a class="underline" href="/camp/register.html">registration form</a
+            >; no separate consent form is required.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="illness" class="space-y-3">
+          <h2 class="text-xl font-bold">
+            Illness, Infection Control & Exclusion
+          </h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              Do not attend if your child is acutely unwell or has a contagious
+              illness.
+            </li>
+            <li>
+              General guide: return after 48 hours symptom‑free following
+              vomiting/diarrhoea. For other conditions, follow NHS/public health
+              advice.
+            </li>
+            <li>We may request a fit‑to‑return note where appropriate.</li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="return" class="space-y-3">
+          <h2 class="text-xl font-bold">Return‑to‑Play (Injury/Illness)</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              Activities are adapted following an injury or illness; we follow
+              parent/clinician guidance on limits.
+            </li>
+            <li>
+              For head injuries or suspected concussion, the child will stop
+              participation that day and should only return in line with medical
+              advice.
+            </li>
+          </ul>
+        </section>
+        <hr class="my-6" />
+
+        <section id="records" class="space-y-3">
+          <h2 class="text-xl font-bold">Incident & Accident Records</h2>
+          <p>
+            We keep records of first aid, medication administration, and
+            significant incidents. Parents may receive a copy at collection or
+            by email upon request. Serious incidents are escalated under our
+            Safeguarding & Health and Safety procedures.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="data" class="space-y-3">
+          <h2 class="text-xl font-bold">Data & Privacy</h2>
+          <p>
+            Medical information is processed under our
+            <a class="underline" href="/camp/policies/privacy.html"
+              >Privacy Policy</a
+            >. We retain registration records for up to 12 months after the camp
+            season. Medical and emergency contact details are deleted at the end
+            of the season unless required by law or safeguarding.
+          </p>
+        </section>
+        <hr class="my-6" />
+
+        <section id="forms" class="space-y-3">
+          <h2 class="text-xl font-bold">Forms & Contacts</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              <a class="underline" href="/camp/register.html"
+                >Registration & Consent (online)</a
+              >
+            </li>
+            <li>
+              <a class="underline" href="/camp/forms/medication-record.pdf"
+                >Medication Administration Record (template)</a
+              >
+            </li>
+            <li>
+              <a class="underline" href="/camp/forms/care-plan-template.pdf"
+                >Care Plan (EAP/IHP) template</a
+              >
+            </li>
+            <li>
+              <a class="underline" href="/camp/forms/safeguarding-concern.html"
+                >Safeguarding Concern Form</a
+              >
+            </li>
+          </ul>
+          <p class="text-sm text-neutral-600">
+            If you don’t yet have these forms, keep the links but mark them
+            “coming soon” or point them to a simple contact form; we can update
+            URLs later.
+          </p>
+          <address class="not-italic text-sm">
+            Email:
+            <a class="underline" href="mailto:info@flagfrenzyfootball.co.uk"
+              >info@flagfrenzyfootball.co.uk</a
+            >
+          </address>
+        </section>
+        <hr class="my-6" />
+
+        <section id="related" class="space-y-3">
+          <h2 class="text-xl font-bold">Related Policies</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>
+              <a class="underline" href="/camp/policies/safeguarding.html"
+                >Safeguarding</a
+              >
+            </li>
+            <li>
+              <a class="underline" href="/camp/policies/behaviour.html"
+                >Code of Conduct/Behaviour</a
+              >
+            </li>
+            <li>
+              <a class="underline" href="/camp/policies/health-and-safety.html"
+                >Health & Safety</a
+              >
+            </li>
+            <li>
+              <a
+                class="underline"
+                href="/camp/policies/refund-cancellations.html"
+                >Refunds & Cancellations</a
+              >
+            </li>
+            <li>
+              <a class="underline" href="/camp/terms.html"
+                >Terms & Conditions</a
+              >
+            </li>
+          </ul>
+        </section>
       </section>
+
+      <p class="text-xs text-gray-500 mt-6">
+        © <span id="year"></span> Flag Frenzy Football Ltd. All rights reserved.
+      </p>
     </main>
 
-    <!-- Camp Footer -->
+    <!-- Footer -->
     <footer class="footer mt-16 bg-[var(--camp-red)] text-white">
       <div
         class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid gap-8 md:grid-cols-3"
@@ -201,7 +579,6 @@
           </h3>
           <p class="mt-2 text-white/80">Play fast. Play smart. Play flag.</p>
         </div>
-
         <div>
           <h4 class="font-semibold text-white">Quick Links</h4>
           <ul class="mt-2 space-y-2">
@@ -242,7 +619,6 @@
             </li>
           </ul>
         </div>
-
         <div>
           <h4 class="font-semibold text-white">Contact</h4>
           <ul class="mt-2 space-y-2">
@@ -265,8 +641,6 @@
           </ul>
         </div>
       </div>
-
-      <!-- Bottom bar -->
       <div class="border-t border-white/20">
         <div
           class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-white/80 flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
@@ -277,15 +651,14 @@
               rights reserved.</span
             >
             <div class="mt-2 text-xs leading-relaxed text-white/60">
-              Flag Frenzy Football Ltd — Company No. 12345678<br
-                class="sm:hidden"
-              />
-              <span class="hidden sm:inline">•</span> Registered in England
-              &amp; Wales <span class="hidden sm:inline">•</span> Registered
-              Office: 10 Example Street, London, SE1 2AB
+              Flag Frenzy Football Ltd — Company No.
+              <span class="font-medium">[Company Number]</span
+              ><br class="sm:hidden" />
+              <span class="hidden sm:inline">•</span> Registered in England &
+              Wales <span class="hidden sm:inline">•</span> Registered Office:
+              <span class="font-medium">[Registered Office]</span>
             </div>
           </div>
-
           <span class="text-white/80">Built for the community.</span>
         </div>
       </div>
@@ -313,8 +686,27 @@
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+      (function () {
+        const node = document.getElementById("last-updated");
+        if (node) {
+          const d = new Date();
+          node.textContent = d.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+          });
+        }
+        const btn = document.getElementById("menuBtn");
+        const mob = document.getElementById("mobileNav");
+        if (btn && mob) {
+          btn.addEventListener("click", () => {
+            const isHidden = mob.classList.contains("hidden");
+            mob.classList.toggle("hidden", !isHidden);
+            btn.setAttribute("aria-expanded", String(isHidden));
+          });
+        }
+      })();
     </script>
-
     <script src="/camp/js/main.js"></script>
   </body>
 </html>
