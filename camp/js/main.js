@@ -208,3 +208,82 @@ document.addEventListener("DOMContentLoaded", () => {
   toggleDaySelect(false);
   updatePaymentSummary();
 });
+
+// /camp/js/main.js
+(function () {
+  document.addEventListener("DOMContentLoaded", function () {
+    const body = document.body;
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileNav = document.getElementById("mobileNav");
+
+    // ---------- Mobile menu ----------
+    function openMenu() {
+      if (!mobileNav) return;
+      mobileNav.classList.add("is-open");
+      body.classList.add("nav-open");
+      if (menuBtn) menuBtn.setAttribute("aria-expanded", "true");
+    }
+    function closeMenu() {
+      if (!mobileNav) return;
+      mobileNav.classList.remove("is-open");
+      body.classList.remove("nav-open");
+      if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+    }
+    function toggleMenu() {
+      if (!mobileNav) return;
+      if (mobileNav.classList.contains("is-open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+      // Swiper may need to recalc after layout change
+      requestAnimationFrame(() => {
+        if (window.__heroSwiper) window.__heroSwiper.update();
+      });
+    }
+
+    menuBtn && menuBtn.addEventListener("click", toggleMenu);
+
+    // Close on ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+
+    // Close when a link inside the mobile nav is clicked
+    mobileNav &&
+      mobileNav.addEventListener("click", (e) => {
+        const t = e.target;
+        if (t && t.tagName === "A") closeMenu();
+      });
+
+    // ---------- Swiper (hero) ----------
+    if (typeof Swiper !== "undefined") {
+      window.__heroSwiper = new Swiper(".hero-swiper", {
+        loop: true,
+        speed: 700,
+        grabCursor: true,
+        autoplay: { delay: 4000, disableOnInteraction: false },
+        keyboard: { enabled: true },
+        pagination: { el: ".hero-swiper .swiper-pagination", clickable: true },
+        navigation: {
+          nextEl: ".hero-swiper .swiper-button-next",
+          prevEl: ".hero-swiper .swiper-button-prev",
+        },
+        a11y: { enabled: true },
+      });
+
+      // Recompute sizes on resize/orientation
+      const updateSwiper = () =>
+        window.__heroSwiper && window.__heroSwiper.update();
+      window.addEventListener("resize", updateSwiper, { passive: true });
+      window.addEventListener("orientationchange", () => {
+        setTimeout(updateSwiper, 150);
+      });
+
+      // First paint safeguard (after images/layout settle)
+      window.addEventListener("load", () => {
+        setTimeout(updateSwiper, 60);
+      });
+    }
+  });
+})();
