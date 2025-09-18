@@ -24,6 +24,29 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper@9/swiper-bundle.min.css"
     />
+
+    <style>
+      /* Ensure hero is visible and stacked below header on all screens */
+      .hero-bg {
+        position: relative;
+        z-index: 0;
+      }
+
+      /* Make Swiper always have height; slides fill it */
+      .hero-swiper {
+        width: 100%;
+      }
+      .hero-swiper .swiper-wrapper,
+      .hero-swiper .swiper-slide {
+        height: 100%;
+      }
+
+      /* If your mobile nav ever overlays content, keep it under header content unless opened */
+      #mobileNav {
+        position: static;
+        z-index: 0;
+      }
+    </style>
   </head>
   <body>
     <!-- Header -->
