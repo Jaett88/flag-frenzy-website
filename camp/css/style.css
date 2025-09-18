@@ -515,3 +515,33 @@ body.nav-open {
 .hero-bg {
   padding-top: 0.5rem;
 }
+
+/* --- iOS/WebKit: stop weird shadow/overlay painting over the hero --- */
+.hero-bg .hero-swiper {
+  isolation: isolate;
+} /* contain shadows */
+.hero-bg .hero-swiper,
+.hero-bg .hero-swiper * {
+  -webkit-transform: translateZ(0); /* force proper compositing */
+  backface-visibility: hidden;
+}
+
+/* Don't let any hero pseudo-overlay block taps or cover text */
+.hero-bg::before,
+.hero-bg::after {
+  pointer-events: none !important;
+}
+
+/* Tone down big shadow on small screens so it can't appear like a pale band */
+@media (max-width: 767px) {
+  .hero-swiper {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+  }
+}
+
+/* Ensure the hero wrapper has a reliable min-height on iOS Chrome as well */
+@supports (height: 1svh) {
+  .hero-bg .min-h-\[60vh\] {
+    min-height: 65svh;
+  }
+}
