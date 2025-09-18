@@ -106,21 +106,21 @@
     </header>
 
     <!-- Hero -->
-    <section class="hero-bg">
+    <section class="hero-bg relative z-0">
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 grid lg:grid-cols-2 gap-10 items-center"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 grid lg:grid-cols-2 gap-10 items-center min-h-[60vh]"
       >
         <div>
           <!-- Tagline (animated) -->
           <h2
             class="tagline text-3xl sm:text-4xl font-extrabold leading-tight mb-2"
           >
-            <span class="w fast hl">Play Fast.</span>
-            <span class="w smart hl">&nbsp;Play Smart.</span>
-            <span class="w flag hl">&nbsp;Play Flag.</span>
+            <span class="fast hl">Play Fast.</span>
+            <span class="smart hl">&nbsp;Play Smart.</span>
+            <span class="flag hl">&nbsp;Play Flag.</span>
           </h2>
 
-          <!-- Subheading (static, always visible) -->
+          <!-- Subheading -->
           <h1
             class="text-2xl sm:text-3xl font-semibold leading-tight text-[var(--camp-green)]"
           >
@@ -152,7 +152,7 @@
         <!-- Right column: hero carousel -->
         <div class="relative">
           <div
-            class="swiper hero-swiper rounded-2xl shadow-2xl border overflow-hidden"
+            class="swiper hero-swiper h-[280px] sm:h-[340px] md:h-[420px] lg:h-[460px] rounded-2xl shadow-2xl border overflow-hidden"
           >
             <div class="swiper-wrapper">
               <div class="swiper-slide">
@@ -185,7 +185,6 @@
               </div>
             </div>
 
-            <!-- Pagination & arrows -->
             <div class="swiper-pagination"></div>
             <div class="swiper-button-prev" aria-label="Previous"></div>
             <div class="swiper-button-next" aria-label="Next"></div>
