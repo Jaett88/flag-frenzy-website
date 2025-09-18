@@ -8,47 +8,29 @@
       name="description"
       content="Flag Frenzy Football Camp — safe, non-contact American flag football for ages 7–15."
     />
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Swiper JS -->
+
+    <!-- Swiper CSS/JS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@9/swiper-bundle.min.css"
+    />
     <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
-    <!-- CAMP THEME (matches main-site structure with camp colours) -->
+
+    <!-- Camp theme -->
     <link rel="stylesheet" href="/camp/css/style.css" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <!-- Swiper CSS -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper@9/swiper-bundle.min.css"
-    />
-
-    <style>
-      /* Ensure hero is visible and stacked below header on all screens */
-      .hero-bg {
-        position: relative;
-        z-index: 0;
-      }
-
-      /* Make Swiper always have height; slides fill it */
-      .hero-swiper {
-        width: 100%;
-      }
-      .hero-swiper .swiper-wrapper,
-      .hero-swiper .swiper-slide {
-        height: 100%;
-      }
-
-      /* If your mobile nav ever overlays content, keep it under header content unless opened */
-      #mobileNav {
-        position: static;
-        z-index: 0;
-      }
-    </style>
   </head>
-  <body>
+  <body class="font-[Poppins]">
     <!-- Header -->
     <header class="bg-white shadow-md">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,15 +41,18 @@
               alt="Flag Frenzy Football Camp logo"
               class="h-10 w-10"
             />
-            <span class="text-xl font-extrabold" style="color: var(--camp-red)"
-              >Flag Frenzy Football Camp</span
-            >
+            <span class="text-xl font-extrabold" style="color: var(--camp-red)">
+              Flag Frenzy Football Camp
+            </span>
           </a>
 
           <button
             id="menuBtn"
             class="md:hidden p-2 rounded-lg border border-gray-200"
             aria-label="Toggle menu"
+            aria-controls="mobileNav"
+            aria-expanded="false"
+            type="button"
           >
             ☰
           </button>
@@ -98,10 +83,10 @@
           </nav>
         </div>
 
-        <!-- Mobile Nav -->
+        <!-- Mobile Nav (note: no 'hidden' class; CSS collapses it safely) -->
         <nav
           id="mobileNav"
-          class="hidden md:hidden border-t border-[var(--camp-border)] py-3"
+          class="md:hidden border-t border-[var(--camp-border)] py-3 overflow-hidden"
         >
           <div class="flex flex-col gap-3 font-medium">
             <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
@@ -134,7 +119,7 @@
         class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 grid lg:grid-cols-2 gap-10 items-center min-h-[60vh]"
       >
         <div>
-          <!-- Tagline (animated) -->
+          <!-- Tagline -->
           <h2
             class="tagline text-3xl sm:text-4xl font-extrabold leading-tight mb-2"
           >
@@ -208,6 +193,7 @@
               </div>
             </div>
 
+            <!-- Pagination & arrows -->
             <div class="swiper-pagination"></div>
             <div class="swiper-button-prev" aria-label="Previous"></div>
             <div class="swiper-button-next" aria-label="Next"></div>
@@ -229,7 +215,7 @@
               Skill & speed
             </h3>
             <p class="mt-1 text-gray-700">
-              Agility, routes, catching and decision‑making through games and
+              Agility, routes, catching and decision-making through games and
               drills.
             </p>
           </div>
@@ -241,7 +227,7 @@
               Safety first
             </h3>
             <p class="mt-1 text-gray-700">
-              Clear behaviour standards, warm‑ups and age‑appropriate
+              Clear behaviour standards, warm-ups and age-appropriate
               activities.
             </p>
           </div>
@@ -369,37 +355,17 @@
               Office: 128 City Road, London, EC1V 2NX
             </div>
           </div>
-
           <span class="text-white/80">Built for the community.</span>
         </div>
       </div>
     </footer>
 
+    <!-- Year -->
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
 
-    <!-- Shared Camp JS -->
+    <!-- Main JS -->
     <script src="/camp/js/main.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        new Swiper(".hero-swiper", {
-          loop: true,
-          speed: 700,
-          grabCursor: true,
-          autoplay: { delay: 4000, disableOnInteraction: false },
-          keyboard: { enabled: true },
-          pagination: {
-            el: ".hero-swiper .swiper-pagination",
-            clickable: true,
-          },
-          navigation: {
-            nextEl: ".hero-swiper .swiper-button-next",
-            prevEl: ".hero-swiper .swiper-button-prev",
-          },
-          a11y: { enabled: true },
-        });
-      });
-    </script>
   </body>
 </html>
