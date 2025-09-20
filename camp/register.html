@@ -836,5 +836,134 @@
         }
       });
     </script>
+
+    <script>
+      const form = document.getElementById("registerForm");
+      const siblingRadios = document.querySelectorAll("input[name='sibling']");
+      const promoWrapper = document.getElementById("promoWrapper");
+      const promoCodeInput = document.getElementById("promoCode");
+      const promoError = document.getElementById("promoError");
+
+      // Utility: show/hide error text + red border
+      function showPromoError(msg) {
+        promoError.textContent = msg || "";
+        promoError.classList.toggle("hidden", !msg);
+        promoCodeInput.classList.toggle("border-red-500", !!msg);
+        promoCodeInput.classList.toggle("focus:border-red-500", !!msg);
+        promoCodeInput.classList.toggle("focus:ring-red-500", !!msg);
+        promoCodeInput.setCustomValidity(msg || "");
+      }
+
+      // Show/hide promo field and requirement based on Sibling selection
+      siblingRadios.forEach((radio) => {
+        radio.addEventListener("change", () => {
+          if (radio.value === "Yes" && radio.checked) {
+            promoWrapper.classList.remove("hidden");
+            promoCodeInput.setAttribute("required", "true");
+            // If empty when revealed, prompt gently (no block yet)
+            if (!promoCodeInput.value.trim()) {
+              showPromoError(""); // no blocking message yet
+            }
+          } else if (radio.value === "No" && radio.checked) {
+            promoWrapper.classList.add("hidden");
+            promoCodeInput.removeAttribute("required");
+            promoCodeInput.value = "";
+            showPromoError(""); // clear errors
+          }
+        });
+      });
+
+      // Live validation for promo input
+      promoCodeInput.addEventListener("input", () => {
+        const entered = promoCodeInput.value.trim().toUpperCase();
+        if (promoCodeInput.hasAttribute("required")) {
+          if (entered === "") {
+            showPromoError("Please enter the sibling discount code: SIBLING10");
+          } else if (entered !== "SIBLING10") {
+            showPromoError("Invalid code. Please type: SIBLING10");
+          } else {
+            showPromoError("");
+          }
+        } else {
+          showPromoError("");
+        }
+      });
+
+      // Form submit → validate + choose PayPal link
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const option = document.querySelector(
+          "input[name='package']:checked"
+        )?.value;
+        const sibling =
+          document.querySelector("input[name='sibling']:checked")?.value ===
+          "Yes";
+        const promo = promoCodeInput.value.trim().toUpperCase();
+
+        // If sibling = Yes, enforce correct code with styled error
+        if (sibling) {
+          if (!promo) {
+            showPromoError("Please enter the sibling discount code: SIBLING10");
+            promoCodeInput.focus();
+            promoCodeInput.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+            return;
+          }
+          if (promo !== "SIBLING10") {
+            showPromoError("Invalid code. Please type: SIBLING10");
+            promoCodeInput.focus();
+            promoCodeInput.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+            return;
+          }
+        }
+
+        // Your PayPal links
+        const links = {
+          day: {
+            normal: "https://paypal.com/pay/your-day-link", // £35
+            sibling: "https://paypal.com/pay/your-day-sibling", // £25
+          },
+          week: {
+            normal: "https://paypal.com/pay/your-week-link", // £150
+            sibling: "https://paypal.com/pay/your-week-sibling", // £140
+          },
+          early: {
+            normal: "https://paypal.com/pay/your-early-link", // £135
+            sibling: "https://paypal.com/pay/your-early-sibling", // £125
+          },
+        };
+
+        // Decide link
+        let url;
+        if (sibling && promo === "SIBLING10") {
+          if (option === "Day Pass") url = links.day.sibling;
+          if (option === "Full Week") url = links.week.sibling;
+          if (option === "Early Bird") url = links.early.sibling;
+        } else {
+          if (option === "Day Pass") url = links.day.normal;
+          if (option === "Full Week") url = links.week.normal;
+          if (option === "Early Bird") url = links.early.normal;
+        }
+
+        // Save for thank-you page (optional)
+        localStorage.setItem("paymentOption", option || "");
+        localStorage.setItem("promoCode", promo || "");
+
+        if (url) {
+          window.location.href = url;
+        } else {
+          // Safety net if no package selected
+          alert(
+            "Please choose a payment option (Day Pass, Full Week, or Early Bird)."
+          );
+        }
+      });
+    </script>
   </body>
 </html>
