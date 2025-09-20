@@ -274,19 +274,59 @@
             </div>
           </div>
 
-          <!-- Sibling discount -->
-          <div>
-            <h2 class="section-title text-xl">Sibling discount</h2>
-            <label class="label" for="sibling-discount"
-              >Does this camper have a sibling also attending?</label
-            >
-            <select class="input" name="sibling-discount" id="sibling-discount">
-              <option value="no">No</option>
-              <option value="yes">Yes</option>
-            </select>
-            <p class="text-sm text-gray-600 mt-2">
-              Please submit a <strong>separate form</strong> for each child. The
-              discount applies only to <strong>additional</strong> children.
+          <!-- Sibling Discount -->
+          <div class="mb-6">
+            <fieldset>
+              <legend class="block text-sm font-medium text-white">
+                Sibling Discount
+              </legend>
+              <p class="mt-1 text-sm text-white/70">
+                Does this camper have another child attending this camp?
+              </p>
+              <div class="mt-3 flex gap-6">
+                <label class="flex items-center gap-2 text-white">
+                  <input
+                    type="radio"
+                    name="sibling"
+                    value="Yes"
+                    class="h-4 w-4 text-[var(--camp-red)] focus:ring-[var(--camp-red)] border-white/30 bg-white/10"
+                  />
+                  <span>Yes</span>
+                </label>
+                <label class="flex items-center gap-2 text-white">
+                  <input
+                    type="radio"
+                    name="sibling"
+                    value="No"
+                    class="h-4 w-4 text-[var(--camp-red)] focus:ring-[var(--camp-red)] border-white/30 bg-white/10"
+                  />
+                  <span>No</span>
+                </label>
+                <p class="text-sm text-gray-600 mt-2">
+                  Please submit a <strong>separate form</strong> for each child.
+                  The discount applies only to
+                  <strong>additional</strong> children.
+                </p>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Promo Code (hidden by default) -->
+          <div id="promoWrapper" class="mb-6 hidden">
+            <label for="promoCode" class="block text-sm font-medium text-white">
+              Promo Code
+            </label>
+            <input
+              type="text"
+              id="promoCode"
+              name="promoCode"
+              placeholder="Enter code if applicable"
+              class="mt-2 w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white placeholder-white/40 focus:border-[var(--camp-red)] focus:ring-[var(--camp-red)] focus:outline-none"
+            />
+            <p class="mt-2 text-xs text-white/60">
+              Enter
+              <code class="bg-black/30 px-1 py-0.5 rounded">SIBLING10</code>
+              to apply your £10 discount.
             </p>
             <label class="flex items-center gap-2 text-sm text-gray-700 mt-3">
               <input
