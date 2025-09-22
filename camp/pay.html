@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Complete Payment — Flag Frenzy Football Camp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/camp/css/style.css" />
+  </head>
+  <body class="font-[Poppins] bg-gray-50">
+    <main class="max-w-2xl mx-auto py-16 px-6">
+      <h1 class="text-3xl font-bold text-center mb-6">Complete Your Payment</h1>
+      <p class="text-center text-gray-600 mb-6">
+        Thank you for registering. Please confirm your package and complete
+        payment below.
+      </p>
+
+      <!-- Package info -->
+      <div id="package-details" class="text-center mb-10"></div>
+
+      <!-- Payment buttons -->
+      <div
+        id="payment-buttons"
+        class="flex flex-col sm:flex-row justify-center gap-6"
+      ></div>
+
+      <p class="text-sm text-center mt-10 text-gray-600">
+        💡 If you registered more than one child, please pay separately for each
+        child.<br />
+        💡 Sibling discounts: Use promo code
+        <span class="font-semibold">SIBLING10</span> at Stripe checkout, or use
+        the sibling PayPal link (shown automatically if selected).
+      </p>
+    </main>
+
+    <script>
+      // Grab URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const packageChoice = urlParams.get("package");
+      const sibling = urlParams.get("sibling");
+
+      // Payment links (replace placeholders with your real links)
+      const links = {
+        earlybird: {
+          name: "🐦 Early Bird",
+          price: "£135",
+          stripe: "https://buy.stripe.com/14A9AS0Yh27O9LcfGH9EI00", // REPLACE WITH STRIPE EARLY BIRD
+          paypal: "https://www.paypal.com/ncp/payment/WMBZL2D5SNRMA", // REPLACE WITH PAYPAL EARLY BIRD
+          paypalSibling: "https://www.paypal.com/ncp/payment/4BYLEUHM3TEMN", // REPLACE WITH PAYPAL EARLY BIRD (Sibling £125)
+        },
+        fullweek: {
+          name: "📅 Full Week",
+          price: "£150",
+          stripe: "https://buy.stripe.com/4gM9AS7mF3bS4qS1PR9EI01", // REPLACE WITH STRIPE FULL WEEK
+          paypal: "https://www.paypal.com/ncp/payment/PUTHCE2W6Z5GA", // REPLACE WITH PAYPAL FULL WEEK
+          paypalSibling: "https://www.paypal.com/ncp/payment/VVT8N2QU3Y64E", // REPLACE WITH PAYPAL FULL WEEK (Sibling £140)
+        },
+        daypass: {
+          name: "🎟️ Day Pass",
+          price: "£35",
+          stripe: "https://buy.stripe.com/6oUfZg8qJdQw7D48ef9EI02", // REPLACE WITH STRIPE DAY PASS
+          paypal: "https://www.paypal.com/ncp/payment/7Y73AQ6S6NJ2Q", // REPLACE WITH PAYPAL DAY PASS
+          paypalSibling: "https://www.paypal.com/ncp/payment/FDSMV4E9XYKU8", // REPLACE WITH PAYPAL DAY PASS (Sibling £25)
+        },
+      };
+
+      const selected = links[packageChoice];
+
+      if (selected) {
+        // Base package info
+        let detailsHTML = `
+        <h2 class="text-2xl font-semibold mb-2">${selected.name}</h2>
+        <p class="text-lg text-gray-700">${selected.price}</p>
+      `;
+
+        // If sibling = yes, add discount message
+        if (sibling === "yes") {
+          detailsHTML += `
+          <p class="mt-2 text-green-600 font-medium">
+            ✅ Sibling discount applied — £10 off.
+          </p>
+        `;
+        }
+
+        document.getElementById("package-details").innerHTML = detailsHTML;
+
+        // Work out correct PayPal link (normal vs sibling)
+        const paypalLink =
+          sibling === "yes" && selected.paypalSibling
+            ? selected.paypalSibling
+            : selected.paypal;
+
+        // Buttons HTML
+        document.getElementById("payment-buttons").innerHTML = `
+        <a href="${selected.stripe}" target="_blank"
+           class="pay-btn flex-1 text-center bg-[var(--camp-red)] text-white font-medium py-4 px-6 rounded-lg shadow hover:bg-red-700 transition">
+           Pay with Stripe
+        </a>
+        <a href="${paypalLink}" target="_blank"
+           class="pay-btn flex-1 text-center bg-yellow-400 text-black font-medium py-4 px-6 rounded-lg shadow hover:bg-yellow-500 transition">
+           Pay with PayPal
+        </a>
+      `;
+      } else {
+        // Fallback if no package in URL
+        document.getElementById("package-details").innerHTML = `
+        <p class="text-red-600 font-medium">⚠️ No package selected. Please go back and register again.</p>
+      `;
+      }
+    </script>
+  </body>
+</html>
