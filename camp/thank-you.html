@@ -269,5 +269,15 @@
         document.getElementById("mobileNav").classList.toggle("hidden");
       });
     </script>
+
+    <script>
+      // Clear saved registration data once they reach thank-you page
+      document.addEventListener("DOMContentLoaded", () => {
+        localStorage.removeItem("fffc-registration");
+        localStorage.removeItem("camperName"); // if you’re also storing this separately
+        localStorage.removeItem("paymentOption");
+        localStorage.removeItem("promoCode");
+      });
+    </script>
   </body>
 </html>
