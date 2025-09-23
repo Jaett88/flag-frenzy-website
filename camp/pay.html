@@ -34,74 +34,70 @@
     </main>
 
     <script>
-      // Grab URL parameters
-      const urlParams = new URLSearchParams(window.location.search);
-      const packageChoice = urlParams.get("attendance");
-      const sibling = urlParams.get("sibling");
-      const days = parseInt(urlParams.get("days")) || 0;
+      // ---- Read URL params (expected: ?package=fullweek|earlybird|daypass&days=N&sibling=yes|no)
+      const params = new URLSearchParams(window.location.search);
+      const pkgKey = (params.get("package") || "").toLowerCase(); // fullweek | earlybird | daypass
+      const sibling = (params.get("sibling") || "no").toLowerCase(); // yes | no
+      const days = parseInt(params.get("days") || "0", 10); // only for daypass
 
-      // Payment links (replace placeholders with your real links)
+      // ---- Replace these with your real links (you already pasted some — I’ve slotted them in)
+      // basePrice is a NUMBER so we can calculate totals cleanly
       const links = {
         earlybird: {
           name: "🐦 Early Bird",
-          basePrice: "£135",
-          stripe: "https://buy.stripe.com/14A9AS0Yh27O9LcfGH9EI00", // REPLACE WITH STRIPE EARLY BIRD
-          paypal: "https://www.paypal.com/ncp/payment/WMBZL2D5SNRMA", // REPLACE WITH PAYPAL EARLY BIRD
-          paypalSibling: "https://www.paypal.com/ncp/payment/4BYLEUHM3TEMN", // REPLACE WITH PAYPAL EARLY BIRD (Sibling £125)
+          basePrice: 135,
+          stripe: "https://buy.stripe.com/14A9AS0Yh27O9LcfGH9EI00", // <-- your Stripe Early Bird
+          paypal: "https://www.paypal.com/ncp/payment/WMBZL2D5SNRMA", // <-- your PayPal Early Bird (full)
+          paypalSibling: "https://www.paypal.com/ncp/payment/4BYLEUHM3TEMN", // <-- your PayPal Early Bird (sibling)
         },
         fullweek: {
           name: "📅 Full Week",
-          basePrice: "£150",
-          stripe: "https://buy.stripe.com/4gM9AS7mF3bS4qS1PR9EI01", // REPLACE WITH STRIPE FULL WEEK
-          paypal: "https://www.paypal.com/ncp/payment/PUTHCE2W6Z5GA", // REPLACE WITH PAYPAL FULL WEEK
-          paypalSibling: "https://www.paypal.com/ncp/payment/VVT8N2QU3Y64E", // REPLACE WITH PAYPAL FULL WEEK (Sibling £140)
+          basePrice: 150,
+          stripe: "https://buy.stripe.com/4gM9AS7mF3bS4qS1PR9EI01", // <-- your Stripe Full Week
+          paypal: "https://www.paypal.com/ncp/payment/PUTHCE2W6Z5GA", // <-- your PayPal Full Week (full)
+          paypalSibling: "https://www.paypal.com/ncp/payment/VVT8N2QU3Y64E", // <-- your PayPal Full Week (sibling)
         },
         daypass: {
           name: "🎟️ Day Pass",
-          basePrice: "£35",
-          stripe: "https://buy.stripe.com/6oUfZg8qJdQw7D48ef9EI02", // REPLACE WITH STRIPE DAY PASS
-          paypal: "https://www.paypal.com/ncp/payment/7Y73AQ6S6NJ2Q", // REPLACE WITH PAYPAL DAY PASS
-          paypalSibling: "https://www.paypal.com/ncp/payment/FDSMV4E9XYKU8", // REPLACE WITH PAYPAL DAY PASS (Sibling £25)
+          basePrice: 35, // per day
+          stripe: "https://buy.stripe.com/6oUfZg8qJdQw7D48ef9EI02", // <-- your Stripe Day Pass
+          paypal: "https://www.paypal.com/ncp/payment/7Y73AQ6S6NJ2Q", // <-- your PayPal Day Pass (full)
+          paypalSibling: "https://www.paypal.com/ncp/payment/FDSMV4E9XYKU8", // <-- your PayPal Day Pass (sibling)
         },
       };
 
-      const selected = links[packageChoice];
+      const selected = links[pkgKey];
 
-      if (selected) {
-        let priceDisplay = "";
-
-        if (packageChoice === "daypass" && days > 0) {
-          const totalPrice = selected.basePrice * days;
-          priceDisplay = `£${totalPrice} (${days} day${
-            days > 1 ? "s" : ""
-          } @ £35/day)`;
-        } else {
-          priceDisplay = `£${selected.basePrice}`;
+      if (!selected) {
+        document.getElementById(
+          "package-details"
+        ).innerHTML = `<p class="text-red-600 font-medium">⚠️ No package selected. Please go back and register again.</p>`;
+      } else {
+        // Compute display price
+        let priceText = `£${selected.basePrice}`;
+        if (pkgKey === "daypass") {
+          const d = Number.isFinite(days) && days > 0 ? days : 1;
+          const total = selected.basePrice * d;
+          priceText = `£${total} (${d} day${d > 1 ? "s" : ""} @ £35/day)`;
         }
 
         // Build details
-        let detailsHTML = `
+        let details = `
         <h2 class="text-2xl font-semibold mb-2">${selected.name}</h2>
-        <p class="text-lg text-gray-700">${priceDisplay}</p>
+        <p class="text-lg text-gray-700">${priceText}</p>
       `;
-
         if (sibling === "yes") {
-          detailsHTML += `
-          <p class="mt-2 text-green-600 font-medium">
-            ✅ Sibling discount applied — £10 off.
-          </p>
-        `;
+          details += `<p class="mt-2 text-green-600 font-medium">✅ Sibling discount selected — £10 off.</p>`;
         }
+        document.getElementById("package-details").innerHTML = details;
 
-        document.getElementById("package-details").innerHTML = detailsHTML;
+        // Pick PayPal link (swap to sibling link if needed)
+        const paypalLink =
+          sibling === "yes" && selected.paypalSibling
+            ? selected.paypalSibling
+            : selected.paypal;
 
-        // Pick PayPal link
-        let paypalLink = selected.paypal;
-        if (sibling === "yes" && selected.paypalSibling) {
-          paypalLink = selected.paypalSibling;
-        }
-
-        // Payment buttons
+        // Render buttons
         document.getElementById("payment-buttons").innerHTML = `
         <a href="${selected.stripe}" target="_blank"
            class="pay-btn flex-1 text-center bg-[var(--camp-red)] text-white font-medium py-4 px-6 rounded-lg shadow hover:bg-red-700 transition">
@@ -111,11 +107,6 @@
            class="pay-btn flex-1 text-center bg-yellow-400 text-black font-medium py-4 px-6 rounded-lg shadow hover:bg-yellow-500 transition">
            Pay with PayPal
         </a>
-      `;
-      } else {
-        // Fallback if no package passed
-        document.getElementById("package-details").innerHTML = `
-        <p class="text-red-600 font-medium">⚠️ No package selected. Please go back and register again.</p>
       `;
       }
     </script>

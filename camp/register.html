@@ -138,6 +138,7 @@
       </div>
       <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
         <form
+          id="registerForm"
           name="camper-registration"
           method="POST"
           data-netlify="true"
@@ -290,6 +291,7 @@
                     name="sibling"
                     value="Yes"
                     class="h-4 w-4 text-[var(--camp-red)] focus:ring-[var(--camp-red)] border-white/30 bg-white/10"
+                    required
                   />
                   <span>Yes</span>
                 </label>
@@ -299,6 +301,7 @@
                     name="sibling"
                     value="No"
                     class="h-4 w-4 text-[var(--camp-red)] focus:ring-[var(--camp-red)] border-white/30 bg-white/10"
+                    required
                   />
                   <span>No</span>
                 </label>
@@ -321,28 +324,6 @@
                 </label>
               </div>
             </fieldset>
-          </div>
-
-          <!-- Promo Code (hidden by default) -->
-          <div id="promoWrapper" class="mb-6 hidden">
-            <label for="promoCode" class="block text-sm font-medium text-white">
-              Promo Code
-            </label>
-            <input
-              type="text"
-              id="promoCode"
-              name="promoCode"
-              placeholder="Enter code if applicable"
-              class="mt-2 w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white placeholder-white/40 focus:border-[var(--camp-red)] focus:ring-[var(--camp-red)] focus:outline-none"
-            />
-            <!-- Custom error message (hidden by default) -->
-            <p id="promoError" class="mt-2 text-sm text-red-400 hidden"></p>
-
-            <p class="mt-2 text-xs text-white/60">
-              Enter
-              <code class="bg-black/30 px-1 py-0.5 rounded">SIBLING10</code> to
-              apply your £10 discount.
-            </p>
           </div>
 
           <!-- Parent/Guardian 1 -->
@@ -692,13 +673,13 @@
           </fieldset>
 
           <!-- Submit -->
-          <div class="pt-2">
-            <a
-              href="/camp/pay.html"
+          <div>
+            <button
+              type="submit"
               class="inline-block bg-[var(--camp-red)] text-white font-bold py-3 px-6 rounded-lg shadow hover:bg-red-700 transition"
             >
               Register
-            </a>
+            </button>
 
             <p
               id="payment-summary"
@@ -842,132 +823,104 @@
     </script>
 
     <script>
-      const form = document.getElementById("registerForm");
-      const siblingRadios = document.querySelectorAll("input[name='sibling']");
-      const promoWrapper = document.getElementById("promoWrapper");
-      const promoCodeInput = document.getElementById("promoCode");
-      const promoError = document.getElementById("promoError");
+      // Toggle the day selector visibility
+      const daySelector = document.getElementById("day-selector");
+      const attendanceRadios = document.querySelectorAll(
+        "input[name='attendance']"
+      );
 
-      // Utility: show/hide error text + red border
-      function showPromoError(msg) {
-        promoError.textContent = msg || "";
-        promoError.classList.toggle("hidden", !msg);
-        promoCodeInput.classList.toggle("border-red-500", !!msg);
-        promoCodeInput.classList.toggle("focus:border-red-500", !!msg);
-        promoCodeInput.classList.toggle("focus:ring-red-500", !!msg);
-        promoCodeInput.setCustomValidity(msg || "");
-      }
-
-      // Show/hide promo field and requirement based on Sibling selection
-      siblingRadios.forEach((radio) => {
-        radio.addEventListener("change", () => {
-          if (radio.value === "Yes" && radio.checked) {
-            promoWrapper.classList.remove("hidden");
-            promoCodeInput.setAttribute("required", "true");
-            // If empty when revealed, prompt gently (no block yet)
-            if (!promoCodeInput.value.trim()) {
-              showPromoError(""); // no blocking message yet
-            }
-          } else if (radio.value === "No" && radio.checked) {
-            promoWrapper.classList.add("hidden");
-            promoCodeInput.removeAttribute("required");
-            promoCodeInput.value = "";
-            showPromoError(""); // clear errors
+      attendanceRadios.forEach((r) => {
+        r.addEventListener("change", () => {
+          if (r.checked && r.value === "Choose Dates") {
+            daySelector.classList.remove("hidden");
+          } else if (r.checked && r.value === "Full Week") {
+            daySelector.classList.add("hidden");
+            // Optional: uncheck any previously selected days
+            document
+              .querySelectorAll("input[name='selected-dates']:checked")
+              .forEach((cb) => (cb.checked = false));
           }
         });
       });
+    </script>
 
-      // Live validation for promo input
-      promoCodeInput.addEventListener("input", () => {
-        const entered = promoCodeInput.value.trim().toUpperCase();
-        if (promoCodeInput.hasAttribute("required")) {
-          if (entered === "") {
-            showPromoError("Please enter the sibling discount code: SIBLING10");
-          } else if (entered !== "SIBLING10") {
-            showPromoError("Invalid code. Please type: SIBLING10");
+    <script>
+      (function () {
+        const form = document.getElementById("registerForm");
+        if (!form) return;
+
+        // Submit the form to Netlify (for your records), then redirect to pay.html
+        const SUBMIT_TO_NETLIFY = true;
+
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          // Attendance
+          const attendance =
+            document.querySelector("input[name='attendance']:checked")?.value ||
+            "";
+
+          // Sibling (normalize to yes/no)
+          const siblingRaw =
+            document.querySelector("input[name='sibling']:checked")?.value ||
+            "No";
+          const sibling = siblingRaw.trim().toLowerCase().startsWith("y")
+            ? "yes"
+            : "no";
+
+          // Build redirect URL parts (derived params for pay.html)
+          let redirectUrl = "/camp/pay.html";
+          let derivedPackage = ""; // for Netlify record
+          let derivedDays = 0; // for Netlify record
+
+          if (attendance === "Full Week") {
+            redirectUrl += "?package=fullweek";
+            derivedPackage = "fullweek";
+          } else if (attendance === "Choose Dates") {
+            const selectedDates = Array.from(
+              document.querySelectorAll("input[name='selected-dates']:checked")
+            );
+            const dayCount = selectedDates.length;
+            if (dayCount === 0) {
+              alert("Please select at least one day.");
+              return;
+            }
+            redirectUrl += `?package=daypass&days=${dayCount}`;
+            derivedPackage = "daypass";
+            derivedDays = dayCount;
           } else {
-            showPromoError("");
-          }
-        } else {
-          showPromoError("");
-        }
-      });
-
-      // Form submit → validate + choose PayPal link
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const option = document.querySelector(
-          "input[name='package']:checked"
-        )?.value;
-        const sibling =
-          document.querySelector("input[name='sibling']:checked")?.value ===
-          "Yes";
-        const promo = promoCodeInput.value.trim().toUpperCase();
-
-        // If sibling = Yes, enforce correct code with styled error
-        if (sibling) {
-          if (!promo) {
-            showPromoError("Please enter the sibling discount code: SIBLING10");
-            promoCodeInput.focus();
-            promoCodeInput.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            });
+            alert("Please select an attendance option.");
             return;
           }
-          if (promo !== "SIBLING10") {
-            showPromoError("Invalid code. Please type: SIBLING10");
-            promoCodeInput.focus();
-            promoCodeInput.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            });
-            return;
+
+          if (sibling === "yes") {
+            redirectUrl += "&sibling=yes";
           }
-        }
 
-        // Your PayPal links
-        const links = {
-          day: {
-            normal: "https://www.paypal.com/ncp/payment/7Y73AQ6S6NJ2Q", // £35
-            sibling: "https://www.paypal.com/ncp/payment/FDSMV4E9XYKU8", // £25
-          },
-          week: {
-            normal: "https://www.paypal.com/ncp/payment/PUTHCE2W6Z5GA", // £150
-            sibling: "https://www.paypal.com/ncp/payment/VVT8N2QU3Y64E", // £140
-          },
-          early: {
-            normal: "https://www.paypal.com/ncp/payment/WMBZL2D5SNRMA", // £135
-            sibling: "https://www.paypal.com/ncp/payment/4BYLEUHM3TEMN", // £125
-          },
-        };
+          // ---- Optional: background submit to Netlify so you keep the entry
+          if (SUBMIT_TO_NETLIFY && form.hasAttribute("data-netlify")) {
+            try {
+              const formData = new FormData(form);
+              // Add derived values so your Netlify submission shows the final choices too
+              formData.append("derived-package", derivedPackage);
+              formData.append("derived-days", String(derivedDays));
+              formData.append("derived-sibling", sibling);
 
-        // Decide link
-        let url;
-        if (sibling && promo === "SIBLING10") {
-          if (option === "Day Pass") url = links.day.sibling;
-          if (option === "Full Week") url = links.week.sibling;
-          if (option === "Early Bird") url = links.early.sibling;
-        } else {
-          if (option === "Day Pass") url = links.day.normal;
-          if (option === "Full Week") url = links.week.normal;
-          if (option === "Early Bird") url = links.early.normal;
-        }
+              await fetch("/", {
+                method: "POST",
+                body: formData,
+              });
+              // Ignore response body; immediately go to payment page
+            } catch (err) {
+              console.warn("Netlify background submit failed:", err);
+              // Still proceed to payment page even if Netlify POST fails
+            }
+          }
 
-        // Save for thank-you page (optional)
-        localStorage.setItem("paymentOption", option || "");
-        localStorage.setItem("promoCode", promo || "");
-
-        if (url) {
-          window.location.href = url;
-        } else {
-          // Safety net if no package selected
-          alert(
-            "Please choose a payment option (Day Pass, Full Week, or Early Bird)."
-          );
-        }
-      });
+          // ---- Go to payment choice page
+          window.location.href = redirectUrl;
+        });
+      })();
     </script>
   </body>
 </html>
