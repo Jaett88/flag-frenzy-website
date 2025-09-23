@@ -117,21 +117,16 @@
       <p class="text-lg text-gray-800 leading-relaxed mb-8">
         We’re excited to welcome your child to
         <strong>Flag Frenzy Football Camp</strong>.<br />
-        You’ll receive a confirmation email shortly.
+        You’ll receive a confirmation email shortly.<br /><br />
+        If you’re registering more than one child, please return to the form and
+        complete it separately for each child.
       </p>
-
-      <!-- Action buttons -->
-      <div class="flex flex-col sm:flex-row justify-center gap-4 mb-6">
+      <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10">
         <a href="/camp/index.html" class="btn-primary">← Back to Home</a>
         <a href="/camp/contact.html" class="btn-outline">Contact Us</a>
-      </div>
-      <div class="text-center mb-10">
-        <a
-          href="/camp/register.html"
-          class="inline-block bg-[var(--camp-red)] text-white font-bold py-3 px-6 rounded-lg shadow hover:bg-red-700 transition"
+        <a href="/camp/register.html" class="btn-primary"
+          >+ Register Another Camper</a
         >
-          + Register Another Camper
-        </a>
       </div>
 
       <!-- Social Media -->
@@ -259,10 +254,9 @@
       </div>
     </footer>
 
-    <!-- Inline JS -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // Personalised greeting
+        // Greeting
         const greeting = document.getElementById("thank-you-greeting");
         const name = localStorage.getItem("camperName");
         if (name && greeting) {
@@ -270,7 +264,7 @@
           greeting.textContent = `Thank you for registering, ${firstName}!`;
         }
 
-        // Footer year
+        // Year
         document.getElementById("year").textContent = new Date().getFullYear();
 
         // Mobile menu
