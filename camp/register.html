@@ -905,6 +905,8 @@
               formData.append("derived-package", derivedPackage);
               formData.append("derived-days", String(derivedDays));
               formData.append("derived-sibling", sibling);
+              // Add timestamp
+              formData.append("submitted-at", new Date().toISOString());
 
               await fetch("/", {
                 method: "POST",
