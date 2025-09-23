@@ -920,9 +920,44 @@
           }
 
           // ---- Go to payment choice page
+          // Save form data for prefill
+          const formData = {};
+          new FormData(form).forEach((value, key) => {
+            formData[key] = value;
+          });
+          localStorage.setItem("fffc-registration", JSON.stringify(formData));
+
+          // Redirect
           window.location.href = redirectUrl;
         });
       })();
+    </script>
+
+    <script>
+      // Prefill the form if data exists in localStorage
+      document.addEventListener("DOMContentLoaded", () => {
+        const saved = localStorage.getItem("fffc-registration");
+        if (!saved) return;
+
+        try {
+          const data = JSON.parse(saved);
+          for (const [key, value] of Object.entries(data)) {
+            const field = document.querySelector(`[name="${key}"]`);
+            if (!field) continue;
+
+            if (field.type === "radio" || field.type === "checkbox") {
+              const inputs = document.querySelectorAll(`[name="${key}"]`);
+              inputs.forEach((input) => {
+                if (input.value === value) input.checked = true;
+              });
+            } else {
+              field.value = value;
+            }
+          }
+        } catch (err) {
+          console.warn("Prefill failed:", err);
+        }
+      });
     </script>
   </body>
 </html>
