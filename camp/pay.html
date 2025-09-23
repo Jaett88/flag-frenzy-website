@@ -24,6 +24,16 @@
         class="flex flex-col sm:flex-row justify-center gap-6"
       ></div>
 
+      <!-- Back to form -->
+      <p class="text-center mt-8">
+        <a
+          href="/camp/register.html"
+          class="text-sm font-medium text-[var(--camp-red)] hover:underline"
+        >
+          ← Go back and edit registration
+        </a>
+      </p>
+
       <p class="text-sm text-center mt-10 text-gray-600">
         💡 If you registered more than one child, please pay separately for each
         child.<br />
@@ -40,29 +50,28 @@
       const sibling = (params.get("sibling") || "no").toLowerCase(); // yes | no
       const days = parseInt(params.get("days") || "0", 10); // only for daypass
 
-      // ---- Replace these with your real links (you already pasted some — I’ve slotted them in)
-      // basePrice is a NUMBER so we can calculate totals cleanly
+      // ---- Payment links (replace placeholders with real ones)
       const links = {
         earlybird: {
           name: "🐦 Early Bird",
           basePrice: 135,
-          stripe: "https://buy.stripe.com/14A9AS0Yh27O9LcfGH9EI00", // <-- your Stripe Early Bird
-          paypal: "https://www.paypal.com/ncp/payment/WMBZL2D5SNRMA", // <-- your PayPal Early Bird (full)
-          paypalSibling: "https://www.paypal.com/ncp/payment/4BYLEUHM3TEMN", // <-- your PayPal Early Bird (sibling)
+          stripe: "https://buy.stripe.com/14A9AS0Yh27O9LcfGH9EI00",
+          paypal: "https://www.paypal.com/ncp/payment/WMBZL2D5SNRMA",
+          paypalSibling: "https://www.paypal.com/ncp/payment/4BYLEUHM3TEMN",
         },
         fullweek: {
           name: "📅 Full Week",
           basePrice: 150,
-          stripe: "https://buy.stripe.com/4gM9AS7mF3bS4qS1PR9EI01", // <-- your Stripe Full Week
-          paypal: "https://www.paypal.com/ncp/payment/PUTHCE2W6Z5GA", // <-- your PayPal Full Week (full)
-          paypalSibling: "https://www.paypal.com/ncp/payment/VVT8N2QU3Y64E", // <-- your PayPal Full Week (sibling)
+          stripe: "https://buy.stripe.com/4gM9AS7mF3bS4qS1PR9EI01",
+          paypal: "https://www.paypal.com/ncp/payment/PUTHCE2W6Z5GA",
+          paypalSibling: "https://www.paypal.com/ncp/payment/VVT8N2QU3Y64E",
         },
         daypass: {
           name: "🎟️ Day Pass",
           basePrice: 35, // per day
-          stripe: "https://buy.stripe.com/6oUfZg8qJdQw7D48ef9EI02", // <-- your Stripe Day Pass
-          paypal: "https://www.paypal.com/ncp/payment/7Y73AQ6S6NJ2Q", // <-- your PayPal Day Pass (full)
-          paypalSibling: "https://www.paypal.com/ncp/payment/FDSMV4E9XYKU8", // <-- your PayPal Day Pass (sibling)
+          stripe: "https://buy.stripe.com/6oUfZg8qJdQw7D48ef9EI02",
+          paypal: "https://www.paypal.com/ncp/payment/7Y73AQ6S6NJ2Q",
+          paypalSibling: "https://www.paypal.com/ncp/payment/FDSMV4E9XYKU8",
         },
       };
 
@@ -83,9 +92,9 @@
 
         // Build details
         let details = `
-        <h2 class="text-2xl font-semibold mb-2">${selected.name}</h2>
-        <p class="text-lg text-gray-700">${priceText}</p>
-      `;
+          <h2 class="text-2xl font-semibold mb-2">${selected.name}</h2>
+          <p class="text-lg text-gray-700">${priceText}</p>
+        `;
         if (sibling === "yes") {
           details += `<p class="mt-2 text-green-600 font-medium">✅ Sibling discount selected — £10 off.</p>`;
         }
@@ -99,15 +108,15 @@
 
         // Render buttons
         document.getElementById("payment-buttons").innerHTML = `
-        <a href="${selected.stripe}" target="_blank"
-           class="pay-btn flex-1 text-center bg-[var(--camp-red)] text-white font-medium py-4 px-6 rounded-lg shadow hover:bg-red-700 transition">
-           Pay with Stripe
-        </a>
-        <a href="${paypalLink}" target="_blank"
-           class="pay-btn flex-1 text-center bg-yellow-400 text-black font-medium py-4 px-6 rounded-lg shadow hover:bg-yellow-500 transition">
-           Pay with PayPal
-        </a>
-      `;
+          <a href="${selected.stripe}" target="_blank"
+             class="pay-btn flex-1 text-center bg-[var(--camp-red)] text-white font-medium py-4 px-6 rounded-lg shadow hover:bg-red-700 transition">
+             Pay with Stripe
+          </a>
+          <a href="${paypalLink}" target="_blank"
+             class="pay-btn flex-1 text-center bg-yellow-400 text-black font-medium py-4 px-6 rounded-lg shadow hover:bg-yellow-500 transition">
+             Pay with PayPal
+          </a>
+        `;
       }
     </script>
   </body>
