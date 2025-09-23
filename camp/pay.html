@@ -38,6 +38,7 @@
       const urlParams = new URLSearchParams(window.location.search);
       const packageChoice = urlParams.get("attendance");
       const sibling = urlParams.get("sibling");
+      const days = parseInt(urlParams.get("days")) || 0;
 
       // Payment links (replace placeholders with your real links)
       const links = {
