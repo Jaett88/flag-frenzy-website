@@ -249,30 +249,28 @@
       </div>
     </footer>
 
+    <!-- Inline JS -->
     <script>
-      // Personalised greeting if name saved from form
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", () => {
+        // Personalised greeting
         const greeting = document.getElementById("thank-you-greeting");
         const name = localStorage.getItem("camperName");
         if (name && greeting) {
           const firstName = name.split(" ")[0];
           greeting.textContent = `Thank you for registering, ${firstName}!`;
-          localStorage.removeItem("camperName");
         }
+
+        // Footer year
         document.getElementById("year").textContent = new Date().getFullYear();
-      });
 
-      // Mobile menu toggle
-      document.getElementById("menuBtn").addEventListener("click", () => {
-        document.getElementById("mobileNav").classList.toggle("hidden");
-      });
-    </script>
+        // Mobile menu
+        document.getElementById("menuBtn").addEventListener("click", () => {
+          document.getElementById("mobileNav").classList.toggle("hidden");
+        });
 
-    <script>
-      // Clear saved registration data once they reach thank-you page
-      document.addEventListener("DOMContentLoaded", () => {
+        // Clear saved data
         localStorage.removeItem("fffc-registration");
-        localStorage.removeItem("camperName"); // if you’re also storing this separately
+        localStorage.removeItem("camperName");
         localStorage.removeItem("paymentOption");
         localStorage.removeItem("promoCode");
       });
