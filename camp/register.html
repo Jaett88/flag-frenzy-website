@@ -277,41 +277,38 @@
 
           <!-- Sibling Discount -->
           <div class="mb-6">
-            <fieldset id="sibling-fieldset">
-              <legend class="block text-sm font-medium text-gray-900">
+            <fieldset>
+              <legend class="block text-sm font-medium text-white">
                 Sibling Discount
               </legend>
-
-              <p class="mt-1 text-sm text-gray-700">
+              <p class="mt-1 text-sm text-white/70">
                 Is this camper attending <strong>with a sibling</strong> who is
                 also registered for this camp?
               </p>
 
               <div class="mt-3 flex gap-6">
-                <label class="flex items-center gap-2 text-gray-900">
+                <label class="flex items-center gap-2 text-white">
                   <input
                     type="radio"
                     name="sibling"
                     value="Yes"
-                    class="h-4 w-4 text-[var(--camp-red)] focus:ring-[var(--camp-red)] border-gray-300 bg-white"
+                    class="h-4 w-4 text-[var(--camp-red)] focus:ring-[var(--camp-red)] border-white/30 bg-white/10"
                     required
                   />
-                  <span class="text-gray-900">Yes</span>
+                  <span>Yes</span>
                 </label>
-
-                <label class="flex items-center gap-2 text-gray-900">
+                <label class="flex items-center gap-2 text-white">
                   <input
                     type="radio"
                     name="sibling"
                     value="No"
-                    class="h-4 w-4 text-[var(--camp-red)] focus:ring-[var(--camp-red)] border-gray-300 bg-white"
+                    class="h-4 w-4 text-[var(--camp-red)] focus:ring-[var(--camp-red)] border-white/30 bg-white/10"
                     required
                   />
-                  <span class="text-gray-900">No</span>
+                  <span>No</span>
                 </label>
               </div>
 
-              <!-- Helper line -->
               <p class="mt-2 text-xs text-gray-500">
                 Discount is applied at checkout — use promo code
                 <strong>SIBLING10</strong> on Stripe, or select the sibling
@@ -320,16 +317,15 @@
 
               <p class="text-sm text-gray-600 mt-4">
                 Please submit a <strong>separate form</strong> for each child.
-                The discount applies only to
-                <strong>additional</strong> children.
+                The discount applies only to <strong>additional</strong>
+                children.
               </p>
 
-              <label class="flex items-center gap-2 text-sm text-gray-800 mt-3">
+              <label class="flex items-center gap-2 text-sm text-gray-700 mt-3">
                 <input
                   type="checkbox"
                   name="confirm-discount-policy"
                   id="confirm-discount-policy"
-                  class="h-4 w-4 text-[var(--camp-red)] focus:ring-[var(--camp-red)] border-gray-300 bg-white"
                   required
                 />
                 I understand the sibling discount applies only to additional
@@ -817,8 +813,8 @@
     <!-- Shared Camp JS -->
     <script src="/camp/js/main.js"></script>
 
+    <!-- Save camper name for thank-you greeting -->
     <script>
-      // Save camper name to localStorage before form submission
       document.addEventListener("DOMContentLoaded", function () {
         const form = document.querySelector('form[name="camper-registration"]');
         if (form) {
@@ -834,20 +830,18 @@
       });
     </script>
 
+    <!-- Show/hide day selector -->
     <script>
-      // Toggle the day selector visibility
       const daySelector = document.getElementById("day-selector");
       const attendanceRadios = document.querySelectorAll(
         "input[name='attendance']"
       );
-
       attendanceRadios.forEach((r) => {
         r.addEventListener("change", () => {
           if (r.checked && r.value === "Choose Dates") {
             daySelector.classList.remove("hidden");
           } else if (r.checked && r.value === "Full Week") {
             daySelector.classList.add("hidden");
-            // Optional: uncheck any previously selected days
             document
               .querySelectorAll("input[name='selected-dates']:checked")
               .forEach((cb) => (cb.checked = false));
@@ -856,6 +850,7 @@
       });
     </script>
 
+    <!-- Submit to Netlify, save for prefill, then redirect to pay.html -->
     <script>
       (function () {
         const form = document.getElementById("registerForm");
@@ -866,9 +861,12 @@
         form.addEventListener("submit", async function (e) {
           e.preventDefault();
 
+          // Attendance
           const attendance =
             document.querySelector("input[name='attendance']:checked")?.value ||
             "";
+
+          // Sibling (normalize to yes/no)
           const siblingRaw =
             document.querySelector("input[name='sibling']:checked")?.value ||
             "No";
@@ -876,9 +874,10 @@
             ? "yes"
             : "no";
 
+          // Build redirect URL parts (derived params for pay.html)
           let redirectUrl = "/camp/pay.html";
-          let derivedPackage = "";
-          let derivedDays = 0;
+          let derivedPackage = ""; // for Netlify record
+          let derivedDays = 0; // for Netlify record
 
           if (attendance === "Full Week") {
             if (typeof isEarlyBird === "function" && isEarlyBird()) {
@@ -905,27 +904,31 @@
             return;
           }
 
-          if (sibling === "yes") redirectUrl += "&sibling=yes";
+          if (sibling === "yes") {
+            redirectUrl += "&sibling=yes";
+          }
 
           // Background submit to Netlify
           if (SUBMIT_TO_NETLIFY && form.hasAttribute("data-netlify")) {
             try {
               const fd = new FormData(form);
-              // Add derived values for your Netlify record
               fd.append("derived-package", derivedPackage);
               fd.append("derived-days", String(derivedDays));
               fd.append("derived-sibling", sibling);
               fd.append("submitted-at", new Date().toISOString());
-              await fetch("/", { method: "POST", body: fd });
+
+              await fetch("/", {
+                method: "POST",
+                body: fd,
+              });
             } catch (err) {
               console.warn("Netlify background submit failed:", err);
             }
           }
 
-          // Save for prefill (support multi-value fields)
+          // Save for prefill (supports multi-value fields)
           const toStore = {};
           const fd2 = new FormData(form);
-          // Collect all values including duplicate keys
           for (const [k, v] of fd2.entries()) {
             if (toStore[k] === undefined) {
               toStore[k] = v;
@@ -937,13 +940,14 @@
           }
           localStorage.setItem("fffc-registration", JSON.stringify(toStore));
 
+          // Redirect
           window.location.href = redirectUrl;
         });
       })();
     </script>
 
+    <!-- Prefill (supports multi-value checkboxes like selected-dates) -->
     <script>
-      // Prefill the form if data exists in localStorage (supports multi-value fields)
       document.addEventListener("DOMContentLoaded", () => {
         const saved = localStorage.getItem("fffc-registration");
         if (!saved) return;
@@ -951,14 +955,11 @@
         try {
           const data = JSON.parse(saved);
 
-          // First, set simple inputs
           for (const [key, value] of Object.entries(data)) {
             const fields = document.querySelectorAll(`[name="${key}"]`);
             if (!fields.length) continue;
 
-            // Multiple inputs with same name (radios/checkboxes)
             if (fields.length > 1) {
-              // If value is an array, check all that match; if scalar, check the matching one
               const values = Array.isArray(value) ? value : [value];
               fields.forEach((el) => {
                 if (el.type === "checkbox" || el.type === "radio") {
