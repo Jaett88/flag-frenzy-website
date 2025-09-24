@@ -858,18 +858,14 @@
         const form = document.getElementById("registerForm");
         if (!form) return;
 
-        // Submit the form to Netlify (for your records), then redirect to pay.html
         const SUBMIT_TO_NETLIFY = true;
 
         form.addEventListener("submit", async function (e) {
           e.preventDefault();
 
-          // Attendance
           const attendance =
             document.querySelector("input[name='attendance']:checked")?.value ||
             "";
-
-          // Sibling (normalize to yes/no)
           const siblingRaw =
             document.querySelector("input[name='sibling']:checked")?.value ||
             "No";
@@ -877,10 +873,9 @@
             ? "yes"
             : "no";
 
-          // Build redirect URL parts (derived params for pay.html)
           let redirectUrl = "/camp/pay.html";
-          let derivedPackage = ""; // for Netlify record
-          let derivedDays = 0; // for Netlify record
+          let derivedPackage = "";
+          let derivedDays = 0;
 
           if (attendance === "Full Week") {
             if (typeof isEarlyBird === "function" && isEarlyBird()) {
@@ -907,41 +902,38 @@
             return;
           }
 
-          if (sibling === "yes") {
-            redirectUrl += "&sibling=yes";
-          }
+          if (sibling === "yes") redirectUrl += "&sibling=yes";
 
-          // ---- Optional: background submit to Netlify so you keep the entry
+          // Background submit to Netlify
           if (SUBMIT_TO_NETLIFY && form.hasAttribute("data-netlify")) {
             try {
-              const formData = new FormData(form);
-              // Add derived values so your Netlify submission shows the final choices too
-              formData.append("derived-package", derivedPackage);
-              formData.append("derived-days", String(derivedDays));
-              formData.append("derived-sibling", sibling);
-              // Add timestamp
-              formData.append("submitted-at", new Date().toISOString());
-
-              await fetch("/", {
-                method: "POST",
-                body: formData,
-              });
-              // Ignore response body; immediately go to payment page
+              const fd = new FormData(form);
+              // Add derived values for your Netlify record
+              fd.append("derived-package", derivedPackage);
+              fd.append("derived-days", String(derivedDays));
+              fd.append("derived-sibling", sibling);
+              fd.append("submitted-at", new Date().toISOString());
+              await fetch("/", { method: "POST", body: fd });
             } catch (err) {
               console.warn("Netlify background submit failed:", err);
-              // Still proceed to payment page even if Netlify POST fails
             }
           }
 
-          // ---- Go to payment choice page
-          // Save form data for prefill
-          const formData = {};
-          new FormData(form).forEach((value, key) => {
-            formData[key] = value;
-          });
-          localStorage.setItem("fffc-registration", JSON.stringify(formData));
+          // Save for prefill (support multi-value fields)
+          const toStore = {};
+          const fd2 = new FormData(form);
+          // Collect all values including duplicate keys
+          for (const [k, v] of fd2.entries()) {
+            if (toStore[k] === undefined) {
+              toStore[k] = v;
+            } else if (Array.isArray(toStore[k])) {
+              toStore[k].push(v);
+            } else {
+              toStore[k] = [toStore[k], v];
+            }
+          }
+          localStorage.setItem("fffc-registration", JSON.stringify(toStore));
 
-          // Redirect
           window.location.href = redirectUrl;
         });
       })();
