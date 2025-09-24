@@ -855,6 +855,7 @@
     </script>
 
     <!-- Submit to Netlify, save for prefill, then redirect to pay.html -->
+    <!-- Submit to Netlify, save for prefill, then redirect to pay.html -->
     <script>
       (function () {
         const form = document.getElementById("registerForm");
@@ -878,7 +879,7 @@
             ? "yes"
             : "no";
 
-          // Build redirect URL parts (derived params for pay.html)
+          // Build redirect URL
           let redirectUrl = "/camp/pay.html";
           let derivedPackage = ""; // for Netlify record
           let derivedDays = 0; // for Netlify record
@@ -922,9 +923,15 @@
               fd.append("derived-sibling", sibling);
               fd.append("submitted-at", new Date().toISOString());
 
+              // Convert FormData → URLSearchParams for Netlify
+              const body = new URLSearchParams(fd);
+
               await fetch("/", {
                 method: "POST",
-                body: fd,
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body,
               });
             } catch (err) {
               console.warn("Netlify background submit failed:", err);
