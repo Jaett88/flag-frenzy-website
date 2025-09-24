@@ -43,21 +43,17 @@
 
       <p class="text-sm text-center mt-10 text-gray-600">
         💡 If you registered more than one child, please pay separately for each
-        child.<br />
-        💡 Sibling discounts: Use promo code
-        <span class="font-semibold">SIBLING10</span> at Stripe checkout, or use
-        the sibling PayPal link (shown automatically if selected).
+        child.
       </p>
     </main>
 
     <script>
-      // ---- Read URL params (expected: ?package=fullweek|earlybird|daypass&days=N&sibling=yes|no)
+      // ?package=fullweek|earlybird|daypass&days=N&sibling=yes|no
       const params = new URLSearchParams(window.location.search);
-      const pkgKey = (params.get("package") || "").toLowerCase(); // fullweek | earlybird | daypass
-      const sibling = (params.get("sibling") || "no").toLowerCase(); // yes | no
-      const days = parseInt(params.get("days") || "0", 10); // only for daypass
+      const pkgKey = (params.get("package") || "").toLowerCase();
+      const sibling = (params.get("sibling") || "no").toLowerCase(); // yes|no
+      const days = parseInt(params.get("days") || "0", 10);
 
-      // ---- Payment links (replace placeholders with real ones)
       const links = {
         earlybird: {
           name: "🐦 Early Bird",
@@ -75,7 +71,7 @@
         },
         daypass: {
           name: "🎟️ Day Pass",
-          basePrice: 35, // per day
+          basePrice: 35,
           stripe: "https://buy.stripe.com/6oUfZg8qJdQw7D48ef9EI02",
           paypal: "https://www.paypal.com/ncp/payment/7Y73AQ6S6NJ2Q",
           paypalSibling: "https://www.paypal.com/ncp/payment/FDSMV4E9XYKU8",
@@ -85,11 +81,10 @@
       const selected = links[pkgKey];
 
       if (!selected) {
-        document.getElementById(
-          "package-details"
-        ).innerHTML = `<p class="text-red-600 font-medium">⚠️ No package selected. Please go back and register again.</p>`;
+        document.getElementById("package-details").innerHTML =
+          '<p class="text-red-600 font-medium">⚠️ No package selected. Please go back and register again.</p>';
       } else {
-        // Compute display price
+        // Display price
         let priceText = `£${selected.basePrice}`;
         if (pkgKey === "daypass") {
           const d = Number.isFinite(days) && days > 0 ? days : 1;
@@ -97,7 +92,6 @@
           priceText = `£${total} (${d} day${d > 1 ? "s" : ""} @ £35/day)`;
         }
 
-        // Build details
         let details = `
           <h2 class="text-2xl font-semibold mb-2">${selected.name}</h2>
           <p class="text-lg text-gray-700">${priceText}</p>
@@ -107,19 +101,19 @@
         }
         document.getElementById("package-details").innerHTML = details;
 
-        // Pick PayPal link (swap to sibling link if needed)
+        // Pick PayPal link
         const paypalLink =
           sibling === "yes" && selected.paypalSibling
             ? selected.paypalSibling
             : selected.paypal;
 
-        // Render buttons
+        // Buttons
         document.getElementById("payment-buttons").innerHTML = `
-          <a href="${selected.stripe}" target="_blank"
+          <a href="${selected.stripe}" target="_blank" rel="noopener"
              class="pay-btn flex-1 text-center bg-[var(--camp-red)] text-white font-medium py-4 px-6 rounded-lg shadow hover:bg-red-700 transition">
              Pay with Stripe
           </a>
-          <a href="${paypalLink}" target="_blank"
+          <a href="${paypalLink}" target="_blank" rel="noopener"
              class="pay-btn flex-1 text-center bg-yellow-400 text-black font-medium py-4 px-6 rounded-lg shadow hover:bg-yellow-500 transition">
              Pay with PayPal
           </a>
