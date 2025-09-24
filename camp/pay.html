@@ -48,13 +48,13 @@
     </main>
 
     <script>
-      // ---- Read URL params (expected: ?package=fullweek|earlybird|daypass&days=N&sibling=yes|no)
+      // ---- Read URL params
       const params = new URLSearchParams(window.location.search);
       const pkgKey = (params.get("package") || "").toLowerCase(); // fullweek | earlybird | daypass
       const sibling = (params.get("sibling") || "no").toLowerCase(); // yes | no
-      const days = parseInt(params.get("days") || "0", 10); // only for daypass
+      const days = parseInt(params.get("days") || "0", 10);
 
-      // ---- Payment links (replace placeholders with real ones)
+      // ---- Payment links
       const links = {
         earlybird: {
           name: "🐦 Early Bird",
@@ -72,7 +72,7 @@
         },
         daypass: {
           name: "🎟️ Day Pass",
-          basePrice: 35, // per day
+          basePrice: 35,
           stripe: "https://buy.stripe.com/6oUfZg8qJdQw7D48ef9EI02",
           paypal: "https://www.paypal.com/ncp/payment/7Y73AQ6S6NJ2Q",
           paypalSibling: "https://www.paypal.com/ncp/payment/FDSMV4E9XYKU8",
@@ -86,7 +86,7 @@
           "package-details"
         ).innerHTML = `<p class="text-red-600 font-medium">⚠️ No package selected. Please go back and register again.</p>`;
       } else {
-        // Compute base price
+        // ---- Work out total
         let total = selected.basePrice;
         let description = "";
 
@@ -96,12 +96,12 @@
           description = `(${d} day${d > 1 ? "s" : ""} @ £35/day)`;
         }
 
-        // Apply sibling discount
+        // ---- Apply sibling discount (shown in display only)
         if (sibling === "yes") {
           total = Math.max(0, total - 10);
         }
 
-        // Build details
+        // ---- Build display details
         let details = `
       <h2 class="text-2xl font-semibold mb-2">${selected.name}</h2>
       <p class="text-lg text-gray-700">£${total} ${description}</p>
@@ -111,13 +111,13 @@
         }
         document.getElementById("package-details").innerHTML = details;
 
-        // Pick PayPal link (swap to sibling link if needed)
+        // ---- Pick PayPal link (swap to sibling if needed)
         const paypalLink =
           sibling === "yes" && selected.paypalSibling
             ? selected.paypalSibling
             : selected.paypal;
 
-        // Render buttons
+        // ---- Render buttons
         document.getElementById("payment-buttons").innerHTML = `
       <a href="${selected.stripe}" target="_blank"
          class="pay-btn flex-1 text-center bg-[var(--camp-red)] text-white font-medium py-4 px-6 rounded-lg shadow hover:bg-red-700 transition">
