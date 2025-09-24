@@ -6,29 +6,21 @@
 const DAILY_RATE = 35;
 const FULL_WEEK_RATE = 150;
 const EARLY_BIRD_RATE = 135;
-const SIBLING_DISCOUNT_FLAT = 10; // <-- flat £10 off
-const EARLY_BIRD_CUTOFF = new Date("2025-09-26T23:59:59");
+const SIBLING_DISCOUNT_FLAT = 10; // flat £10 off
+const EARLY_BIRD_CUTOFF = new Date("2025-10-03T23:59:59"); // NEW deadline 3 Oct
 
 // ===== Utility Functions =====
 function isEarlyBird() {
   return new Date() <= EARLY_BIRD_CUTOFF;
 }
 
-function toggleDaySelect(show) {
-  const daySection = document.getElementById("day-selector");
-  if (daySection) {
-    daySection.classList.toggle("hidden", !show);
-  }
-  updatePaymentSummary();
-}
-
 function updatePaymentSummary() {
   const attendance = document.querySelector(
     "input[name='attendance']:checked"
   )?.value;
-  const sibling = document.querySelector(
-    "select[name='sibling-discount']"
-  )?.value;
+  const sibling = document
+    .querySelector("input[name='sibling']:checked")
+    ?.value?.toLowerCase();
   const selectedDates = Array.from(
     document.querySelectorAll("input[name='selected-dates']:checked")
   );
@@ -42,7 +34,7 @@ function updatePaymentSummary() {
     baseTotal = selectedDates.length * DAILY_RATE;
   }
 
-  // Flat sibling discount (applies once to total for additional children)
+  // Flat sibling discount
   if (sibling === "yes") {
     baseTotal = Math.max(0, baseTotal - SIBLING_DISCOUNT_FLAT);
   }
@@ -50,7 +42,7 @@ function updatePaymentSummary() {
   if (paymentDisplay) {
     let message = `Total Due: £${baseTotal.toFixed(2)}`;
 
-    // Append early-bird reminder if still active and "Full Week" selected
+    // Append early-bird reminder
     if (attendance === "Full Week" && isEarlyBird()) {
       const cutoffStr = EARLY_BIRD_CUTOFF.toLocaleDateString("en-GB", {
         day: "numeric",
