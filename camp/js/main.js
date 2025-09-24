@@ -7,20 +7,28 @@ const DAILY_RATE = 35;
 const FULL_WEEK_RATE = 150;
 const EARLY_BIRD_RATE = 135;
 const SIBLING_DISCOUNT_FLAT = 10; // flat £10 off
-const EARLY_BIRD_CUTOFF = new Date("2025-10-03T23:59:59"); // NEW deadline 3 Oct
+const EARLY_BIRD_CUTOFF = new Date("2025-10-03T23:59:59"); // deadline 3 Oct
 
 // ===== Utility Functions =====
 function isEarlyBird() {
   return new Date() <= EARLY_BIRD_CUTOFF;
 }
 
+function toggleDaySelect(show) {
+  const daySection = document.getElementById("day-selector");
+  if (daySection) {
+    daySection.classList.toggle("hidden", !show);
+  }
+  updatePaymentSummary();
+}
+
 function updatePaymentSummary() {
   const attendance = document.querySelector(
     "input[name='attendance']:checked"
   )?.value;
-  const sibling = document
-    .querySelector("input[name='sibling']:checked")
-    ?.value?.toLowerCase();
+  const sibling = document.querySelector(
+    "input[name='sibling']:checked"
+  )?.value?.toLowerCase();
   const selectedDates = Array.from(
     document.querySelectorAll("input[name='selected-dates']:checked")
   );
@@ -42,7 +50,6 @@ function updatePaymentSummary() {
   if (paymentDisplay) {
     let message = `Total Due: £${baseTotal.toFixed(2)}`;
 
-    // Append early-bird reminder
     if (attendance === "Full Week" && isEarlyBird()) {
       const cutoffStr = EARLY_BIRD_CUTOFF.toLocaleDateString("en-GB", {
         day: "numeric",
@@ -58,15 +65,6 @@ function updatePaymentSummary() {
 // ===== DOMContentLoaded =====
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Flag Frenzy registration page loaded!");
-
-  // Scroll to top when logo clicked (if present)
-  const logo = document.querySelector(".logo");
-  if (logo) {
-    logo.style.cursor = "pointer";
-    logo.addEventListener("click", () =>
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    );
-  }
 
   // Attendance radios
   const attendanceRadios = document.querySelectorAll(
@@ -87,11 +85,19 @@ document.addEventListener("DOMContentLoaded", () => {
     cb.addEventListener("change", updatePaymentSummary)
   );
 
-  // Sibling discount select
-  const siblingSelect = document.querySelector(
-    "select[name='sibling-discount']"
+  // Sibling radios
+  const siblingRadios = document.querySelectorAll("input[name='sibling']");
+  siblingRadios.forEach((radio) =>
+    radio.addEventListener("change", updatePaymentSummary)
   );
-  siblingSelect?.addEventListener("change", updatePaymentSummary);
+
+  // Initial UI state
+  toggleDaySelect(false);
+  updatePaymentSummary();
+
+  // … (your DOB, medical, menu, footer year, Swiper code stays the same here)
+});
+
 
   // DOB dropdowns (dynamic population)
   const dobDay = document.getElementById("dob-day");
