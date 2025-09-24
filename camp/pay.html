@@ -48,12 +48,13 @@
     </main>
 
     <script>
-      // ?package=fullweek|earlybird|daypass&days=N&sibling=yes|no
+      // ---- Read URL params (expected: ?package=fullweek|earlybird|daypass&days=N&sibling=yes|no)
       const params = new URLSearchParams(window.location.search);
-      const pkgKey = (params.get("package") || "").toLowerCase();
-      const sibling = (params.get("sibling") || "no").toLowerCase(); // yes|no
-      const days = parseInt(params.get("days") || "0", 10);
+      const pkgKey = (params.get("package") || "").toLowerCase(); // fullweek | earlybird | daypass
+      const sibling = (params.get("sibling") || "no").toLowerCase(); // yes | no
+      const days = parseInt(params.get("days") || "0", 10); // only for daypass
 
+      // ---- Payment links (replace placeholders with real ones)
       const links = {
         earlybird: {
           name: "🐦 Early Bird",
@@ -71,7 +72,7 @@
         },
         daypass: {
           name: "🎟️ Day Pass",
-          basePrice: 35,
+          basePrice: 35, // per day
           stripe: "https://buy.stripe.com/6oUfZg8qJdQw7D48ef9EI02",
           paypal: "https://www.paypal.com/ncp/payment/7Y73AQ6S6NJ2Q",
           paypalSibling: "https://www.paypal.com/ncp/payment/FDSMV4E9XYKU8",
@@ -81,43 +82,52 @@
       const selected = links[pkgKey];
 
       if (!selected) {
-        document.getElementById("package-details").innerHTML =
-          '<p class="text-red-600 font-medium">⚠️ No package selected. Please go back and register again.</p>';
+        document.getElementById(
+          "package-details"
+        ).innerHTML = `<p class="text-red-600 font-medium">⚠️ No package selected. Please go back and register again.</p>`;
       } else {
-        // Display price
-        let priceText = `£${selected.basePrice}`;
+        // Compute base price
+        let total = selected.basePrice;
+        let description = "";
+
         if (pkgKey === "daypass") {
           const d = Number.isFinite(days) && days > 0 ? days : 1;
-          const total = selected.basePrice * d;
-          priceText = `£${total} (${d} day${d > 1 ? "s" : ""} @ £35/day)`;
+          total = selected.basePrice * d;
+          description = `(${d} day${d > 1 ? "s" : ""} @ £35/day)`;
         }
 
-        let details = `
-          <h2 class="text-2xl font-semibold mb-2">${selected.name}</h2>
-          <p class="text-lg text-gray-700">${priceText}</p>
-        `;
+        // Apply sibling discount
         if (sibling === "yes") {
-          details += `<p class="mt-2 text-green-600 font-medium">✅ Sibling discount selected — £10 off.</p>`;
+          total = Math.max(0, total - 10);
+        }
+
+        // Build details
+        let details = `
+      <h2 class="text-2xl font-semibold mb-2">${selected.name}</h2>
+      <p class="text-lg text-gray-700">£${total} ${description}</p>
+    `;
+        if (sibling === "yes") {
+          details += `<p class="mt-2 text-green-600 font-medium">✅ Sibling discount applied (£10 off)</p>`;
         }
         document.getElementById("package-details").innerHTML = details;
 
-        // Pick PayPal link
+        // Pick PayPal link (swap to sibling link if needed)
         const paypalLink =
           sibling === "yes" && selected.paypalSibling
             ? selected.paypalSibling
             : selected.paypal;
 
-        // Buttons
+        // Render buttons
         document.getElementById("payment-buttons").innerHTML = `
-          <a href="${selected.stripe}" target="_blank" rel="noopener"
-             class="pay-btn flex-1 text-center bg-[var(--camp-red)] text-white font-medium py-4 px-6 rounded-lg shadow hover:bg-red-700 transition">
-             Pay with Stripe
-          </a>
-          <a href="${paypalLink}" target="_blank" rel="noopener"
-             class="pay-btn flex-1 text-center bg-yellow-400 text-black font-medium py-4 px-6 rounded-lg shadow hover:bg-yellow-500 transition">
-             Pay with PayPal
-          </a>
-        `;
+      <a href="${selected.stripe}" target="_blank"
+         class="pay-btn flex-1 text-center bg-[var(--camp-red)] text-white font-medium py-4 px-6 rounded-lg shadow hover:bg-red-700 transition">
+         Pay with Stripe
+      </a>
+      <a href="${paypalLink}" target="_blank"
+         class="pay-btn flex-1 text-center bg-yellow-400 text-black font-medium py-4 px-6 rounded-lg shadow hover:bg-yellow-500 transition">
+         Pay with PayPal
+      </a>
+    `;
       }
     </script>
   </body>
