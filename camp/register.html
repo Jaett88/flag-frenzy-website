@@ -948,24 +948,35 @@
     </script>
 
     <script>
-      // Prefill the form if data exists in localStorage
+      // Prefill the form if data exists in localStorage (supports multi-value fields)
       document.addEventListener("DOMContentLoaded", () => {
         const saved = localStorage.getItem("fffc-registration");
         if (!saved) return;
 
         try {
           const data = JSON.parse(saved);
-          for (const [key, value] of Object.entries(data)) {
-            const field = document.querySelector(`[name="${key}"]`);
-            if (!field) continue;
 
-            if (field.type === "radio" || field.type === "checkbox") {
-              const inputs = document.querySelectorAll(`[name="${key}"]`);
-              inputs.forEach((input) => {
-                if (input.value === value) input.checked = true;
+          // First, set simple inputs
+          for (const [key, value] of Object.entries(data)) {
+            const fields = document.querySelectorAll(`[name="${key}"]`);
+            if (!fields.length) continue;
+
+            // Multiple inputs with same name (radios/checkboxes)
+            if (fields.length > 1) {
+              // If value is an array, check all that match; if scalar, check the matching one
+              const values = Array.isArray(value) ? value : [value];
+              fields.forEach((el) => {
+                if (el.type === "checkbox" || el.type === "radio") {
+                  el.checked = values.includes(el.value);
+                }
               });
             } else {
-              field.value = value;
+              const field = fields[0];
+              if (field.type === "checkbox" || field.type === "radio") {
+                field.checked = field.value === value;
+              } else {
+                field.value = value;
+              }
             }
           }
         } catch (err) {
