@@ -916,6 +916,7 @@
           if (SUBMIT_TO_NETLIFY && form.hasAttribute("data-netlify")) {
             try {
               const fd = new FormData(form);
+              fd.append("form-name", "camper-registration");
               fd.append("derived-package", derivedPackage);
               fd.append("derived-days", String(derivedDays));
               fd.append("derived-sibling", sibling);
