@@ -6,7 +6,7 @@
     <title>Register — Flag Frenzy Football Camp</title>
     <meta
       name="description"
-      content="Register for Flag Frenzy Football Camp. Safe, non‑contact American flag football for ages 7–15."
+      content="Register for Flag Frenzy Football Camp. Safe, non-contact American flag football for ages 7–15."
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -275,16 +275,20 @@
             </div>
           </div>
 
-          <!-- Sibling Discount -->
+          <!-- Sibling Discount (replace your existing block with this) -->
           <div class="mb-6">
-            <fieldset>
+            <fieldset aria-describedby="sibling-help">
               <legend class="block text-sm font-medium text-white">
                 Sibling Discount
               </legend>
-              <p class="mt-1 text-sm text-white/70">
-                Does this camper have another child attending this camp?
+
+              <p id="sibling-help" class="mt-1 text-sm text-white/70">
+                The £10 sibling discount applies to
+                <strong>additional children only</strong>. Please submit a
+                separate form for each child.
               </p>
-              <div class="mt-3 flex gap-6">
+
+              <div class="mt-3 flex flex-wrap items-center gap-6">
                 <label class="flex items-center gap-2 text-white">
                   <input
                     type="radio"
@@ -293,8 +297,9 @@
                     class="h-4 w-4 text-[var(--camp-red)] focus:ring-[var(--camp-red)] border-white/30 bg-white/10"
                     required
                   />
-                  <span>Yes</span>
+                  <span>Yes — this is an additional child</span>
                 </label>
+
                 <label class="flex items-center gap-2 text-white">
                   <input
                     type="radio"
@@ -303,26 +308,20 @@
                     class="h-4 w-4 text-[var(--camp-red)] focus:ring-[var(--camp-red)] border-white/30 bg-white/10"
                     required
                   />
-                  <span>No</span>
-                </label>
-                <p class="text-sm text-gray-600 mt-2">
-                  Please submit a <strong>separate form</strong> for each child.
-                  The discount applies only to
-                  <strong>additional</strong> children.
-                </p>
-                <label
-                  class="flex items-center gap-2 text-sm text-gray-700 mt-3"
-                >
-                  <input
-                    type="checkbox"
-                    name="confirm-discount-policy"
-                    id="confirm-discount-policy"
-                    required
-                  />
-                  I understand the sibling discount applies only to additional
-                  children registered separately.
+                  <span>No — this is the first/only child</span>
                 </label>
               </div>
+
+              <label class="flex items-center gap-2 text-sm text-gray-700 mt-3">
+                <input
+                  type="checkbox"
+                  name="confirm-discount-policy"
+                  id="confirm-discount-policy"
+                  required
+                />
+                I understand the sibling discount applies only to additional
+                children registered separately.
+              </label>
             </fieldset>
           </div>
 
@@ -689,8 +688,8 @@
               Total due: £135<br />
               <small class="text-sm text-gray-600">
                 Full week: £150 &nbsp;•&nbsp; Early-bird:
-                <strong>£135</strong> until
-                <strong>26 Sep</strong> &nbsp;•&nbsp; Day rate: £35
+                <strong>£135</strong> until <strong>3 Oct</strong> &nbsp;•&nbsp;
+                Day rate: £35
                 <br />
                 Sibling discount: <strong>£10</strong> for additional children
                 only.
@@ -874,7 +873,7 @@
           let derivedDays = 0; // for Netlify record
 
           if (attendance === "Full Week") {
-            if (isEarlyBird()) {
+            if (typeof isEarlyBird === "function" && isEarlyBird()) {
               redirectUrl += "?package=earlybird";
               derivedPackage = "earlybird";
             } else {
@@ -896,6 +895,10 @@
           } else {
             alert("Please select an attendance option.");
             return;
+          }
+
+          if (sibling === "yes") {
+            redirectUrl += "&sibling=yes";
           }
 
           // ---- Optional: background submit to Netlify so you keep the entry
