@@ -275,20 +275,18 @@
             </div>
           </div>
 
-          <!-- Sibling Discount (replace your existing block with this) -->
+          <!-- Sibling Discount -->
           <div class="mb-6">
-            <fieldset aria-describedby="sibling-help">
+            <fieldset>
               <legend class="block text-sm font-medium text-white">
                 Sibling Discount
               </legend>
-
-              <p id="sibling-help" class="mt-1 text-sm text-white/70">
-                The £10 sibling discount applies to
-                <strong>additional children only</strong>. Please submit a
-                separate form for each child.
+              <p class="mt-1 text-sm text-white/70">
+                Is this camper attending <strong>with a sibling</strong> who is
+                also registered for this camp?
               </p>
 
-              <div class="mt-3 flex flex-wrap items-center gap-6">
+              <div class="mt-3 flex gap-6">
                 <label class="flex items-center gap-2 text-white">
                   <input
                     type="radio"
@@ -297,9 +295,8 @@
                     class="h-4 w-4 text-[var(--camp-red)] focus:ring-[var(--camp-red)] border-white/30 bg-white/10"
                     required
                   />
-                  <span>Yes — this is an additional child</span>
+                  <span>Yes</span>
                 </label>
-
                 <label class="flex items-center gap-2 text-white">
                   <input
                     type="radio"
@@ -308,9 +305,22 @@
                     class="h-4 w-4 text-[var(--camp-red)] focus:ring-[var(--camp-red)] border-white/30 bg-white/10"
                     required
                   />
-                  <span>No — this is the first/only child</span>
+                  <span>No</span>
                 </label>
               </div>
+
+              <!-- Helper line -->
+              <p class="mt-2 text-xs text-gray-500">
+                Discount is applied at checkout — use promo code
+                <strong>SIBLING10</strong> on Stripe, or select the sibling
+                PayPal link.
+              </p>
+
+              <p class="text-sm text-gray-600 mt-4">
+                Please submit a <strong>separate form</strong> for each child.
+                The discount applies only to
+                <strong>additional</strong> children.
+              </p>
 
               <label class="flex items-center gap-2 text-sm text-gray-700 mt-3">
                 <input
