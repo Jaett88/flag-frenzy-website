@@ -874,8 +874,13 @@
           let derivedDays = 0; // for Netlify record
 
           if (attendance === "Full Week") {
-            redirectUrl += "?package=fullweek";
-            derivedPackage = "fullweek";
+            if (isEarlyBird()) {
+              redirectUrl += "?package=earlybird";
+              derivedPackage = "earlybird";
+            } else {
+              redirectUrl += "?package=fullweek";
+              derivedPackage = "fullweek";
+            }
           } else if (attendance === "Choose Dates") {
             const selectedDates = Array.from(
               document.querySelectorAll("input[name='selected-dates']:checked")
@@ -891,10 +896,6 @@
           } else {
             alert("Please select an attendance option.");
             return;
-          }
-
-          if (sibling === "yes") {
-            redirectUrl += "&sibling=yes";
           }
 
           // ---- Optional: background submit to Netlify so you keep the entry
