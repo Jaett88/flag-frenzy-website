@@ -950,8 +950,7 @@
               toStore[k] = [toStore[k], v];
             }
           }
-          localStorage.setItem("fffc-registration", JSON.stringify(toStore));
-
+          sessionStorage.setItem("fffc-registration", JSON.stringify(toStore));
           // Redirect
           window.location.href = redirectUrl;
         });
@@ -961,7 +960,7 @@
     <!-- Prefill (supports multi-value checkboxes like selected-dates) -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const saved = localStorage.getItem("fffc-registration");
+        const saved = sessionStorage.getItem("fffc-registration");
         if (!saved) return;
 
         try {
