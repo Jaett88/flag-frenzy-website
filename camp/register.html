@@ -862,6 +862,15 @@
 
         const SUBMIT_TO_NETLIFY = true;
 
+        // Robust encoder: keeps duplicate keys (checkbox arrays) + includes form-name
+        function encodeFormData(fd) {
+          const pairs = [];
+          for (const [k, v] of fd.entries()) {
+            pairs.push(encodeURIComponent(k) + "=" + encodeURIComponent(v));
+          }
+          return pairs.join("&");
+        }
+
         form.addEventListener("submit", async function (e) {
           e.preventDefault();
 
@@ -878,7 +887,7 @@
             ? "yes"
             : "no";
 
-          // Build redirect URL
+          // Build redirect URL parts (derived params for pay.html)
           let redirectUrl = "/camp/pay.html";
           let derivedPackage = ""; // for Netlify record
           let derivedDays = 0; // for Netlify record
@@ -912,32 +921,36 @@
             redirectUrl += "&sibling=yes";
           }
 
-          // Background submit to Netlify
+          // ---- Background submit to Netlify (for your records)
           if (SUBMIT_TO_NETLIFY && form.hasAttribute("data-netlify")) {
             try {
               const fd = new FormData(form);
-              fd.append("form-name", "camper-registration");
+
+              // Ensure Netlify sees the correct form
+              if (![...fd.keys()].includes("form-name")) {
+                fd.append("form-name", "camper-registration");
+              }
+
+              // Add derived values + timestamp
               fd.append("derived-package", derivedPackage);
               fd.append("derived-days", String(derivedDays));
               fd.append("derived-sibling", sibling);
               fd.append("submitted-at", new Date().toISOString());
-
-              // Convert FormData → URLSearchParams for Netlify
-              const body = new URLSearchParams(fd);
 
               await fetch("/", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded",
                 },
-                body,
+                body: encodeFormData(fd),
               });
             } catch (err) {
               console.warn("Netlify background submit failed:", err);
+              // Continue to payment regardless
             }
           }
 
-          // Save for prefill (supports multi-value fields)
+          // ---- Save for prefill (supports multi-value fields) — using sessionStorage (clears on tab close)
           const toStore = {};
           const fd2 = new FormData(form);
           for (const [k, v] of fd2.entries()) {
@@ -950,7 +963,8 @@
             }
           }
           sessionStorage.setItem("fffc-registration", JSON.stringify(toStore));
-          // Redirect
+
+          // ---- Redirect to payment chooser
           window.location.href = redirectUrl;
         });
       })();
