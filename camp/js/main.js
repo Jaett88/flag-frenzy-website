@@ -7,7 +7,7 @@ const DAILY_RATE = 35;
 const FULL_WEEK_RATE = 150;
 const EARLY_BIRD_RATE = 135;
 const SIBLING_DISCOUNT_FLAT = 10; // flat £10 off
-const EARLY_BIRD_CUTOFF = new Date("2025-10-10T23:59:59"); // deadline 3 Oct
+const EARLY_BIRD_CUTOFF = new Date("2025-10-10T23:59:59"); // deadline 10 Oct
 
 // ===== Utility Functions =====
 function isEarlyBird() {
