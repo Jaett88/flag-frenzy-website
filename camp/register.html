@@ -148,6 +148,10 @@
           class="form form-card mt-6 grid gap-5"
         >
           <input type="hidden" name="form-name" value="camper-registration" />
+          <input type="hidden" name="derived-package" id="derived-package" />
+          <input type="hidden" name="derived-days" id="derived-days" />
+          <input type="hidden" name="derived-sibling" id="derived-sibling" />
+
           <input type="text" name="bot-field" class="hidden" />
           <p class="hidden">
             <label
@@ -922,6 +926,11 @@
           try {
             // Convert to URL-encoded string
             const body = new URLSearchParams(fd);
+
+            // Write into hidden inputs so Netlify records them
+            document.getElementById("derived-package").value = derivedPackage;
+            document.getElementById("derived-days").value = String(derivedDays);
+            document.getElementById("derived-sibling").value = sibling;
 
             // Submit to Netlify
             await fetch("/", {
