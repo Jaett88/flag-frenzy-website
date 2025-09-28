@@ -387,36 +387,117 @@ h3 {
   /* object-position: center left; */
 }
 
-/* Tagline Styling */
+/* ================================
+   TAGLINE — Consolidated + Safe
+   ================================ */
 .tagline {
-  font-size: clamp(2rem, 6vw, 3.2rem); /* Responsive */
   font-weight: 800;
-  color: var(--camp-green);
+  letter-spacing: -0.02em;
   line-height: 1.2;
+  font-size: clamp(1.75rem, 3.2vw + 0.6rem, 3rem);
+}
+.tagline .fast {
+  color: var(--camp-red);
+}
+.tagline .smart {
+  color: var(--camp-green);
+}
+.tagline .flag {
+  color: var(--camp-ink);
 }
 
+/* Animated entrance (staggered) */
 .tagline span {
   display: inline-block;
   opacity: 0;
-  transform: translateY(15px);
-  animation: fadeUp 0.7s ease forwards; /* faster, snappier */
+  transform: translateY(12px);
+  animation: ff-fadeUp 0.6s ease-out forwards;
 }
-
 .tagline .fast {
   animation-delay: 0s;
 }
 .tagline .smart {
-  animation-delay: 0.7s;
+  animation-delay: 0.14s;
 }
 .tagline .flag {
-  animation-delay: 1.4s;
+  animation-delay: 0.28s;
 }
 
-@keyframes fadeUp {
+@keyframes ff-fadeUp {
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
+}
+
+/* Fallbacks so text never disappears */
+@supports not (animation: name) {
+  .tagline span {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tagline span {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Mobile sizing + centering */
+@media (max-width: 768px) {
+  .tagline {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+    line-height: 1.05;
+  }
+  .hero-bg h1,
+  .hero-bg .tagline,
+  .hero-bg p,
+  .hero-bg .btn,
+  .hero-bg ul {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-bg .flex.flex-wrap {
+    justify-content: center;
+  }
+  .hero-bg ul {
+    max-width: 20rem;
+  }
+}
+
+/* ================================
+   MOBILE NAV — Single System
+   (no Tailwind 'hidden' class)
+   ================================ */
+#mobileNav {
+  position: static;
+  z-index: 0;
+}
+@media (max-width: 767px) {
+  #mobileNav {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  #mobileNav.is-open {
+    max-height: 520px;
+  }
+}
+body.nav-open {
+  overflow: hidden;
+}
+
+/* (Optional) iOS/WebKit hardening for hero carousel */
+.hero-bg .hero-swiper {
+  isolation: isolate;
+}
+.hero-bg .hero-swiper,
+.hero-bg .hero-swiper * {
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* --- Softer form card + typography (camp forms) --- */
