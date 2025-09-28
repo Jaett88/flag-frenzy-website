@@ -321,25 +321,6 @@ h3 {
   }
 }
 
-/* ===== Fallback Styles ===== */
-
-/* If animations are not supported */
-@supports not (animation: name) {
-  .tagline .w {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* Respect users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .tagline .w {
-    animation: none !important;
-    opacity: 1;
-    transform: none;
-  }
-}
-
 /* Center hero text block on mobile */
 @media (max-width: 768px) {
   .hero-bg h1,
@@ -543,5 +524,22 @@ body.nav-open {
 @supports (height: 1svh) {
   .hero-bg .min-h-\[60vh\] {
     min-height: 65svh;
+  }
+}
+
+/* If animations aren't supported, just show the text */
+@supports not (animation: name) {
+  .tagline span {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Respect reduced motion: show text, no animation */
+@media (prefers-reduced-motion: reduce) {
+  .tagline span {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
