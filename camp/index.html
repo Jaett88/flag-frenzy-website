@@ -113,19 +113,20 @@
       </div>
     </header>
 
-    <!-- Hero -->
-    <section class="hero-bg relative z-0">
+    <!-- Hero (simple, like main site) -->
+    <section class="hero-bg">
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 grid lg:grid-cols-2 gap-10 items-center min-h-[60vh]"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 grid lg:grid-cols-2 gap-10 items-center"
       >
+        <!-- Left: text -->
         <div>
           <!-- Tagline -->
           <h2
             class="tagline text-3xl sm:text-4xl font-extrabold leading-tight mb-2"
           >
-            <span class="fast hl">Play Fast.</span>
-            <span class="smart hl">&nbsp;Play Smart.</span>
-            <span class="flag hl">&nbsp;Play Flag.</span>
+            <span class="fast">Play Fast.</span>
+            <span class="smart">&nbsp;Play Smart.</span>
+            <span class="flag">&nbsp;Play Flag.</span>
           </h2>
 
           <!-- Subheading -->
@@ -157,47 +158,15 @@
           </ul>
         </div>
 
-        <!-- Right column: hero carousel -->
+        <!-- Right: static hero image (like main site) -->
         <div class="relative">
-          <div
-            class="swiper hero-swiper h-[280px] sm:h-[340px] md:h-[420px] lg:h-[460px] rounded-2xl shadow-2xl border overflow-hidden"
-          >
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <img
-                  src="/camp/assets/img/hero-1.jpg"
-                  alt="Kids huddle from behind on a grass field"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="swiper-slide">
-                <img
-                  src="/camp/assets/img/hero-2.jpg"
-                  alt="Close-up of flag belts on waist during practice"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="swiper-slide">
-                <img
-                  src="/camp/assets/img/hero-3.jpg"
-                  alt="Children running with flags in a park, faces out of frame"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="swiper-slide">
-                <img
-                  src="/camp/assets/img/hero-4.jpg"
-                  alt="Low-angle flag pull action; no faces visible"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
-            <!-- Pagination & arrows -->
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev" aria-label="Previous"></div>
-            <div class="swiper-button-next" aria-label="Next"></div>
-          </div>
+          <img
+            class="rounded-2xl shadow-2xl w-full h-auto object-cover border"
+            src="/camp/assets/img/hero-1.jpg"
+            alt="Kids huddle from behind on a grass field"
+            loading="eager"
+            fetchpriority="high"
+          />
         </div>
       </div>
     </section>
