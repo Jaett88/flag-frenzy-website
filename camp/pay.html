@@ -86,9 +86,9 @@
         </nav>
       </div>
     </header>
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <!-- Page title -->
-      <div class="text-center mb-8">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Page Title -->
+      <div class="text-center mb-10">
         <h1
           class="text-3xl sm:text-4xl font-extrabold"
           style="color: var(--camp-green)"
@@ -100,29 +100,23 @@
         </p>
       </div>
 
-      <!-- Layout -->
-      <div class="grid md:grid-cols-5 gap-6">
-        <!-- Left: Payment methods -->
+      <!-- Grid Layout -->
+      <div class="grid md:grid-cols-5 gap-8">
+        <!-- Left Column -->
         <section class="md:col-span-3">
           <div class="card pay-card">
-            <h2 class="section-title text-xl">Payment Method</h2>
+            <!-- Package details injected by JS -->
+            <div id="package-details" class="text-center"></div>
 
-            <!-- Package details (filled by JS) -->
-            <div
-              id="package-details"
-              class="mt-2 text-base text-gray-800"
-            ></div>
+            <!-- Payment buttons injected by JS -->
+            <div id="payment-buttons" class="pay-btns mt-6"></div>
 
-            <!-- Buttons (filled by JS) -->
-            <div id="payment-buttons" class="mt-6 pay-btns"></div>
-
-            <p class="mt-4 text-xs text-gray-500">
+            <p class="mt-4 text-xs text-gray-500 text-center">
               💡 Sibling discount: use code <strong>SIBLING10</strong> on
-              Stripe, or use the sibling PayPal link (shown automatically when
-              selected).
+              Stripe, or use the sibling PayPal link (shown automatically).
             </p>
 
-            <div class="mt-6 flex flex-wrap gap-3">
+            <div class="mt-6 flex flex-wrap gap-3 justify-center">
               <a
                 href="/camp/register.html?prefill=true"
                 class="btn btn-outline"
@@ -138,19 +132,19 @@
             </div>
 
             <!-- Trust row -->
-            <div class="mt-6 grid sm:grid-cols-3 gap-3 text-sm text-gray-600">
+            <div class="mt-8 grid sm:grid-cols-3 gap-3 text-sm text-gray-600">
               <div
-                class="rounded-xl border border-[var(--camp-border)] p-3 bg-white"
+                class="rounded-xl border border-[var(--camp-border)] p-3 bg-white text-center"
               >
                 🔒 Secure checkout
               </div>
               <div
-                class="rounded-xl border border-[var(--camp-border)] p-3 bg-white"
+                class="rounded-xl border border-[var(--camp-border)] p-3 bg-white text-center"
               >
                 💳 Stripe & PayPal
               </div>
               <div
-                class="rounded-xl border border-[var(--camp-border)] p-3 bg-white"
+                class="rounded-xl border border-[var(--camp-border)] p-3 bg-white text-center"
               >
                 📧 Receipt by email
               </div>
@@ -158,29 +152,29 @@
           </div>
         </section>
 
-        <!-- Right: Order summary -->
+        <!-- Right Column -->
         <aside class="md:col-span-2">
           <div class="card pay-summary">
-            <h3 class="section-title text-lg">Order Summary</h3>
+            <h2 class="section-title text-lg">Order Summary</h2>
             <ul class="mt-3 space-y-2 text-sm">
-              <li class="flex items-start justify-between gap-4">
+              <li class="flex justify-between">
                 <span class="text-gray-600">Package</span>
                 <span id="summary-package" class="font-semibold text-right"
                   >—</span
                 >
               </li>
-              <li class="flex items-start justify-between gap-4">
+              <li class="flex justify-between">
                 <span class="text-gray-600">Sibling discount</span>
                 <span id="summary-sibling" class="text-right">—</span>
               </li>
-              <li class="flex items-start justify-between gap-4">
+              <li class="flex justify-between">
                 <span class="text-gray-600">Notes</span>
                 <span id="summary-notes" class="text-right text-gray-700"
                   >—</span
                 >
               </li>
               <li
-                class="border-t border-[var(--camp-border)] pt-3 flex items-start justify-between gap-4"
+                class="border-t border-[var(--camp-border)] pt-3 flex justify-between"
               >
                 <span class="font-bold" style="color: var(--camp-green)"
                   >Total</span
@@ -190,7 +184,7 @@
             </ul>
 
             <p class="mt-4 text-xs text-gray-500 leading-relaxed">
-              Paying confirms you agree to our
+              By paying you agree to our
               <a
                 href="/camp/policies/refund-cancellation.html"
                 class="underline"
