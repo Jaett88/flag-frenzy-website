@@ -97,58 +97,91 @@
     </header>
 
     <!-- Main Content -->
-    <main
-      class="flex-grow flex flex-col items-center justify-center px-6 text-center max-w-xl mx-auto py-16"
-    >
-      <img
-        src="/camp/src/logo.png"
-        alt="Flag Frenzy Logo"
-        class="mx-auto w-28 mb-8"
-      />
-      <h1
-        id="thank-you-greeting"
-        class="text-3xl md:text-4xl font-bold text-[var(--camp-green)] mb-5"
-      >
-        Thank you for registering!
-      </h1>
-      <p class="text-lg text-gray-800 leading-relaxed mb-8">
-        We’re excited to welcome your child to
-        <strong>Flag Frenzy Football Camp</strong>.<br />
-        You’ll receive a confirmation email shortly.<br /><br />
-        If you’re registering more than one child, please return to the form and
-        complete it separately for each child.
-      </p>
-      <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-        <a href="/camp/index.html" class="btn-primary">← Back to Home</a>
-        <a href="/camp/contact.html" class="btn-outline">Contact Us</a>
-        <a
-          href="/camp/register.html"
-          class="inline-block bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow hover:bg-green-700 transition"
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="card bg-white rounded-2xl shadow p-8 text-center">
+        <div
+          class="mx-auto mb-6 inline-flex items-center justify-center rounded-full"
+          style="
+            width: 68px;
+            height: 68px;
+            background: color-mix(in oklab, var(--camp-cream) 70%, white 30%);
+            border: 1px solid var(--camp-border);
+          "
         >
-          + Register Another Camper
-        </a>
-      </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-7 h-7"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+          </svg>
+        </div>
 
-      <!-- Social Media -->
-      <div class="mt-4 text-gray-700">
-        <p class="mb-3 text-sm">Stay connected:</p>
-        <div class="flex justify-center space-x-6 text-xl">
-          <a
-            href="mailto:info@flagfrenzyfootball.co.uk"
-            aria-label="Email"
-            class="hover:text-[var(--camp-red)] transition"
+        <h1
+          id="thank-you-greeting"
+          class="text-3xl sm:text-4xl font-extrabold"
+          style="color: var(--camp-green)"
+        >
+          Thank you for registering!
+        </h1>
+
+        <p class="mt-3 text-lg text-gray-800 leading-relaxed">
+          We’re excited to welcome your child to
+          <strong>Flag Frenzy Football Camp</strong>.<br />
+          You’ll receive a confirmation email shortly.
+        </p>
+
+        <div class="mt-6 grid sm:grid-cols-3 gap-3 text-sm text-gray-700">
+          <div
+            class="rounded-xl border border-[var(--camp-border)] p-4 bg-white"
           >
-            <i class="fas fa-envelope"></i>
-          </a>
-          <a
-            href="https://instagram.com/flagfrenzycamp"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            class="hover:text-[var(--camp-red)] transition"
+            📧 Confirmation sent to your email
+          </div>
+          <div
+            class="rounded-xl border border-[var(--camp-border)] p-4 bg-white"
           >
-            <i class="fab fa-instagram"></i>
-          </a>
+            📍 Venue details in the handbook
+          </div>
+          <div
+            class="rounded-xl border border-[var(--camp-border)] p-4 bg-white"
+          >
+            🧃 What to bring list included
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a href="/camp/index.html" class="btn btn-outline">← Back to Home</a>
+          <a href="/camp/policies/parent-handbook.html" class="btn btn-outline"
+            >Parent Handbook</a
+          >
+          <a href="/camp/register.html" class="btn btn-primary"
+            >+ Register Another Camper</a
+          >
+        </div>
+
+        <p class="mt-6 text-sm text-gray-600">
+          Registered more than one child? Please submit the form and payment
+          separately for each camper.
+        </p>
+
+        <div class="mt-8 text-gray-700">
+          <p class="mb-2 text-sm">Stay connected:</p>
+          <div class="flex justify-center gap-6 text-base">
+            <a
+              href="mailto:info@flagfrenzyfootball.co.uk"
+              class="hover:text-[var(--camp-red)] underline"
+              >Email</a
+            >
+            <a
+              href="https://instagram.com/flagfrenzycamp"
+              target="_blank"
+              rel="noopener"
+              class="hover:text-[var(--camp-red)] underline"
+              >Instagram</a
+            >
+          </div>
         </div>
       </div>
     </main>
@@ -256,7 +289,7 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // Greeting
+        // Greeting (from registration page)
         const greeting = document.getElementById("thank-you-greeting");
         const name = localStorage.getItem("camperName");
         if (name && greeting) {
@@ -264,13 +297,9 @@
           greeting.textContent = `Thank you for registering, ${firstName}!`;
         }
 
-        // Year
-        document.getElementById("year").textContent = new Date().getFullYear();
-
-        // Mobile menu
-        document.getElementById("menuBtn").addEventListener("click", () => {
-          document.getElementById("mobileNav").classList.toggle("hidden");
-        });
+        // Footer year (if present)
+        const yearEl = document.getElementById("year");
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
 
         // Clear saved data
         localStorage.removeItem("fffc-registration");
@@ -279,5 +308,6 @@
         localStorage.removeItem("promoCode");
       });
     </script>
+    <script src="/camp/js/main.js"></script>
   </body>
 </html>
