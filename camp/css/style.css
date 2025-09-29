@@ -640,3 +640,74 @@ body.nav-open {
   position: relative;
   z-index: 5 !important;
 }
+
+/* PAY — page polish */
+.pay-card {
+  background: #fff;
+  border: 1px solid var(--camp-border);
+  border-radius: 1.25rem;
+  padding: clamp(18px, 2.6vw, 28px);
+}
+
+.pay-summary {
+  background: color-mix(in oklab, var(--camp-cream) 70%, white 30%);
+  border: 1px solid var(--camp-border);
+  border-radius: 1.25rem;
+  padding: clamp(16px, 2.2vw, 24px);
+}
+
+.section-title {
+  font-weight: 800;
+  color: var(--camp-green);
+}
+
+/* Buttons area */
+.pay-btns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+@media (min-width: 640px) {
+  .pay-btns {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Payment “brand” buttons — keep accessible contrast */
+.pay-btns a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.06s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.pay-btns a:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+.pay-btns a:active {
+  transform: translateY(0);
+}
+
+/* Stripe red (brand-aligned with your --camp-red) */
+.pay-btns a[href*="stripe"] {
+  background: var(--camp-red);
+  color: #fff;
+}
+.pay-btns a[href*="stripe"]:hover {
+  background: #8f2f1d;
+}
+
+/* PayPal yellow (high contrast with black text) */
+.pay-btns a[href*="paypal"] {
+  background: #ffd140;
+  color: #111;
+}
+.pay-btns a[href*="paypal"]:hover {
+  background: #ffc51a;
+}
