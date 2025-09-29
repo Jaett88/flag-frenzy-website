@@ -295,6 +295,20 @@
       </a>
     `;
       }
+
+      // After you set innerHTML for package-details and payment-buttons:
+      document.getElementById("summary-package").textContent = selected.name;
+      document.getElementById("summary-total").textContent = `£${total}`;
+      document.getElementById("summary-sibling").textContent =
+        sibling === "yes" ? "£10 off" : "—";
+      document.getElementById("summary-notes").textContent =
+        pkgKey === "daypass"
+          ? Number.isFinite(days) && days > 0
+            ? `${days} day${days > 1 ? "s" : ""} @ £35/day`
+            : "Day pass"
+          : pkgKey === "earlybird"
+          ? "Early-bird rate"
+          : "Full week";
     </script>
   </body>
 </html>
