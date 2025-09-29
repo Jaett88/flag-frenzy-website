@@ -624,3 +624,14 @@ body.nav-open {
     transform: none !important;
   }
 }
+
+/* Hero text layering hotfix (cross-browser) */
+.hero-bg h1,
+.hero-bg h2,
+.hero-bg .tagline,
+.hero-bg p,
+.hero-bg .btn,
+.hero-bg ul {
+  position: relative;
+  z-index: 5 !important;
+}
