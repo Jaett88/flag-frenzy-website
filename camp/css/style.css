@@ -492,7 +492,7 @@ h3 {
 }
 
 body.nav-open {
-  overflow: hidden;
+  overflow: auto;
 }
 
 /* (Optional) iOS/WebKit hardening for hero carousel */
