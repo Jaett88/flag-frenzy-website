@@ -86,43 +86,131 @@
         </nav>
       </div>
     </header>
-    <main class="max-w-2xl mx-auto py-16 px-6">
-      <h1 class="text-3xl font-bold text-center mb-6">Complete Your Payment</h1>
-      <p class="text-center text-gray-600 mb-6">
-        Thank you for registering. Please confirm your package and complete
-        payment below.
-      </p>
-
-      <!-- Package info -->
-      <div id="package-details" class="text-center mb-10"></div>
-
-      <!-- Payment buttons -->
-      <div
-        id="payment-buttons"
-        class="flex flex-col sm:flex-row justify-center gap-6"
-      ></div>
-
-      <!-- Helper line about discount -->
-      <p class="mt-4 text-xs text-gray-500 text-center">
-        💡 Sibling discount: Use promo code <strong>SIBLING10</strong> on
-        Stripe, or select the sibling PayPal link (shown automatically if
-        selected).
-      </p>
-
-      <!-- Back to form -->
-      <p class="text-center mt-8">
-        <a
-          href="/camp/register.html?prefill=true"
-          class="text-sm font-medium text-[var(--camp-red)] hover:underline"
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Page title -->
+      <div class="text-center mb-8">
+        <h1
+          class="text-3xl sm:text-4xl font-extrabold"
+          style="color: var(--camp-green)"
         >
-          ← Go back and edit registration
-        </a>
-      </p>
+          Complete Your Payment
+        </h1>
+        <p class="mt-2 text-gray-700 max-w-2xl mx-auto">
+          Thanks for registering. Review your package and finish payment below.
+        </p>
+      </div>
 
-      <p class="text-sm text-center mt-10 text-gray-600">
-        💡 If you registered more than one child, please pay separately for each
-        child.
-      </p>
+      <!-- Layout -->
+      <div class="grid md:grid-cols-5 gap-6">
+        <!-- Left: Payment methods -->
+        <section class="md:col-span-3">
+          <div class="card pay-card">
+            <h2 class="section-title text-xl">Payment Method</h2>
+
+            <!-- Package details (filled by JS) -->
+            <div
+              id="package-details"
+              class="mt-2 text-base text-gray-800"
+            ></div>
+
+            <!-- Buttons (filled by JS) -->
+            <div id="payment-buttons" class="mt-6 pay-btns"></div>
+
+            <p class="mt-4 text-xs text-gray-500">
+              💡 Sibling discount: use code <strong>SIBLING10</strong> on
+              Stripe, or use the sibling PayPal link (shown automatically when
+              selected).
+            </p>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a
+                href="/camp/register.html?prefill=true"
+                class="btn btn-outline"
+              >
+                ← Edit registration
+              </a>
+              <a
+                href="/camp/policies/refund-cancellation.html"
+                class="btn btn-outline"
+              >
+                View refund policy
+              </a>
+            </div>
+
+            <!-- Trust row -->
+            <div class="mt-6 grid sm:grid-cols-3 gap-3 text-sm text-gray-600">
+              <div
+                class="rounded-xl border border-[var(--camp-border)] p-3 bg-white"
+              >
+                🔒 Secure checkout
+              </div>
+              <div
+                class="rounded-xl border border-[var(--camp-border)] p-3 bg-white"
+              >
+                💳 Stripe & PayPal
+              </div>
+              <div
+                class="rounded-xl border border-[var(--camp-border)] p-3 bg-white"
+              >
+                📧 Receipt by email
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Right: Order summary -->
+        <aside class="md:col-span-2">
+          <div class="card pay-summary">
+            <h3 class="section-title text-lg">Order Summary</h3>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li class="flex items-start justify-between gap-4">
+                <span class="text-gray-600">Package</span>
+                <span id="summary-package" class="font-semibold text-right"
+                  >—</span
+                >
+              </li>
+              <li class="flex items-start justify-between gap-4">
+                <span class="text-gray-600">Sibling discount</span>
+                <span id="summary-sibling" class="text-right">—</span>
+              </li>
+              <li class="flex items-start justify-between gap-4">
+                <span class="text-gray-600">Notes</span>
+                <span id="summary-notes" class="text-right text-gray-700"
+                  >—</span
+                >
+              </li>
+              <li
+                class="border-t border-[var(--camp-border)] pt-3 flex items-start justify-between gap-4"
+              >
+                <span class="font-bold" style="color: var(--camp-green)"
+                  >Total</span
+                >
+                <span id="summary-total" class="font-extrabold text-lg">—</span>
+              </li>
+            </ul>
+
+            <p class="mt-4 text-xs text-gray-500 leading-relaxed">
+              Paying confirms you agree to our
+              <a
+                href="/camp/policies/refund-cancellation.html"
+                class="underline"
+                >Refund & Cancellation Policy</a
+              >
+              and
+              <a href="/camp/policies/privacy.html" class="underline"
+                >Privacy Notice (GDPR)</a
+              >.
+            </p>
+          </div>
+
+          <div class="mt-4 text-center text-xs text-gray-500">
+            Need help?
+            <a class="underline" href="mailto:info@flagfrenzyfootball.co.uk"
+              >Email us</a
+            >
+          </div>
+        </aside>
+      </div>
     </main>
 
     <script>
