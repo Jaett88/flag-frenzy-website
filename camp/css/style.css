@@ -468,24 +468,29 @@ h3 {
   }
 }
 
-/* ================================
-   MOBILE NAV — Single System
-   (no Tailwind 'hidden' class)
-   ================================ */
+/* Mobile nav: fully collapsed when closed */
 #mobileNav {
   position: static;
   z-index: 0;
 }
+
 @media (max-width: 767px) {
   #mobileNav {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.25s ease;
+    transition: max-height 0.25s ease, padding 0.2s ease, border-color 0.2s ease;
+    padding-top: 0; /* <-- no vertical space when closed */
+    padding-bottom: 0;
+    border-top: 0; /* <-- no hairline when closed */
   }
   #mobileNav.is-open {
-    max-height: 520px;
+    max-height: 520px; /* big enough for all links */
+    padding-top: 0.75rem; /* restore spacing only when open */
+    padding-bottom: 0.75rem;
+    border-top: 1px solid var(--camp-border);
   }
 }
+
 body.nav-open {
   overflow: hidden;
 }
