@@ -775,3 +775,11 @@ body.nav-open {
 .pay-btns a[href*="paypal"]:hover {
   background: #ffc51a;
 }
+
+/* Thank-you / general card spacing */
+.card {
+  background: #fff;
+  border: 1px solid var(--camp-border);
+  border-radius: 1.25rem;
+  padding: clamp(18px, 2.6vw, 28px);
+}
