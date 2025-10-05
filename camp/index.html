@@ -161,6 +161,50 @@
       </div>
     </section>
 
+    <!-- Next Camp Promo -->
+    <section class="py-10 bg-white border-t border-[var(--camp-border)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="rounded-2xl border border-[var(--camp-border)] bg-[var(--camp-cream)] p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 shadow-sm"
+        >
+          <div>
+            <p
+              class="text-sm font-semibold tracking-wide text-[var(--camp-red)] uppercase"
+            >
+              <span id="camp-status">Registration open</span>
+            </p>
+            <h2
+              class="mt-1 text-2xl md:text-3xl font-extrabold"
+              style="color: var(--camp-primary-900)"
+            >
+              October Half-Term Camp
+            </h2>
+            <p class="mt-1 text-gray-700">
+              <strong>Mon 27 – Fri 31 Oct</strong> ·
+              <strong>8:30am–4:00pm</strong>
+              <span class="text-gray-500"
+                >(drop-off 9:00–9:30 · pick-up 3:00–4:00)</span
+              >
+            </p>
+            <!-- Optional: countdown placeholder -->
+            <p id="camp-countdown" class="mt-1 text-sm text-gray-600"></p>
+          </div>
+
+          <div class="text-left md:text-right">
+            <a
+              href="/camp/register.html"
+              class="inline-block bg-[var(--camp-red)] text-white font-bold py-3 px-6 rounded-lg shadow hover:bg-red-700 transition"
+            >
+              Book your place
+            </a>
+            <p class="mt-2 text-xs text-gray-600 md:text-right">
+              Limited spaces. Ages 7–15.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- What we do -->
     <section class="py-16 bg-white/80 border-t border-[var(--camp-border)]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -322,6 +366,29 @@
     <!-- Year -->
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    <script>
+      // --- Simple one-spot updates for future camps ---
+      const CAMP_STATUS = "Registration open"; // "Coming soon" | "Sold out" | "Registration open"
+      const CAMP_START_ISO = "2025-10-27T08:30:00"; // ISO start datetime for countdown (optional)
+
+      // Apply status text
+      const statusEl = document.getElementById("camp-status");
+      if (statusEl) statusEl.textContent = CAMP_STATUS;
+
+      // Lightweight countdown (optional)
+      const cdEl = document.getElementById("camp-countdown");
+      if (cdEl && CAMP_START_ISO) {
+        const start = new Date(CAMP_START_ISO);
+        const today = new Date();
+        const days = Math.ceil((start - today) / (1000 * 60 * 60 * 24));
+        if (!isNaN(days) && days > 0) {
+          cdEl.textContent = `Starts in ${days} day${days === 1 ? "" : "s"}.`;
+        } else {
+          cdEl.textContent = "";
+        }
+      }
     </script>
 
     <!-- Main JS -->
