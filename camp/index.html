@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
     <title>Flag Frenzy Football Camp — Home</title>
     <meta
       name="description"
-      content="Flag Frenzy Football Camp — safe, non-contact American flag football for ages 7–15."
+      content="Flag Frenzy Football Camp — safe, non-contact American flag football school holiday camps for ages 7–15."
     />
 
     <!-- Tailwind -->
@@ -23,6 +23,7 @@
       rel="stylesheet"
     />
   </head>
+
   <body class="font-[Poppins]">
     <!-- Header -->
     <header class="bg-white shadow-md">
@@ -76,7 +77,7 @@
           </nav>
         </div>
 
-        <!-- Mobile Nav (note: no 'hidden' class; CSS collapses it safely) -->
+        <!-- Mobile Nav -->
         <nav id="mobileNav" class="md:hidden overflow-hidden">
           <div class="flex flex-col gap-3 font-medium">
             <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
@@ -103,101 +104,136 @@
       </div>
     </header>
 
-    <!-- Hero (simple, like main site) -->
+    <!-- HERO -->
     <section class="hero-bg">
-      <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 grid lg:grid-cols-2 gap-10 items-center"
-      >
-        <!-- Left: text -->
-        <div>
-          <!-- Tagline -->
-          <h2
-            class="tagline text-3xl sm:text-4xl font-extrabold leading-tight mb-2"
-          >
-            <span class="fast">Play Fast.</span>
-            <span class="smart">&nbsp;Play Smart.</span>
-            <span class="flag">&nbsp;Play Flag.</span>
-          </h2>
-
-          <!-- Subheading -->
-          <h1
-            class="text-2xl sm:text-3xl font-semibold leading-tight text-[var(--camp-green)]"
-          >
-            Flag Football Camps for Ages 7–15
-          </h1>
-
-          <p class="mt-4 text-lg text-gray-700 max-w-prose">
-            Safe, fun and inclusive school holiday camps where players build
-            skills, confidence and friendships.
-          </p>
-
-          <div class="mt-8 flex flex-wrap gap-4">
-            <a class="btn btn-primary" href="/camp/register.html"
-              >Book your place</a
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <!-- Left: text -->
+          <div>
+            <!-- School holiday badge -->
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full border bg-white/70 text-sm font-semibold"
+              style="border-color: var(--camp-border)"
             >
-            <a class="btn btn-outline" href="/camp/policies.html"
-              >Parent info</a
+              <span style="color: var(--camp-red)">School Holiday Camps</span>
+              <span class="text-gray-500">•</span>
+              <span class="text-gray-700">Ages 7–15</span>
+            </div>
+
+            <!-- Tagline -->
+            <h2 class="tagline mt-4 font-extrabold leading-tight">
+              <span class="fast">Play Fast.</span>
+              <span class="smart">&nbsp;Play Smart.</span>
+              <span class="flag">&nbsp;Play Flag.</span>
+            </h2>
+
+            <!-- Big clear headline -->
+            <h1
+              class="mt-3 text-3xl sm:text-4xl font-extrabold leading-tight"
+              style="color: var(--camp-green)"
             >
+              School Holiday Flag Football Camps
+              <span style="color: var(--camp-ink)">in South London</span>
+            </h1>
+
+            <p class="mt-4 text-lg sm:text-xl text-gray-700 max-w-prose">
+              Safe, fun and inclusive camps where players build skills,
+              confidence and friendships — perfect for beginners and experienced
+              players.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a class="btn btn-primary" href="/camp/register.html"
+                >Book your place</a
+              >
+              <a class="btn btn-outline" href="/camp/faqs.html">View FAQs</a>
+            </div>
+
+            <ul class="mt-8 grid grid-cols-2 gap-3 text-sm">
+              <li class="tick">Non-contact & inclusive</li>
+              <li class="tick">Positive coaching</li>
+              <li class="tick">Ages 7–15</li>
+              <li class="tick">Limited spaces</li>
+            </ul>
           </div>
 
-          <ul class="mt-8 grid grid-cols-2 gap-3 text-sm">
-            <li class="tick">Non-contact & inclusive</li>
-            <li class="tick">DBS-checked coaches</li>
-            <li class="tick">Ages 7–15</li>
-            <li class="tick">Limited spaces</li>
-          </ul>
-        </div>
-
-        <!-- Right: static hero image (like main site) -->
-        <div class="relative">
-          <img
-            class="rounded-2xl shadow-2xl w-full h-auto object-cover border"
-            src="/camp/assets/img/hero-1.jpg"
-            alt="Kids huddle from behind on a grass field"
-            loading="eager"
-            fetchpriority="high"
-          />
+          <!-- Right: static hero image -->
+          <div class="relative">
+            <img
+              class="rounded-2xl shadow-2xl w-full h-auto object-cover border"
+              src="/camp/assets/img/hero-1.jpg"
+              alt="Kids huddle from behind on a grass field"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Next Camp Promo -->
+    <!-- NEXT CAMP PROMO (March) -->
     <section class="py-10 bg-white border-t border-[var(--camp-border)]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          class="rounded-2xl border border-[var(--camp-border)] bg-[var(--camp-cream)] p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 shadow-sm"
+          class="rounded-2xl p-6 md:p-8 shadow-sm border"
+          style="
+            border-color: var(--camp-border);
+            background: linear-gradient(
+              135deg,
+              rgba(167, 57, 38, 0.1),
+              rgba(58, 100, 64, 0.1)
+            );
+          "
         >
-          <div>
-            <p
-              class="text-sm font-semibold tracking-wide text-[var(--camp-red)] uppercase"
-            >
-              <span id="camp-status">Registration open</span>
-            </p>
-            <h2
-              class="mt-1 text-2xl md:text-3xl font-extrabold"
-              style="color: var(--camp-primary-900)"
-            >
-              October Half-Term Camp
-            </h2>
-            <p class="mt-1 text-gray-700">
-              <strong>Mon 27 – Fri 31 Oct</strong> ·
-              <strong>9:00am–3:30pm</strong>
-              <span class="text-gray-500"></span>
-            </p>
-            <!-- Optional: countdown placeholder -->
-            <p id="camp-countdown" class="mt-1 text-sm text-gray-600"></p>
-          </div>
+          <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+          >
+            <div>
+              <p
+                class="text-sm font-extrabold tracking-wide uppercase"
+                style="color: var(--camp-red)"
+              >
+                <span id="camp-status">Registration open</span>
+                <span class="text-gray-500 font-semibold normal-case">
+                  • Next camp
+                </span>
+              </p>
 
-          <div class="text-left md:text-right">
-            <a
-              href="/camp/register.html"
-              class="inline-block bg-[var(--camp-red)] text-white font-bold py-3 px-6 rounded-lg shadow hover:bg-red-700 transition"
-            >
-              Book your place
-            </a>
-            <p class="mt-2 text-xs text-gray-600 md:text-right">
-              Limited spaces. Ages 7–15.
-            </p>
+              <h2
+                class="mt-1 text-2xl md:text-3xl font-extrabold"
+                style="color: var(--camp-ink)"
+              >
+                Easter Holiday Camp — Week 1
+              </h2>
+
+              <p class="mt-2 text-gray-800 text-lg font-semibold">
+                <strong>Mon 30 March – Thu 2 April 2026</strong>
+                <span class="text-gray-500">•</span>
+                <strong>9:30am–2:30pm</strong>
+              </p>
+
+              <p class="mt-1 text-gray-700">
+                Forster Memorial Park (Croydon) • Ages 7–15 • Limited spaces
+              </p>
+
+              <!-- Optional countdown -->
+              <p id="camp-countdown" class="mt-2 text-sm text-gray-600"></p>
+            </div>
+
+            <div class="text-left md:text-right">
+              <a href="/camp/register.html" class="btn btn-primary">
+                Book now
+              </a>
+              <div class="mt-2">
+                <a
+                  href="/camp/register.html"
+                  class="text-sm font-semibold hover:underline"
+                  style="color: var(--camp-green)"
+                >
+                  Day passes + multi-day options available →
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -209,10 +245,7 @@
         <h2 class="section-title text-3xl">What to expect</h2>
         <div class="grid md:grid-cols-3 gap-6 mt-8">
           <div class="card">
-            <h3
-              class="font-bold text-lg"
-              style="color: var(--camp-primary-900)"
-            >
+            <h3 class="font-bold text-lg" style="color: var(--camp-ink)">
               Skill & speed
             </h3>
             <p class="mt-1 text-gray-700">
@@ -221,10 +254,7 @@
             </p>
           </div>
           <div class="card">
-            <h3
-              class="font-bold text-lg"
-              style="color: var(--camp-primary-900)"
-            >
+            <h3 class="font-bold text-lg" style="color: var(--camp-ink)">
               Safety first
             </h3>
             <p class="mt-1 text-gray-700">
@@ -233,10 +263,7 @@
             </p>
           </div>
           <div class="card">
-            <h3
-              class="font-bold text-lg"
-              style="color: var(--camp-primary-900)"
-            >
+            <h3 class="font-bold text-lg" style="color: var(--camp-ink)">
               Fun & friends
             </h3>
             <p class="mt-1 text-gray-700">
@@ -361,26 +388,31 @@
       </div>
     </footer>
 
-    <!-- Year -->
+    <!-- Next camp config (only edit these 3 lines in future) -->
     <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
+      // "Coming soon" | "Sold out" | "Registration open"
+      const CAMP_STATUS = "Registration open";
+
+      // Used for countdown only (optional). Set "" to disable countdown.
+      const CAMP_START_ISO = "2026-03-30T09:30:00";
+
+      // Optional: auto-hide countdown when camp is in the past
     </script>
 
-    <script>
-      // --- Simple one-spot updates for future camps ---
-      const CAMP_STATUS = "Registration open"; // "Coming soon" | "Sold out" | "Registration open"
-      const CAMP_START_ISO = "2025-10-27T08:30:00"; // ISO start datetime for countdown (optional)
+    <!-- Shared JS (handles menu, year, etc.) -->
+    <script src="/camp/js/main.js"></script>
 
-      // Apply status text
+    <!-- Small homepage-only countdown/status hook (safe + tiny) -->
+    <script>
       const statusEl = document.getElementById("camp-status");
       if (statusEl) statusEl.textContent = CAMP_STATUS;
 
-      // Lightweight countdown (optional)
       const cdEl = document.getElementById("camp-countdown");
       if (cdEl && CAMP_START_ISO) {
         const start = new Date(CAMP_START_ISO);
         const today = new Date();
         const days = Math.ceil((start - today) / (1000 * 60 * 60 * 24));
+
         if (!isNaN(days) && days > 0) {
           cdEl.textContent = `Starts in ${days} day${days === 1 ? "" : "s"}.`;
         } else {
@@ -388,8 +420,5 @@
         }
       }
     </script>
-
-    <!-- Main JS -->
-    <script src="/camp/js/main.js"></script>
   </body>
 </html>
