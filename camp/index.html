@@ -166,68 +166,65 @@
       </div>
     </section>
 
-    <!-- NEXT CAMP PROMO (March) -->
-    <section class="py-10 bg-white border-t border-[var(--camp-border)]">
+    <!-- NEXT CAMP PROMO -->
+    <section class="py-12 bg-white border-t border-[var(--camp-border)]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          class="rounded-2xl p-6 md:p-8 shadow-sm border"
-          style="
-            border-color: var(--camp-border);
-            background: linear-gradient(
-              135deg,
-              rgba(167, 57, 38, 0.1),
-              rgba(58, 100, 64, 0.1)
-            );
-          "
-        >
-          <div
-            class="flex flex-col md:flex-row md:items-center md:justify-between gap-6"
-          >
+        <div class="next-camp-banner">
+          <div class="grid lg:grid-cols-[1.4fr_auto] gap-8 items-center">
             <div>
-              <p
-                class="text-sm font-extrabold tracking-wide uppercase"
-                style="color: var(--camp-red)"
-              >
-                <span id="camp-status">Registration open</span>
-                <span class="text-gray-500 font-semibold normal-case">
-                  • Next camp
-                </span>
-              </p>
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="next-camp-eyebrow" id="camp-status"
+                  >Registration open</span
+                >
+                <span class="text-sm text-gray-500 font-medium">Next Camp</span>
+              </div>
 
               <h2
-                class="mt-1 text-2xl md:text-3xl font-extrabold"
-                style="color: var(--camp-ink)"
+                class="mt-4 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[var(--camp-ink)]"
               >
                 Easter Holiday Camp
               </h2>
 
-              <p class="mt-2 text-gray-800 text-lg font-semibold">
-                <strong>Mon 30 March – Thu 2 April 2026</strong>
-                <span class="text-gray-500">•</span>
-                <strong>9:30am–2:30pm</strong>
+              <div
+                class="mt-4 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-5 text-gray-800"
+              >
+                <p class="font-semibold">Mon 30 March – Thu 2 April 2026</p>
+                <p class="font-semibold">9:30am–2:30pm</p>
+                <p class="font-semibold">Ages 7–15</p>
+              </div>
+
+              <p class="mt-4 text-gray-700 max-w-2xl">
+                A fun, high-energy school-holiday camp with non-contact flag
+                football, skill-building, games and positive coaching in a safe
+                and inclusive environment.
               </p>
 
-              <p class="mt-1 text-gray-700">
-                Ages 7–15 • Limited spaces • Exact location shared after booking
-              </p>
+              <div class="mt-5 flex flex-wrap gap-3">
+                <span class="mini-pill">Limited spaces</span>
+                <span class="mini-pill">Day or multi-day booking</span>
+                <span class="mini-pill"
+                  >Exact location shared after booking</span
+                >
+              </div>
 
-              <!-- Optional countdown -->
-              <p id="camp-countdown" class="mt-2 text-sm text-gray-600"></p>
+              <p id="camp-countdown" class="mt-4 text-sm text-gray-600"></p>
             </div>
 
-            <div class="text-left md:text-right">
-              <a href="/camp/register.html" class="btn btn-primary">
+            <div
+              class="flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-end"
+            >
+              <a
+                href="/camp/register.html"
+                class="btn btn-primary text-center min-w-[170px]"
+              >
                 Book now
               </a>
-              <div class="mt-2">
-                <a
-                  href="/camp/register.html"
-                  class="text-sm font-semibold hover:underline"
-                  style="color: var(--camp-green)"
-                >
-                  Day passes + multi-day options available →
-                </a>
-              </div>
+              <a
+                href="/camp/faqs.html"
+                class="btn btn-outline text-center min-w-[170px]"
+              >
+                View details
+              </a>
             </div>
           </div>
         </div>

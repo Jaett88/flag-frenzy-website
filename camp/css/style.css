@@ -850,3 +850,51 @@ body.nav-open {
     font-size: 0.92rem;
   }
 }
+
+/* ===== Premium Next Camp Banner ===== */
+.next-camp-banner {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--camp-border);
+  border-radius: 1.5rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(167, 57, 38, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(58, 100, 64, 0.1),
+      transparent 28%
+    ),
+    linear-gradient(135deg, #fffdf8 0%, #f8f3ea 100%);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.06);
+}
+
+.next-camp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(167, 57, 38, 0.12);
+  color: var(--camp-red);
+  border: 1px solid rgba(167, 57, 38, 0.16);
+}
+
+.mini-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--camp-ink);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--camp-border);
+}
