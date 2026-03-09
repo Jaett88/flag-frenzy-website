@@ -150,7 +150,8 @@ h3 {
 }
 
 .hero-bg {
-  background: radial-gradient(
+  background:
+    radial-gradient(
       60% 80% at 20% 0%,
       rgba(66, 100, 63, 0.14),
       transparent 60%
@@ -478,7 +479,10 @@ h3 {
   #mobileNav {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.25s ease, padding 0.2s ease, border-color 0.2s ease;
+    transition:
+      max-height 0.25s ease,
+      padding 0.2s ease,
+      border-color 0.2s ease;
     padding-top: 0; /* <-- no vertical space when closed */
     padding-bottom: 0;
     border-top: 0; /* <-- no hairline when closed */
@@ -682,7 +686,9 @@ body.nav-open {
   padding: 0.9rem 1.1rem;
   font-weight: 700;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-  transition: transform 0.06s ease, box-shadow 0.2s ease,
+  transition:
+    transform 0.06s ease,
+    box-shadow 0.2s ease,
     background-color 0.2s ease;
 }
 
@@ -746,7 +752,9 @@ body.nav-open {
   padding: 0.9rem 1.1rem;
   font-weight: 700;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-  transition: transform 0.06s ease, box-shadow 0.2s ease,
+  transition:
+    transform 0.06s ease,
+    box-shadow 0.2s ease,
     background-color 0.2s ease;
 }
 
@@ -782,4 +790,63 @@ body.nav-open {
   border: 1px solid var(--camp-border);
   border-radius: 1.25rem;
   padding: clamp(18px, 2.6vw, 28px);
+}
+
+/* ===== Cleaner homepage hero ===== */
+.hero-tagline {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.4rem;
+  align-items: center;
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow-x: auto;
+  color: var(--camp-ink);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hero-tagline::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-tagline .fast {
+  color: var(--camp-red);
+}
+
+.hero-tagline .smart {
+  color: var(--camp-green);
+}
+
+.hero-tagline .flag {
+  color: var(--camp-ink);
+}
+
+.trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--camp-border);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--camp-ink);
+}
+
+.trust-pill::before {
+  content: "✓";
+  color: var(--camp-red);
+  font-weight: 800;
+}
+
+/* Mobile tidy-up */
+@media (max-width: 768px) {
+  .hero-tagline {
+    justify-content: center;
+    font-size: 0.92rem;
+  }
 }
