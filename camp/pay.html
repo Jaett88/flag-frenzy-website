@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -112,8 +112,8 @@
             <div id="payment-buttons" class="pay-btns mt-6"></div>
 
             <p class="mt-4 text-xs text-gray-500 text-center">
-              💡 Sibling discount: use code <strong>SIBLING10</strong> on
-              Stripe, or use the sibling PayPal link (shown automatically).
+              💡 Sibling discount: use code <strong>SIBLING10</strong> on Stripe
+              at checkout.
             </p>
 
             <div class="mt-6 flex flex-wrap gap-3 justify-center">
@@ -146,7 +146,7 @@
               <div
                 class="rounded-xl border border-[var(--camp-border)] p-3 bg-white text-center"
               >
-                💳 Stripe & PayPal
+                💳 Stripe payment
               </div>
               <div
                 class="rounded-xl border border-[var(--camp-border)] p-3 bg-white text-center"
@@ -212,10 +212,10 @@
         <!-- Payment note -->
         <p class="text-sm text-gray-700 mt-6 text-center max-w-md mx-auto">
           💡 <strong>Note:</strong> After completing payment through
-          <strong>Stripe</strong> or <strong>PayPal</strong>, your registration
-          will be confirmed manually. You’ll receive your official confirmation
-          email within <strong>24 hours</strong>. Thank you for your
-          understanding!
+          <strong>Stripe</strong>, you’ll receive a payment receipt by email and
+          your registration will be confirmed manually. You’ll receive your
+          official confirmation email within <strong>24 hours</strong>. Thank
+          you for your understanding!
         </p>
       </div>
     </main>
@@ -287,8 +287,8 @@
           pkgKey === "daypass"
             ? `(${days} day${days > 1 ? "s" : ""} @ £35/day)`
             : pkgKey === "earlybird"
-            ? "(early-bird rate)"
-            : "(full week)";
+              ? "(early-bird rate)"
+              : "(full week)";
 
         // Apply sibling discount (display + Stripe via promo)
         const hasSibling = sibling === "yes";
@@ -360,8 +360,8 @@
           pkgKey === "daypass"
             ? `${days} day${days > 1 ? "s" : ""} @ £35/day`
             : pkgKey === "earlybird"
-            ? "Early-bird rate"
-            : "Full week";
+              ? "Early-bird rate"
+              : "Full week";
       }
     </script>
   </body>

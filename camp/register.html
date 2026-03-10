@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -183,11 +183,14 @@
           <!-- Attendance -->
           <div>
             <h2 class="section-title text-xl">Attendance</h2>
+
             <div class="mt-4">
-              <label class="label" for="week">Which week?</label>
+              <label class="label" for="week">Which camp?</label>
               <select class="input bg-white" id="week" name="week" required>
-                <option value="">Select week</option>
-                <option value="Week 1">Week 1 (27–31 Oct)</option>
+                <option value="">Select camp</option>
+                <option value="Easter Week 1">
+                  Easter Holiday Camp — Mon 30 Mar to Thu 2 Apr 2026
+                </option>
               </select>
             </div>
 
@@ -201,58 +204,60 @@
                     value="Full Week"
                     required
                   />
-                  <span>Full week</span>
+                  <span>Full 4-day week</span>
                 </label>
+
                 <label class="flex items-center gap-2">
-                  <input type="radio" name="attendance" value="Choose Dates" />
-                  <span>Choose specific dates</span>
+                  <input type="radio" name="attendance" value="Single Day" />
+                  <span>Single day</span>
+                </label>
+
+                <label class="flex items-center gap-2">
+                  <input type="radio" name="attendance" value="Multiple Days" />
+                  <span>Multiple days</span>
                 </label>
               </div>
 
               <div id="day-selector" class="hidden">
                 <label class="label mt-4">Select dates attending</label>
                 <div class="space-y-2 text-sm">
-                  <label
-                    ><input
+                  <label>
+                    <input
                       type="checkbox"
                       name="selected-dates"
-                      value="Mon 27 Oct"
+                      value="Mon 30 Mar 2026"
                       class="mr-2"
-                    />Mon 27 Oct</label
+                    />Mon 30 Mar 2026 </label
                   ><br />
-                  <label
-                    ><input
+                  <label>
+                    <input
                       type="checkbox"
                       name="selected-dates"
-                      value="Tue 28 Oct"
+                      value="Tue 31 Mar 2026"
                       class="mr-2"
-                    />Tue 28 Oct</label
+                    />Tue 31 Mar 2026 </label
                   ><br />
-                  <label
-                    ><input
+                  <label>
+                    <input
                       type="checkbox"
                       name="selected-dates"
-                      value="Wed 29 Oct"
+                      value="Wed 1 Apr 2026"
                       class="mr-2"
-                    />Wed 29 Oct</label
+                    />Wed 1 Apr 2026 </label
                   ><br />
-                  <label
-                    ><input
+                  <label>
+                    <input
                       type="checkbox"
                       name="selected-dates"
-                      value="Thu 30 Oct"
+                      value="Thu 2 Apr 2026"
                       class="mr-2"
-                    />Thu 30 Oct</label
-                  ><br />
-                  <label
-                    ><input
-                      type="checkbox"
-                      name="selected-dates"
-                      value="Fri 31 Oct"
-                      class="mr-2"
-                    />Fri 31 Oct</label
-                  >
+                    />Thu 2 Apr 2026
+                  </label>
                 </div>
+
+                <p class="mt-2 text-xs text-gray-500">
+                  Select 1 date for Single day, 2–3 dates for Multiple days.
+                </p>
               </div>
             </div>
           </div>
@@ -296,8 +301,7 @@
               <!-- Helper line -->
               <p class="mt-2 text-xs text-gray-500">
                 Discount is applied at checkout — use promo code
-                <strong>SIBLING10</strong> on Stripe, or select the sibling
-                PayPal link.
+                <strong>SIBLING10</strong> on Stripe.
               </p>
 
               <p class="text-sm text-gray-600 mt-4">
@@ -678,13 +682,14 @@
             <p
               id="payment-summary"
               class="mt-4 text-lg font-semibold text-center"
-              style="color: var(--camp-primary)"
+              style="color: var(--camp-green)"
             >
               Total due: £135<br />
               <small class="text-sm text-gray-600">
-                Full week: £150 &nbsp;•&nbsp; Early-bird:
-                <strong>£135</strong> until <strong>3 Oct</strong> &nbsp;•&nbsp;
-                Day rate: £35
+                Full 4-day week: <strong>£150</strong> &nbsp;•&nbsp; Early-bird:
+                <strong>£135</strong> until
+                <strong>22 Mar</strong> &nbsp;•&nbsp; Day rate:
+                <strong>£35</strong>
                 <br />
                 Sibling discount: <strong>£10</strong> for additional children
                 only.
@@ -806,7 +811,7 @@
         if (form) {
           form.addEventListener("submit", function () {
             const camperNameField = document.querySelector(
-              'input[name="camper-name"]'
+              'input[name="camper-name"]',
             );
             if (camperNameField && camperNameField.value.trim() !== "") {
               localStorage.setItem("camperName", camperNameField.value.trim());
@@ -817,14 +822,19 @@
     </script>
 
     <!-- Show/hide day selector -->
+    <
     <script>
       const daySelector = document.getElementById("day-selector");
       const attendanceRadios = document.querySelectorAll(
-        "input[name='attendance']"
+        "input[name='attendance']",
       );
+
       attendanceRadios.forEach((r) => {
         r.addEventListener("change", () => {
-          if (r.checked && r.value === "Choose Dates") {
+          if (
+            r.checked &&
+            (r.value === "Single Day" || r.value === "Multiple Days")
+          ) {
             daySelector.classList.remove("hidden");
           } else if (r.checked && r.value === "Full Week") {
             daySelector.classList.add("hidden");
@@ -845,12 +855,10 @@
         form.addEventListener("submit", async function (e) {
           e.preventDefault();
 
-          // Attendance
           const attendance =
             document.querySelector("input[name='attendance']:checked")?.value ||
             "";
 
-          // Sibling (normalize yes/no)
           const siblingRaw =
             document.querySelector("input[name='sibling']:checked")?.value ||
             "No";
@@ -858,31 +866,34 @@
             ? "yes"
             : "no";
 
-          // Build redirect URL
+          const selectedDates = Array.from(
+            document.querySelectorAll("input[name='selected-dates']:checked"),
+          );
+          const dayCount = selectedDates.length;
+
           let redirectUrl = "/camp/pay.html";
           let derivedPackage = "";
           let derivedDays = 0;
 
           if (attendance === "Full Week") {
-            if (typeof isEarlyBird === "function" && isEarlyBird()) {
-              redirectUrl += "?package=earlybird";
-              derivedPackage = "earlybird";
-            } else {
-              redirectUrl += "?package=fullweek";
-              derivedPackage = "fullweek";
-            }
-          } else if (attendance === "Choose Dates") {
-            const selectedDates = Array.from(
-              document.querySelectorAll("input[name='selected-dates']:checked")
-            );
-            const dayCount = selectedDates.length;
-            if (dayCount === 0) {
-              alert("Please select at least one day.");
+            derivedPackage = "fullweek";
+            redirectUrl += "?package=fullweek";
+          } else if (attendance === "Single Day") {
+            if (dayCount !== 1) {
+              alert("Please select exactly 1 date for the Single day option.");
               return;
             }
-            redirectUrl += `?package=daypass&days=${dayCount}`;
+            derivedPackage = "daypass";
+            derivedDays = 1;
+            redirectUrl += "?package=daypass&days=1";
+          } else if (attendance === "Multiple Days") {
+            if (dayCount < 2 || dayCount > 3) {
+              alert("Please select 2 or 3 dates for the Multiple days option.");
+              return;
+            }
             derivedPackage = "daypass";
             derivedDays = dayCount;
+            redirectUrl += `?package=daypass&days=${dayCount}`;
           } else {
             alert("Please select an attendance option.");
             return;
@@ -892,31 +903,26 @@
             redirectUrl += "&sibling=yes";
           }
 
-          // Build form data for Netlify
           const fd = new FormData(form);
-          fd.append("form-name", "camper-registration");
-          fd.append("derived-package", derivedPackage);
-          fd.append("derived-days", String(derivedDays));
-          fd.append("derived-sibling", sibling);
-          fd.append("submitted-at", new Date().toISOString());
+          fd.set("form-name", "camper-registration");
+          fd.set("derived-package", derivedPackage);
+          fd.set("derived-days", String(derivedDays));
+          fd.set("derived-sibling", sibling);
+          fd.set("submitted-at", new Date().toISOString());
+
+          document.getElementById("derived-package").value = derivedPackage;
+          document.getElementById("derived-days").value = String(derivedDays);
+          document.getElementById("derived-sibling").value = sibling;
 
           try {
-            // Convert to URL-encoded string
             const body = new URLSearchParams(fd);
 
-            // Write into hidden inputs so Netlify records them
-            document.getElementById("derived-package").value = derivedPackage;
-            document.getElementById("derived-days").value = String(derivedDays);
-            document.getElementById("derived-sibling").value = sibling;
-
-            // Submit to Netlify
             await fetch("/", {
               method: "POST",
               headers: { "Content-Type": "application/x-www-form-urlencoded" },
               body,
             });
 
-            // Save for prefill
             const toStore = {};
             fd.forEach((v, k) => {
               if (toStore[k] === undefined) {
@@ -927,17 +933,17 @@
                 toStore[k] = [toStore[k], v];
               }
             });
+
             sessionStorage.setItem(
               "fffc-registration",
-              JSON.stringify(toStore)
+              JSON.stringify(toStore),
             );
 
-            // Redirect only AFTER Netlify submission
             window.location.href = redirectUrl;
           } catch (err) {
             console.warn("Netlify submit failed:", err);
             alert(
-              "Something went wrong submitting your form. Please try again."
+              "Something went wrong submitting your form. Please try again.",
             );
           }
         });
