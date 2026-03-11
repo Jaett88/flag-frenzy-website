@@ -221,147 +221,106 @@
     </main>
 
     <script>
-      // ---- Read URL params
       const params = new URLSearchParams(window.location.search);
-      const pkgKey = (params.get("package") || "").toLowerCase(); // fullweek | earlybird | daypass
-      const sibling = (params.get("sibling") || "no").toLowerCase(); // yes | no
+      const pkgKey = (params.get("package") || "").toLowerCase();
+      const sibling = (params.get("sibling") || "no").toLowerCase();
       const daysParam = parseInt(params.get("days") || "0", 10);
 
-      // ---- Payment links (Stripe links must exist; PayPal multi-day are optional)
       const links = {
         earlybird: {
-          name: "🐦 Early Bird",
+          name: "Early Bird Week",
           basePrice: 135,
-          stripe: "https://buy.stripe.com/14A9AS0Yh27O9LcfGH9EI00",
-          paypal: "https://www.paypal.com/ncp/payment/WMBZL2D5SNRMA",
-          paypalSibling: "https://www.paypal.com/ncp/payment/4BYLEUHM3TEMN",
+          stripe: "REPLACE_WITH_EARLYBIRD_STRIPE_LINK",
         },
-        fullweek: {
-          name: "📅 Full Week",
-          basePrice: 150,
-          stripe: "https://buy.stripe.com/4gM9AS7mF3bS4qS1PR9EI01",
-          paypal: "https://www.paypal.com/ncp/payment/PUTHCE2W6Z5GA",
-          paypalSibling: "https://www.paypal.com/ncp/payment/VVT8N2QU3Y64E",
-        },
-        daypass: {
-          name: "🎟️ Day Pass",
-          basePrice: 35,
-          // IMPORTANT: Turn ON "Adjustable quantity" for this Stripe link in Stripe
-          stripe: "https://buy.stripe.com/6oUfZg8qJdQw7D48ef9EI02",
 
-          // Your current PayPal link(s) charge for ONE day.
-          // OPTIONAL: If you create 2–5 day PayPal links, add them here and we'll auto-pick.
-          paypalByDays: {
-            1: "https://www.paypal.com/ncp/payment/7Y73AQ6S6NJ2Q",
-            // 2: "https://www.paypal.com/ncp/payment/FV7EXHHEXNBSQ",
-            // 3: "https://www.paypal.com/ncp/payment/REPLACE_FOR_3_DAYS",
-            // 4: "https://www.paypal.com/ncp/payment/REPLACE_FOR_4_DAYS",
-            // 5: "https://www.paypal.com/ncp/payment/REPLACE_FOR_5_DAYS",
-          },
-          paypalSiblingByDays: {
-            1: "https://www.paypal.com/ncp/payment/FDSMV4E9XYKU8",
-            // 2: "https://www.paypal.com/ncp/payment/REPLACE_FOR_2_DAYS_SIB",
-            // 3: "https://www.paypal.com/ncp/payment/REPLACE_FOR_3_DAYS_SIB",
-            // 4: "https://www.paypal.com/ncp/payment/REPLACE_FOR_4_DAYS_SIB",
-            // 5: "https://www.paypal.com/ncp/payment/REPLACE_FOR_5_DAYS_SIB",
-          },
+        fullweek: {
+          name: "Full Week",
+          basePrice: 150,
+          stripe: "REPLACE_WITH_FULL_WEEK_STRIPE_LINK",
+        },
+
+        daypass: {
+          name: "Day Pass",
+          basePrice: 35,
+          stripe: "REPLACE_WITH_DAY_PASS_STRIPE_LINK",
         },
       };
 
       const selected = links[pkgKey];
+
       const pkgDetailsEl = document.getElementById("package-details");
       const payBtnsEl = document.getElementById("payment-buttons");
 
       if (!selected) {
-        pkgDetailsEl.innerHTML = `<p class="text-red-600 font-medium">⚠️ No package selected. Please go back and register again.</p>`;
+        pkgDetailsEl.innerHTML = `<p class="text-red-600 font-medium">
+  ⚠️ No package selected. Please go back and register again.
+  </p>`;
       } else {
-        // ---- Compute total & description
         const days =
           pkgKey === "daypass"
             ? Number.isFinite(daysParam) && daysParam > 0
               ? daysParam
               : 1
             : 1;
+
         let total = selected.basePrice * (pkgKey === "daypass" ? days : 1);
+
+        const hasSibling = sibling === "yes";
+
+        if (hasSibling) {
+          total = Math.max(0, total - 10);
+        }
+
         let description =
           pkgKey === "daypass"
-            ? `(${days} day${days > 1 ? "s" : ""} @ £35/day)`
+            ? `${days} day${days > 1 ? "s" : ""} @ £35/day`
             : pkgKey === "earlybird"
-              ? "(early-bird rate)"
-              : "(full week)";
+              ? "Early Bird Week"
+              : "Full Week";
 
-        // Apply sibling discount (display + Stripe via promo)
-        const hasSibling = sibling === "yes";
-        if (hasSibling) total = Math.max(0, total - 10);
+        pkgDetailsEl.innerHTML = `
+    <h2 class="text-2xl font-semibold mb-2">${selected.name}</h2>
+    <p class="text-lg text-gray-700">£${total}</p>
+    <p class="mt-2 text-gray-600">${description}</p>
+    ${
+      hasSibling
+        ? `<p class="mt-2 text-green-600 font-medium">
+      ✅ Sibling discount available with code SIBLING10
+      </p>`
+        : ""
+    }
+  `;
 
-        // ---- Build display details
-        let details = `
-      <h2 class="text-2xl font-semibold mb-2">${selected.name}</h2>
-      <p class="text-lg text-gray-700">£${total} ${description}</p>
-    `;
-        if (hasSibling) {
-          details += `<p class="mt-2 text-green-600 font-medium">✅ Sibling discount applied (£10 off)</p>`;
-        }
-        pkgDetailsEl.innerHTML = details;
-
-        // ---- Stripe link (add quantity for daypass, and prefill promo code if sibling)
         const stripeParams = new URLSearchParams();
+
         if (pkgKey === "daypass" && days > 1) {
-          stripeParams.set("quantity", String(days)); // requires "Adjustable quantity" ON
+          stripeParams.set("quantity", String(days));
         }
+
         if (hasSibling) {
-          // Stripe will prefill the promo code field for the customer to apply
           stripeParams.set("prefilled_promo_code", "SIBLING10");
         }
+
         const stripeHref =
           selected.stripe +
           (stripeParams.toString() ? "?" + stripeParams.toString() : "");
 
-        // ---- PayPal link
-        let paypalHref = null;
-        if (pkgKey === "daypass") {
-          // Prefer a matching multi-day link if you've added it; fall back to 1-day
-          const map = hasSibling
-            ? selected.paypalSiblingByDays
-            : selected.paypalByDays;
-          paypalHref = map && map[days] ? map[days] : map && map[1];
-        } else {
-          paypalHref =
-            hasSibling && selected.paypalSibling
-              ? selected.paypalSibling
-              : selected.paypal;
-        }
-
-        // ---- Render buttons (include total in labels for clarity)
         payBtnsEl.innerHTML = `
-      <a href="${stripeHref}" target="_blank"
-         class="pay-btn flex-1 text-center bg-[var(--camp-red)] text-white font-medium py-4 px-6 rounded-lg shadow hover:bg-red-700 transition">
-         Pay £${total} with Stripe
-      </a>
-      <a href="${paypalHref}" target="_blank"
-         class="pay-btn flex-1 text-center bg-yellow-400 text-black font-medium py-4 px-6 rounded-lg shadow hover:bg-yellow-500 transition">
-         Pay ${
-           pkgKey === "daypass" &&
-           days > 1 &&
-           !(selected.paypalByDays && selected.paypalByDays[days])
-             ? "(per day) "
-             : ""
-         }with PayPal
-      </a>
-    `;
+    <a href="${stripeHref}" target="_blank"
+    class="pay-btn flex-1 text-center bg-[var(--camp-red)] text-white font-medium py-4 px-6 rounded-lg shadow hover:bg-red-700 transition">
+    Pay £${total} with Stripe
+    </a>
+  `;
 
-        // ---- Update sidebar summary (moved INSIDE the block so variables exist)
         document.getElementById("summary-package").textContent = selected.name;
+
         document.getElementById("summary-total").textContent = `£${total}`;
+
         document.getElementById("summary-sibling").textContent = hasSibling
-          ? "£10 off"
+          ? "Use code SIBLING10"
           : "—";
-        document.getElementById("summary-notes").textContent =
-          pkgKey === "daypass"
-            ? `${days} day${days > 1 ? "s" : ""} @ £35/day`
-            : pkgKey === "earlybird"
-              ? "Early-bird rate"
-              : "Full week";
+
+        document.getElementById("summary-notes").textContent = description;
       }
     </script>
   </body>
