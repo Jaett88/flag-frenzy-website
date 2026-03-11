@@ -7,7 +7,7 @@ const DAILY_RATE = 35;
 const FULL_WEEK_RATE = 150;
 const EARLY_BIRD_RATE = 135;
 const SIBLING_DISCOUNT_FLAT = 10; // flat £10 off
-const EARLY_BIRD_CUTOFF = new Date("2025-10-10T23:59:59");
+const EARLY_BIRD_CUTOFF = new Date("2026-03-22T23:59:59");
 
 // ===== Utilities =====
 function isEarlyBird() {
@@ -19,27 +19,46 @@ function toggleDaySelect(show) {
 }
 function updatePaymentSummary() {
   const attendance = document.querySelector(
-    "input[name='attendance']:checked"
+    "input[name='attendance']:checked",
   )?.value;
+
   const sibling = document
     .querySelector("input[name='sibling']:checked")
     ?.value?.toLowerCase();
+
   const selectedDates = Array.from(
-    document.querySelectorAll("input[name='selected-dates']:checked")
+    document.querySelectorAll("input[name='selected-dates']:checked"),
   );
+
   const paymentDisplay = document.getElementById("payment-summary");
 
   let baseTotal = 0;
+  let note = "";
+
   if (attendance === "Full Week") {
     baseTotal = isEarlyBird() ? EARLY_BIRD_RATE : FULL_WEEK_RATE;
+    note = isEarlyBird() ? "Early-bird full week" : "Full week";
   } else if (attendance === "Choose Dates") {
     baseTotal = selectedDates.length * DAILY_RATE;
+
+    if (selectedDates.length === 1) {
+      note = "1 day @ £35";
+    } else if (selectedDates.length > 1) {
+      note = `${selectedDates.length} days @ £35/day`;
+    }
   }
-  if (sibling === "yes")
+
+  if (sibling === "yes") {
     baseTotal = Math.max(0, baseTotal - SIBLING_DISCOUNT_FLAT);
+  }
 
   if (paymentDisplay) {
     let msg = `Total Due: £${baseTotal.toFixed(2)}`;
+
+    if (note) {
+      msg += `\n${note}`;
+    }
+
     if (attendance === "Full Week" && isEarlyBird()) {
       const cutoffStr = EARLY_BIRD_CUTOFF.toLocaleDateString("en-GB", {
         day: "numeric",
@@ -47,6 +66,11 @@ function updatePaymentSummary() {
       });
       msg += `\n(Early-bird ends ${cutoffStr})`;
     }
+
+    if (sibling === "yes") {
+      msg += `\nSibling discount applied: £10 off`;
+    }
+
     paymentDisplay.textContent = msg;
   }
 }
@@ -110,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
       window.__heroSwiper && window.__heroSwiper.update();
     window.addEventListener("resize", updateSwiper, { passive: true });
     window.addEventListener("orientationchange", () =>
-      setTimeout(updateSwiper, 150)
+      setTimeout(updateSwiper, 150),
     );
     window.addEventListener("load", () => setTimeout(updateSwiper, 60));
   }
@@ -120,7 +144,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Attendance radios
   document.querySelectorAll("input[name='attendance']").forEach((radio) => {
     radio.addEventListener("change", (e) => {
-      toggleDaySelect(e.target.value === "Choose Dates");
+      const isChooseDates = e.target.value === "Choose Dates";
+
+      toggleDaySelect(isChooseDates);
+
+      if (!isChooseDates) {
+        document
+          .querySelectorAll("input[name='selected-dates']:checked")
+          .forEach((cb) => (cb.checked = false));
+      }
+
       updatePaymentSummary();
     });
   });
@@ -157,7 +190,8 @@ document.addEventListener("DOMContentLoaded", () => {
       "November",
       "December",
     ].forEach(
-      (m, i) => (dobMonth.innerHTML += `<option value="${i + 1}">${m}</option>`)
+      (m, i) =>
+        (dobMonth.innerHTML += `<option value="${i + 1}">${m}</option>`),
     );
 
     const currentYear = new Date().getFullYear();
@@ -187,10 +221,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Medical conditions "None" shortcut
   const noneCheckbox = document.querySelector(
-    "input[name='medical-conditions'][value='None']"
+    "input[name='medical-conditions'][value='None']",
   );
   const otherCheckboxes = Array.from(
-    document.querySelectorAll("input[name='medical-conditions']")
+    document.querySelectorAll("input[name='medical-conditions']"),
   ).filter((cb) => cb.value !== "None");
   if (noneCheckbox) {
     noneCheckbox.addEventListener("change", () => {
@@ -200,18 +234,18 @@ document.addEventListener("DOMContentLoaded", () => {
     otherCheckboxes.forEach((cb) =>
       cb.addEventListener("change", () => {
         if (cb.checked) noneCheckbox.checked = false;
-      })
+      }),
     );
   }
 
   // Thank-you page greeting
   const registrationForm = document.querySelector(
-    "form[name='camper-registration']"
+    "form[name='camper-registration']",
   );
   if (registrationForm) {
     registrationForm.addEventListener("submit", () => {
       const camperName = document.querySelector(
-        "input[name='camper-name']"
+        "input[name='camper-name']",
       )?.value;
       if (camperName) localStorage.setItem("camperName", camperName.trim());
     });
