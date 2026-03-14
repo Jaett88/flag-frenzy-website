@@ -682,13 +682,11 @@
               class="mt-4 text-lg font-semibold text-center"
               style="color: var(--camp-green)"
             >
-              Total due: £135<br />
+              Total Due: £0.00<br />
               <small class="text-sm text-gray-600">
-                Full 4-day week: <strong>£150</strong> &nbsp;•&nbsp; Early-bird:
-                <strong>£135</strong> until
-                <strong>22 Mar</strong> &nbsp;•&nbsp; Day rate:
-                <strong>£35</strong>
-                <br />
+                Full week: <strong>£150</strong> • Early-bird:
+                <strong>£135</strong> until <strong>22 Mar</strong> • Day rate:
+                <strong>£35</strong><br />
                 Sibling discount: <strong>£10</strong> for additional children
                 only.
               </small>
@@ -828,10 +826,7 @@
 
       attendanceRadios.forEach((r) => {
         r.addEventListener("change", () => {
-          if (
-            r.checked &&
-            (r.value === "Single Day" || r.value === "Multiple Days")
-          ) {
+          if (r.checked && r.value === "Choose Dates") {
             daySelector.classList.remove("hidden");
           } else if (r.checked && r.value === "Full Week") {
             daySelector.classList.add("hidden");
@@ -873,21 +868,26 @@
           let derivedDays = 0;
 
           if (attendance === "Full Week") {
-            derivedPackage = "fullweek";
-            redirectUrl += "?package=fullweek";
-          } else if (attendance === "Single Day") {
-            if (dayCount !== 1) {
-              alert("Please select exactly 1 date for the Single day option.");
+            if (typeof isEarlyBird === "function" && isEarlyBird()) {
+              derivedPackage = "earlybird";
+              redirectUrl += "?package=earlybird";
+            } else {
+              derivedPackage = "fullweek";
+              redirectUrl += "?package=fullweek";
+            }
+          } else if (attendance === "Choose Dates") {
+            if (dayCount === 0) {
+              alert("Please select at least one date.");
               return;
             }
-            derivedPackage = "daypass";
-            derivedDays = 1;
-            redirectUrl += "?package=daypass&days=1";
-          } else if (attendance === "Multiple Days") {
-            if (dayCount < 2 || dayCount > 3) {
-              alert("Please select 2 or 3 dates for the Multiple days option.");
+
+            if (dayCount === 4) {
+              alert(
+                "If your child is attending all 4 days, please select Full Week.",
+              );
               return;
             }
+
             derivedPackage = "daypass";
             derivedDays = dayCount;
             redirectUrl += `?package=daypass&days=${dayCount}`;

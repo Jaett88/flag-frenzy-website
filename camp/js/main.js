@@ -17,19 +17,17 @@ function toggleDaySelect(show) {
   const daySection = document.getElementById("day-selector");
   if (daySection) daySection.classList.toggle("hidden", !show);
 }
+
 function updatePaymentSummary() {
   const attendance = document.querySelector(
     "input[name='attendance']:checked",
   )?.value;
-
   const sibling = document
     .querySelector("input[name='sibling']:checked")
     ?.value?.toLowerCase();
-
   const selectedDates = Array.from(
     document.querySelectorAll("input[name='selected-dates']:checked"),
   );
-
   const paymentDisplay = document.getElementById("payment-summary");
 
   let baseTotal = 0;
@@ -53,10 +51,10 @@ function updatePaymentSummary() {
   }
 
   if (paymentDisplay) {
-    let msg = `Total Due: £${baseTotal.toFixed(2)}`;
+    let extraLines = "";
 
     if (note) {
-      msg += `\n${note}`;
+      extraLines += `${note}<br />`;
     }
 
     if (attendance === "Full Week" && isEarlyBird()) {
@@ -64,14 +62,21 @@ function updatePaymentSummary() {
         day: "numeric",
         month: "short",
       });
-      msg += `\n(Early-bird ends ${cutoffStr})`;
+      extraLines += `(Early-bird ends ${cutoffStr})<br />`;
     }
 
     if (sibling === "yes") {
-      msg += `\nSibling discount applied: £10 off`;
+      extraLines += `Sibling discount applied: £10 off`;
     }
 
-    paymentDisplay.textContent = msg;
+    paymentDisplay.innerHTML = `
+    Total Due: £${baseTotal.toFixed(2)}
+    ${
+      extraLines
+        ? `<br /><small class="text-sm text-gray-600">${extraLines}</small>`
+        : ""
+    }
+  `;
   }
 }
 
