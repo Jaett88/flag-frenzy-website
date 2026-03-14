@@ -834,6 +834,12 @@ body.nav-open {
   animation-delay: 0.24s;
 }
 
+.hero-tagline span:not(:last-child)::after {
+  content: "•";
+  margin-left: 0.55rem;
+  color: rgba(30, 28, 24, 0.35);
+}
+
 @keyframes heroTagFadeUp {
   to {
     opacity: 1;
@@ -907,4 +913,8 @@ body.nav-open {
 
 .hero-bg img {
   filter: brightness(0.92);
+}
+
+.hero-photo {
+  filter: saturate(1.02) contrast(1.02) brightness(0.96);
 }
