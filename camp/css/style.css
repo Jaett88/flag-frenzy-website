@@ -898,3 +898,7 @@ body.nav-open {
   background: rgba(255, 255, 255, 0.85);
   border: 1px solid var(--camp-border);
 }
+
+.hero-bg img {
+  filter: brightness(0.92);
+}
