@@ -230,19 +230,19 @@
         earlybird: {
           name: "Early Bird Week",
           basePrice: 135,
-          stripe: "REPLACE_WITH_EARLYBIRD_STRIPE_LINK",
+          stripe: "https://buy.stripe.com/cNidR8ayR13KaPgeCD9EI05",
         },
 
         fullweek: {
           name: "Full Week",
           basePrice: 150,
-          stripe: "REPLACE_WITH_FULL_WEEK_STRIPE_LINK",
+          stripe: "https://buy.stripe.com/cNi14mgXf4fW1eGgKL9EI04",
         },
 
         daypass: {
           name: "Day Pass",
           basePrice: 35,
-          stripe: "REPLACE_WITH_DAY_PASS_STRIPE_LINK",
+          stripe: "https://buy.stripe.com/9B6cN48qJ5k09Lccuv9EI03",
         },
       };
 
@@ -306,11 +306,23 @@
           (stripeParams.toString() ? "?" + stripeParams.toString() : "");
 
         payBtnsEl.innerHTML = `
+  <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm text-center">
+    <p class="text-sm text-gray-500 mb-1">Secure checkout</p>
+
+    <p class="text-3xl font-extrabold mb-4" style="color: var(--camp-green)">
+      £${total}
+    </p>
+
     <a href="${stripeHref}" target="_blank"
-    class="pay-btn flex-1 text-center bg-[var(--camp-red)] text-white font-medium py-4 px-6 rounded-lg shadow hover:bg-red-700 transition">
-    Pay £${total} with Stripe
+      class="inline-block w-full bg-[var(--camp-red)] text-white font-bold py-4 px-6 rounded-lg shadow hover:bg-red-700 transition">
+      Pay Securely with Stripe
     </a>
-  `;
+
+    <p class="text-xs text-gray-500 mt-3">
+      Secure payment powered by Stripe
+    </p>
+  </div>
+`;
 
         document.getElementById("summary-package").textContent = selected.name;
 
