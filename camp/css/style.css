@@ -796,10 +796,10 @@ body.nav-open {
 .hero-tagline {
   display: flex;
   flex-wrap: nowrap;
-  gap: 0.4rem;
+  gap: 0.55rem;
   align-items: center;
-  font-weight: 700;
-  font-size: 0.98rem;
+  font-weight: 800;
+  font-size: clamp(1.05rem, 1vw + 0.85rem, 1.35rem);
   letter-spacing: 0.01em;
   white-space: nowrap;
   overflow-x: auto;
@@ -812,42 +812,48 @@ body.nav-open {
   display: none;
 }
 
+.hero-tagline span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: heroTagFadeUp 0.55s ease-out forwards;
+}
+
 .hero-tagline .fast {
   color: var(--camp-red);
+  animation-delay: 0s;
 }
 
 .hero-tagline .smart {
   color: var(--camp-green);
+  animation-delay: 0.12s;
 }
 
 .hero-tagline .flag {
   color: var(--camp-ink);
+  animation-delay: 0.24s;
 }
 
-.trust-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.55rem 0.9rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid var(--camp-border);
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--camp-ink);
+@keyframes heroTagFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.trust-pill::before {
-  content: "✓";
-  color: var(--camp-red);
-  font-weight: 800;
+@media (prefers-reduced-motion: reduce) {
+  .hero-tagline span {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
-/* Mobile tidy-up */
 @media (max-width: 768px) {
   .hero-tagline {
     justify-content: center;
-    font-size: 0.92rem;
+    font-size: 1rem;
+    gap: 0.4rem;
   }
 }
 
