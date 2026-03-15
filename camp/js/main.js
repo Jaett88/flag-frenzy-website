@@ -4,8 +4,8 @@
 
 // ===== Pricing Settings =====
 const DAILY_RATE = 35;
-const FULL_WEEK_RATE = 150;
-const EARLY_BIRD_RATE = 135;
+const FULL_WEEK_RATE = 135;
+const EARLY_BIRD_RATE = 120;
 const SIBLING_DISCOUNT_FLAT = 10; // flat £10 off
 const EARLY_BIRD_CUTOFF = new Date("2026-03-22T23:59:59");
 
