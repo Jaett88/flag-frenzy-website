@@ -22,22 +22,53 @@ function updatePaymentSummary() {
   const attendance = document.querySelector(
     "input[name='attendance']:checked",
   )?.value;
+
   const sibling = document
     .querySelector("input[name='sibling']:checked")
     ?.value?.toLowerCase();
+
   const selectedDates = Array.from(
     document.querySelectorAll("input[name='selected-dates']:checked"),
-  );
+  ).map((el) => el.value);
+
   const paymentDisplay = document.getElementById("payment-summary");
+
+  const derivedPackageEl = document.getElementById("derived-package");
+  const derivedDaysEl = document.getElementById("derived-days");
+  const derivedSiblingEl = document.getElementById("derived-sibling");
+  const derivedAttendanceCountEl = document.getElementById(
+    "derived-attendance-count",
+  );
+  const derivedAttendanceDatesEl = document.getElementById(
+    "derived-attendance-dates",
+  );
+  const derivedTotalEl = document.getElementById("derived-total");
+  const derivedAttendanceLabelEl = document.getElementById(
+    "derived-attendance-label",
+  );
+
+  const ALL_CAMP_DATES = ["Mon 30 Mar", "Tue 31 Mar", "Wed 1 Apr", "Thu 2 Apr"];
 
   let baseTotal = 0;
   let note = "";
+  let derivedPackage = "";
+  let derivedDays = 0;
+  let attendanceDates = [];
+  let attendanceLabel = "";
 
   if (attendance === "Full Week") {
     baseTotal = isEarlyBird() ? EARLY_BIRD_RATE : FULL_WEEK_RATE;
     note = isEarlyBird() ? "Early-bird full week" : "Full week";
+    derivedPackage = isEarlyBird() ? "earlybird" : "fullweek";
+    derivedDays = 4;
+    attendanceDates = [...ALL_CAMP_DATES];
+    attendanceLabel = "Full Week";
   } else if (attendance === "Choose Dates") {
     baseTotal = selectedDates.length * DAILY_RATE;
+    derivedPackage = "daypass";
+    derivedDays = selectedDates.length;
+    attendanceDates = [...selectedDates];
+    attendanceLabel = "Choose Dates";
 
     if (selectedDates.length === 1) {
       note = "1 day @ £35";
@@ -46,15 +77,31 @@ function updatePaymentSummary() {
     }
   }
 
-  if (sibling === "yes") {
-    baseTotal = Math.max(0, baseTotal - SIBLING_DISCOUNT_FLAT);
-  }
+  if (derivedPackageEl) derivedPackageEl.value = derivedPackage;
+  if (derivedDaysEl) derivedDaysEl.value = String(derivedDays);
+  if (derivedSiblingEl)
+    derivedSiblingEl.value = sibling === "yes" ? "yes" : "no";
+  if (derivedAttendanceCountEl)
+    derivedAttendanceCountEl.value = String(derivedDays);
+  if (derivedAttendanceDatesEl)
+    derivedAttendanceDatesEl.value = attendanceDates.join(", ");
+  if (derivedTotalEl) derivedTotalEl.value = String(baseTotal);
+  if (derivedAttendanceLabelEl)
+    derivedAttendanceLabelEl.value = attendanceLabel;
 
   if (paymentDisplay) {
     let extraLines = "";
 
     if (note) {
       extraLines += `${note}<br />`;
+    }
+
+    if (attendance === "Choose Dates" && attendanceDates.length) {
+      extraLines += `Dates: ${attendanceDates.join(", ")}<br />`;
+    }
+
+    if (attendance === "Full Week") {
+      extraLines += `Dates: ${ALL_CAMP_DATES.join(", ")}<br />`;
     }
 
     if (attendance === "Full Week" && isEarlyBird()) {
@@ -66,17 +113,17 @@ function updatePaymentSummary() {
     }
 
     if (sibling === "yes") {
-      extraLines += `Sibling discount applied: £10 off`;
+      extraLines += `Sibling discount available with code SIBLING10`;
     }
 
     paymentDisplay.innerHTML = `
-    Total Due: £${baseTotal.toFixed(2)}
-    ${
-      extraLines
-        ? `<br /><small class="text-sm text-gray-600">${extraLines}</small>`
-        : ""
-    }
-  `;
+      Total Due: £${baseTotal.toFixed(2)}
+      ${
+        extraLines
+          ? `<br /><small class="text-sm text-gray-600">${extraLines}</small>`
+          : ""
+      }
+    `;
   }
 }
 

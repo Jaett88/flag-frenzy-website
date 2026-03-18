@@ -131,6 +131,23 @@
           <input type="hidden" name="derived-days" id="derived-days" />
           <input type="hidden" name="derived-sibling" id="derived-sibling" />
 
+          <input
+            type="hidden"
+            name="derived-attendance-count"
+            id="derived-attendance-count"
+          />
+          <input
+            type="hidden"
+            name="derived-attendance-dates"
+            id="derived-attendance-dates"
+          />
+          <input type="hidden" name="derived-total" id="derived-total" />
+          <input
+            type="hidden"
+            name="derived-attendance-label"
+            id="derived-attendance-label"
+          />
+
           <input type="text" name="bot-field" class="hidden" />
           <p class="hidden">
             <label
@@ -819,36 +836,20 @@
       });
     </script>
 
-    <!-- Show/hide day selector -->
-    <script>
-      const daySelector = document.getElementById("day-selector");
-      const attendanceRadios = document.querySelectorAll(
-        "input[name='attendance']",
-      );
-
-      attendanceRadios.forEach((r) => {
-        r.addEventListener("change", () => {
-          if (r.checked && r.value === "Choose Dates") {
-            daySelector.classList.remove("hidden");
-          } else if (r.checked && r.value === "Full Week") {
-            daySelector.classList.add("hidden");
-            document
-              .querySelectorAll("input[name='selected-dates']:checked")
-              .forEach((cb) => (cb.checked = false));
-          }
-        });
-      });
-    </script>
-
     <!-- Submit to Netlify, save for prefill, then redirect to pay.html -->
     <script>
       (function () {
         const form = document.getElementById("registerForm");
         if (!form) return;
 
-        form.addEventListener("submit", async function (e) {
-          e.preventDefault();
+        const ALL_CAMP_DATES = [
+          "Mon 30 Mar",
+          "Tue 31 Mar",
+          "Wed 1 Apr",
+          "Thu 2 Apr",
+        ];
 
+        function getRegistrationSummary() {
           const attendance =
             document.querySelector("input[name='attendance']:checked")?.value ||
             "";
@@ -856,62 +857,122 @@
           const siblingRaw =
             document.querySelector("input[name='sibling']:checked")?.value ||
             "No";
+
           const sibling = siblingRaw.trim().toLowerCase().startsWith("y")
             ? "yes"
             : "no";
 
-          const selectedDates = Array.from(
+          const selectedDateEls = Array.from(
             document.querySelectorAll("input[name='selected-dates']:checked"),
           );
-          const dayCount = selectedDates.length;
 
-          let redirectUrl = "/camp/pay.html";
+          const selectedDates = selectedDateEls.map((el) => el.value);
+
           let derivedPackage = "";
           let derivedDays = 0;
+          let attendanceDates = [];
+          let attendanceLabel = "";
+          let total = 0;
 
           if (attendance === "Full Week") {
-            if (typeof isEarlyBird === "function" && isEarlyBird()) {
-              derivedPackage = "earlybird";
-              redirectUrl += "?package=earlybird";
-            } else {
-              derivedPackage = "fullweek";
-              redirectUrl += "?package=fullweek";
-            }
+            derivedPackage =
+              typeof isEarlyBird === "function" && isEarlyBird()
+                ? "earlybird"
+                : "fullweek";
+            derivedDays = 4;
+            attendanceDates = [...ALL_CAMP_DATES];
+            attendanceLabel = "Full Week";
+            total =
+              typeof isEarlyBird === "function" && isEarlyBird() ? 120 : 135;
           } else if (attendance === "Choose Dates") {
-            if (dayCount === 0) {
-              alert("Please select at least one date.");
-              return;
-            }
-
-            if (dayCount === 4) {
-              alert(
-                "If your child is attending all 4 days, please select Full Week.",
-              );
-              return;
-            }
-
             derivedPackage = "daypass";
-            derivedDays = dayCount;
-            redirectUrl += `?package=daypass&days=${dayCount}`;
-          } else {
+            derivedDays = selectedDates.length;
+            attendanceDates = [...selectedDates];
+            attendanceLabel = "Choose Dates";
+            total = selectedDates.length * 35;
+          }
+
+          return {
+            attendance,
+            sibling,
+            derivedPackage,
+            derivedDays,
+            attendanceDates,
+            attendanceDatesText: attendanceDates.join(", "),
+            attendanceLabel,
+            total,
+          };
+        }
+
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const summary = getRegistrationSummary();
+
+          if (!summary.attendance) {
             alert("Please select an attendance option.");
             return;
           }
 
-          if (sibling === "yes") {
+          if (
+            summary.attendance === "Choose Dates" &&
+            summary.derivedDays === 0
+          ) {
+            alert("Please select at least one date.");
+            return;
+          }
+
+          if (
+            summary.attendance === "Choose Dates" &&
+            summary.derivedDays === 4
+          ) {
+            alert(
+              "If your child is attending all 4 days, please select Full Week.",
+            );
+            return;
+          }
+
+          let redirectUrl = "/camp/pay.html";
+
+          if (summary.derivedPackage === "earlybird") {
+            redirectUrl += "?package=earlybird";
+          } else if (summary.derivedPackage === "fullweek") {
+            redirectUrl += "?package=fullweek";
+          } else if (summary.derivedPackage === "daypass") {
+            redirectUrl += `?package=daypass&days=${summary.derivedDays}`;
+          }
+
+          if (summary.sibling === "yes") {
             redirectUrl += "&sibling=yes";
           }
 
+          document.getElementById("derived-package").value =
+            summary.derivedPackage;
+          document.getElementById("derived-days").value = String(
+            summary.derivedDays,
+          );
+          document.getElementById("derived-sibling").value = summary.sibling;
+          document.getElementById("derived-attendance-count").value = String(
+            summary.derivedDays,
+          );
+          document.getElementById("derived-attendance-dates").value =
+            summary.attendanceDatesText;
+          document.getElementById("derived-total").value = String(
+            summary.total,
+          );
+          document.getElementById("derived-attendance-label").value =
+            summary.attendanceLabel;
+
           const fd = new FormData(form);
           fd.set("form-name", "camper-registration");
-          fd.set("derived-package", derivedPackage);
-          fd.set("derived-days", String(derivedDays));
-          fd.set("derived-sibling", sibling);
+          fd.set("derived-package", summary.derivedPackage);
+          fd.set("derived-days", String(summary.derivedDays));
+          fd.set("derived-sibling", summary.sibling);
+          fd.set("derived-attendance-count", String(summary.derivedDays));
+          fd.set("derived-attendance-dates", summary.attendanceDatesText);
+          fd.set("derived-total", String(summary.total));
+          fd.set("derived-attendance-label", summary.attendanceLabel);
           fd.set("submitted-at", new Date().toISOString());
-
-          document.getElementById("derived-package").value = derivedPackage;
-          document.getElementById("derived-days").value = String(derivedDays);
-          document.getElementById("derived-sibling").value = sibling;
 
           try {
             const body = new URLSearchParams(fd);
@@ -937,7 +998,6 @@
               "fffc-registration",
               JSON.stringify(toStore),
             );
-
             window.location.href = redirectUrl;
           } catch (err) {
             console.warn("Netlify submit failed:", err);

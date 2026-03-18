@@ -224,11 +224,6 @@
     </main>
 
     <script>
-      const params = new URLSearchParams(window.location.search);
-      const pkgKey = (params.get("package") || "").toLowerCase();
-      const sibling = (params.get("sibling") || "no").toLowerCase();
-      const daysParam = parseInt(params.get("days") || "0", 10);
-
       const links = {
         earlybird: {
           name: "Early Bird Week",
@@ -245,7 +240,11 @@
         daypass: {
           name: "Day Pass",
           basePrice: 35,
-          stripe: "https://buy.stripe.com/9B6cN48qJ5k09Lccuv9EI03",
+          stripeByDays: {
+            1: "PASTE_YOUR_1_DAY_LINK_HERE",
+            2: "PASTE_YOUR_2_DAY_LINK_HERE",
+            3: "PASTE_YOUR_3_DAY_LINK_HERE",
+          },
         },
       };
 
@@ -270,10 +269,6 @@
 
         const hasSibling = sibling === "yes";
 
-        if (hasSibling) {
-          total = Math.max(0, total - 10);
-        }
-
         let description =
           pkgKey === "daypass"
             ? `${days} day${days > 1 ? "s" : ""} @ £35/day`
@@ -296,16 +291,21 @@
 
         const stripeParams = new URLSearchParams();
 
-        if (pkgKey === "daypass" && days > 1) {
-          stripeParams.set("quantity", String(days));
-        }
-
         if (hasSibling) {
           stripeParams.set("prefilled_promo_code", "SIBLING10");
         }
 
+        let stripeBaseHref = "";
+
+        if (pkgKey === "daypass") {
+          stripeBaseHref =
+            selected.stripeByDays?.[days] || selected.stripeByDays?.[1] || "";
+        } else {
+          stripeBaseHref = selected.stripe || "";
+        }
+
         const stripeHref =
-          selected.stripe +
+          stripeBaseHref +
           (stripeParams.toString() ? "?" + stripeParams.toString() : "");
 
         payBtnsEl.innerHTML = `
@@ -332,7 +332,7 @@
         document.getElementById("summary-total").textContent = `£${total}`;
 
         document.getElementById("summary-sibling").textContent = hasSibling
-          ? "Use code SIBLING10"
+          ? "Eligible - code prefilled"
           : "—";
 
         document.getElementById("summary-notes").textContent = description;
