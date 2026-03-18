@@ -224,6 +224,11 @@
     </main>
 
     <script>
+      const params = new URLSearchParams(window.location.search);
+      const pkgKey = (params.get("package") || "").toLowerCase();
+      const sibling = (params.get("sibling") || "no").toLowerCase();
+      const daysParam = parseInt(params.get("days") || "0", 10);
+
       const links = {
         earlybird: {
           name: "Early Bird Week",
