@@ -2,8 +2,471 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Volunteer Interest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Volunteer Interest — Flag Frenzy Football Camp</title>
+
+    <meta
+      name="description"
+      content="Register your interest in helping at Flag Frenzy Football Camp during October half-term 2026."
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/camp/css/style.css" />
   </head>
-  <body></body>
+
+  <body>
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="h-16 flex items-center justify-between">
+          <a href="/camp/index.html" class="flex items-center gap-3">
+            <img
+              src="/camp/src/logo.png"
+              alt="Flag Frenzy Football Camp logo"
+              class="h-10 w-10"
+            />
+
+            <span class="text-xl font-extrabold" style="color: var(--camp-red)">
+              Flag Frenzy Football Camp
+            </span>
+          </a>
+
+          <button
+            id="menuBtn"
+            type="button"
+            class="md:hidden p-2 rounded-lg border border-gray-200"
+            aria-label="Toggle menu"
+            aria-controls="mobileNav"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+
+          <nav
+            id="nav"
+            class="hidden md:flex items-center gap-6 text-sm font-medium"
+          >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
+            <a
+              class="hover:text-[var(--camp-red)]"
+              href="/camp/register-interest.html"
+            >
+              Register Interest
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html">
+              Policies
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline" href="/index.html"> Main Site </a>
+          </nav>
+        </div>
+
+        <nav id="mobileNav" class="md:hidden overflow-hidden">
+          <div class="flex flex-col gap-3 font-medium">
+            <a href="/camp/index.html">Home</a>
+            <a href="/camp/about.html">About</a>
+            <a href="/camp/register-interest.html">Register Interest</a>
+            <a href="/camp/policies.html">Policies</a>
+            <a href="/camp/faqs.html">FAQs</a>
+            <a href="/camp/contact.html">Contact</a>
+            <a class="btn btn-outline w-max" href="/index.html"> Main Site </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero-bg">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 text-center">
+          <p
+            class="text-sm font-bold uppercase tracking-wider"
+            style="color: var(--camp-red)"
+          >
+            October Half-Term 2026
+          </p>
+
+          <h1
+            class="mt-2 text-3xl sm:text-4xl font-extrabold"
+            style="color: var(--camp-green)"
+          >
+            Interested in Helping at Camp?
+          </h1>
+
+          <p class="mt-4 text-lg text-gray-800 leading-relaxed">
+            We're looking for enthusiastic young people aged
+            <strong>15+</strong> who may be interested in supporting Flag Frenzy
+            Football Camp.
+          </p>
+
+          <p class="mt-3 text-gray-700">
+            Registering your interest does not guarantee a volunteer or paid
+            helper position. We'll contact suitable applicants once camp dates
+            and staffing requirements are confirmed.
+          </p>
+        </div>
+      </section>
+
+      <!-- Form -->
+      <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="card bg-white rounded-2xl shadow p-6 sm:p-8">
+          <h2 class="text-2xl font-bold" style="color: var(--camp-green)">
+            Volunteer / Helper Interest Form
+          </h2>
+
+          <p class="mt-2 text-gray-700">
+            Please tell us a little about yourself and when you may be
+            available.
+          </p>
+
+          <form
+            name="volunteer-interest"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/camp/volunteer-thank-you.html"
+            class="mt-8 space-y-8"
+          >
+            <input type="hidden" name="form-name" value="volunteer-interest" />
+
+            <p class="hidden">
+              <label>
+                Don't fill this out:
+                <input name="bot-field" />
+              </label>
+            </p>
+
+            <!-- Personal details -->
+            <fieldset>
+              <legend
+                class="text-lg font-bold mb-5"
+                style="color: var(--camp-green)"
+              >
+                Your Details
+              </legend>
+
+              <div class="grid gap-6">
+                <div>
+                  <label for="volunteer-name" class="block font-semibold mb-2">
+                    Full Name *
+                  </label>
+
+                  <input
+                    type="text"
+                    id="volunteer-name"
+                    name="volunteer-name"
+                    required
+                    autocomplete="name"
+                    class="w-full rounded-xl border border-[var(--camp-border)] px-4 py-3"
+                  />
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label for="volunteer-age" class="block font-semibold mb-2">
+                      Age *
+                    </label>
+
+                    <select
+                      id="volunteer-age"
+                      name="volunteer-age"
+                      required
+                      class="w-full rounded-xl border border-[var(--camp-border)] px-4 py-3 bg-white"
+                    >
+                      <option value="">Select age</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18-20">18–20</option>
+                      <option value="21+">21+</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      for="volunteer-phone"
+                      class="block font-semibold mb-2"
+                    >
+                      Phone Number *
+                    </label>
+
+                    <input
+                      type="tel"
+                      id="volunteer-phone"
+                      name="volunteer-phone"
+                      required
+                      autocomplete="tel"
+                      class="w-full rounded-xl border border-[var(--camp-border)] px-4 py-3"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="volunteer-email" class="block font-semibold mb-2">
+                    Email Address *
+                  </label>
+
+                  <input
+                    type="email"
+                    id="volunteer-email"
+                    name="volunteer-email"
+                    required
+                    autocomplete="email"
+                    class="w-full rounded-xl border border-[var(--camp-border)] px-4 py-3"
+                  />
+                </div>
+              </div>
+            </fieldset>
+
+            <hr class="border-[var(--camp-border)]" />
+
+            <!-- Availability -->
+            <fieldset>
+              <legend
+                class="text-lg font-bold"
+                style="color: var(--camp-green)"
+              >
+                Which week could you potentially help?
+              </legend>
+
+              <p class="mt-2 mb-5 text-sm text-gray-600">
+                Select all that apply.
+              </p>
+
+              <div class="space-y-3">
+                <label
+                  class="flex items-start gap-3 rounded-xl border border-[var(--camp-border)] p-4"
+                >
+                  <input
+                    type="checkbox"
+                    name="availability"
+                    value="19-23 October 2026"
+                    class="mt-1"
+                  />
+
+                  <span>
+                    <strong>Week 1</strong><br />
+                    Monday 19 October – Friday 23 October 2026
+                  </span>
+                </label>
+
+                <label
+                  class="flex items-start gap-3 rounded-xl border border-[var(--camp-border)] p-4"
+                >
+                  <input
+                    type="checkbox"
+                    name="availability"
+                    value="26-30 October 2026"
+                    class="mt-1"
+                  />
+
+                  <span>
+                    <strong>Week 2</strong><br />
+                    Monday 26 October – Friday 30 October 2026
+                  </span>
+                </label>
+
+                <label
+                  class="flex items-start gap-3 rounded-xl border border-[var(--camp-border)] p-4"
+                >
+                  <input
+                    type="checkbox"
+                    name="availability"
+                    value="Either week"
+                    class="mt-1"
+                  />
+
+                  <span>Either week would work for me</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <hr class="border-[var(--camp-border)]" />
+
+            <!-- Experience -->
+            <div>
+              <label
+                for="experience"
+                class="block text-lg font-bold mb-2"
+                style="color: var(--camp-green)"
+              >
+                Tell us about any relevant experience
+              </label>
+
+              <p class="mb-3 text-sm text-gray-600">
+                This could include sport, coaching, working with children,
+                school leadership, volunteering or team activities. Previous
+                experience isn't essential.
+              </p>
+
+              <textarea
+                id="experience"
+                name="experience"
+                rows="5"
+                class="w-full rounded-xl border border-[var(--camp-border)] px-4 py-3"
+              ></textarea>
+            </div>
+
+            <div>
+              <label
+                for="why-help"
+                class="block text-lg font-bold mb-2"
+                style="color: var(--camp-green)"
+              >
+                Why would you like to help at Flag Frenzy?
+              </label>
+
+              <textarea
+                id="why-help"
+                name="why-help"
+                rows="4"
+                required
+                class="w-full rounded-xl border border-[var(--camp-border)] px-4 py-3"
+              ></textarea>
+            </div>
+
+            <hr class="border-[var(--camp-border)]" />
+
+            <!-- Under 18 -->
+            <div>
+              <label for="parent-contact" class="block font-semibold mb-2">
+                If you're under 18, please provide a parent or guardian contact
+                name and phone/email
+              </label>
+
+              <textarea
+                id="parent-contact"
+                name="parent-guardian-contact"
+                rows="3"
+                class="w-full rounded-xl border border-[var(--camp-border)] px-4 py-3"
+              ></textarea>
+            </div>
+
+            <!-- Consent -->
+            <label
+              class="flex items-start gap-3 rounded-xl border border-[var(--camp-border)] p-4"
+            >
+              <input
+                type="checkbox"
+                name="contact-consent"
+                value="Yes"
+                required
+                class="mt-1"
+              />
+
+              <span class="text-sm">
+                I agree to be contacted by Flag Frenzy Football regarding this
+                expression of interest. *
+              </span>
+            </label>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">
+                Register My Interest
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-16 bg-[var(--camp-red)] text-white">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid gap-8 md:grid-cols-3"
+      >
+        <div>
+          <h3 class="font-semibold text-lg text-white">
+            Flag Frenzy Football Camp
+          </h3>
+          <p class="mt-2 text-white/80">Play fast. Play smart. Play flag.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-white">Quick Links</h4>
+
+          <ul class="mt-2 space-y-2">
+            <li>
+              <a href="/camp/about.html" class="text-white hover:underline">
+                About
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="/camp/register-interest.html"
+                class="text-white hover:underline"
+              >
+                Register Interest
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="/camp/volunteer-interest.html"
+                class="text-white hover:underline"
+              >
+                Volunteer Interest
+              </a>
+            </li>
+
+            <li>
+              <a href="/camp/contact.html" class="text-white hover:underline">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-white">Contact</h4>
+          <p class="mt-2">
+            <a
+              href="mailto:info@flagfrenzyfootball.co.uk"
+              class="text-white hover:underline"
+            >
+              info@flagfrenzyfootball.co.uk
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="border-t border-white/20">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-white/80"
+        >
+          &copy; <span id="year"></span> Flag Frenzy Football Ltd. All rights
+          reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script src="/camp/js/main.js"></script>
+  </body>
 </html>
