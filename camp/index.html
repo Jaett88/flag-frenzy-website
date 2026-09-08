@@ -11,21 +11,25 @@
       content="Flag Frenzy Football Camp — fun, inclusive, non-contact American flag football school holiday camps for children aged 7–15 in South London."
     />
 
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Camp theme -->
     <link rel="stylesheet" href="/camp/css/style.css" />
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
   </head>
 
-  <body>
-    <!-- Header -->
+  <body class="font-[Poppins]">
+    <!-- =========================
+         HEADER
+    ========================== -->
     <header class="bg-white shadow-md">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="h-16 flex items-center justify-between">
@@ -41,18 +45,19 @@
             </span>
           </a>
 
+          <!-- Mobile Menu Button -->
           <button
             id="menuBtn"
-            type="button"
             class="md:hidden p-2 rounded-lg border border-gray-200"
             aria-label="Toggle menu"
             aria-controls="mobileNav"
             aria-expanded="false"
+            type="button"
           >
             ☰
           </button>
 
-          <!-- Desktop Nav -->
+          <!-- Desktop Navigation -->
           <nav
             id="nav"
             class="hidden md:flex items-center gap-6 text-sm font-medium"
@@ -92,15 +97,39 @@
           </nav>
         </div>
 
-        <!-- Mobile Nav -->
+        <!-- Mobile Navigation -->
         <nav id="mobileNav" class="md:hidden overflow-hidden">
           <div class="flex flex-col gap-3 font-medium">
-            <a href="/camp/index.html">Home</a>
-            <a href="/camp/about.html">About</a>
-            <a href="/camp/register-interest.html"> Register Interest </a>
-            <a href="/camp/policies.html">Policies</a>
-            <a href="/camp/faqs.html">FAQs</a>
-            <a href="/camp/contact.html">Contact</a>
+            <a
+              class="font-semibold text-[var(--camp-red)]"
+              href="/camp/index.html"
+              aria-current="page"
+            >
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
+            <a
+              class="hover:text-[var(--camp-red)]"
+              href="/camp/register-interest.html"
+            >
+              Register Interest
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html">
+              Policies
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
 
             <a class="btn btn-outline w-max" href="/index.html"> Main Site </a>
           </div>
@@ -108,10 +137,13 @@
       </div>
     </header>
 
-    <!-- Hero -->
+    <!-- =========================
+         HERO
+    ========================== -->
     <section class="hero-bg">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
         <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <!-- Hero Text -->
           <div>
             <div
               class="inline-flex items-center gap-2 px-3 py-1 rounded-full border bg-white/70 text-sm font-semibold"
@@ -120,7 +152,8 @@
               <span style="color: var(--camp-red)"> School Holiday Camps </span>
 
               <span class="text-gray-500">•</span>
-              <span class="text-gray-700">Ages 7–15</span>
+
+              <span class="text-gray-700"> Ages 7–15 </span>
             </div>
 
             <h2 class="tagline mt-4 font-extrabold leading-tight">
@@ -138,9 +171,9 @@
             </h1>
 
             <p class="mt-4 text-lg sm:text-xl text-gray-700 max-w-prose">
-              Safe, fun and inclusive camps where children build flag football
-              skills, confidence and friendships — whether they're complete
-              beginners or experienced players.
+              Safe, fun and inclusive camps where players build skills,
+              confidence and friendships — perfect for beginners and experienced
+              players.
             </p>
 
             <div class="mt-8 flex flex-wrap gap-4">
@@ -159,21 +192,33 @@
             </ul>
           </div>
 
+          <!-- Hero Image -->
           <div class="relative">
-            <img
-              class="rounded-2xl shadow-2xl w-full h-auto object-cover border"
-              src="/camp/src/hero-1.jpg"
-              alt="Children taking part in a team huddle on a grass field"
-              loading="eager"
-              fetchpriority="high"
-            />
+            <div
+              class="overflow-hidden rounded-2xl shadow-2xl border"
+              style="
+                height: clamp(280px, 38vw, 440px);
+                border-color: var(--camp-border);
+              "
+            >
+              <img
+                src="/camp/assets/img/hero-1.jpg"
+                alt="Children taking part in a team huddle on a grass field"
+                class="w-full h-full object-cover"
+                style="object-position: center"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- October 2026 -->
-    <section class="py-12 bg-white border-t border-[var(--camp-border)]">
+    <!-- =========================
+         OCTOBER 2026 INTEREST
+    ========================== -->
+    <section class="py-10 bg-white border-t border-[var(--camp-border)]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           class="rounded-2xl p-6 md:p-8 shadow-sm border"
@@ -186,62 +231,77 @@
             );
           "
         >
-          <p
-            class="text-sm font-extrabold tracking-wide uppercase"
-            style="color: var(--camp-red)"
+          <div
+            class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8"
           >
-            Register Your Interest
-            <span class="text-gray-500 font-semibold normal-case">
-              • October Half-Term 2026
-            </span>
-          </p>
+            <div class="max-w-3xl">
+              <p
+                class="text-sm font-extrabold tracking-wide uppercase"
+                style="color: var(--camp-red)"
+              >
+                Register Your Interest
 
-          <h2
-            class="mt-2 text-2xl md:text-3xl font-extrabold"
-            style="color: var(--camp-ink)"
-          >
-            Help us choose our October camp week
-          </h2>
+                <span class="text-gray-500 font-semibold normal-case">
+                  • October Half-Term 2026
+                </span>
+              </p>
 
-          <p class="mt-3 text-gray-700 max-w-3xl">
-            We're currently checking family availability before confirming our
-            October half-term camp. If your child may be interested, let us know
-            which week would work best.
-          </p>
+              <h2
+                class="mt-2 text-2xl md:text-3xl font-extrabold"
+                style="color: var(--camp-ink)"
+              >
+                Help us choose our October camp week
+              </h2>
 
-          <div class="grid md:grid-cols-2 gap-4 mt-6">
-            <div class="card bg-white">
-              <p class="font-bold" style="color: var(--camp-green)">Week 1</p>
+              <p class="mt-3 text-gray-700">
+                We're currently checking family availability before confirming
+                our October half-term camp. If your child may be interested in
+                joining us, let us know which week would work best for your
+                family.
+              </p>
 
-              <p class="mt-1 text-gray-800">
-                Monday 19 October – Friday 23 October 2026
+              <!-- Week Options -->
+              <div class="grid sm:grid-cols-2 gap-4 mt-6">
+                <div class="card bg-white">
+                  <p class="font-bold" style="color: var(--camp-green)">
+                    Week 1
+                  </p>
+
+                  <p class="mt-1 text-gray-800">
+                    Monday 19 October – Friday 23 October 2026
+                  </p>
+                </div>
+
+                <div class="card bg-white">
+                  <p class="font-bold" style="color: var(--camp-green)">
+                    Week 2
+                  </p>
+
+                  <p class="mt-1 text-gray-800">
+                    Monday 26 October – Friday 30 October 2026
+                  </p>
+                </div>
+              </div>
+
+              <p class="mt-4 text-sm text-gray-600">
+                Registering your interest isn't a booking and no payment is
+                required at this stage.
               </p>
             </div>
 
-            <div class="card bg-white">
-              <p class="font-bold" style="color: var(--camp-green)">Week 2</p>
-
-              <p class="mt-1 text-gray-800">
-                Monday 26 October – Friday 30 October 2026
-              </p>
+            <div class="lg:text-right shrink-0">
+              <a href="/camp/register-interest.html" class="btn btn-primary">
+                Register Interest
+              </a>
             </div>
           </div>
-
-          <div class="mt-7">
-            <a href="/camp/register-interest.html" class="btn btn-primary">
-              Tell Us Which Week Works
-            </a>
-          </div>
-
-          <p class="mt-3 text-sm text-gray-600">
-            Registering your interest isn't a booking and no payment is
-            required.
-          </p>
         </div>
       </div>
     </section>
 
-    <!-- What to expect -->
+    <!-- =========================
+         WHAT TO EXPECT
+    ========================== -->
     <section class="py-16 bg-white/80 border-t border-[var(--camp-border)]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="section-title text-3xl">What to expect</h2>
@@ -275,25 +335,94 @@
             </h3>
 
             <p class="mt-1 text-gray-700">
-              A positive environment where children can meet new people, grow in
-              confidence and enjoy being active.
+              A positive environment where everyone belongs, builds confidence
+              and improves at their own pace.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Volunteer section -->
-    <section class="py-16">
+    <!-- =========================
+         CAMP GALLERY
+    ========================== -->
+    <section class="py-16 bg-white border-t border-[var(--camp-border)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <p
+            class="text-sm font-bold uppercase tracking-wider"
+            style="color: var(--camp-red)"
+          >
+            Flag Frenzy in Action
+          </p>
+
+          <h2 class="section-title text-3xl mt-2">Camp Gallery</h2>
+
+          <p class="mt-3 text-gray-700 max-w-2xl mx-auto">
+            A look at some of the fun, teamwork and flag football action from
+            our previous camps.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-9">
+          <!-- Gallery Image 1 -->
+          <div
+            class="overflow-hidden rounded-2xl border shadow-sm"
+            style="border-color: var(--camp-border)"
+          >
+            <img
+              src="/camp/assets/img/gallery-1.jpg"
+              alt="Flag Frenzy Football campers taking part in camp activities"
+              class="w-full h-72 object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Gallery Image 2 -->
+          <div
+            class="overflow-hidden rounded-2xl border shadow-sm"
+            style="border-color: var(--camp-border)"
+          >
+            <img
+              src="/camp/assets/img/gallery-2.jpg"
+              alt="Children enjoying flag football at Flag Frenzy Football Camp"
+              class="w-full h-72 object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Gallery Image 3 -->
+          <div
+            class="overflow-hidden rounded-2xl border shadow-sm sm:col-span-2 lg:col-span-1"
+            style="border-color: var(--camp-border)"
+          >
+            <img
+              src="/camp/assets/img/gallery-3.jpg"
+              alt="Flag Frenzy Football campers playing together"
+              class="w-full h-72 object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         VOLUNTEER / HELPER
+    ========================== -->
+    <section
+      class="py-12 bg-[var(--camp-cream)] border-t border-[var(--camp-border)]"
+    >
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          class="rounded-2xl border border-[var(--camp-border)] bg-white p-7 md:p-9 text-center"
+          class="rounded-2xl border bg-white p-7 md:p-9 text-center shadow-sm"
+          style="border-color: var(--camp-border)"
         >
           <p
             class="text-sm font-bold uppercase tracking-wider"
             style="color: var(--camp-red)"
           >
-            Ages 16+
+            Ages 15+
           </p>
 
           <h2 class="section-title text-3xl mt-2">
@@ -313,14 +442,18 @@
       </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="py-16 text-center bg-white">
+    <!-- =========================
+         FINAL CTA
+    ========================== -->
+    <section
+      class="py-12 text-center bg-white border-t border-[var(--camp-border)]"
+    >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="section-title text-3xl">Interested in our October camp?</h2>
 
         <p class="max-w-2xl mx-auto mt-2 text-gray-700">
           Let us know which week would work for your family and we'll contact
-          you once camp details are confirmed.
+          you once the October camp details are confirmed.
         </p>
 
         <a class="btn btn-accent mt-6" href="/camp/register-interest.html">
@@ -329,11 +462,14 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer mt-16 bg-[var(--camp-red)] text-white">
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="footer bg-[var(--camp-red)] text-white">
       <div
         class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid gap-8 md:grid-cols-3"
       >
+        <!-- Brand -->
         <div>
           <h3 class="font-semibold text-lg text-white">
             Flag Frenzy Football Camp
@@ -342,6 +478,7 @@
           <p class="mt-2 text-white/80">Play fast. Play smart. Play flag.</p>
         </div>
 
+        <!-- Quick Links -->
         <div>
           <h4 class="font-semibold text-white">Quick Links</h4>
 
@@ -385,6 +522,15 @@
             <li>
               <a
                 class="text-white hover:underline hover:text-yellow-400"
+                href="/camp/faqs.html"
+              >
+                FAQs
+              </a>
+            </li>
+
+            <li>
+              <a
+                class="text-white hover:underline hover:text-yellow-400"
                 href="/camp/contact.html"
               >
                 Contact
@@ -402,6 +548,7 @@
           </ul>
         </div>
 
+        <!-- Contact -->
         <div>
           <h4 class="font-semibold text-white">Contact</h4>
 
@@ -429,21 +576,36 @@
         </div>
       </div>
 
+      <!-- Footer Bottom -->
       <div class="border-t border-white/20">
         <div
           class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-white/80 flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
         >
           <div>
-            &copy;
-            <span id="year"></span>
-            Flag Frenzy Football Ltd. All rights reserved.
+            <span>
+              &copy;
+              <span id="year"></span>
+              Flag Frenzy Football Ltd. All rights reserved.
+            </span>
+
+            <div class="mt-2 text-xs leading-relaxed text-white/60">
+              Flag Frenzy Football Ltd — Company No. 16566783
+              <br class="sm:hidden" />
+
+              <span class="hidden sm:inline">•</span>
+              Registered in England &amp; Wales
+
+              <span class="hidden sm:inline">•</span>
+              Registered Office: 128 City Road, London, EC1V 2NX
+            </div>
           </div>
 
-          <span> Built for the community. </span>
+          <span class="text-white/80"> Built for the community. </span>
         </div>
       </div>
     </footer>
 
+    <!-- Shared JavaScript -->
     <script src="/camp/js/main.js"></script>
   </body>
 </html>
