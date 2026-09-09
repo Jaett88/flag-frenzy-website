@@ -434,11 +434,11 @@
     </section>
 
     <!-- =========================
-         FOOTER
-    ========================== -->
+     COMPACT FOOTER
+========================== -->
     <footer class="footer bg-[var(--camp-red)] text-white">
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid gap-8 md:grid-cols-3"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 grid gap-6 md:grid-cols-[1fr_1.4fr_1fr]"
       >
         <!-- Brand -->
         <div>
@@ -446,14 +446,16 @@
             Flag Frenzy Football Camp
           </h3>
 
-          <p class="mt-2 text-white/80">Play fast. Play smart. Play flag.</p>
+          <p class="mt-1 text-sm text-white/80">
+            Play fast. Play smart. Play flag.
+          </p>
         </div>
 
         <!-- Quick Links -->
         <div>
           <h4 class="font-semibold text-white">Quick Links</h4>
 
-          <ul class="mt-2 space-y-2">
+          <ul class="mt-2 grid grid-cols-2 gap-x-6 gap-y-1.5 text-sm">
             <li>
               <a
                 class="text-white hover:underline hover:text-yellow-400"
@@ -523,7 +525,7 @@
         <div>
           <h4 class="font-semibold text-white">Contact</h4>
 
-          <ul class="mt-2 space-y-2">
+          <ul class="mt-2 space-y-1.5 text-sm">
             <li>
               <a
                 class="text-white hover:underline hover:text-yellow-400"
@@ -547,10 +549,10 @@
         </div>
       </div>
 
-      <!-- Footer Bottom -->
+      <!-- Bottom Bar -->
       <div class="border-t border-white/20">
         <div
-          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-white/80 flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-white/70 flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
         >
           <div>
             <span>
@@ -559,19 +561,19 @@
               Flag Frenzy Football Ltd. All rights reserved.
             </span>
 
-            <div class="mt-2 text-xs leading-relaxed text-white/60">
-              Flag Frenzy Football Ltd — Company No. 16566783
-              <br class="sm:hidden" />
+            <span class="hidden md:inline">
+              • Company No. 16566783 • Registered in England &amp; Wales •
+              Registered Office: 128 City Road, London, EC1V 2NX
+            </span>
 
-              <span class="hidden sm:inline">•</span>
-              Registered in England &amp; Wales
-
-              <span class="hidden sm:inline">•</span>
+            <!-- Mobile company information -->
+            <div class="md:hidden mt-1 leading-relaxed text-white/60">
+              Company No. 16566783 • Registered in England &amp; Wales<br />
               Registered Office: 128 City Road, London, EC1V 2NX
             </div>
           </div>
 
-          <span class="text-white/80"> Built for the community. </span>
+          <span class="text-white/70"> Built for the community. </span>
         </div>
       </div>
     </footer>
