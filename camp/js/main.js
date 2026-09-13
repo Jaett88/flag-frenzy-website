@@ -1,21 +1,36 @@
 // ===============================
-// Flag Frenzy — Main JS (camp)
+// Flag Frenzy Football Camp
+// Main JavaScript
 // ===============================
 
-// ===== Pricing Settings =====
-const DAILY_RATE = 35;
-const FULL_WEEK_RATE = 135;
-const EARLY_BIRD_RATE = 120;
-const SIBLING_DISCOUNT_FLAT = 10; // flat £10 off
-const EARLY_BIRD_CUTOFF = new Date("2026-03-22T23:59:59");
+// ===============================
+// PRICING
+// ===============================
 
-// ===== Utilities =====
+const DAILY_RATE = 35;
+const FULL_WEEK_RATE = 150;
+const EARLY_BIRD_RATE = 135;
+const SIBLING_DISCOUNT_FLAT = 10;
+
+// Add the 2026 Early Bird deadline once confirmed.
+const EARLY_BIRD_CUTOFF = null;
+
+// ===============================
+// PRICING FUNCTIONS
+// ===============================
+
 function isEarlyBird() {
+  if (!EARLY_BIRD_CUTOFF) return false;
+
   return new Date() <= EARLY_BIRD_CUTOFF;
 }
+
 function toggleDaySelect(show) {
   const daySection = document.getElementById("day-selector");
-  if (daySection) daySection.classList.toggle("hidden", !show);
+
+  if (daySection) {
+    daySection.classList.toggle("hidden", !show);
+  }
 }
 
 function updatePaymentSummary() {
@@ -29,206 +44,202 @@ function updatePaymentSummary() {
 
   const selectedDates = Array.from(
     document.querySelectorAll("input[name='selected-dates']:checked"),
-  ).map((el) => el.value);
+  );
 
   const paymentDisplay = document.getElementById("payment-summary");
 
-  const derivedPackageEl = document.getElementById("derived-package");
-  const derivedDaysEl = document.getElementById("derived-days");
-  const derivedSiblingEl = document.getElementById("derived-sibling");
-  const derivedAttendanceCountEl = document.getElementById(
-    "derived-attendance-count",
-  );
-  const derivedAttendanceDatesEl = document.getElementById(
-    "derived-attendance-dates",
-  );
-  const derivedTotalEl = document.getElementById("derived-total");
-  const derivedAttendanceLabelEl = document.getElementById(
-    "derived-attendance-label",
-  );
+  if (!paymentDisplay) return;
 
-  const ALL_CAMP_DATES = ["Mon 30 Mar", "Tue 31 Mar", "Wed 1 Apr", "Thu 2 Apr"];
-
-  let baseTotal = 0;
-  let note = "";
-  let derivedPackage = "";
-  let derivedDays = 0;
-  let attendanceDates = [];
-  let attendanceLabel = "";
+  let total = 0;
 
   if (attendance === "Full Week") {
-    baseTotal = isEarlyBird() ? EARLY_BIRD_RATE : FULL_WEEK_RATE;
-    note = isEarlyBird() ? "Early-bird full week" : "Full week";
-    derivedPackage = isEarlyBird() ? "earlybird" : "fullweek";
-    derivedDays = 4;
-    attendanceDates = [...ALL_CAMP_DATES];
-    attendanceLabel = "Full Week";
-  } else if (attendance === "Choose Dates") {
-    baseTotal = selectedDates.length * DAILY_RATE;
-    derivedPackage = "daypass";
-    derivedDays = selectedDates.length;
-    attendanceDates = [...selectedDates];
-    attendanceLabel = "Choose Dates";
-
-    if (selectedDates.length === 1) {
-      note = "1 day @ £35";
-    } else if (selectedDates.length > 1) {
-      note = `${selectedDates.length} days @ £35/day`;
-    }
+    total = isEarlyBird() ? EARLY_BIRD_RATE : FULL_WEEK_RATE;
   }
 
-  if (derivedPackageEl) derivedPackageEl.value = derivedPackage;
-  if (derivedDaysEl) derivedDaysEl.value = String(derivedDays);
-  if (derivedSiblingEl)
-    derivedSiblingEl.value = sibling === "yes" ? "yes" : "no";
-  if (derivedAttendanceCountEl)
-    derivedAttendanceCountEl.value = String(derivedDays);
-  if (derivedAttendanceDatesEl)
-    derivedAttendanceDatesEl.value = attendanceDates.join(", ");
-  if (derivedTotalEl) derivedTotalEl.value = String(baseTotal);
-  if (derivedAttendanceLabelEl)
-    derivedAttendanceLabelEl.value = attendanceLabel;
-
-  if (paymentDisplay) {
-    let extraLines = "";
-
-    if (note) {
-      extraLines += `${note}<br />`;
-    }
-
-    if (attendance === "Choose Dates" && attendanceDates.length) {
-      extraLines += `Dates: ${attendanceDates.join(", ")}<br />`;
-    }
-
-    if (attendance === "Full Week") {
-      extraLines += `Dates: ${ALL_CAMP_DATES.join(", ")}<br />`;
-    }
-
-    if (attendance === "Full Week" && isEarlyBird()) {
-      const cutoffStr = EARLY_BIRD_CUTOFF.toLocaleDateString("en-GB", {
-        day: "numeric",
-        month: "short",
-      });
-      extraLines += `(Early-bird ends ${cutoffStr})<br />`;
-    }
-
-    if (sibling === "yes") {
-      extraLines += `Sibling discount available with code SIBLING10`;
-    }
-
-    paymentDisplay.innerHTML = `
-      Total Due: £${baseTotal.toFixed(2)}
-      ${
-        extraLines
-          ? `<br /><small class="text-sm text-gray-600">${extraLines}</small>`
-          : ""
-      }
-    `;
+  if (attendance === "Choose Dates") {
+    total = selectedDates.length * DAILY_RATE;
   }
+
+  if (sibling === "yes") {
+    total = Math.max(0, total - SIBLING_DISCOUNT_FLAT);
+  }
+
+  let message = `Total Due: £${total.toFixed(2)}`;
+
+  if (attendance === "Full Week" && isEarlyBird() && EARLY_BIRD_CUTOFF) {
+    const cutoff = EARLY_BIRD_CUTOFF.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+    });
+
+    message += `\n(Early-bird ends ${cutoff})`;
+  }
+
+  paymentDisplay.textContent = message;
 }
 
-// ===== Init =====
+// ===============================
+// PAGE INITIALISATION
+// ===============================
+
 document.addEventListener("DOMContentLoaded", () => {
-  // --- Mobile nav (single source of truth: uses .is-open + body.nav-open)
+  // ===============================
+  // MOBILE NAVIGATION
+  // ===============================
+
   const body = document.body;
   const menuBtn = document.getElementById("menuBtn");
   const mobileNav = document.getElementById("mobileNav");
 
   function openMenu() {
     if (!mobileNav) return;
+
     mobileNav.classList.add("is-open");
     body.classList.add("nav-open");
+
     menuBtn?.setAttribute("aria-expanded", "true");
-    if (window.__heroSwiper) window.__heroSwiper.update();
+
+    window.__heroSwiper?.update();
   }
+
   function closeMenu() {
     if (!mobileNav) return;
+
     mobileNav.classList.remove("is-open");
     body.classList.remove("nav-open");
+
     menuBtn?.setAttribute("aria-expanded", "false");
-    if (window.__heroSwiper) window.__heroSwiper.update();
+
+    window.__heroSwiper?.update();
   }
+
   function toggleMenu() {
     if (!mobileNav) return;
+
     mobileNav.classList.contains("is-open") ? closeMenu() : openMenu();
   }
 
-  if (menuBtn) {
+  if (menuBtn && mobileNav) {
     menuBtn.addEventListener("click", toggleMenu);
-    // Close menu when a link is tapped
-    mobileNav?.addEventListener("click", (e) => {
-      if (e.target && e.target.tagName === "A") closeMenu();
+
+    mobileNav.addEventListener("click", (event) => {
+      if (event.target && event.target.tagName === "A") {
+        closeMenu();
+      }
     });
-    // Esc to close
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeMenu();
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
     });
   }
 
-  // --- Swiper (hero)
-  const hasHero = document.querySelector(".hero-swiper");
-  if (hasHero && typeof Swiper !== "undefined") {
+  // ===============================
+  // HERO SWIPER
+  // ===============================
+
+  const heroSwiper = document.querySelector(".hero-swiper");
+
+  if (heroSwiper && typeof Swiper !== "undefined") {
     window.__heroSwiper = new Swiper(".hero-swiper", {
       loop: true,
       speed: 700,
       grabCursor: true,
-      autoplay: { delay: 4000, disableOnInteraction: false },
-      keyboard: { enabled: true },
-      pagination: { el: ".hero-swiper .swiper-pagination", clickable: true },
+
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+
+      keyboard: {
+        enabled: true,
+      },
+
+      pagination: {
+        el: ".hero-swiper .swiper-pagination",
+        clickable: true,
+      },
+
       navigation: {
         nextEl: ".hero-swiper .swiper-button-next",
+
         prevEl: ".hero-swiper .swiper-button-prev",
       },
-      a11y: { enabled: true },
+
+      a11y: {
+        enabled: true,
+      },
     });
 
-    const updateSwiper = () =>
-      window.__heroSwiper && window.__heroSwiper.update();
+    const updateSwiper = () => {
+      window.__heroSwiper?.update();
+    };
+
     window.addEventListener("resize", updateSwiper, { passive: true });
-    window.addEventListener("orientationchange", () =>
-      setTimeout(updateSwiper, 150),
-    );
-    window.addEventListener("load", () => setTimeout(updateSwiper, 60));
+
+    window.addEventListener("orientationchange", () => {
+      setTimeout(updateSwiper, 150);
+    });
+
+    window.addEventListener("load", () => {
+      setTimeout(updateSwiper, 60);
+    });
   }
 
-  // --- Registration form logic (guards keep this harmless on non-form pages)
+  // ===============================
+  // FOOTER YEAR
+  // ===============================
 
-  // Attendance radios
+  document.querySelectorAll("#year").forEach((element) => {
+    element.textContent = new Date().getFullYear();
+  });
+
+  // ===============================
+  // REGISTRATION — ATTENDANCE
+  // ===============================
+
   document.querySelectorAll("input[name='attendance']").forEach((radio) => {
-    radio.addEventListener("change", (e) => {
-      const isChooseDates = e.target.value === "Choose Dates";
-
-      toggleDaySelect(isChooseDates);
-
-      if (!isChooseDates) {
-        document
-          .querySelectorAll("input[name='selected-dates']:checked")
-          .forEach((cb) => (cb.checked = false));
-      }
+    radio.addEventListener("change", (event) => {
+      toggleDaySelect(event.target.value === "Choose Dates");
 
       updatePaymentSummary();
     });
   });
 
-  // Day checkboxes
   document
     .querySelectorAll("input[name='selected-dates']")
-    .forEach((cb) => cb.addEventListener("change", updatePaymentSummary));
+    .forEach((checkbox) => {
+      checkbox.addEventListener("change", updatePaymentSummary);
+    });
 
-  // Sibling radios
-  document
-    .querySelectorAll("input[name='sibling']")
-    .forEach((radio) => radio.addEventListener("change", updatePaymentSummary));
+  document.querySelectorAll("input[name='sibling']").forEach((radio) => {
+    radio.addEventListener("change", updatePaymentSummary);
+  });
 
-  // DOB dropdowns + age calc
+  // ===============================
+  // CAMPER DATE OF BIRTH / AGE
+  // ===============================
+
   const dobDay = document.getElementById("dob-day");
+
   const dobMonth = document.getElementById("dob-month");
+
   const dobYear = document.getElementById("dob-year");
+
   const ageInput = document.querySelector("input[name='camper-age']");
+
   if (dobDay && dobMonth && dobYear && ageInput) {
-    for (let d = 1; d <= 31; d++)
-      dobDay.innerHTML += `<option value="${d}">${d}</option>`;
-    [
+    // Days
+    for (let day = 1; day <= 31; day++) {
+      dobDay.insertAdjacentHTML(
+        "beforeend",
+        `<option value="${day}">${day}</option>`,
+      );
+    }
+
+    // Months
+    const months = [
       "January",
       "February",
       "March",
@@ -241,73 +252,135 @@ document.addEventListener("DOMContentLoaded", () => {
       "October",
       "November",
       "December",
-    ].forEach(
-      (m, i) =>
-        (dobMonth.innerHTML += `<option value="${i + 1}">${m}</option>`),
-    );
+    ];
 
+    months.forEach((month, index) => {
+      dobMonth.insertAdjacentHTML(
+        "beforeend",
+        `<option value="${index + 1}">${month}</option>`,
+      );
+    });
+
+    // Years
     const currentYear = new Date().getFullYear();
-    for (let y = currentYear - 7; y >= currentYear - 15; y--) {
-      dobYear.innerHTML += `<option value="${y}">${y}</option>`;
+
+    for (let year = currentYear - 6; year >= currentYear - 16; year--) {
+      dobYear.insertAdjacentHTML(
+        "beforeend",
+        `<option value="${year}">${year}</option>`,
+      );
     }
 
-    [dobDay, dobMonth, dobYear].forEach((el) => {
-      el.addEventListener("change", () => {
-        const day = parseInt(dobDay.value, 10);
-        const month = parseInt(dobMonth.value, 10) - 1;
-        const year = parseInt(dobYear.value, 10);
-        if (!day || !dobMonth.value || !year) return;
+    // ===============================
+    // AGE AT START OF CAMP
+    // ===============================
 
-        const dob = new Date(year, month, day);
-        const today = new Date();
-        let age = today.getFullYear() - dob.getFullYear();
-        const m = today.getMonth() - dob.getMonth();
-        if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
-        ageInput.value = age;
+    function calculateCamperAge() {
+      const day = parseInt(dobDay.value, 10);
 
-        if (age < 7 || age > 15)
-          alert("Sorry, campers must be between 7 and 15 years old.");
+      const month = parseInt(dobMonth.value, 10) - 1;
+
+      const year = parseInt(dobYear.value, 10);
+
+      if (!day || !dobMonth.value || !year) {
+        return;
+      }
+
+      const dob = new Date(year, month, day);
+
+      /*
+       * Earliest possible October 2026
+       * camp start date.
+       *
+       * Week 1:
+       * 19–23 October 2026
+       *
+       * Week 2:
+       * 26–30 October 2026
+       *
+       * Once the final camp week is confirmed,
+       * update this date if Week 2 is selected.
+       */
+
+      const campStartDate = new Date(2026, 9, 19);
+
+      let age = campStartDate.getFullYear() - dob.getFullYear();
+
+      const monthDifference = campStartDate.getMonth() - dob.getMonth();
+
+      if (
+        monthDifference < 0 ||
+        (monthDifference === 0 && campStartDate.getDate() < dob.getDate())
+      ) {
+        age--;
+      }
+
+      ageInput.value = age;
+
+      if (age < 7 || age > 15) {
+        alert("Sorry, campers must be aged 7–15 at the start of camp.");
+      }
+    }
+
+    [dobDay, dobMonth, dobYear].forEach((element) => {
+      element.addEventListener("change", calculateCamperAge);
+    });
+  }
+
+  // ===============================
+  // MEDICAL CONDITIONS
+  // ===============================
+
+  const noneCheckbox = document.querySelector(
+    "input[name='medical-conditions'][value='None']",
+  );
+
+  const otherCheckboxes = Array.from(
+    document.querySelectorAll("input[name='medical-conditions']"),
+  ).filter((checkbox) => checkbox.value !== "None");
+
+  if (noneCheckbox) {
+    noneCheckbox.addEventListener("change", () => {
+      if (noneCheckbox.checked) {
+        otherCheckboxes.forEach((checkbox) => {
+          checkbox.checked = false;
+        });
+      }
+    });
+
+    otherCheckboxes.forEach((checkbox) => {
+      checkbox.addEventListener("change", () => {
+        if (checkbox.checked) {
+          noneCheckbox.checked = false;
+        }
       });
     });
   }
 
-  // Medical conditions "None" shortcut
-  const noneCheckbox = document.querySelector(
-    "input[name='medical-conditions'][value='None']",
-  );
-  const otherCheckboxes = Array.from(
-    document.querySelectorAll("input[name='medical-conditions']"),
-  ).filter((cb) => cb.value !== "None");
-  if (noneCheckbox) {
-    noneCheckbox.addEventListener("change", () => {
-      if (noneCheckbox.checked)
-        otherCheckboxes.forEach((cb) => (cb.checked = false));
-    });
-    otherCheckboxes.forEach((cb) =>
-      cb.addEventListener("change", () => {
-        if (cb.checked) noneCheckbox.checked = false;
-      }),
-    );
-  }
+  // ===============================
+  // SAVE CAMPER NAME
+  // ===============================
 
-  // Thank-you page greeting
   const registrationForm = document.querySelector(
     "form[name='camper-registration']",
   );
+
   if (registrationForm) {
     registrationForm.addEventListener("submit", () => {
       const camperName = document.querySelector(
         "input[name='camper-name']",
       )?.value;
-      if (camperName) localStorage.setItem("camperName", camperName.trim());
+
+      if (camperName) {
+        localStorage.setItem("camperName", camperName.trim());
+      }
     });
   }
 
-  // Footer year
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  // ===============================
+  // INITIAL REGISTRATION STATE
+  // ===============================
 
-  // Initial UI state for form pages
   toggleDaySelect(false);
   updatePaymentSummary();
 });

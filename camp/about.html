@@ -3,163 +3,341 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>About — Flag Frenzy Football Camp</title>
+
     <meta
       name="description"
-      content="About Flag Frenzy Football Camp: who we are, what we offer, and who can join."
+      content="Learn about Flag Frenzy Football Camp, what flag football is, what we offer, and who can join our fun, inclusive camps for ages 7–15."
     />
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
+
     <!-- CAMP THEME -->
     <link rel="stylesheet" href="/camp/css/style.css" />
   </head>
+
   <body>
-    <!-- Header -->
+    <!-- =========================
+         HEADER
+    ========================== -->
     <header class="bg-white shadow-md">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="h-16 flex items-center justify-between">
+          <!-- Logo / Brand -->
           <a href="/camp/index.html" class="flex items-center gap-3">
             <img
               src="/camp/src/logo.png"
               alt="Flag Frenzy Football Camp logo"
               class="h-10 w-10"
             />
-            <span class="text-xl font-extrabold" style="color: var(--camp-red)"
-              >Flag Frenzy Football Camp</span
-            >
+
+            <span class="text-xl font-extrabold" style="color: var(--camp-red)">
+              Flag Frenzy Football Camp
+            </span>
           </a>
 
+          <!-- Mobile Menu Button -->
           <button
             id="menuBtn"
+            type="button"
             class="md:hidden p-2 rounded-lg border border-gray-200"
             aria-label="Toggle menu"
+            aria-controls="mobileNav"
+            aria-expanded="false"
           >
             ☰
           </button>
 
+          <!-- Desktop Navigation -->
           <nav
             id="nav"
             class="hidden md:flex items-center gap-6 text-sm font-medium"
           >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
-              >Home</a
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a
+              class="font-semibold text-[var(--camp-red)]"
+              href="/camp/about.html"
+              aria-current="page"
             >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
-              >About</a
-            >
+              About
+            </a>
+
             <a
               class="hover:text-[var(--camp-red)]"
               href="/camp/register-interest.html"
             >
               Register Interest
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
-              >Policies</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
-              >FAQs</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
-              >Contact</a
-            >
-            <a class="btn btn-outline" href="/index.html">Main Site</a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html">
+              Policies
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline" href="/index.html"> Main Site </a>
           </nav>
         </div>
 
-        <!-- Mobile Nav (note: no 'hidden' class; CSS collapses it safely) -->
+        <!-- Mobile Navigation -->
         <nav id="mobileNav" class="md:hidden overflow-hidden">
           <div class="flex flex-col gap-3 font-medium">
-            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
-              >Home</a
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a
+              class="font-semibold text-[var(--camp-red)]"
+              href="/camp/about.html"
+              aria-current="page"
             >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
-              >About</a
-            >
+              About
+            </a>
+
             <a
               class="hover:text-[var(--camp-red)]"
               href="/camp/register-interest.html"
             >
               Register Interest
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
-              >Policies</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
-              >FAQs</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
-              >Contact</a
-            >
-            <a class="btn btn-outline w-max" href="/index.html">Main Site</a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html">
+              Policies
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline w-max" href="/index.html"> Main Site </a>
           </div>
         </nav>
       </div>
     </header>
 
-    <!-- Intro -->
+    <!-- =========================
+         ABOUT INTRO
+    ========================== -->
     <section class="hero-bg">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-14">
-        <h1
-          class="text-4xl font-extrabold"
-          style="color: var(--camp-primary-900)"
-        >
-          About Flag Frenzy Football Camp
-        </h1>
-        <p class="mt-3 text-lg text-gray-700 max-w-3xl">
-          Flag Frenzy Football Camp is a fun, high‑energy flag football
-          programme for ages 7–15. We create a positive, inclusive environment
-          where players of all abilities learn, improve and fall in love with
-          the game.
-        </p>
+        <div class="max-w-3xl">
+          <p
+            class="text-sm font-extrabold tracking-wide uppercase"
+            style="color: var(--camp-red)"
+          >
+            Play Fast. Play Smart. Play Flag.
+          </p>
+
+          <h1
+            class="mt-2 text-4xl md:text-5xl font-extrabold"
+            style="color: var(--camp-primary-900)"
+          >
+            About Flag Frenzy Football Camp
+          </h1>
+
+          <p class="mt-4 text-lg text-gray-700">
+            Flag Frenzy Football Camp is a fun, high-energy flag football
+            programme for children aged 7–15. We create a positive and inclusive
+            environment where young players can learn new skills, build
+            confidence, make friends and enjoy the game.
+          </p>
+
+          <p class="mt-4 text-gray-700">
+            Whether a child is trying flag football for the very first time or
+            already has experience playing, our camps are designed to help every
+            player get involved, improve and enjoy being part of the team.
+          </p>
+        </div>
+
         <img
           src="/camp/assets/img/about-hero.jpg"
-          alt="Camp photo"
+          alt="Young players taking part in Flag Frenzy Football Camp"
           class="rounded-2xl shadow-2xl border mt-8 w-full max-w-4xl"
         />
       </div>
     </section>
 
-    <!-- Two columns -->
-    <section class="py-14 bg-white/80 border-t border-[var(--camp-border)]">
-      <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start"
-      >
-        <div>
-          <h2 class="section-title text-2xl">What we offer</h2>
-          <ul class="mt-4 text-gray-800 list-disc list-inside">
-            <li>Non‑contact flag football for boys and girls</li>
-            <li>Skill‑building drills and mini games</li>
-            <li>Confidence‑boosting activities and teamwork</li>
-            <li>Positive, inclusive coaching style</li>
-          </ul>
-        </div>
-        <div>
-          <h2 class="section-title text-2xl">Who can join</h2>
-          <ul class="mt-4 text-gray-800 list-disc list-inside">
-            <li>Ages 7–15</li>
-            <li>No experience necessary</li>
-            <li>Flexible day or full‑week options</li>
-            <li>Great for beginners and experienced players</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-14 text-center">
+    <!-- =========================
+         WHAT IS FLAG FOOTBALL?
+    ========================== -->
+    <section class="py-14 bg-white border-t border-[var(--camp-border)]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <a href="/camp/register.html" class="btn btn-primary">Join the camp</a>
+        <div class="max-w-4xl">
+          <p
+            class="text-sm font-extrabold tracking-wide uppercase"
+            style="color: var(--camp-green)"
+          >
+            New to the game?
+          </p>
+
+          <h2 class="section-title text-3xl mt-2">What is Flag Football?</h2>
+
+          <p class="mt-4 text-gray-700 leading-relaxed">
+            Flag football is a fast-paced, non-contact version of American
+            football. Instead of tackling a player to stop the play, defenders
+            pull a flag from a belt worn around the player's waist.
+          </p>
+
+          <p class="mt-4 text-gray-700 leading-relaxed">
+            Players learn many of the core skills used in American football,
+            including passing, catching, running routes, defending and working
+            together as a team — without tackling.
+          </p>
+
+          <p class="mt-4 text-gray-700 leading-relaxed">
+            It's an exciting and accessible sport for beginners while still
+            offering plenty of challenge for children who already have
+            experience playing the game.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- =========================
-     COMPACT FOOTER
-========================== -->
+         WHAT WE OFFER / WHO CAN JOIN
+    ========================== -->
+    <section class="py-14 bg-white/80 border-t border-[var(--camp-border)]">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start"
+      >
+        <!-- What We Offer -->
+        <div class="card bg-white">
+          <h2 class="section-title text-2xl">What We Offer</h2>
+
+          <ul class="mt-5 space-y-3 text-gray-800 list-disc list-inside">
+            <li>Non-contact flag football for boys and girls</li>
+
+            <li>Skill-building drills and game-based activities</li>
+
+            <li>
+              Opportunities to develop passing, catching, route-running and
+              defending skills
+            </li>
+
+            <li>Team challenges and mini games</li>
+
+            <li>Confidence-building activities and teamwork</li>
+
+            <li>Positive and inclusive coaching</li>
+          </ul>
+        </div>
+
+        <!-- Who Can Join -->
+        <div class="card bg-white">
+          <h2 class="section-title text-2xl">Who Can Join?</h2>
+
+          <ul class="mt-5 space-y-3 text-gray-800 list-disc list-inside">
+            <li>Children aged 7–15</li>
+
+            <li>Boys and girls</li>
+
+            <li>Complete beginners — no previous experience needed</li>
+
+            <li>
+              Children who already play flag football or American football
+            </li>
+
+            <li>
+              Young people who want to be active, learn new skills and enjoy
+              being part of a team
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         OUR APPROACH
+    ========================== -->
+    <section class="py-14 bg-white border-t border-[var(--camp-border)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl">
+          <p
+            class="text-sm font-extrabold tracking-wide uppercase"
+            style="color: var(--camp-red)"
+          >
+            More Than Football
+          </p>
+
+          <h2 class="section-title text-3xl mt-2">Our Approach</h2>
+
+          <p class="mt-4 text-gray-700 leading-relaxed">
+            At Flag Frenzy, we want children to develop more than football
+            skills. Our camps encourage confidence, communication, teamwork,
+            sportsmanship and a positive attitude both on and off the field.
+          </p>
+
+          <p class="mt-4 text-gray-700 leading-relaxed">
+            We believe children learn best when they're enjoying themselves,
+            feeling supported and being encouraged to challenge themselves. Our
+            coaching combines skill development with games, competition and
+            plenty of opportunities for every player to get involved.
+          </p>
+
+          <p class="mt-4 text-gray-700 leading-relaxed">
+            Most importantly, we want players to leave camp having enjoyed their
+            experience, learned something new and feeling excited to play flag
+            football again.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         REGISTER INTEREST CTA
+    ========================== -->
+    <section class="py-14 border-t border-[var(--camp-border)]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2
+          class="text-2xl md:text-3xl font-extrabold"
+          style="color: var(--camp-ink)"
+        >
+          Interested in joining our next camp?
+        </h2>
+
+        <p class="mt-3 text-gray-700 max-w-2xl mx-auto">
+          We're currently gathering interest for our October Half-Term 2026
+          camp. Let us know if your child may be interested in joining us.
+        </p>
+
+        <div class="mt-7">
+          <a href="/camp/register-interest.html" class="btn btn-primary">
+            Register Your Interest
+          </a>
+        </div>
+
+        <p class="mt-4 text-sm text-gray-600">
+          Registering your interest isn't a booking and no payment is required
+          at this stage.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================
+         COMPACT FOOTER
+    ========================== -->
     <footer class="footer bg-[var(--camp-red)] text-white">
       <!-- Main Footer -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7">
