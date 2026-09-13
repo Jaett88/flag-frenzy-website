@@ -3,64 +3,161 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>FAQs — Flag Frenzy Football Camp</title>
+
     <meta
       name="description"
-      content="Frequently asked questions about Flag Frenzy Football Camp."
+      content="Frequently asked questions about Flag Frenzy Football Camp, including ages, what to bring, bookings, camp information and more."
     />
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
+
     <!-- CAMP THEME -->
     <link rel="stylesheet" href="/camp/css/style.css" />
+
+    <!-- FAQ PAGE STYLES -->
+    <style>
+      .faq-group {
+        background: #ffffff;
+        border: 1px solid var(--camp-border);
+        border-radius: 1rem;
+        overflow: hidden;
+      }
+
+      .faq-group-heading {
+        padding: 1.25rem 1.5rem 1rem;
+        border-bottom: 1px solid var(--camp-border);
+      }
+
+      .faq-item {
+        border-bottom: 1px solid var(--camp-border);
+      }
+
+      .faq-item:last-child {
+        border-bottom: 0;
+      }
+
+      .faq-button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.15rem 1.5rem;
+        text-align: left;
+        font-weight: 600;
+        color: var(--camp-ink);
+        transition:
+          background-color 0.2s ease,
+          color 0.2s ease;
+      }
+
+      .faq-button:hover {
+        background: rgba(167, 57, 38, 0.04);
+        color: var(--camp-red);
+      }
+
+      .faq-icon {
+        flex-shrink: 0;
+        width: 1.75rem;
+        height: 1.75rem;
+        border-radius: 9999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--camp-red);
+        background: rgba(167, 57, 38, 0.08);
+        transition: transform 0.2s ease;
+      }
+
+      .faq-answer-panel {
+        display: none;
+        padding: 0 1.5rem 1.25rem;
+        color: #4b5563;
+        line-height: 1.75;
+      }
+
+      .faq-item.is-open .faq-answer-panel {
+        display: block;
+      }
+
+      .faq-item.is-open .faq-button {
+        color: var(--camp-red);
+      }
+
+      .faq-item.is-open .faq-icon {
+        transform: rotate(45deg);
+      }
+    </style>
   </head>
+
   <body>
-    <!-- Header -->
+    <!-- =========================
+         HEADER
+    ========================== -->
     <header class="bg-white shadow-md">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="h-16 flex items-center justify-between">
+          <!-- Logo / Brand -->
           <a href="/camp/index.html" class="flex items-center gap-3">
             <img
               src="/camp/src/logo.png"
               alt="Flag Frenzy Football Camp logo"
               class="h-10 w-10"
             />
-            <span class="text-xl font-extrabold" style="color: var(--camp-red)"
-              >Flag Frenzy Football Camp</span
-            >
+
+            <span class="text-xl font-extrabold" style="color: var(--camp-red)">
+              Flag Frenzy Football Camp
+            </span>
           </a>
 
+          <!-- Mobile Menu Button -->
           <button
             id="menuBtn"
+            type="button"
             class="md:hidden p-2 rounded-lg border border-gray-200"
             aria-label="Toggle menu"
+            aria-controls="mobileNav"
+            aria-expanded="false"
           >
             ☰
           </button>
 
+          <!-- Desktop Navigation -->
           <nav
             id="nav"
             class="hidden md:flex items-center gap-6 text-sm font-medium"
           >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
-              >Home</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
-              >About</a
-            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
             <a
               class="hover:text-[var(--camp-red)]"
               href="/camp/register-interest.html"
             >
               Register Interest
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
-              >Policies</a
-            >
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html">
+              Policies
+            </a>
+
             <a
               class="font-semibold text-[var(--camp-red)]"
               href="/camp/faqs.html"
@@ -68,31 +165,37 @@
             >
               FAQs
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
-              >Contact</a
-            >
-            <a class="btn btn-outline" href="/index.html">Main Site</a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline" href="/index.html"> Main Site </a>
           </nav>
         </div>
 
-        <!-- Mobile Nav (note: no 'hidden' class; CSS collapses it safely) -->
+        <!-- Mobile Navigation -->
         <nav id="mobileNav" class="md:hidden overflow-hidden">
           <div class="flex flex-col gap-3 font-medium">
-            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
-              >Home</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
-              >About</a
-            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
             <a
               class="hover:text-[var(--camp-red)]"
               href="/camp/register-interest.html"
             >
               Register Interest
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
-              >Policies</a
-            >
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html">
+              Policies
+            </a>
+
             <a
               class="font-semibold text-[var(--camp-red)]"
               href="/camp/faqs.html"
@@ -100,57 +203,512 @@
             >
               FAQs
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
-              >Contact</a
-            >
-            <a class="btn btn-outline w-max" href="/index.html">Main Site</a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline w-max" href="/index.html"> Main Site </a>
           </div>
         </nav>
       </div>
     </header>
 
-    <!-- FAQs Section -->
-    <section class="py-14 hero-bg">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- =========================
+         FAQ INTRO
+    ========================== -->
+    <section class="hero-bg">
+      <div
+        class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-14 text-center"
+      >
+        <p
+          class="text-sm font-extrabold tracking-wide uppercase"
+          style="color: var(--camp-red)"
+        >
+          We're Here to Help
+        </p>
+
         <h1
-          class="text-4xl font-extrabold text-center"
+          class="mt-2 text-4xl md:text-5xl font-extrabold"
           style="color: var(--camp-primary-900)"
         >
           Frequently Asked Questions
         </h1>
-        <div class="mt-10 space-y-8">
-          <div>
-            <h2 class="faq-question">❓ What age groups can attend?</h2>
-            <p class="faq-answer">
-              Flag Frenzy is for children aged 7–15. We group players by age and
-              ability to ensure everyone has fun and stays safe.
-            </p>
+
+        <p class="mt-4 text-lg text-gray-700 max-w-2xl mx-auto">
+          Everything you need to know before your child joins Flag Frenzy
+          Football Camp.
+        </p>
+
+        <p class="mt-3 text-sm text-gray-600">
+          Can't find what you're looking for?
+          <a
+            href="/camp/contact.html"
+            class="font-semibold text-[var(--camp-red)] hover:underline"
+          >
+            Get in touch
+          </a>
+          and we'll be happy to help.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================
+         FAQ ACCORDIONS
+    ========================== -->
+    <section class="py-14 bg-white/80 border-t border-[var(--camp-border)]">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-8 items-start">
+          <!-- =====================
+               LEFT COLUMN
+          ====================== -->
+          <div class="space-y-8">
+            <!-- GETTING STARTED -->
+            <div class="faq-group">
+              <div class="faq-group-heading">
+                <p
+                  class="text-xs font-extrabold tracking-wider uppercase"
+                  style="color: var(--camp-red)"
+                >
+                  Getting Started
+                </p>
+
+                <h2
+                  class="mt-1 text-xl font-bold"
+                  style="color: var(--camp-ink)"
+                >
+                  About the Game
+                </h2>
+              </div>
+
+              <!-- Question 1 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>What is flag football?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Flag football is a fast-paced, non-contact version of American
+                  football. Instead of tackling a player to stop the play,
+                  defenders pull a flag from a belt worn around the player's
+                  waist. Players develop skills including passing, catching,
+                  route-running, defending and teamwork.
+                </div>
+              </div>
+
+              <!-- Question 2 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>What age groups can attend?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Flag Frenzy Football Camp is for children aged 7–15. Players
+                  may be grouped by factors such as age, experience and ability
+                  during activities to help keep sessions enjoyable and
+                  appropriate.
+                </div>
+              </div>
+
+              <!-- Question 3 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>
+                    Does my child need previous flag football experience?
+                  </span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Not at all. Complete beginners are welcome. Coaches will
+                  introduce the fundamentals and help children develop their
+                  skills throughout camp. Children who already have experience
+                  will also have opportunities to build on what they know.
+                </div>
+              </div>
+
+              <!-- Question 4 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>Is flag football a contact sport?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Flag football is a non-contact version of American football.
+                  Tackling is not part of the game. Instead, a defender stops
+                  the ball carrier by removing a flag from the belt worn around
+                  their waist.
+                </div>
+              </div>
+
+              <!-- Question 5 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>How are children grouped during camp?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Groupings may vary depending on the children attending and the
+                  activity being delivered. We aim to group players
+                  appropriately by factors such as age, experience and ability
+                  while also giving children opportunities to play and work
+                  together.
+                </div>
+              </div>
+            </div>
+
+            <!-- PREPARING FOR CAMP -->
+            <div class="faq-group">
+              <div class="faq-group-heading">
+                <p
+                  class="text-xs font-extrabold tracking-wider uppercase"
+                  style="color: var(--camp-green)"
+                >
+                  Preparing for Camp
+                </p>
+
+                <h2
+                  class="mt-1 text-xl font-bold"
+                  style="color: var(--camp-ink)"
+                >
+                  What to Bring
+                </h2>
+              </div>
+
+              <!-- Question 6 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>What should my child wear?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Children should wear comfortable sports clothing suitable for
+                  being active and for the weather conditions on the day.
+                  Suitable sports trainers should also be worn. Any
+                  camp-specific clothing guidance will be provided before
+                  attendance.
+                </div>
+              </div>
+
+              <!-- Question 7 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>What should my child bring?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Children should bring plenty of water, any food or snacks
+                  required for the day, suitable clothing for the weather and
+                  any necessary personal medical items, such as an inhaler. Flag
+                  football equipment required for the sessions will be provided.
+                </div>
+              </div>
+
+              <!-- Question 8 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>Does my child need to bring food and drinks?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Yes. Children should arrive with enough water and food for the
+                  time they will be at camp. Specific information about breaks,
+                  lunch and what to bring will be included in the information
+                  sent to parents before camp.
+                </div>
+              </div>
+
+              <!-- Question 9 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>
+                    What if my child has a medical condition, allergy or
+                    additional need?
+                  </span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Please provide all relevant medical, allergy and
+                  additional-needs information during registration. If you would
+                  like to discuss your child's individual needs before booking,
+                  please contact us so we can talk through the support they may
+                  require and whether appropriate arrangements can be made.
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div>
-            <h2 class="faq-question">❓ What should my child bring?</h2>
-            <p class="faq-answer">
-              Please bring water, comfortable sports clothing, trainers, and any
-              necessary medical items (e.g. inhalers). We’ll provide the flag
-              belts and equipment.
-            </p>
-          </div>
+          <!-- =====================
+               RIGHT COLUMN
+          ====================== -->
+          <div class="space-y-8">
+            <!-- CAMP INFORMATION -->
+            <div class="faq-group">
+              <div class="faq-group-heading">
+                <p
+                  class="text-xs font-extrabold tracking-wider uppercase"
+                  style="color: var(--camp-green)"
+                >
+                  Camp Information
+                </p>
 
-          <div>
-            <h2 class="faq-question">❓ What if it rains?</h2>
-            <p class="faq-answer">
-              Sessions will go ahead in light rain. In severe weather, we’ll
-              pause for safety or move to an alternative activity plan, and
-              notify parents via the contact details provided at registration.
-            </p>
+                <h2
+                  class="mt-1 text-xl font-bold"
+                  style="color: var(--camp-ink)"
+                >
+                  During Camp
+                </h2>
+              </div>
+
+              <!-- Question 10 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>Where are Flag Frenzy Football Camps held?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Camp locations may vary. The confirmed venue and full location
+                  details for each camp will be provided as part of the relevant
+                  camp and booking information.
+                </div>
+              </div>
+
+              <!-- Question 11 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>What are the camp times?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Camp times will be confirmed for each individual camp. Parents
+                  will be given the relevant start, finish, drop-off and
+                  collection information before their child attends.
+                </div>
+              </div>
+
+              <!-- Question 12 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>
+                    Can I book individual days or does my child have to attend
+                    the full week?
+                  </span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Booking options may vary between camps. Where both
+                  individual-day and full-week places are available, the options
+                  and prices will be clearly shown when bookings open.
+                </div>
+              </div>
+
+              <!-- Question 13 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>Can siblings attend together?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Yes, siblings who fall within the camp's eligible age range
+                  can attend the same camp. Depending on their ages and the
+                  activities taking place, they may sometimes be placed in
+                  different groups during sessions.
+                </div>
+              </div>
+
+              <!-- Question 14 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>
+                    What happens if it rains or there is severe weather?
+                  </span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Sessions can continue in suitable weather conditions,
+                  including light rain. If weather conditions become unsafe,
+                  activities may be paused, changed or cancelled as necessary.
+                  Parents will be contacted using the details provided during
+                  registration if changes affect the camp day.
+                </div>
+              </div>
+            </div>
+
+            <!-- BOOKINGS & SUPPORT -->
+            <div class="faq-group">
+              <div class="faq-group-heading">
+                <p
+                  class="text-xs font-extrabold tracking-wider uppercase"
+                  style="color: var(--camp-red)"
+                >
+                  Bookings &amp; Support
+                </p>
+
+                <h2
+                  class="mt-1 text-xl font-bold"
+                  style="color: var(--camp-ink)"
+                >
+                  Before You Book
+                </h2>
+              </div>
+
+              <!-- Question 15 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>
+                    What happens if I need to cancel my child's place?
+                  </span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Cancellation and refund arrangements are explained in our
+                  policies. Please review the relevant policy before completing
+                  a booking so you understand the terms that apply to your
+                  child's place.
+
+                  <div class="mt-3">
+                    <a
+                      href="/camp/policies.html"
+                      class="font-semibold text-[var(--camp-red)] hover:underline"
+                    >
+                      View our policies
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 16 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>How do I book a place?</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  When bookings are open, booking information will be made
+                  available through the Flag Frenzy Football Camp website.
+                  Parents or guardians will need to complete the required
+                  registration information and follow the booking instructions
+                  provided.
+                </div>
+              </div>
+
+              <!-- Question 17 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>
+                    Can I register my interest if bookings aren't open?
+                  </span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Yes. If you're interested in Flag Frenzy Football Camp, you
+                  can leave your details through our Register Your Interest
+                  form.
+
+                  <div class="mt-3">
+                    <a
+                      href="/camp/register-interest.html"
+                      class="font-semibold text-[var(--camp-red)] hover:underline"
+                    >
+                      Register your interest
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 18 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span>
+                    How will I receive information about my child's camp?
+                  </span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  Important camp information will be sent using the contact
+                  details supplied during registration. Please make sure the
+                  email address and telephone number you provide are accurate
+                  and kept up to date.
+                </div>
+              </div>
+
+              <!-- Question 19 -->
+              <div class="faq-item">
+                <button class="faq-button" type="button" aria-expanded="false">
+                  <span> How can I contact Flag Frenzy Football Camp? </span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="faq-answer-panel">
+                  If you have a question that isn't answered here, please use
+                  our Contact page or email us at info@flagfrenzyfootball.co.uk.
+
+                  <div class="mt-3">
+                    <a
+                      href="/camp/contact.html"
+                      class="font-semibold text-[var(--camp-red)] hover:underline"
+                    >
+                      Contact us
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- =========================
-     COMPACT FOOTER
-========================== -->
+         CONTACT CTA
+    ========================== -->
+    <section class="py-14 border-t border-[var(--camp-border)]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p
+          class="text-sm font-extrabold tracking-wide uppercase"
+          style="color: var(--camp-green)"
+        >
+          Need More Help?
+        </p>
+
+        <h2
+          class="mt-2 text-2xl md:text-3xl font-extrabold"
+          style="color: var(--camp-ink)"
+        >
+          Still have a question?
+        </h2>
+
+        <p class="mt-3 text-gray-700 max-w-2xl mx-auto">
+          If you can't find the answer you're looking for, get in touch with the
+          Flag Frenzy Football Camp team and we'll be happy to help.
+        </p>
+
+        <div class="mt-7">
+          <a href="/camp/contact.html" class="btn btn-primary"> Contact Us </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         COMPACT FOOTER
+    ========================== -->
     <footer class="footer bg-[var(--camp-red)] text-white">
       <!-- Main Footer -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7">
@@ -311,11 +869,20 @@
       </div>
     </footer>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-
     <!-- Shared Camp JS -->
     <script src="/camp/js/main.js"></script>
+
+    <!-- FAQ Accordion -->
+    <script>
+      document.querySelectorAll(".faq-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = button.closest(".faq-item");
+          const isOpen = item.classList.contains("is-open");
+
+          item.classList.toggle("is-open");
+          button.setAttribute("aria-expanded", String(!isOpen));
+        });
+      });
+    </script>
   </body>
 </html>
