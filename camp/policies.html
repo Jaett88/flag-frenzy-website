@@ -3,174 +3,619 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Camp Policies — Flag Frenzy Football Camp</title>
+
     <meta
       name="description"
-      content="Flag Frenzy Football Camp policies for parents and guardians."
+      content="View Flag Frenzy Football Camp policies, including safeguarding, medical and inclusion, refunds, behaviour, privacy, terms and health and safety."
     />
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Use camp site CSS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CAMP THEME -->
     <link rel="stylesheet" href="/camp/css/style.css" />
+
+    <!-- POLICIES PAGE STYLES -->
+    <style>
+      .policy-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 1.5rem;
+        background: #ffffff;
+        border: 1px solid var(--camp-border);
+        border-radius: 1rem;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .policy-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
+        border-color: rgba(167, 57, 38, 0.3);
+      }
+
+      .policy-card-link {
+        margin-top: auto;
+        padding-top: 1rem;
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--camp-red);
+      }
+
+      /* Desktop Policies dropdown */
+      .policies-dropdown {
+        position: relative;
+      }
+
+      .policies-dropdown-menu {
+        position: absolute;
+        top: calc(100% + 0.75rem);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 18rem;
+        padding: 0.5rem;
+        background: #ffffff;
+        border: 1px solid var(--camp-border);
+        border-radius: 0.85rem;
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.18s ease,
+          visibility 0.18s ease;
+        z-index: 50;
+      }
+
+      .policies-dropdown:hover .policies-dropdown-menu,
+      .policies-dropdown:focus-within .policies-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .policies-dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -0.75rem;
+        left: 0;
+        right: 0;
+        height: 0.75rem;
+      }
+
+      .policy-menu-link {
+        display: block;
+        padding: 0.65rem 0.8rem;
+        border-radius: 0.55rem;
+        font-size: 0.82rem;
+        color: var(--camp-ink);
+        transition:
+          background-color 0.15s ease,
+          color 0.15s ease;
+      }
+
+      .policy-menu-link:hover {
+        background: rgba(167, 57, 38, 0.06);
+        color: var(--camp-red);
+      }
+
+      /* Mobile policy submenu */
+      #mobilePoliciesMenu {
+        display: none;
+      }
+
+      #mobilePoliciesMenu.is-open {
+        display: block;
+      }
+
+      .mobile-policy-link {
+        display: block;
+        padding: 0.45rem 0;
+        font-size: 0.875rem;
+        color: #4b5563;
+      }
+
+      .mobile-policy-link:hover {
+        color: var(--camp-red);
+      }
+    </style>
   </head>
+
   <body>
-    <!-- Camp Header -->
-    <!-- Header -->
+    <!-- =========================
+         HEADER
+    ========================== -->
     <header class="bg-white shadow-md">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="h-16 flex items-center justify-between">
+          <!-- Logo / Brand -->
           <a href="/camp/index.html" class="flex items-center gap-3">
             <img
               src="/camp/src/logo.png"
               alt="Flag Frenzy Football Camp logo"
               class="h-10 w-10"
             />
-            <span class="text-xl font-extrabold" style="color: var(--camp-red)"
-              >Flag Frenzy Football Camp</span
-            >
+
+            <span class="text-xl font-extrabold" style="color: var(--camp-red)">
+              Flag Frenzy Football Camp
+            </span>
           </a>
 
+          <!-- Mobile Menu Button -->
           <button
             id="menuBtn"
+            type="button"
             class="md:hidden p-2 rounded-lg border border-gray-200"
             aria-label="Toggle menu"
+            aria-controls="mobileNav"
+            aria-expanded="false"
           >
             ☰
           </button>
 
+          <!-- Desktop Navigation -->
           <nav
             id="nav"
             class="hidden md:flex items-center gap-6 text-sm font-medium"
           >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
-              >Home</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
-              >About</a
-            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
             <a
               class="hover:text-[var(--camp-red)]"
               href="/camp/register-interest.html"
             >
               Register Interest
             </a>
-            <a
-              class="font-semibold text-[var(--camp-red)]"
-              href="/camp/policies.html"
-              aria-current="page"
-            >
-              Policies
+
+            <!-- Desktop Policies Dropdown -->
+            <div class="policies-dropdown">
+              <a
+                class="font-semibold text-[var(--camp-red)] inline-flex items-center gap-1"
+                href="/camp/policies.html"
+                aria-current="page"
+              >
+                Policies
+                <span class="text-[10px]" aria-hidden="true"> ▼ </span>
+              </a>
+
+              <div class="policies-dropdown-menu">
+                <a
+                  class="policy-menu-link font-semibold"
+                  href="/camp/policies.html"
+                >
+                  All Camp Policies
+                </a>
+
+                <div class="my-1 border-t border-[var(--camp-border)]"></div>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/parent-handbook.html"
+                >
+                  Parent Handbook
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/safeguarding.html"
+                >
+                  Camp Safeguarding
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/medical-consent.html"
+                >
+                  Medical &amp; Inclusion
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/refund-cancellations.html"
+                >
+                  Refunds &amp; Cancellations
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/conduct.html">
+                  Code of Conduct / Behaviour
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/privacy.html">
+                  Privacy
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/terms.html">
+                  Terms &amp; Conditions
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/health-and-safety.html"
+                >
+                  Health &amp; Safety
+                </a>
+              </div>
+            </div>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
-              >FAQs</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
-              >Contact</a
-            >
-            <a class="btn btn-outline" href="/index.html">Main Site</a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline" href="/index.html"> Main Site </a>
           </nav>
         </div>
 
-        <!-- Mobile Nav (note: no 'hidden' class; CSS collapses it safely) -->
+        <!-- =========================
+             MOBILE NAVIGATION
+        ========================== -->
         <nav id="mobileNav" class="md:hidden overflow-hidden">
           <div class="flex flex-col gap-3 font-medium">
-            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
-              >Home</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
-              >About</a
-            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
             <a
-              class="text-white hover:underline hover:text-yellow-400"
+              class="hover:text-[var(--camp-red)]"
               href="/camp/register-interest.html"
             >
               Register Interest
             </a>
-            <a
-              class="font-semibold text-[var(--camp-red)]"
-              href="/camp/policies.html"
-              aria-current="page"
-            >
-              Policies
+
+            <!-- Mobile Policies -->
+            <div>
+              <div class="flex items-center justify-between">
+                <a
+                  class="font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies.html"
+                  aria-current="page"
+                >
+                  Policies
+                </a>
+
+                <button
+                  id="mobilePoliciesBtn"
+                  type="button"
+                  class="px-3 py-1 text-[var(--camp-red)]"
+                  aria-label="Show policy links"
+                  aria-controls="mobilePoliciesMenu"
+                  aria-expanded="false"
+                >
+                  +
+                </button>
+              </div>
+
+              <div
+                id="mobilePoliciesMenu"
+                class="pl-4 mt-2 border-l-2 border-[var(--camp-border)]"
+              >
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/parent-handbook.html"
+                >
+                  Parent Handbook
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/safeguarding.html"
+                >
+                  Camp Safeguarding
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/medical-consent.html"
+                >
+                  Medical &amp; Inclusion
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/refund-cancellations.html"
+                >
+                  Refunds &amp; Cancellations
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/conduct.html"
+                >
+                  Code of Conduct / Behaviour
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/privacy.html"
+                >
+                  Privacy
+                </a>
+
+                <a class="mobile-policy-link" href="/camp/policies/terms.html">
+                  Terms &amp; Conditions
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/health-and-safety.html"
+                >
+                  Health &amp; Safety
+                </a>
+              </div>
+            </div>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
-              >FAQs</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
-              >Contact</a
-            >
-            <a class="btn btn-outline w-max" href="/index.html">Main Site</a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline w-max" href="/index.html"> Main Site </a>
           </div>
         </nav>
       </div>
     </header>
 
-    <!-- Policies Hub Content -->
-    <section class="py-14">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl font-extrabold">Camp Policies</h1>
-        <p class="mt-3 text-lg text-gray-700">
-          Below are the policies specific to our half-term and holiday camps.
-          These are in addition to our company-wide policies, which can be found
-          on the <a href="/policies.html" class="underline">main site</a>.
+    <!-- =========================
+         POLICIES INTRO
+    ========================== -->
+    <section class="hero-bg">
+      <div
+        class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-14 text-center"
+      >
+        <p
+          class="text-sm font-extrabold tracking-wide uppercase"
+          style="color: var(--camp-red)"
+        >
+          Information for Parents &amp; Guardians
         </p>
 
-        <div class="grid md:grid-cols-2 gap-4 mt-8">
-          <a class="card" href="/camp/policies/parent-handbook.html">
-            <strong>Parent Handbook</strong>
-            <p class="text-sm text-gray-600 mt-1">
-              Daily info, what to bring, drop-off/pick-up procedures.
-            </p>
+        <h1
+          class="mt-2 text-4xl md:text-5xl font-extrabold"
+          style="color: var(--camp-primary-900)"
+        >
+          Camp Policies
+        </h1>
+
+        <p class="mt-4 text-lg text-gray-700 max-w-2xl mx-auto">
+          Clear information to help families understand how Flag Frenzy Football
+          Camp operates and what to expect before, during and after camp.
+        </p>
+
+        <p class="mt-3 text-sm text-gray-600">
+          These policies apply specifically to our camps. Company-wide policies
+          can also be found on the
+          <a
+            href="/policies.html"
+            class="font-semibold text-[var(--camp-red)] hover:underline"
+          >
+            main Flag Frenzy Football website </a
+          >.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================
+         POLICY CARDS
+    ========================== -->
+    <section class="py-14 bg-white/80 border-t border-[var(--camp-border)]">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p
+            class="text-xs font-extrabold tracking-wider uppercase"
+            style="color: var(--camp-green)"
+          >
+            Camp Information
+          </p>
+
+          <h2
+            class="mt-2 text-2xl md:text-3xl font-extrabold"
+            style="color: var(--camp-ink)"
+          >
+            Choose a policy
+          </h2>
+
+          <p class="mt-2 text-gray-600">
+            Select a section below to read the information relevant to you and
+            your child.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
+          <!-- Parent Handbook -->
+          <a class="policy-card" href="/camp/policies/parent-handbook.html">
+            <div>
+              <h3 class="text-lg font-bold" style="color: var(--camp-ink)">
+                Parent Handbook
+              </h3>
+
+              <p class="text-sm text-gray-600 mt-2 leading-relaxed">
+                Practical camp information including what to bring and drop-off
+                and collection procedures.
+              </p>
+            </div>
+
+            <span class="policy-card-link"> View handbook → </span>
           </a>
-          <a class="card" href="/camp/policies/safeguarding.html">
-            <strong>Camp Safeguarding</strong>
-            <p class="text-sm text-gray-600 mt-1">
-              Our safeguarding measures and child protection procedures during
-              camp.
-            </p>
+
+          <!-- Safeguarding -->
+          <a class="policy-card" href="/camp/policies/safeguarding.html">
+            <div>
+              <h3 class="text-lg font-bold" style="color: var(--camp-ink)">
+                Camp Safeguarding
+              </h3>
+
+              <p class="text-sm text-gray-600 mt-2 leading-relaxed">
+                Information about safeguarding, child protection and the
+                measures used to support children's welfare.
+              </p>
+            </div>
+
+            <span class="policy-card-link"> View policy → </span>
           </a>
-          <a class="card" href="/camp/policies/medical-consent.html">
-            <strong>Medical & Inclusion</strong>
-            <p class="text-sm text-gray-600 mt-1">
-              Health details, allergy management, and inclusion forms.
-            </p>
+
+          <!-- Medical & Inclusion -->
+          <a class="policy-card" href="/camp/policies/medical-consent.html">
+            <div>
+              <h3 class="text-lg font-bold" style="color: var(--camp-ink)">
+                Medical &amp; Inclusion
+              </h3>
+
+              <p class="text-sm text-gray-600 mt-2 leading-relaxed">
+                Information about medical needs, allergies, medication and
+                supporting individual needs at camp.
+              </p>
+            </div>
+
+            <span class="policy-card-link"> View policy → </span>
           </a>
-          <a class="card" href="/camp/policies/refund-cancellations.html">
-            <strong>Refunds & Cancellations</strong>
-            <p class="text-sm text-gray-600 mt-1">
-              Our refund and cancellation policy for camp bookings.
-            </p>
+
+          <!-- Refunds & Cancellations -->
+          <a
+            class="policy-card"
+            href="/camp/policies/refund-cancellations.html"
+          >
+            <div>
+              <h3 class="text-lg font-bold" style="color: var(--camp-ink)">
+                Refunds &amp; Cancellations
+              </h3>
+
+              <p class="text-sm text-gray-600 mt-2 leading-relaxed">
+                Information about cancellations, refunds and changes affecting
+                camp bookings.
+              </p>
+            </div>
+
+            <span class="policy-card-link"> View policy → </span>
           </a>
-          <a class="card" href="/camp/policies/conduct.html">
-            <strong>Code of Conduct/Behaviour</strong>
-            <p class="text-sm text-gray-600 mt-1">
-              Our behaviour and code of conduct policy during camp.
-            </p>
+
+          <!-- Conduct -->
+          <a class="policy-card" href="/camp/policies/conduct.html">
+            <div>
+              <h3 class="text-lg font-bold" style="color: var(--camp-ink)">
+                Code of Conduct / Behaviour
+              </h3>
+
+              <p class="text-sm text-gray-600 mt-2 leading-relaxed">
+                The standards of behaviour, respect and sportsmanship expected
+                throughout camp.
+              </p>
+            </div>
+
+            <span class="policy-card-link"> View policy → </span>
           </a>
-          <a class="card" href="/camp/policies/privacy.html">
-            <strong>Privacy</strong>
-            <p class="text-sm text-gray-600 mt-1">
-              Our privacy policy measures for camp bookings and during camp.
-            </p>
+
+          <!-- Privacy -->
+          <a class="policy-card" href="/camp/policies/privacy.html">
+            <div>
+              <h3 class="text-lg font-bold" style="color: var(--camp-ink)">
+                Privacy
+              </h3>
+
+              <p class="text-sm text-gray-600 mt-2 leading-relaxed">
+                How personal information provided in connection with camp is
+                collected, used and handled.
+              </p>
+            </div>
+
+            <span class="policy-card-link"> View policy → </span>
           </a>
-          <a class="card" href="/camp/policies/terms.html">
-            <strong>Terms & Conditions</strong>
-            <p class="text-sm text-gray-600 mt-1">
-              Our terms and conditions policy measures for our camp.
-            </p>
+
+          <!-- Terms -->
+          <a class="policy-card" href="/camp/policies/terms.html">
+            <div>
+              <h3 class="text-lg font-bold" style="color: var(--camp-ink)">
+                Terms &amp; Conditions
+              </h3>
+
+              <p class="text-sm text-gray-600 mt-2 leading-relaxed">
+                The terms that apply when registering and booking a place at
+                Flag Frenzy Football Camp.
+              </p>
+            </div>
+
+            <span class="policy-card-link"> View terms → </span>
           </a>
-          <a class="card" href="/camp/policies/health-and-safety.html">
-            <strong>Health & Safety</strong>
-            <p class="text-sm text-gray-600 mt-1">
-              Our health and safety policy measures for during camp.
-            </p>
+
+          <!-- Health & Safety -->
+          <a class="policy-card" href="/camp/policies/health-and-safety.html">
+            <div>
+              <h3 class="text-lg font-bold" style="color: var(--camp-ink)">
+                Health &amp; Safety
+              </h3>
+
+              <p class="text-sm text-gray-600 mt-2 leading-relaxed">
+                Our approach to maintaining a safe environment for children,
+                coaches and helpers during camp.
+              </p>
+            </div>
+
+            <span class="policy-card-link"> View policy → </span>
           </a>
         </div>
       </div>
     </section>
 
     <!-- =========================
-     COMPACT FOOTER
-========================== -->
+         SUPPORT CTA
+    ========================== -->
+    <section class="py-14 border-t border-[var(--camp-border)]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p
+          class="text-sm font-extrabold tracking-wide uppercase"
+          style="color: var(--camp-green)"
+        >
+          Need More Information?
+        </p>
+
+        <h2
+          class="mt-2 text-2xl md:text-3xl font-extrabold"
+          style="color: var(--camp-ink)"
+        >
+          Have a question about our policies?
+        </h2>
+
+        <p class="mt-3 text-gray-700 max-w-2xl mx-auto">
+          If you need clarification about any of our camp policies, please get
+          in touch with the Flag Frenzy Football Camp team.
+        </p>
+
+        <div class="mt-7">
+          <a href="/camp/contact.html" class="btn btn-primary"> Contact Us </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         COMPACT FOOTER
+    ========================== -->
     <footer class="footer bg-[var(--camp-red)] text-white">
       <!-- Main Footer -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7">
@@ -331,7 +776,24 @@
       </div>
     </footer>
 
-    <!-- Camp JS -->
+    <!-- Shared Camp JS -->
     <script src="/camp/js/main.js"></script>
+
+    <!-- Mobile Policies Dropdown -->
+    <script>
+      const mobilePoliciesBtn = document.getElementById("mobilePoliciesBtn");
+
+      const mobilePoliciesMenu = document.getElementById("mobilePoliciesMenu");
+
+      if (mobilePoliciesBtn && mobilePoliciesMenu) {
+        mobilePoliciesBtn.addEventListener("click", () => {
+          const isOpen = mobilePoliciesMenu.classList.toggle("is-open");
+
+          mobilePoliciesBtn.setAttribute("aria-expanded", String(isOpen));
+
+          mobilePoliciesBtn.textContent = isOpen ? "−" : "+";
+        });
+      }
+    </script>
   </body>
 </html>
