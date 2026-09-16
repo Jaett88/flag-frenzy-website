@@ -3,58 +3,197 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Parent Handbook | Flag Frenzy Football Camp</title>
 
-    <!-- Tailwind CSS (CDN) -->
+    <meta
+      name="description"
+      content="The Flag Frenzy Football Camp Parent Handbook, including what to bring, arrival and collection, behaviour, health and safety, communication and other useful information for families."
+    />
+
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="/camp/css/style.css" />
 
-    <!-- Meta -->
-    <meta
-      name="description"
-      content="Everything parents need to know about Flag Frenzy Football Camp: daily info, what to bring, drop-off and pick-up, safety and policies."
-    />
-
     <style>
       :root {
-        /* Fallback to a deep red if your --camp-red var isn't present */
-        --accent: var(--camp-red, #b91c1c);
+        --accent: var(--camp-red, #a73926);
       }
+
       html {
         scroll-behavior: smooth;
       }
-      /* Print-friendly */
+
+      .handbook-section {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 1rem;
+        padding: 1.5rem;
+      }
+
+      @media (min-width: 640px) {
+        .handbook-section {
+          padding: 2rem;
+        }
+      }
+
+      .toc-link {
+        display: block;
+        padding: 0.3rem 0;
+        transition: color 0.15s ease;
+      }
+
+      .toc-link:hover {
+        color: var(--accent);
+      }
+
+      details[open] summary svg {
+        transform: rotate(90deg);
+      }
+
+      /* Desktop Policies dropdown */
+      .policies-dropdown {
+        position: relative;
+      }
+
+      .policies-dropdown-menu {
+        position: absolute;
+        top: calc(100% + 0.75rem);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 18rem;
+        padding: 0.5rem;
+        background: #ffffff;
+        border: 1px solid var(--camp-border);
+        border-radius: 0.85rem;
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.18s ease,
+          visibility 0.18s ease;
+        z-index: 50;
+      }
+
+      .policies-dropdown:hover .policies-dropdown-menu,
+      .policies-dropdown:focus-within .policies-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .policies-dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -0.75rem;
+        left: 0;
+        right: 0;
+        height: 0.75rem;
+      }
+
+      .policy-menu-link {
+        display: block;
+        padding: 0.65rem 0.8rem;
+        border-radius: 0.55rem;
+        font-size: 0.82rem;
+        color: var(--camp-ink);
+        transition:
+          background-color 0.15s ease,
+          color 0.15s ease;
+      }
+
+      .policy-menu-link:hover {
+        background: rgba(167, 57, 38, 0.06);
+        color: var(--camp-red);
+      }
+
+      /* Mobile policy submenu */
+      #mobilePoliciesMenu {
+        display: none;
+      }
+
+      #mobilePoliciesMenu.is-open {
+        display: block;
+      }
+
+      .mobile-policy-link {
+        display: block;
+        padding: 0.45rem 0;
+        font-size: 0.875rem;
+        color: #4b5563;
+      }
+
+      .mobile-policy-link:hover {
+        color: var(--camp-red);
+      }
+
+      /* Floating controls */
+      .floating-controls {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 40;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .floating-control {
+        width: 2.75rem;
+        height: 2.75rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .floating-control:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+      }
+
       @media print {
         .no-print {
           display: none !important;
         }
+
         body {
-          background: #fff !important;
+          background: #ffffff !important;
         }
+
+        .handbook-section {
+          box-shadow: none !important;
+          break-inside: avoid;
+        }
+
         a[href^="http"]::after {
           content: " (" attr(href) ")";
           font-size: 0.85em;
         }
-        .shadow,
-        .shadow-lg {
-          box-shadow: none !important;
-        }
-        .ring-1,
-        .ring {
-          box-shadow: none !important;
-        }
-      }
-      /* Simple details/summary styling */
-      details[open] summary svg {
-        transform: rotate(90deg);
       }
     </style>
   </head>
-  <body class="bg-slate-50 text-slate-900 antialiased">
-    <!-- Top bar / breadcrumb -->
-    <!-- Header -->
-    <header class="bg-white shadow-md">
+
+  <body class="bg-slate-50 text-slate-900 antialiased" id="top">
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="bg-white shadow-md no-print">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="h-16 flex items-center justify-between">
           <a href="/camp/index.html" class="flex items-center gap-3">
@@ -63,12 +202,15 @@
               alt="Flag Frenzy Football Camp logo"
               class="h-10 w-10"
             />
-            <span class="text-xl font-extrabold" style="color: var(--camp-red)"
-              >Flag Frenzy Football Camp</span
-            >
+
+            <span class="text-xl font-extrabold" style="color: var(--camp-red)">
+              Flag Frenzy Football Camp
+            </span>
           </a>
+
           <button
             id="menuBtn"
+            type="button"
             class="md:hidden p-2 rounded-lg border border-gray-200"
             aria-label="Toggle menu"
             aria-controls="mobileNav"
@@ -76,166 +218,328 @@
           >
             ☰
           </button>
+
+          <!-- Desktop Navigation -->
           <nav
             id="nav"
             class="hidden md:flex items-center gap-6 text-sm font-medium"
           >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
-              >Home</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
-              >About</a
-            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
             <a
               class="hover:text-[var(--camp-red)]"
               href="/camp/register-interest.html"
             >
               Register Interest
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
-              >Policies</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
-              >FAQs</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
-              >Contact</a
-            >
-            <a
-              class="inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
-              href="/index.html"
-              >Main Site</a
-            >
+
+            <!-- Policies Dropdown -->
+            <div class="policies-dropdown">
+              <a
+                class="font-semibold text-[var(--camp-red)] inline-flex items-center gap-1"
+                href="/camp/policies.html"
+                aria-current="page"
+              >
+                Policies
+                <span class="text-[10px]" aria-hidden="true"> ▼ </span>
+              </a>
+
+              <div class="policies-dropdown-menu">
+                <a
+                  class="policy-menu-link font-semibold"
+                  href="/camp/policies.html"
+                >
+                  All Camp Policies
+                </a>
+
+                <div class="my-1 border-t border-[var(--camp-border)]"></div>
+
+                <a
+                  class="policy-menu-link font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies/parent-handbook.html"
+                >
+                  Parent Handbook
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/safeguarding.html"
+                >
+                  Camp Safeguarding
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/medical-consent.html"
+                >
+                  Medical &amp; Inclusion
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/refund-cancellations.html"
+                >
+                  Refunds &amp; Cancellations
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/conduct.html">
+                  Code of Conduct / Behaviour
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/privacy.html">
+                  Privacy
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/terms.html">
+                  Terms &amp; Conditions
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/health-and-safety.html"
+                >
+                  Health &amp; Safety
+                </a>
+              </div>
+            </div>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline" href="/index.html"> Main Site </a>
           </nav>
         </div>
-        <!-- Mobile Nav -->
+
+        <!-- Mobile Navigation -->
         <nav id="mobileNav" class="md:hidden overflow-hidden">
           <div class="flex flex-col gap-3 font-medium">
-            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
-              >Home</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
-              >About</a
-            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
             <a
               class="hover:text-[var(--camp-red)]"
               href="/camp/register-interest.html"
             >
               Register Interest
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
-              >Policies</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
-              >FAQs</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
-              >Contact</a
-            >
-            <a
-              class="w-max inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
-              href="/index.html"
-              >Main Site</a
-            >
+
+            <div>
+              <div class="flex items-center justify-between">
+                <a
+                  class="font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies.html"
+                  aria-current="page"
+                >
+                  Policies
+                </a>
+
+                <button
+                  id="mobilePoliciesBtn"
+                  type="button"
+                  class="px-3 py-1 text-[var(--camp-red)]"
+                  aria-label="Show policy links"
+                  aria-controls="mobilePoliciesMenu"
+                  aria-expanded="false"
+                >
+                  +
+                </button>
+              </div>
+
+              <div
+                id="mobilePoliciesMenu"
+                class="pl-4 mt-2 border-l-2 border-[var(--camp-border)]"
+              >
+                <a
+                  class="mobile-policy-link font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies/parent-handbook.html"
+                >
+                  Parent Handbook
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/safeguarding.html"
+                >
+                  Camp Safeguarding
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/medical-consent.html"
+                >
+                  Medical &amp; Inclusion
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/refund-cancellations.html"
+                >
+                  Refunds &amp; Cancellations
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/conduct.html"
+                >
+                  Code of Conduct / Behaviour
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/privacy.html"
+                >
+                  Privacy
+                </a>
+
+                <a class="mobile-policy-link" href="/camp/policies/terms.html">
+                  Terms &amp; Conditions
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/health-and-safety.html"
+                >
+                  Health &amp; Safety
+                </a>
+              </div>
+            </div>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline w-max" href="/index.html"> Main Site </a>
           </div>
         </nav>
       </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 py-8">
-      <div class="no-print flex items-center justify-between mb-6">
-        <h1 class="text-2xl sm:text-3xl font-extrabold">
-          Parent Handbook
-          <span class="text-gray-600 text-base font-semibold"
-            >(For Parents/Guardians)</span
-          >
-        </h1>
-      </div>
-    </main>
+    <!-- =========================
+         HANDBOOK INTRO
+    ========================== -->
+    <section class="hero-bg no-print">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12">
+        <a
+          href="/camp/policies.html"
+          class="inline-flex items-center text-sm font-semibold text-[var(--camp-red)] hover:underline"
+        >
+          ← All Camp Policies
+        </a>
 
-    <section class="card bg-white rounded-2xl shadow p-6 sm:p-8">
-      <div class="mb-6">
-        <p class="text-sm text-gray-600">Flag Frenzy Football Camp</p>
-        <p class="text-sm text-gray-600">
-          Effective date: <span id="effective-date">31 August 2025</span>
-        </p>
-        <p class="text-sm text-gray-600">Location: United Kingdom</p>
+        <div class="mt-7">
+          <p
+            class="text-sm font-extrabold tracking-wide uppercase"
+            style="color: var(--camp-red)"
+          >
+            Information for Parents &amp; Guardians
+          </p>
+
+          <h1
+            class="mt-2 text-4xl md:text-5xl font-extrabold"
+            style="color: var(--camp-primary-900)"
+          >
+            Parent Handbook
+          </h1>
+
+          <p class="mt-4 text-lg text-gray-700 max-w-3xl">
+            Everything you need to know about preparing for and attending Flag
+            Frenzy Football Camp.
+          </p>
+
+          <p class="mt-4 text-gray-600 max-w-3xl leading-relaxed">
+            This handbook contains general information for families attending
+            Flag Frenzy Football Camp. Details specific to your camp — including
+            confirmed dates, venue, times, meeting point and arrival
+            instructions — will be provided separately with your booking
+            information.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Page content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <!-- Print Heading -->
+    <div class="hidden print:block max-w-4xl mx-auto px-4 pt-8">
+      <h1 class="text-3xl font-bold">
+        Flag Frenzy Football Camp — Parent Handbook
+      </h1>
+
+      <p class="mt-2">Information for Parents &amp; Guardians</p>
+    </div>
+
+    <!-- =========================
+         PAGE CONTENT
+    ========================== -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
       <div class="grid lg:grid-cols-12 gap-8">
-        <!-- Sticky table of contents -->
+        <!-- TABLE OF CONTENTS -->
         <aside class="lg:col-span-3 no-print">
           <div class="lg:sticky lg:top-6">
-            <div class="bg-white rounded-2xl shadow ring-1 ring-slate-200 p-4">
-              <h2 class="text-sm font-semibold text-slate-700 mb-3">
+            <div
+              class="bg-white rounded-2xl shadow-sm ring-1 ring-slate-200 p-5"
+            >
+              <h2 class="text-sm font-bold text-slate-700 mb-3">
                 On this page
               </h2>
-              <nav class="text-sm space-y-2" aria-label="Table of contents">
-                <a
-                  class="block hover:text-[color:var(--accent)]"
-                  href="#welcome"
-                  >Welcome</a
-                >
-                <a
-                  class="block hover:text-[color:var(--accent)]"
-                  href="#key-info"
-                  >Key Info</a
-                >
-                <a
-                  class="block hover:text-[color:var(--accent)]"
-                  href="#schedule"
-                  >Daily Schedule</a
-                >
-                <a
-                  class="block hover:text-[color:var(--accent)]"
-                  href="#what-to-bring"
-                  >What to Bring</a
-                >
-                <a
-                  class="block hover:text-[color:var(--accent)]"
-                  href="#drop-pick"
-                  >Drop-off & Pick-up</a
-                >
-                <a
-                  class="block hover:text-[color:var(--accent)]"
-                  href="#behaviour"
-                  >Behaviour</a
-                >
-                <a
-                  class="block hover:text-[color:var(--accent)]"
-                  href="#health-safety"
-                  >Health & Safety</a
-                >
-                <a
-                  class="block hover:text-[color:var(--accent)]"
-                  href="#policies"
-                  >Policies</a
-                >
-                <a
-                  class="block hover:text-[color:var(--accent)]"
-                  href="#communication"
-                  >Communication</a
-                >
-                <a class="block hover:text-[color:var(--accent)]" href="#extras"
-                  >Extras & FAQs</a
-                >
-                <a
-                  class="block hover:text-[color:var(--accent)]"
-                  href="#contact"
-                  >Contact</a
-                >
+
+              <nav class="text-sm space-y-1" aria-label="Table of contents">
+                <a class="toc-link" href="#welcome"> Welcome </a>
+
+                <a class="toc-link" href="#key-info"> Before Camp </a>
+
+                <a class="toc-link" href="#schedule"> Example Camp Day </a>
+
+                <a class="toc-link" href="#what-to-bring"> What to Bring </a>
+
+                <a class="toc-link" href="#drop-pick">
+                  Arrival &amp; Collection
+                </a>
+
+                <a class="toc-link" href="#behaviour"> Behaviour </a>
+
+                <a class="toc-link" href="#health-safety">
+                  Health, Safety &amp; Welfare
+                </a>
+
+                <a class="toc-link" href="#communication"> Communication </a>
+
+                <a class="toc-link" href="#extras"> Useful Information </a>
+
+                <a class="toc-link" href="#policies"> Related Policies </a>
+
+                <a class="toc-link" href="#contact"> Contact </a>
               </nav>
-              <div class="mt-4 flex gap-2">
+
+              <div class="mt-5 flex flex-wrap gap-2">
                 <a
                   href="#contact"
                   class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-semibold text-white"
                   style="background: var(--accent)"
-                  >Ask a question</a
                 >
+                  Ask a question
+                </a>
+
                 <button
+                  type="button"
                   onclick="window.print()"
                   class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-semibold border border-slate-300 hover:bg-slate-50"
                 >
@@ -246,156 +550,222 @@
           </div>
         </aside>
 
-        <!-- Main article -->
-        <article class="lg:col-span-9 space-y-10">
+        <!-- MAIN HANDBOOK -->
+        <article class="lg:col-span-9 space-y-8">
           <!-- Welcome -->
-          <section
-            id="welcome"
-            class="bg-white rounded-2xl shadow ring-1 ring-slate-200 p-6 sm:p-8"
-          >
-            <h2 class="text-2xl font-bold tracking-tight">Welcome</h2>
-            <p class="mt-3 leading-relaxed">
-              Thank you for choosing <strong>Flag Frenzy Football Camp</strong>!
-              We’re excited to welcome your child for a week of fun, learning
-              and teamwork. This handbook covers daily routines, what to bring,
-              key policies, and how to contact us.
-            </p>
-            <p class="mt-3">
-              Our mission is simple: create a safe, inclusive and enjoyable
-              environment where children learn flag football, build friendships
-              and grow in confidence — on and off the field.
-            </p>
-            <div
-              class="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-4"
+          <section id="welcome" class="handbook-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
             >
-              <p class="text-sm text-emerald-900">
-                <strong>Heads up:</strong> Sections with rules (refunds,
-                safeguarding, late pick-up) read a little more formal so
-                expectations are crystal clear.
+              Welcome to Flag Frenzy
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold tracking-tight">Welcome</h2>
+
+            <p class="mt-3 leading-relaxed">
+              Thank you for choosing
+              <strong>Flag Frenzy Football Camp</strong>. We want every child
+              who attends to enjoy an active, positive and supportive camp
+              experience.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Our camps introduce and develop flag football skills through
+              drills, games, teamwork and age-appropriate activities. We aim to
+              create an environment where children can build confidence, develop
+              new skills, make friends and enjoy being active.
+            </p>
+
+            <div
+              class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4"
+            >
+              <p class="text-sm text-slate-700">
+                Please read this handbook before your child's first camp day and
+                contact us if there is anything you think we should know before
+                they attend.
               </p>
             </div>
           </section>
 
-          <!-- Key Info -->
-          <section
-            id="key-info"
-            class="bg-white rounded-2xl shadow ring-1 ring-slate-200 p-6 sm:p-8"
-          >
-            <h2 class="text-2xl font-bold tracking-tight">Key Information</h2>
-            <div class="mt-4 grid sm:grid-cols-2 gap-4">
+          <!-- Before Camp -->
+          <section id="key-info" class="handbook-section">
+            <h2 class="text-2xl font-bold tracking-tight">Before Camp</h2>
+
+            <p class="mt-3 leading-relaxed">
+              Information specific to each camp will be provided separately when
+              bookings are open and/or before attendance.
+            </p>
+
+            <div class="mt-5 grid sm:grid-cols-2 gap-4">
               <div class="rounded-xl border border-slate-200 p-4">
-                <p class="text-sm text-slate-500">Camp Venue</p>
-                <p class="font-semibold">Forster Memorial Park, London</p>
+                <p class="text-sm text-slate-500">Dates &amp; Times</p>
+
+                <p class="font-semibold mt-1">Confirmed for each camp</p>
+
                 <p class="text-sm mt-1 text-slate-600">
-                  Meeting point: By the cafe
+                  Camp dates, start and finish times and arrival information
+                  will be provided before attendance.
                 </p>
               </div>
+
               <div class="rounded-xl border border-slate-200 p-4">
-                <p class="text-sm text-slate-500">Camp Dates</p>
-                <p class="font-semibold">Mon 30 – Thur 2 April</p>
-                <p class="text-sm mt-1 text-slate-600">Ages: 7–15</p>
-              </div>
-              <div class="rounded-xl border border-slate-200 p-4">
-                <p class="text-sm text-slate-500">Times</p>
-                <p class="font-semibold">9:30am – 2:30pm</p>
+                <p class="text-sm text-slate-500">Venue</p>
+
+                <p class="font-semibold mt-1">Confirmed for each camp</p>
+
                 <p class="text-sm mt-1 text-slate-600">
-                  Drop-off from 9:15am. Please be prompt for collection.
+                  The venue, meeting point and any relevant access information
+                  will be provided with camp details.
                 </p>
               </div>
+
               <div class="rounded-xl border border-slate-200 p-4">
-                <p class="text-sm text-slate-500">Contact</p>
-                <p class="font-semibold">
-                  <a
-                    href="mailto:info@flagfrenzyfootball.co.uk"
-                    class="underline"
-                    >info@flagfrenzyfootball.co.uk</a
-                  >
-                </p>
+                <p class="text-sm text-slate-500">Age Range</p>
+
+                <p class="font-semibold mt-1">Ages 7–15</p>
+
                 <p class="text-sm mt-1 text-slate-600">
-                  Main number: 07481 029204
+                  Children may be grouped according to factors such as age,
+                  experience, ability and the activity being delivered.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                <p class="text-sm text-slate-500">Questions Before Camp</p>
+
+                <p class="font-semibold mt-1">info@flagfrenzyfootball.co.uk</p>
+
+                <p class="text-sm mt-1 text-slate-600">
+                  Please contact us before attendance if you need to discuss
+                  your child's needs or arrangements.
                 </p>
               </div>
             </div>
           </section>
 
-          <!-- Daily Schedule -->
-          <section
-            id="schedule"
-            class="bg-white rounded-2xl shadow ring-1 ring-slate-200 p-6 sm:p-8"
-          >
-            <h2 class="text-2xl font-bold tracking-tight">
-              Example Daily Schedule
-            </h2>
-            <ul class="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
-              <li class="rounded-xl border border-slate-200 p-4">
-                <strong>9:15–9:30</strong> Drop-off & registration
-              </li>
-              <li class="rounded-xl border border-slate-200 p-4">
-                <strong>9:30–10:15</strong> Warm-up & skills
-              </li>
-              <li class="rounded-xl border border-slate-200 p-4">
-                <strong>10:15–10:30</strong> Break
-              </li>
-              <li class="rounded-xl border border-slate-200 p-4">
-                <strong>10:30–11:30</strong> Drills & small games
-              </li>
-              <li class="rounded-xl border border-slate-200 p-4">
-                <strong>11:30–12:15</strong> Lunch
-              </li>
-              <li class="rounded-xl border border-slate-200 p-4">
-                <strong>12:15–1:30</strong> Team play & tournaments
-              </li>
-              <li class="rounded-xl border border-slate-200 p-4">
-                <strong>1:30–1:45</strong> Break
-              </li>
-              <li class="rounded-xl border border-slate-200 p-4">
-                <strong>1:45–2:30</strong> Games & wrap-up
-              </li>
-            </ul>
-            <p class="mt-3 text-sm text-slate-600">
-              Timing/schedule may vary slightly based on group needs and
-              weather.
+          <!-- Example Camp Day -->
+          <section id="schedule" class="handbook-section">
+            <h2 class="text-2xl font-bold tracking-tight">Example Camp Day</h2>
+
+            <p class="mt-3 leading-relaxed">
+              Each camp day is planned around a mixture of skill development,
+              games, breaks and team activities. A typical day may include:
+            </p>
+
+            <div class="mt-5 grid sm:grid-cols-2 gap-3 text-sm">
+              <div class="rounded-xl border border-slate-200 p-4">
+                <strong>Arrival &amp; registration</strong>
+                <p class="mt-1 text-slate-600">
+                  Sign-in and settling into camp.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                <strong>Welcome &amp; warm-up</strong>
+                <p class="mt-1 text-slate-600">
+                  Introductions, movement and preparation for play.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                <strong>Skills &amp; drills</strong>
+                <p class="mt-1 text-slate-600">
+                  Passing, catching, routes, defending and movement.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                <strong>Break</strong>
+                <p class="mt-1 text-slate-600">
+                  Time to rest, hydrate and have a snack.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                <strong>Games &amp; challenges</strong>
+                <p class="mt-1 text-slate-600">
+                  Small-sided games, team challenges and activities.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                <strong>Lunch</strong>
+                <p class="mt-1 text-slate-600">
+                  A scheduled break for food and rest.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                <strong>Team play</strong>
+                <p class="mt-1 text-slate-600">
+                  Opportunities to put skills into practice.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                <strong>Games &amp; wrap-up</strong>
+                <p class="mt-1 text-slate-600">
+                  Final activities, review and preparation for collection.
+                </p>
+              </div>
+            </div>
+
+            <p class="mt-4 text-sm text-slate-600">
+              The order and length of activities may change depending on the
+              group, weather, venue and needs of the children attending.
             </p>
           </section>
 
           <!-- What to Bring -->
-          <section
-            id="what-to-bring"
-            class="bg-white rounded-2xl shadow ring-1 ring-slate-200 p-6 sm:p-8"
-          >
+          <section id="what-to-bring" class="handbook-section">
             <h2 class="text-2xl font-bold tracking-tight">What to Bring</h2>
-            <div class="mt-4 grid md:grid-cols-2 gap-6">
+
+            <div class="mt-5 grid md:grid-cols-2 gap-7">
               <div>
                 <h3 class="font-semibold">Daily essentials</h3>
-                <ul class="mt-2 space-y-2 list-disc list-inside">
+
+                <ul class="mt-3 space-y-2 list-disc list-outside pl-5">
+                  <li>Comfortable sportswear suitable for the weather.</li>
+
                   <li>
-                    Comfortable sportswear and trainers/football boots (no metal
-                    studs).
+                    Sports trainers or suitable football boots. No metal studs.
                   </li>
-                  <li>Packed lunch + healthy snacks.</li>
+
+                  <li>A packed lunch and suitable snacks.</li>
+
                   <li>
-                    <strong>Refillable water bottle</strong> (refill point
-                    available).
+                    <strong>A refillable water bottle.</strong>
                   </li>
+
                   <li>
-                    Weather-ready: sun hat & sunscreen <em>or</em> rain/light
-                    rain jacket.
+                    Weather-appropriate items such as a sun hat, sunscreen or
+                    light waterproof jacket.
                   </li>
+
                   <li>
-                    Any medication, clearly labelled (see
-                    <a href="#health-safety" class="underline"
-                      >Medical & Allergies</a
-                    >).
+                    Any medication or medical items your child requires, clearly
+                    labelled where appropriate.
                   </li>
                 </ul>
               </div>
+
               <div>
-                <h3 class="font-semibold">Please do not bring</h3>
-                <ul class="mt-2 space-y-2 list-disc list-inside">
-                  <li>Valuables (phones, money, jewellery).</li>
-                  <li>Fizzy drinks or sweets.</li>
+                <h3 class="font-semibold">Please avoid bringing</h3>
+
+                <ul class="mt-3 space-y-2 list-disc list-outside pl-5">
                   <li>
-                    Nut-based products (we may have children with allergies).
+                    Unnecessary valuables, jewellery or large amounts of money.
+                  </li>
+
+                  <li>
+                    Items that could interfere with activities or create a
+                    safety concern.
+                  </li>
+
+                  <li>
+                    Nut-based products, where families have been asked to avoid
+                    these because of allergy considerations.
                   </li>
                 </ul>
               </div>
@@ -409,122 +779,202 @@
                   class="h-4 w-4 transition-transform"
                   viewBox="0 0 20 20"
                   fill="currentColor"
+                  aria-hidden="true"
                 >
                   <path d="M6 4l8 6-8 6V4z" />
                 </svg>
-                <span class="font-medium">Optional extras & tips</span>
+
+                <span class="font-medium"> Optional extras &amp; tips </span>
               </summary>
+
               <div class="mt-3 text-sm text-slate-700 leading-relaxed">
-                Consider packing a spare t-shirt, a small towel, and a labelled
-                zip-lock bag for muddy items on wet days. Label everything!
+                Depending on the weather, a spare T-shirt, small towel or bag
+                for wet or muddy clothing can be useful. Please label your
+                child's belongings wherever possible.
               </div>
             </details>
           </section>
 
-          <!-- Drop-off & Pick-up -->
-          <section
-            id="drop-pick"
-            class="bg-white rounded-2xl shadow ring-1 ring-slate-200 p-6 sm:p-8"
-          >
+          <!-- Arrival & Collection -->
+          <section id="drop-pick" class="handbook-section">
             <h2 class="text-2xl font-bold tracking-tight">
-              Drop-off & Pick-up
+              Arrival &amp; Collection
             </h2>
-            <div class="mt-4 grid md:grid-cols-2 gap-6">
+
+            <p class="mt-3 leading-relaxed">
+              Exact arrival and collection times and the meeting point will be
+              confirmed for each camp.
+            </p>
+
+            <div class="mt-5 grid md:grid-cols-2 gap-7">
               <div>
-                <h3 class="font-semibold">Drop-off (9:15–9:30)</h3>
-                <ul class="mt-2 space-y-2 list-disc list-inside">
+                <h3 class="font-semibold">Arrival</h3>
+
+                <ul class="mt-3 space-y-2 list-disc list-outside pl-5">
                   <li>
-                    Sign in at the registration desk at the meeting point.
+                    Children should be signed in at the designated camp meeting
+                    point.
                   </li>
-                  <li>Parent/guardian must sign their child in on Day 1.</li>
+
                   <li>
-                    Please advise staff of any changes to medical info or
-                    pick-up arrangements.
+                    Please follow the arrival instructions provided for your
+                    camp.
+                  </li>
+
+                  <li>
+                    Tell the camp team about any relevant changes to medical
+                    information, emergency contacts or collection arrangements.
                   </li>
                 </ul>
               </div>
+
               <div>
-                <h3 class="font-semibold">Pick-up (2:30)</h3>
-                <ul class="mt-2 space-y-2 list-disc list-inside">
+                <h3 class="font-semibold">Collection</h3>
+
+                <ul class="mt-3 space-y-2 list-disc list-outside pl-5">
                   <li>
-                    Children are released only to authorised adults listed on
-                    the form.
+                    Children will only be released in accordance with the
+                    authorised collection information provided by their parent
+                    or guardian.
                   </li>
+
                   <li>
-                    We may request photo ID or a
-                    <strong>pick-up password</strong> for safeguarding.
+                    We may use identification or another agreed safeguarding
+                    check where necessary.
                   </li>
+
                   <li>
-                    If someone different is collecting, let us know by 2:00pm.
+                    If collection arrangements change, please contact us as soon
+                    as possible.
                   </li>
                 </ul>
               </div>
             </div>
+
             <div
-              class="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4"
+              class="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4"
             >
-              <p class="text-sm text-amber-900">
-                <strong>Late collection:</strong> Please call if delayed.
-                Repeated late pick-ups may incur a fee of [[£X per 10 minutes
-                after 2:40pm]].
+              <p class="text-sm text-amber-900 leading-relaxed">
+                <strong>Late collection:</strong>
+                Please collect your child promptly at the confirmed collection
+                time. If you are delayed, contact the camp team as soon as
+                possible so that we know you are on your way. Repeated or
+                significant late collection may result in additional charges
+                and/or affect future bookings.
               </p>
             </div>
           </section>
 
           <!-- Behaviour -->
-          <section
-            id="behaviour"
-            class="bg-white rounded-2xl shadow ring-1 ring-slate-200 p-6 sm:p-8"
-          >
+          <section id="behaviour" class="handbook-section">
             <h2 class="text-2xl font-bold tracking-tight">
-              Behaviour & Expectations
+              Behaviour &amp; Expectations
             </h2>
-            <p class="mt-3">
-              We want every child to feel safe and included. Campers are
-              expected to:
+
+            <p class="mt-3 leading-relaxed">
+              We want every child to feel safe, respected and included. Campers
+              are expected to:
             </p>
-            <ul class="mt-3 space-y-2 list-disc list-inside">
-              <li>Respect themselves, others and staff.</li>
-              <li>Listen to instructions and play safely.</li>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>
+                Treat other children, coaches, helpers and venue users with
+                respect.
+              </li>
+
+              <li>
+                Listen to safety instructions and follow reasonable directions
+                from the camp team.
+              </li>
+
+              <li>Play safely and fairly.</li>
+
               <li>Show good sportsmanship and teamwork.</li>
+
+              <li>
+                Respect equipment, facilities and other people's belongings.
+              </li>
             </ul>
-            <p class="mt-3">
-              We operate <strong>zero tolerance</strong> for bullying, swearing,
-              fighting, or deliberate rule-breaking. Parents will be contacted
-              if behaviour becomes a concern. See our
-              <a href="/camp/policies/conduct.html" class="underline"
-                >Behaviour Policy</a
+
+            <p class="mt-4 leading-relaxed">
+              Behaviour that puts another person at risk or seriously disrupts
+              the camp will be addressed by the camp team. Parents or guardians
+              may be contacted where behaviour becomes a concern.
+            </p>
+
+            <p class="mt-3 text-sm text-slate-600">
+              Please see our
+              <a
+                href="/camp/policies/conduct.html"
+                class="font-semibold text-[var(--camp-red)] hover:underline"
               >
-              for detail.
+                Code of Conduct / Behaviour Policy
+              </a>
+              for further information.
             </p>
           </section>
 
-          <!-- Health & Safety -->
-          <section
-            id="health-safety"
-            class="bg-white rounded-2xl shadow ring-1 ring-slate-200 p-6 sm:p-8"
-          >
+          <!-- Health, Safety & Welfare -->
+          <section id="health-safety" class="handbook-section">
             <h2 class="text-2xl font-bold tracking-tight">
-              Health, Safety & Welfare
+              Health, Safety &amp; Welfare
             </h2>
-            <ul class="mt-3 space-y-2 list-disc list-inside">
+
+            <p class="mt-3 leading-relaxed">
+              The safety and welfare of children attending Flag Frenzy Football
+              Camp is a priority.
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
               <li>
-                All staff are <strong>DBS-checked</strong> and trained in
-                safeguarding.
+                Appropriate safeguarding arrangements are used during camp.
               </li>
+
+              <li>Children are supervised during organised camp activities.</li>
+
               <li>
-                A qualified <strong>First Aider</strong> is on site each day;
-                first aid kits are available.
+                First aid arrangements and first aid supplies are available
+                during camp.
               </li>
+
               <li>
-                Tell us about allergies, medical needs or additional needs
-                before camp starts.
+                Parents and guardians must provide relevant information about
+                allergies, medical conditions, medication and additional needs
+                before attendance.
               </li>
+
               <li>
-                Medication must be handed to staff at registration with written
-                instructions.
+                Medication brought to camp should be provided in accordance with
+                the instructions given to families.
               </li>
             </ul>
+
+            <details class="mt-5 rounded-xl border border-slate-200 p-4">
+              <summary
+                class="flex cursor-pointer items-center gap-2 select-none"
+              >
+                <svg
+                  class="h-4 w-4 transition-transform"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M6 4l8 6-8 6V4z" />
+                </svg>
+
+                <span class="font-medium"> Illness &amp; accidents </span>
+              </summary>
+
+              <div class="mt-3 text-sm text-slate-700 leading-relaxed">
+                If a child becomes unwell during camp, their parent or guardian
+                may be contacted and asked to collect them. Minor injuries may
+                be treated using appropriate first aid and recorded. In an
+                emergency, the camp team will seek appropriate emergency
+                assistance and contact the child's parent or guardian as soon as
+                reasonably possible.
+              </div>
+            </details>
+
             <details class="mt-4 rounded-xl border border-slate-200 p-4">
               <summary
                 class="flex cursor-pointer items-center gap-2 select-none"
@@ -533,211 +983,330 @@
                   class="h-4 w-4 transition-transform"
                   viewBox="0 0 20 20"
                   fill="currentColor"
+                  aria-hidden="true"
                 >
                   <path d="M6 4l8 6-8 6V4z" />
                 </svg>
-                <span class="font-medium">Illness & accidents</span>
+
+                <span class="font-medium"> Weather &amp; contingency </span>
               </summary>
+
               <div class="mt-3 text-sm text-slate-700 leading-relaxed">
-                If a child becomes unwell, we will contact you for collection.
-                For minor injuries, first aid will be administered and recorded.
-                In an emergency we will call the emergency services and then
-                contact you immediately.
+                Activities may be adapted because of heat, rain, wind or other
+                conditions. Activities may be paused or changed if conditions
+                are considered unsuitable or unsafe. Families will be contacted
+                if a change materially affects the camp day.
               </div>
             </details>
-            <details class="mt-4 rounded-xl border border-slate-200 p-4">
-              <summary
-                class="flex cursor-pointer items-center gap-2 select-none"
-              >
-                <svg
-                  class="h-4 w-4 transition-transform"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path d="M6 4l8 6-8 6V4z" />
-                </svg>
-                <span class="font-medium">Severe weather & contingency</span>
-              </summary>
-              <div class="mt-3 text-sm text-slate-700 leading-relaxed">
-                Activities may be adjusted for heat, rain or high winds. We will
-                pause play if conditions become unsafe and use sheltered areas
-                where possible. Please send weather-appropriate clothing.
-              </div>
-            </details>
-            <div class="mt-4 rounded-xl border border-slate-200 p-4">
+
+            <div
+              class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4"
+            >
               <p class="text-sm text-slate-700">
-                <strong>Emergency assembly point:</strong> By the cafe.
+                More detailed information can be found in our
+                <a
+                  href="/camp/policies/safeguarding.html"
+                  class="font-semibold text-[var(--camp-red)] hover:underline"
+                >
+                  Safeguarding Policy </a
+                >,
+                <a
+                  href="/camp/policies/medical-consent.html"
+                  class="font-semibold text-[var(--camp-red)] hover:underline"
+                >
+                  Medical &amp; Inclusion Policy
+                </a>
+                and
+                <a
+                  href="/camp/policies/health-and-safety.html"
+                  class="font-semibold text-[var(--camp-red)] hover:underline"
+                >
+                  Health &amp; Safety Policy </a
+                >.
               </p>
             </div>
           </section>
 
-          <!-- Policies -->
-          <section
-            id="policies"
-            class="bg-white rounded-2xl shadow ring-1 ring-slate-200 p-6 sm:p-8"
-          >
-            <h2 class="text-2xl font-bold tracking-tight">
-              Policies & Procedures
-            </h2>
-            <p class="mt-3">Please review these policies on our website:</p>
-            <ul class="mt-3 grid sm:grid-cols-2 gap-3">
-              <li>
-                <a
-                  class="block rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)]"
-                  href="/camp/policies/safeguarding.html"
-                  >Safeguarding Policy</a
-                >
-              </li>
-              <li>
-                <a
-                  class="block rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)]"
-                  href="/camp/policies/conduct.html"
-                  >Behaviour Policy</a
-                >
-              </li>
-              <li>
-                <a
-                  class="block rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)]"
-                  href="/camp/policies/refund-cancellation.html"
-                  >Refund & Cancellation Policy</a
-                >
-              </li>
-              <li>
-                <a
-                  class="block rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)]"
-                  href="/camp/policies/privacy.html"
-                  >Privacy Notice (GDPR)</a
-                >
-              </li>
-              <li>
-                <a
-                  class="block rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)]"
-                  href="/camp/policies/media-consent.html"
-                  >Photography & Media Consent</a
-                >
-              </li>
-              <li>
-                <a
-                  class="block rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)]"
-                  href="/camp/policies/medical-form.html"
-                  >Medical & Allergies Form</a
-                >
-              </li>
-            </ul>
-            <p class="mt-3 text-sm text-slate-600">
-              If you need a paper copy, let us know at drop-off.
-            </p>
-          </section>
-
           <!-- Communication -->
-          <section
-            id="communication"
-            class="bg-white rounded-2xl shadow ring-1 ring-slate-200 p-6 sm:p-8"
-          >
+          <section id="communication" class="handbook-section">
             <h2 class="text-2xl font-bold tracking-tight">
               How We Communicate
             </h2>
-            <ul class="mt-3 space-y-2 list-disc list-inside">
-              <li><strong>Email updates</strong> before and during camp.</li>
+
+            <p class="mt-3 leading-relaxed">
+              Please make sure the contact information supplied during
+              registration is accurate and kept up to date.
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
               <li>
-                <strong>Phone/text</strong> for urgent matters (injury, early
-                collection, etc.).
+                <strong>Email</strong> may be used for camp information,
+                reminders and updates.
               </li>
+
               <li>
-                General updates posted on the
-                <a href="/camp/" class="underline">camp webpage</a>.
+                <strong>Phone or text</strong> may be used where more immediate
+                contact is needed, for example if your child becomes unwell or
+                collection arrangements need to be discussed.
+              </li>
+
+              <li>
+                General information may also be published on the Flag Frenzy
+                Football Camp website.
               </li>
             </ul>
-            <p class="mt-3 text-sm text-slate-600">
-              Absences: please email or text by 8:15am with your child’s name
-              and reason.
-            </p>
+
+            <div
+              class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4"
+            >
+              <p class="text-sm text-slate-700">
+                <strong>Absence:</strong>
+                If your child will not be attending a booked camp day, please
+                contact us as soon as possible before the camp day begins.
+              </p>
+            </div>
           </section>
 
-          <!-- Extras & FAQs -->
-          <section
-            id="extras"
-            class="bg-white rounded-2xl shadow ring-1 ring-slate-200 p-6 sm:p-8"
-          >
+          <!-- Useful Information -->
+          <section id="extras" class="handbook-section">
             <h2 class="text-2xl font-bold tracking-tight">
-              Extras & Quick FAQs
+              Useful Information
             </h2>
-            <div class="mt-4 grid md:grid-cols-2 gap-6">
+
+            <div class="mt-5 grid md:grid-cols-2 gap-6">
               <div>
-                <h3 class="font-semibold">Lunch & Allergens</h3>
-                <p class="mt-2 text-sm">
-                  Please pack a balanced lunch. We are a
-                  <strong>nut-aware</strong> camp — avoid nut products. Tell us
-                  about allergies in advance and on the medical form.
+                <h3 class="font-semibold">Lunch &amp; Allergies</h3>
+
+                <p class="mt-2 text-sm leading-relaxed">
+                  Children should bring enough food and drink for the camp day.
+                  Please tell us about allergies or dietary considerations
+                  during registration and follow any camp-specific allergen
+                  guidance sent before attendance.
                 </p>
               </div>
+
               <div>
                 <h3 class="font-semibold">Lost Property</h3>
-                <p class="mt-2 text-sm">
-                  We keep a lost property box at the sign-in desk. Label
-                  everything. Unclaimed items are kept for two weeks after camp.
+
+                <p class="mt-2 text-sm leading-relaxed">
+                  Please label belongings wherever possible. If an item is lost,
+                  contact the camp team as soon as possible. Unclaimed items
+                  cannot be stored indefinitely.
                 </p>
               </div>
+
               <div>
-                <h3 class="font-semibold">Phones & Devices</h3>
-                <p class="mt-2 text-sm">
-                  We discourage devices at camp. If brought for travel, they
-                  must stay in bags and are the family’s responsibility.
+                <h3 class="font-semibold">Phones &amp; Devices</h3>
+
+                <p class="mt-2 text-sm leading-relaxed">
+                  Children do not need a phone or electronic device to
+                  participate in camp. If a device is brought, it should remain
+                  safely stored unless permission is given to use it. Personal
+                  belongings remain the responsibility of the family.
                 </p>
               </div>
+
               <div>
-                <h3 class="font-semibold">Photos & Social Media</h3>
-                <p class="mt-2 text-sm">
-                  We only take/use photos if you’ve given consent. You can
-                  change your preference any time — just email us.
+                <h3 class="font-semibold">Photos &amp; Media</h3>
+
+                <p class="mt-2 text-sm leading-relaxed">
+                  Photography or video involving children will be handled in
+                  accordance with the permissions provided by their parent or
+                  guardian and our privacy arrangements. Please contact us if
+                  you need to update a preference.
                 </p>
               </div>
+            </div>
+          </section>
+
+          <!-- Related Policies -->
+          <section id="policies" class="handbook-section">
+            <h2 class="text-2xl font-bold tracking-tight">
+              Related Camp Policies
+            </h2>
+
+            <p class="mt-3 leading-relaxed">
+              The Parent Handbook provides practical information. Please also
+              review the relevant formal camp policies where you need more
+              detail.
+            </p>
+
+            <div class="mt-5 grid sm:grid-cols-2 gap-3">
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/safeguarding.html"
+              >
+                <strong>Camp Safeguarding</strong>
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/medical-consent.html"
+              >
+                <strong>Medical &amp; Inclusion</strong>
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/refund-cancellations.html"
+              >
+                <strong>Refunds &amp; Cancellations</strong>
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/conduct.html"
+              >
+                <strong>Code of Conduct / Behaviour</strong>
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/privacy.html"
+              >
+                <strong>Privacy</strong>
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/terms.html"
+              >
+                <strong>Terms &amp; Conditions</strong>
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/health-and-safety.html"
+              >
+                <strong>Health &amp; Safety</strong>
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies.html"
+              >
+                <strong>View All Camp Policies</strong>
+              </a>
             </div>
           </section>
 
           <!-- Contact -->
-          <section
-            id="contact"
-            class="bg-white rounded-2xl shadow ring-1 ring-slate-200 p-6 sm:p-8"
-          >
-            <h2 class="text-2xl font-bold tracking-tight">Contact Us</h2>
-            <div class="mt-3 grid sm:grid-cols-2 gap-4 text-sm">
+          <section id="contact" class="handbook-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Need Help?
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold tracking-tight">Contact Us</h2>
+
+            <p class="mt-3 leading-relaxed">
+              If you have a question about your child's attendance, medical or
+              additional needs, collection arrangements or anything else
+              relating to camp, please contact us.
+            </p>
+
+            <div class="mt-5 grid sm:grid-cols-2 gap-4 text-sm">
               <div class="rounded-xl border border-slate-200 p-4">
-                <p class="text-slate-500">General Enquiries</p>
-                <p class="font-semibold">
+                <p class="text-slate-500">Email</p>
+
+                <p class="font-semibold mt-1">
                   <a
                     href="mailto:info@flagfrenzyfootball.co.uk"
-                    class="underline"
-                    >info@flagfrenzyfootball.co.uk</a
+                    class="text-[var(--camp-red)] hover:underline"
                   >
+                    info@flagfrenzyfootball.co.uk
+                  </a>
                 </p>
-                <p>Phone: 07481 029204</p>
               </div>
+
               <div class="rounded-xl border border-slate-200 p-4">
-                <p class="text-slate-500">During Camp (urgent)</p>
-                <p class="font-semibold">07481 029204</p>
-                <p class="text-slate-600">
-                  If no answer, leave a message and we’ll call back promptly.
-                </p>
+                <p class="text-slate-500">Phone</p>
+
+                <p class="font-semibold mt-1">07481 029204</p>
               </div>
             </div>
-            <p class="mt-4 text-sm text-slate-600">
-              We’re here to help. Please speak to staff at drop-off/pick-up or
-              get in touch any time.
+          </section>
+
+          <!-- =========================
+               VIEW ANOTHER POLICY
+          ========================== -->
+          <section
+            class="no-print rounded-2xl border border-[var(--camp-border)] bg-white p-6 sm:p-8"
+          >
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Camp Policies
             </p>
+
+            <h2 class="mt-2 text-xl font-bold" style="color: var(--camp-ink)">
+              View another policy
+            </h2>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <a
+                href="/camp/policies/safeguarding.html"
+                class="btn btn-outline"
+              >
+                Safeguarding
+              </a>
+
+              <a
+                href="/camp/policies/medical-consent.html"
+                class="btn btn-outline"
+              >
+                Medical &amp; Inclusion
+              </a>
+
+              <a
+                href="/camp/policies/refund-cancellations.html"
+                class="btn btn-outline"
+              >
+                Refunds
+              </a>
+
+              <a href="/camp/policies/conduct.html" class="btn btn-outline">
+                Behaviour
+              </a>
+
+              <a href="/camp/policies/privacy.html" class="btn btn-outline">
+                Privacy
+              </a>
+
+              <a href="/camp/policies/terms.html" class="btn btn-outline">
+                Terms
+              </a>
+
+              <a
+                href="/camp/policies/health-and-safety.html"
+                class="btn btn-outline"
+              >
+                Health &amp; Safety
+              </a>
+            </div>
+
+            <div class="mt-6">
+              <a
+                href="/camp/policies.html"
+                class="font-semibold text-[var(--camp-red)] hover:underline"
+              >
+                ← Back to all Camp Policies
+              </a>
+            </div>
           </section>
         </article>
       </div>
     </main>
 
     <!-- =========================
-     COMPACT FOOTER
-========================== -->
+         FOOTER
+    ========================== -->
     <footer class="footer bg-[var(--camp-red)] text-white">
-      <!-- Main Footer -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7">
         <div class="grid gap-6 md:grid-cols-[1fr_1.4fr_1fr]">
-          <!-- Brand -->
           <div>
             <h3 class="font-semibold text-lg text-white">
               Flag Frenzy Football Camp
@@ -748,12 +1317,10 @@
             </p>
           </div>
 
-          <!-- Quick Links -->
           <div>
             <h4 class="font-semibold text-white">Quick Links</h4>
 
             <div class="mt-2 flex gap-8 text-sm">
-              <!-- Column 1 -->
               <ul class="space-y-1.5">
                 <li>
                   <a
@@ -792,7 +1359,6 @@
                 </li>
               </ul>
 
-              <!-- Column 2 -->
               <ul class="space-y-1.5">
                 <li>
                   <a
@@ -824,7 +1390,6 @@
             </div>
           </div>
 
-          <!-- Contact -->
           <div>
             <h4 class="font-semibold text-white">Contact</h4>
 
@@ -853,7 +1418,6 @@
         </div>
       </div>
 
-      <!-- Bottom Legal Bar -->
       <div class="border-t border-white/20">
         <div
           class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-white/70"
@@ -861,7 +1425,6 @@
           <div
             class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
           >
-            <!-- Company Information -->
             <div>
               <div>
                 &copy;
@@ -869,7 +1432,6 @@
                 Flag Frenzy Football Ltd. All rights reserved.
               </div>
 
-              <!-- Desktop Legal Details -->
               <div class="hidden md:block mt-1 text-white/60">
                 Company No. 16566783
                 <span class="mx-1">•</span>
@@ -878,7 +1440,6 @@
                 Registered Office: 128 City Road, London, EC1V 2NX
               </div>
 
-              <!-- Mobile Legal Details -->
               <div class="md:hidden mt-1 leading-relaxed text-white/60">
                 Company No. 16566783 • Registered in England &amp; Wales
                 <br />
@@ -886,37 +1447,64 @@
               </div>
             </div>
 
-            <!-- Community Text -->
             <div class="md:text-right">Built for the community.</div>
           </div>
         </div>
       </div>
     </footer>
 
-    <!-- Mobile floating print button -->
-    <button
-      onclick="window.print()"
-      class="no-print md:hidden fixed bottom-4 right-4 rounded-full border bg-white p-3 shadow-lg hover:shadow-xl transition"
-      aria-label="Print this policy"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="w-5 h-5"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        aria-hidden="true"
+    <!-- =========================
+         FLOATING CONTROLS
+    ========================== -->
+    <div class="floating-controls no-print">
+      <a
+        href="#top"
+        class="floating-control"
+        aria-label="Back to top"
+        title="Back to top"
       >
-        <path
-          d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
-        />
-      </svg>
-      <span class="sr-only">Print this policy</span>
-    </button>
+        ↑
+      </a>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+      <button
+        type="button"
+        onclick="window.print()"
+        class="floating-control"
+        aria-label="Print Parent Handbook"
+        title="Print Parent Handbook"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
+          />
+        </svg>
+      </button>
+    </div>
 
+    <!-- Shared Camp JS -->
     <script src="/camp/js/main.js"></script>
+
+    <!-- Mobile Policies Dropdown -->
+    <script>
+      const mobilePoliciesBtn = document.getElementById("mobilePoliciesBtn");
+
+      const mobilePoliciesMenu = document.getElementById("mobilePoliciesMenu");
+
+      if (mobilePoliciesBtn && mobilePoliciesMenu) {
+        mobilePoliciesBtn.addEventListener("click", () => {
+          const isOpen = mobilePoliciesMenu.classList.toggle("is-open");
+
+          mobilePoliciesBtn.setAttribute("aria-expanded", String(isOpen));
+
+          mobilePoliciesBtn.textContent = isOpen ? "−" : "+";
+        });
+      }
+    </script>
   </body>
 </html>
