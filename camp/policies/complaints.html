@@ -1,0 +1,1694 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Complaints Policy | Flag Frenzy Football Camp</title>
+
+    <meta
+      name="description"
+      content="Complaints Policy for Flag Frenzy Football Camp, explaining how parents, guardians and others can raise concerns or complaints and how Flag Frenzy Football Ltd will respond."
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/camp/css/style.css" />
+
+    <style>
+      :root {
+        --accent: var(--camp-red, #a73926);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .policy-section {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        scroll-margin-top: 1.5rem;
+      }
+
+      @media (min-width: 640px) {
+        .policy-section {
+          padding: 2rem;
+        }
+      }
+
+      .policy-section h2,
+      .policy-section h3 {
+        color: var(--camp-ink);
+      }
+
+      .policy-section a {
+        color: var(--camp-red);
+        font-weight: 600;
+      }
+
+      .policy-section a:hover {
+        text-decoration: underline;
+      }
+
+      .toc-link {
+        display: block;
+        padding: 0.3rem 0;
+        transition: color 0.15s ease;
+      }
+
+      .toc-link:hover {
+        color: var(--accent);
+      }
+
+      .policy-callout {
+        border: 1px solid #e2e8f0;
+        background: #f8fafc;
+        border-radius: 0.75rem;
+        padding: 1rem;
+      }
+
+      .policy-callout-important {
+        border-color: rgba(167, 57, 38, 0.2);
+        background: rgba(167, 57, 38, 0.04);
+      }
+
+      .step-number {
+        width: 2.4rem;
+        height: 2.4rem;
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        background: var(--camp-red);
+        color: #ffffff;
+        font-weight: 800;
+      }
+
+      /* Desktop Policies dropdown */
+      .policies-dropdown {
+        position: relative;
+      }
+
+      .policies-dropdown-menu {
+        position: absolute;
+        top: calc(100% + 0.75rem);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 18rem;
+        padding: 0.5rem;
+        background: #ffffff;
+        border: 1px solid var(--camp-border);
+        border-radius: 0.85rem;
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.18s ease,
+          visibility 0.18s ease;
+        z-index: 50;
+      }
+
+      .policies-dropdown:hover .policies-dropdown-menu,
+      .policies-dropdown:focus-within .policies-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .policies-dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -0.75rem;
+        left: 0;
+        right: 0;
+        height: 0.75rem;
+      }
+
+      .policy-menu-link {
+        display: block;
+        padding: 0.65rem 0.8rem;
+        border-radius: 0.55rem;
+        font-size: 0.82rem;
+        color: var(--camp-ink);
+        transition:
+          background-color 0.15s ease,
+          color 0.15s ease;
+      }
+
+      .policy-menu-link:hover {
+        background: rgba(167, 57, 38, 0.06);
+        color: var(--camp-red);
+      }
+
+      /* Mobile Policies submenu */
+      #mobilePoliciesMenu {
+        display: none;
+      }
+
+      #mobilePoliciesMenu.is-open {
+        display: block;
+      }
+
+      .mobile-policy-link {
+        display: block;
+        padding: 0.45rem 0;
+        font-size: 0.875rem;
+        color: #4b5563;
+      }
+
+      .mobile-policy-link:hover {
+        color: var(--camp-red);
+      }
+
+      /* Floating controls */
+      .floating-controls {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 40;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .floating-control {
+        width: 2.75rem;
+        height: 2.75rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .floating-control:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+      }
+
+      @media print {
+        .no-print,
+        header,
+        footer,
+        .floating-controls {
+          display: none !important;
+        }
+
+        body {
+          background: #ffffff !important;
+          color: #000000 !important;
+        }
+
+        main {
+          max-width: 100% !important;
+          padding: 0 !important;
+        }
+
+        .policy-section {
+          box-shadow: none !important;
+          border: 1px solid #dddddd;
+          break-inside: avoid;
+        }
+
+        a {
+          color: #000000 !important;
+          text-decoration: none !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-slate-50 text-slate-900 antialiased" id="top">
+    <!-- =========================
+       HEADER
+  ========================== -->
+    <header class="bg-white shadow-md no-print">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="h-16 flex items-center justify-between">
+          <a href="/camp/index.html" class="flex items-center gap-3">
+            <img
+              src="/camp/src/logo.png"
+              alt="Flag Frenzy Football Camp logo"
+              class="h-10 w-10"
+            />
+
+            <span class="text-xl font-extrabold" style="color: var(--camp-red)">
+              Flag Frenzy Football Camp
+            </span>
+          </a>
+
+          <button
+            id="menuBtn"
+            type="button"
+            class="md:hidden p-2 rounded-lg border border-gray-200"
+            aria-label="Toggle menu"
+            aria-controls="mobileNav"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+
+          <!-- Desktop navigation -->
+          <nav
+            id="nav"
+            class="hidden md:flex items-center gap-6 text-sm font-medium"
+          >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
+            <a
+              class="hover:text-[var(--camp-red)]"
+              href="/camp/register-interest.html"
+            >
+              Register Interest
+            </a>
+
+            <div class="policies-dropdown">
+              <a
+                class="font-semibold text-[var(--camp-red)] inline-flex items-center gap-1"
+                href="/camp/policies.html"
+                aria-current="page"
+              >
+                Policies
+                <span class="text-[10px]" aria-hidden="true">▼</span>
+              </a>
+
+              <div class="policies-dropdown-menu">
+                <a
+                  class="policy-menu-link font-semibold"
+                  href="/camp/policies.html"
+                >
+                  All Camp Policies
+                </a>
+
+                <div class="my-1 border-t border-[var(--camp-border)]"></div>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/parent-handbook.html"
+                >
+                  Parent Handbook
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/safeguarding.html"
+                >
+                  Camp Safeguarding
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/medical-consent.html"
+                >
+                  Medical &amp; Inclusion
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/refund-cancellations.html"
+                >
+                  Refunds &amp; Cancellations
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/conduct.html">
+                  Code of Conduct / Behaviour
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/privacy.html">
+                  Privacy
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/terms.html">
+                  Terms &amp; Conditions
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/health-and-safety.html"
+                >
+                  Health &amp; Safety
+                </a>
+
+                <a
+                  class="policy-menu-link font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies/complaints.html"
+                >
+                  Complaints
+                </a>
+              </div>
+            </div>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline" href="/index.html"> Main Site </a>
+          </nav>
+        </div>
+
+        <!-- Mobile navigation -->
+        <nav id="mobileNav" class="md:hidden overflow-hidden">
+          <div class="flex flex-col gap-3 font-medium">
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
+            <a
+              class="hover:text-[var(--camp-red)]"
+              href="/camp/register-interest.html"
+            >
+              Register Interest
+            </a>
+
+            <div>
+              <div class="flex items-center justify-between">
+                <a
+                  class="font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies.html"
+                  aria-current="page"
+                >
+                  Policies
+                </a>
+
+                <button
+                  id="mobilePoliciesBtn"
+                  type="button"
+                  class="px-3 py-1 text-[var(--camp-red)]"
+                  aria-label="Show policy links"
+                  aria-controls="mobilePoliciesMenu"
+                  aria-expanded="false"
+                >
+                  +
+                </button>
+              </div>
+
+              <div
+                id="mobilePoliciesMenu"
+                class="pl-4 mt-2 border-l-2 border-[var(--camp-border)]"
+              >
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/parent-handbook.html"
+                >
+                  Parent Handbook
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/safeguarding.html"
+                >
+                  Camp Safeguarding
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/medical-consent.html"
+                >
+                  Medical &amp; Inclusion
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/refund-cancellations.html"
+                >
+                  Refunds &amp; Cancellations
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/conduct.html"
+                >
+                  Code of Conduct / Behaviour
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/privacy.html"
+                >
+                  Privacy
+                </a>
+
+                <a class="mobile-policy-link" href="/camp/policies/terms.html">
+                  Terms &amp; Conditions
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/health-and-safety.html"
+                >
+                  Health &amp; Safety
+                </a>
+
+                <a
+                  class="mobile-policy-link font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies/complaints.html"
+                >
+                  Complaints
+                </a>
+              </div>
+            </div>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline w-max" href="/index.html"> Main Site </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- =========================
+       HERO
+  ========================== -->
+    <section class="hero-bg no-print">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12">
+        <a
+          href="/camp/policies.html"
+          class="inline-flex items-center text-sm font-semibold text-[var(--camp-red)] hover:underline"
+        >
+          ← All Camp Policies
+        </a>
+
+        <div class="mt-7">
+          <p
+            class="text-sm font-extrabold tracking-wide uppercase"
+            style="color: var(--camp-green)"
+          >
+            Camp Policies
+          </p>
+
+          <h1
+            class="mt-2 text-4xl md:text-5xl font-extrabold"
+            style="color: var(--camp-primary-900)"
+          >
+            Complaints Policy
+          </h1>
+
+          <p class="mt-4 text-lg text-gray-700 max-w-3xl">
+            How parents, guardians and others can raise a concern or complaint
+            about Flag Frenzy Football Camp and how we will respond.
+          </p>
+        </div>
+
+        <div class="mt-8 grid sm:grid-cols-3 gap-3 text-sm">
+          <div class="rounded-xl border border-slate-200 bg-white/80 p-4">
+            <p class="text-slate-500">Applies to</p>
+            <p class="mt-1 font-semibold">Camp services &amp; operations</p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 bg-white/80 p-4">
+            <p class="text-slate-500">Last reviewed</p>
+            <p class="mt-1 font-semibold">September 2026</p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 bg-white/80 p-4">
+            <p class="text-slate-500">Review cycle</p>
+            <p class="mt-1 font-semibold">At least annually</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINT HEADING -->
+    <div class="hidden print:block max-w-4xl mx-auto pt-8">
+      <h1 class="text-3xl font-bold">Flag Frenzy Football Camp</h1>
+
+      <h2 class="mt-2 text-2xl font-bold">Complaints Policy</h2>
+
+      <p class="mt-3 text-sm">Last reviewed: September 2026</p>
+    </div>
+
+    <!-- =========================
+       CONTENT
+  ========================== -->
+    <main
+      id="main-content"
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14"
+    >
+      <div class="grid lg:grid-cols-12 gap-8">
+        <!-- CONTENTS -->
+        <aside class="lg:col-span-3 no-print">
+          <div class="lg:sticky lg:top-6">
+            <div
+              class="bg-white rounded-2xl shadow-sm ring-1 ring-slate-200 p-5"
+            >
+              <p
+                class="text-xs font-extrabold tracking-wider uppercase"
+                style="color: var(--camp-green)"
+              >
+                Complaints Policy
+              </p>
+
+              <h2 class="mt-1 text-sm font-bold text-slate-700">
+                On this page
+              </h2>
+
+              <nav
+                class="mt-3 text-sm space-y-1"
+                aria-label="Complaints Policy contents"
+              >
+                <a class="toc-link" href="#commitment"> Our Commitment </a>
+
+                <a class="toc-link" href="#scope"> What This Policy Covers </a>
+
+                <a class="toc-link" href="#informal"> Raising a Concern </a>
+
+                <a class="toc-link" href="#formal">
+                  Making a Formal Complaint
+                </a>
+
+                <a class="toc-link" href="#process"> Complaints Process </a>
+
+                <a class="toc-link" href="#investigation"> Investigation </a>
+
+                <a class="toc-link" href="#response"> Our Response </a>
+
+                <a class="toc-link" href="#review-stage">
+                  Requesting a Review
+                </a>
+
+                <a class="toc-link" href="#safeguarding">
+                  Safeguarding &amp; Serious Concerns
+                </a>
+
+                <a class="toc-link" href="#conduct">
+                  Fair &amp; Respectful Communication
+                </a>
+
+                <a class="toc-link" href="#records">
+                  Records &amp; Confidentiality
+                </a>
+
+                <a class="toc-link" href="#rights"> Consumer Rights </a>
+
+                <a class="toc-link" href="#contact"> Contact </a>
+
+                <a class="toc-link" href="#review"> Policy Review </a>
+
+                <a class="toc-link" href="#related"> Related Policies </a>
+              </nav>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <a
+                  href="#contact"
+                  class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-semibold text-white"
+                  style="background: var(--camp-red)"
+                >
+                  Make a complaint
+                </a>
+
+                <button
+                  type="button"
+                  onclick="window.print()"
+                  class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-semibold border border-slate-300 hover:bg-slate-50"
+                >
+                  Print
+                </button>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- POLICY -->
+        <article class="lg:col-span-9 space-y-6">
+          <!-- Commitment -->
+          <section id="commitment" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Our Commitment
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Listening, Responding &amp; Improving
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Flag Frenzy Football Ltd aims to provide children and families
+              with a safe, positive and professionally managed camp experience.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              We recognise that concerns or complaints may occasionally arise.
+              We want parents, guardians and others who use our services to feel
+              able to raise genuine concerns and to know that those concerns
+              will be considered fairly.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Complaints can also help us identify where something has gone
+              wrong, where communication could have been clearer or where our
+              services, policies or procedures could be improved.
+            </p>
+
+            <div class="policy-callout policy-callout-important mt-5">
+              <p class="text-sm leading-relaxed">
+                Raising a genuine complaint will not, by itself, result in a
+                child being treated less favourably or prevented from
+                participating in future Flag Frenzy Football activities.
+              </p>
+            </div>
+          </section>
+
+          <!-- Scope -->
+          <section id="scope" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              01
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">What This Policy Covers</h2>
+
+            <p class="mt-4 leading-relaxed">
+              This policy can be used to raise concerns or complaints relating
+              to Flag Frenzy Football Camp, including matters concerning:
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>Camp organisation or administration.</li>
+
+              <li>Communication with parents or guardians.</li>
+
+              <li>The delivery of camp activities or services.</li>
+
+              <li>Staff, coaches or volunteers.</li>
+
+              <li>Behaviour management.</li>
+
+              <li>Health, safety or welfare arrangements.</li>
+
+              <li>Inclusion or reasonable adjustments.</li>
+
+              <li>Booking, cancellation or refund matters.</li>
+
+              <li>
+                The application of a Flag Frenzy Football Camp policy or
+                procedure.
+              </li>
+
+              <li>Another aspect of a child's experience at camp.</li>
+            </ul>
+
+            <p class="mt-4 leading-relaxed">
+              Some matters require a different or more urgent process. In
+              particular, safeguarding concerns, emergencies and allegations
+              involving possible criminal behaviour should not be delayed while
+              the ordinary complaints process is followed.
+            </p>
+          </section>
+
+          <!-- Informal -->
+          <section id="informal" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              02
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Raising a Concern Informally
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Where appropriate, we encourage parents and guardians to raise a
+              concern as soon as possible.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Many straightforward concerns can be resolved quickly through a
+              conversation with the Camp Director or appropriate member of the
+              camp team.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              For example, a parent may simply need clarification about an
+              activity, communication, booking arrangement or something their
+              child has reported.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              You are not required to attempt informal resolution before making
+              a formal complaint, particularly where the matter is serious or
+              you do not feel informal discussion would be appropriate.
+            </p>
+          </section>
+
+          <!-- Formal -->
+          <section id="formal" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              03
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Making a Formal Complaint</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Formal complaints should normally be made in writing so that we
+              have a clear record of the issue being raised.
+            </p>
+
+            <p class="mt-3 leading-relaxed">Complaints can be emailed to:</p>
+
+            <div
+              class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-5"
+            >
+              <p>
+                <strong>Email:</strong>
+                <a href="mailto:info@flagfrenzyfootball.co.uk">
+                  info@flagfrenzyfootball.co.uk
+                </a>
+              </p>
+
+              <p class="mt-2">
+                <strong>Subject:</strong>
+                Formal Complaint – Flag Frenzy Football Camp
+              </p>
+            </div>
+
+            <p class="mt-5 leading-relaxed">
+              To help us understand and investigate the matter, please provide
+              as much relevant information as reasonably possible, such as:
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>Your name and contact details.</li>
+
+              <li>The child's name, where relevant.</li>
+
+              <li>The date or camp session concerned.</li>
+
+              <li>What happened.</li>
+
+              <li>The names of people involved, if known and relevant.</li>
+
+              <li>Any steps already taken to resolve the matter.</li>
+
+              <li>Any relevant messages, documents or other information.</li>
+
+              <li>
+                What outcome or resolution you are seeking, where applicable.
+              </li>
+            </ul>
+
+            <p class="mt-4 leading-relaxed">
+              A complaint will not automatically be rejected simply because some
+              of this information is unavailable.
+            </p>
+          </section>
+
+          <!-- Process -->
+          <section id="process" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              04
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Our Complaints Process</h2>
+
+            <div class="mt-6 space-y-6">
+              <div class="flex gap-4">
+                <span class="step-number"> 1 </span>
+
+                <div>
+                  <h3 class="font-bold text-lg">Complaint received</h3>
+
+                  <p class="mt-1 text-sm leading-relaxed text-slate-700">
+                    We will record the complaint and identify the issues that
+                    need to be considered.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <span class="step-number"> 2 </span>
+
+                <div>
+                  <h3 class="font-bold text-lg">Acknowledgement</h3>
+
+                  <p class="mt-1 text-sm leading-relaxed text-slate-700">
+                    We aim to acknowledge a formal complaint within
+                    <strong>5 working days</strong>.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <span class="step-number"> 3 </span>
+
+                <div>
+                  <h3 class="font-bold text-lg">Investigation</h3>
+
+                  <p class="mt-1 text-sm leading-relaxed text-slate-700">
+                    Relevant information will be considered and we may contact
+                    the complainant, staff, volunteers or other relevant people
+                    for further information.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <span class="step-number"> 4 </span>
+
+                <div>
+                  <h3 class="font-bold text-lg">Outcome</h3>
+
+                  <p class="mt-1 text-sm leading-relaxed text-slate-700">
+                    We will provide an outcome explaining our findings and,
+                    where appropriate, any action arising from the complaint.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <span class="step-number"> 5 </span>
+
+                <div>
+                  <h3 class="font-bold text-lg">Review</h3>
+
+                  <p class="mt-1 text-sm leading-relaxed text-slate-700">
+                    If the complainant believes a material issue has not been
+                    properly considered, they may request an internal review.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Investigation -->
+          <section id="investigation" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              05
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Investigation</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Complaints will be considered fairly and proportionately based on
+              the information reasonably available.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Depending on the nature of the complaint, an investigation may
+              include:
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>Reviewing the original complaint.</li>
+
+              <li>Reviewing relevant camp records or communications.</li>
+
+              <li>Speaking with staff, coaches or volunteers involved.</li>
+
+              <li>Considering relevant policies or procedures.</li>
+
+              <li>
+                Reviewing accident, incident or attendance information where
+                relevant.
+              </li>
+
+              <li>
+                Asking the complainant for clarification or additional
+                information.
+              </li>
+
+              <li>
+                Considering whether further action or changes are required.
+              </li>
+            </ul>
+
+            <p class="mt-4 leading-relaxed">
+              Where a complaint concerns the conduct of a particular person,
+              that person may be given an appropriate opportunity to respond to
+              the issues raised.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              We will seek to handle complaints objectively. Where reasonably
+              practicable, a person should not be solely responsible for
+              deciding a formal complaint about their own conduct.
+            </p>
+          </section>
+
+          <!-- Response -->
+          <section id="response" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              06
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Timescales &amp; Our Response
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              We aim to deal with complaints as promptly as reasonably possible.
+            </p>
+
+            <div class="policy-callout mt-5">
+              <p class="text-sm leading-relaxed">
+                We aim to provide the outcome of a formal complaint within
+                <strong>28 calendar days</strong> of receiving the complaint.
+              </p>
+            </div>
+
+            <p class="mt-4 leading-relaxed">
+              Straightforward matters may be resolved considerably sooner.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              If a particularly complex complaint cannot reasonably be concluded
+              within this period, we will explain the reason for the delay and
+              provide an update on the progress of the investigation.
+            </p>
+
+            <p class="mt-3 leading-relaxed">Our response may include:</p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>A summary of the complaint considered.</li>
+
+              <li>Our findings.</li>
+
+              <li>Clarification or an explanation where appropriate.</li>
+
+              <li>An apology where something has gone wrong.</li>
+
+              <li>Corrective action where appropriate.</li>
+
+              <li>
+                Changes to procedures, communication, training or practice where
+                appropriate.
+              </li>
+
+              <li>Information about any further review route available.</li>
+            </ul>
+
+            <p class="mt-4 leading-relaxed">
+              There may be circumstances where confidentiality, safeguarding,
+              employment or data-protection considerations mean we cannot share
+              every detail of action taken in relation to another person.
+            </p>
+          </section>
+
+          <!-- Review stage -->
+          <section id="review-stage" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              07
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Requesting an Internal Review
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              If you remain dissatisfied after receiving the formal complaint
+              outcome, you may ask us to review the matter.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              A review request should explain why you believe the original
+              complaint outcome should be reconsidered.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              For example, this may be because:
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>Relevant information was not considered.</li>
+
+              <li>There is significant new information.</li>
+
+              <li>The complaints procedure was not followed appropriately.</li>
+
+              <li>
+                The outcome appears inconsistent with the evidence or relevant
+                policy.
+              </li>
+            </ul>
+
+            <p class="mt-4 leading-relaxed">
+              Where reasonably practicable, an internal review will be
+              considered by someone who was not solely responsible for the
+              original decision.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              The review is intended to consider whether the complaint was
+              handled fairly and whether the original outcome remains
+              appropriate. It does not necessarily require the entire
+              investigation to be repeated.
+            </p>
+          </section>
+
+          <!-- Safeguarding -->
+          <section id="safeguarding" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              08
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Safeguarding, Emergencies &amp; Serious Concerns
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              The ordinary complaints process should not delay action where a
+              child's immediate safety or welfare may be at risk.
+            </p>
+
+            <div class="policy-callout policy-callout-important mt-5">
+              <p class="text-sm leading-relaxed">
+                <strong
+                  >If a child is in immediate danger or requires urgent medical
+                  assistance, call 999.</strong
+                >
+              </p>
+            </div>
+
+            <p class="mt-4 leading-relaxed">
+              Complaints or information that raise a safeguarding concern will
+              be considered in accordance with our
+              <a href="/camp/policies/safeguarding.html">
+                Safeguarding Policy
+              </a>
+              and may need to be referred to the appropriate safeguarding,
+              statutory or emergency authority.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Where allegations concern possible criminal behaviour or another
+              matter requiring external investigation, Flag Frenzy Football Ltd
+              may need to limit or adjust its own investigation so that it does
+              not interfere with the work of the appropriate authority.
+            </p>
+          </section>
+
+          <!-- Conduct -->
+          <section id="conduct" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              09
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Fair &amp; Respectful Communication
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              We will aim to communicate respectfully with people raising
+              concerns and ask that communication with our staff and volunteers
+              is also respectful.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Making a complaint, disagreeing with our response or pursuing a
+              complaint firmly will not, by itself, be treated as unreasonable
+              behaviour.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              However, threatening, abusive, discriminatory or harassing
+              behaviour towards staff, volunteers, children or other families is
+              not acceptable.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Where communication becomes abusive or seriously disruptive, we
+              may take reasonable steps to manage how further communication is
+              conducted while continuing to consider the substance of any
+              genuine complaint.
+            </p>
+          </section>
+
+          <!-- Records -->
+          <section id="records" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              10
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Complaint Records &amp; Confidentiality
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              We will keep appropriate records of formal complaints, including
+              the complaint, relevant investigation information, the outcome and
+              any significant action arising from it.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              As a minimum operational standard, formal complaint records will
+              normally be retained for at least
+              <strong>3 years</strong> from the conclusion of the complaint,
+              unless a longer period is appropriate because of safeguarding,
+              insurance, legal or other legitimate record-keeping requirements.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Complaint information will be handled with appropriate
+              confidentiality and shared only where there is a legitimate reason
+              to do so.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              This may include sharing information with relevant staff,
+              insurers, professional advisers, safeguarding bodies, regulators,
+              emergency services or other authorities where appropriate or
+              required.
+            </p>
+
+            <p class="mt-4 text-sm text-slate-600">
+              Personal information is handled in accordance with our
+              <a href="/camp/policies/privacy.html"> Privacy Policy </a>.
+            </p>
+          </section>
+
+          <!-- Consumer rights -->
+          <section id="rights" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              11
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Consumer Rights &amp; External Advice
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              This complaints process does not remove or restrict any legal
+              rights or remedies available to a parent, guardian or other
+              consumer.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Where a complaint relates to a paid camp service, applicable
+              consumer rights continue to apply alongside this policy.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Consumers may seek independent advice about their rights from an
+              appropriate consumer advice service.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              If Flag Frenzy Football Camp becomes subject to a particular
+              regulator, registration scheme or external complaints route, the
+              relevant information will be made available to parents and
+              guardians where required.
+            </p>
+          </section>
+
+          <!-- Contact -->
+          <section id="contact" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Contact
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Contact Flag Frenzy Football Ltd
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Questions, concerns and formal complaints can be sent to:
+            </p>
+
+            <div
+              class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5"
+            >
+              <p class="font-bold text-lg">Flag Frenzy Football Ltd</p>
+
+              <div class="mt-4 space-y-2 text-sm">
+                <p>
+                  <strong>Email:</strong>
+                  <a href="mailto:info@flagfrenzyfootball.co.uk">
+                    info@flagfrenzyfootball.co.uk
+                  </a>
+                </p>
+
+                <p>
+                  <strong>Phone:</strong>
+                  <a href="tel:+447481029204"> 07481 029204 </a>
+                </p>
+
+                <p>
+                  <strong>Registered office:</strong>
+                  128 City Road, London, EC1V 2NX
+                </p>
+
+                <p>
+                  <strong>Company number:</strong>
+                  16566783
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Review -->
+          <section id="review" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              12
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Monitoring &amp; Review</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Complaints and concerns may be reviewed to identify recurring
+              issues, lessons learned or improvements that could be made to camp
+              services, communication, training, policies or procedures.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              This policy was last reviewed in
+              <strong>September 2026</strong> and will be reviewed at least
+              annually, or sooner where experience, changes to our services,
+              regulatory requirements or legal obligations indicate that an
+              earlier review is appropriate.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              <strong>Policy owner:</strong>
+              Camp Director, Flag Frenzy Football Camp.
+            </p>
+          </section>
+
+          <!-- Related policies -->
+          <section id="related" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Related Camp Policies
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Read Alongside This Policy</h2>
+
+            <div class="mt-5 grid sm:grid-cols-2 gap-3">
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/safeguarding.html"
+              >
+                Camp Safeguarding
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/health-and-safety.html"
+              >
+                Health &amp; Safety
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/medical-consent.html"
+              >
+                Medical &amp; Inclusion
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/conduct.html"
+              >
+                Code of Conduct / Behaviour
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/refund-cancellations.html"
+              >
+                Refunds &amp; Cancellations
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/privacy.html"
+              >
+                Privacy
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/terms.html"
+              >
+                Terms &amp; Conditions
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies.html"
+              >
+                All Camp Policies
+              </a>
+            </div>
+          </section>
+
+          <!-- View another policy -->
+          <section
+            class="no-print rounded-2xl border border-[var(--camp-border)] bg-white p-6 sm:p-8"
+          >
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Camp Policies
+            </p>
+
+            <h2 class="mt-2 text-xl font-bold" style="color: var(--camp-ink)">
+              View another policy
+            </h2>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <a
+                href="/camp/policies/parent-handbook.html"
+                class="btn btn-outline"
+              >
+                Parent Handbook
+              </a>
+
+              <a
+                href="/camp/policies/safeguarding.html"
+                class="btn btn-outline"
+              >
+                Safeguarding
+              </a>
+
+              <a
+                href="/camp/policies/medical-consent.html"
+                class="btn btn-outline"
+              >
+                Medical
+              </a>
+
+              <a
+                href="/camp/policies/refund-cancellations.html"
+                class="btn btn-outline"
+              >
+                Refunds
+              </a>
+
+              <a href="/camp/policies/conduct.html" class="btn btn-outline">
+                Behaviour
+              </a>
+
+              <a href="/camp/policies/privacy.html" class="btn btn-outline">
+                Privacy
+              </a>
+
+              <a href="/camp/policies/terms.html" class="btn btn-outline">
+                Terms
+              </a>
+
+              <a
+                href="/camp/policies/health-and-safety.html"
+                class="btn btn-outline"
+              >
+                Health &amp; Safety
+              </a>
+            </div>
+
+            <div class="mt-6">
+              <a
+                href="/camp/policies.html"
+                class="font-semibold text-[var(--camp-red)] hover:underline"
+              >
+                ← Back to all Camp Policies
+              </a>
+            </div>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <!-- =========================
+       FOOTER
+  ========================== -->
+    <footer class="footer bg-[var(--camp-red)] text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7">
+        <div class="grid gap-6 md:grid-cols-[1fr_1.4fr_1fr]">
+          <div>
+            <h3 class="font-semibold text-lg text-white">
+              Flag Frenzy Football Camp
+            </h3>
+
+            <p class="mt-1 text-sm text-white/80">
+              Play fast. Play smart. Play flag.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-white">Quick Links</h4>
+
+            <div class="mt-2 flex gap-8 text-sm">
+              <ul class="space-y-1.5">
+                <li>
+                  <a
+                    class="text-white hover:underline hover:text-yellow-400"
+                    href="/camp/about.html"
+                  >
+                    About
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-white hover:underline hover:text-yellow-400"
+                    href="/camp/register-interest.html"
+                  >
+                    Register Interest
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-white hover:underline hover:text-yellow-400"
+                    href="/camp/volunteer-interest.html"
+                  >
+                    Volunteer Interest
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-white hover:underline hover:text-yellow-400"
+                    href="/index.html"
+                  >
+                    Main Site
+                  </a>
+                </li>
+              </ul>
+
+              <ul class="space-y-1.5">
+                <li>
+                  <a
+                    class="text-white hover:underline hover:text-yellow-400"
+                    href="/camp/policies.html"
+                  >
+                    Policies
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-white hover:underline hover:text-yellow-400"
+                    href="/camp/faqs.html"
+                  >
+                    FAQs
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="text-white hover:underline hover:text-yellow-400"
+                    href="/camp/contact.html"
+                  >
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-white">Contact</h4>
+
+            <ul class="mt-2 space-y-1.5 text-sm">
+              <li>
+                <a
+                  class="text-white hover:underline hover:text-yellow-400"
+                  href="mailto:info@flagfrenzyfootball.co.uk"
+                >
+                  info@flagfrenzyfootball.co.uk
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="text-white hover:underline hover:text-yellow-400"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://instagram.com/flagfrenzycamp"
+                >
+                  @flagfrenzycamp
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/20">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-white/70"
+        >
+          <div
+            class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
+          >
+            <div>
+              <div>
+                ©
+                <span id="year"></span>
+                Flag Frenzy Football Ltd. All rights reserved.
+              </div>
+
+              <div class="hidden md:block mt-1 text-white/60">
+                Company No. 16566783
+                <span class="mx-1">•</span>
+                Registered in England &amp; Wales
+                <span class="mx-1">•</span>
+                Registered Office: 128 City Road, London, EC1V 2NX
+              </div>
+
+              <div class="md:hidden mt-1 leading-relaxed text-white/60">
+                Company No. 16566783 • Registered in England &amp; Wales
+                <br />
+                Registered Office: 128 City Road, London, EC1V 2NX
+              </div>
+            </div>
+
+            <div class="md:text-right">Built for the community.</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- =========================
+       FLOATING CONTROLS
+  ========================== -->
+    <div class="floating-controls no-print">
+      <a
+        href="#top"
+        class="floating-control"
+        aria-label="Back to top"
+        title="Back to top"
+      >
+        ↑
+      </a>
+
+      <button
+        type="button"
+        onclick="window.print()"
+        class="floating-control"
+        aria-label="Print Complaints Policy"
+        title="Print Complaints Policy"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Shared Camp JS -->
+    <script src="/camp/js/main.js"></script>
+
+    <!-- Mobile Policies Dropdown -->
+    <script>
+      const mobilePoliciesBtn = document.getElementById("mobilePoliciesBtn");
+
+      const mobilePoliciesMenu = document.getElementById("mobilePoliciesMenu");
+
+      if (mobilePoliciesBtn && mobilePoliciesMenu) {
+        mobilePoliciesBtn.addEventListener("click", () => {
+          const isOpen = mobilePoliciesMenu.classList.toggle("is-open");
+
+          mobilePoliciesBtn.setAttribute("aria-expanded", String(isOpen));
+
+          mobilePoliciesBtn.textContent = isOpen ? "−" : "+";
+        });
+      }
+    </script>
+  </body>
+</html>
