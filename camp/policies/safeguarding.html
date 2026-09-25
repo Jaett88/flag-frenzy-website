@@ -3,64 +3,229 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Safeguarding Policy — Flag Frenzy Football Camp</title>
+
+    <title>Safeguarding Policy | Flag Frenzy Football Camp</title>
+
     <meta
       name="description"
-      content="Safeguarding & child protection policy for Flag Frenzy Football Camp: legal framework, roles, safer recruitment, code of conduct, recognising & reporting abuse, information sharing, online safety, supervision, and review."
+      content="Safeguarding and child protection policy for Flag Frenzy Football Camp, including safeguarding responsibilities, reporting concerns, staff and volunteer suitability, supervision and child welfare."
     />
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/camp/css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="/camp/css/style.css" />
+
     <style>
+      :root {
+        --accent: var(--camp-red, #a73926);
+      }
+
       html {
         scroll-behavior: smooth;
       }
-      body {
-        font-family: "Poppins", sans-serif;
+
+      .policy-section {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        scroll-margin-top: 1.5rem;
       }
-      :root {
-        --camp-red: #c7352d;
-        --camp-border: rgba(20, 20, 20, 0.12);
+
+      @media (min-width: 640px) {
+        .policy-section {
+          padding: 2rem;
+        }
       }
+
+      .policy-section h2 {
+        color: var(--camp-ink);
+      }
+
+      .policy-section a {
+        color: var(--camp-red);
+        font-weight: 600;
+      }
+
+      .policy-section a:hover {
+        text-decoration: underline;
+      }
+
+      .toc-link {
+        display: block;
+        padding: 0.3rem 0;
+        transition: color 0.15s ease;
+      }
+
+      .toc-link:hover {
+        color: var(--accent);
+      }
+
+      .policy-callout {
+        border: 1px solid #e2e8f0;
+        background: #f8fafc;
+        border-radius: 0.75rem;
+        padding: 1rem;
+      }
+
+      .policy-callout-important {
+        border-color: rgba(167, 57, 38, 0.2);
+        background: rgba(167, 57, 38, 0.04);
+      }
+
+      /* Desktop Policies dropdown */
+      .policies-dropdown {
+        position: relative;
+      }
+
+      .policies-dropdown-menu {
+        position: absolute;
+        top: calc(100% + 0.75rem);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 18rem;
+        padding: 0.5rem;
+        background: #ffffff;
+        border: 1px solid var(--camp-border);
+        border-radius: 0.85rem;
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.18s ease,
+          visibility 0.18s ease;
+        z-index: 50;
+      }
+
+      .policies-dropdown:hover .policies-dropdown-menu,
+      .policies-dropdown:focus-within .policies-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .policies-dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -0.75rem;
+        left: 0;
+        right: 0;
+        height: 0.75rem;
+      }
+
+      .policy-menu-link {
+        display: block;
+        padding: 0.65rem 0.8rem;
+        border-radius: 0.55rem;
+        font-size: 0.82rem;
+        color: var(--camp-ink);
+        transition:
+          background-color 0.15s ease,
+          color 0.15s ease;
+      }
+
+      .policy-menu-link:hover {
+        background: rgba(167, 57, 38, 0.06);
+        color: var(--camp-red);
+      }
+
+      /* Mobile Policies submenu */
+      #mobilePoliciesMenu {
+        display: none;
+      }
+
+      #mobilePoliciesMenu.is-open {
+        display: block;
+      }
+
+      .mobile-policy-link {
+        display: block;
+        padding: 0.45rem 0;
+        font-size: 0.875rem;
+        color: #4b5563;
+      }
+
+      .mobile-policy-link:hover {
+        color: var(--camp-red);
+      }
+
+      /* Floating controls */
+      .floating-controls {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 40;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .floating-control {
+        width: 2.75rem;
+        height: 2.75rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .floating-control:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+      }
+
       @media print {
         .no-print,
         header,
         footer,
-        #mobileNav {
+        .floating-controls {
           display: none !important;
         }
+
         body {
-          color: #000;
-          background: #fff;
+          background: #ffffff !important;
+          color: #000000 !important;
         }
-        a {
-          text-decoration: none;
-          color: #000;
-        }
-        .card {
-          box-shadow: none !important;
-          border: 1px solid #ddd;
-        }
+
         main {
           max-width: 100% !important;
           padding: 0 !important;
         }
+
+        .policy-section {
+          box-shadow: none !important;
+          border: 1px solid #dddddd;
+          break-inside: avoid;
+        }
+
+        a {
+          color: #000000 !important;
+          text-decoration: none !important;
+        }
       }
     </style>
   </head>
-  <body class="bg-[#F6EADB] text-gray-800">
-    <!-- Skip link -->
-    <a
-      href="#main-content"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white border rounded px-3 py-2 shadow"
-      >Skip to content</a
-    >
 
-    <!-- Header -->
-    <header class="bg-white shadow-md">
+  <body class="bg-slate-50 text-slate-900 antialiased" id="top">
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="bg-white shadow-md no-print">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="h-16 flex items-center justify-between">
           <a href="/camp/index.html" class="flex items-center gap-3">
@@ -69,12 +234,15 @@
               alt="Flag Frenzy Football Camp logo"
               class="h-10 w-10"
             />
-            <span class="text-xl font-extrabold" style="color: var(--camp-red)"
-              >Flag Frenzy Football Camp</span
-            >
+
+            <span class="text-xl font-extrabold" style="color: var(--camp-red)">
+              Flag Frenzy Football Camp
+            </span>
           </a>
+
           <button
             id="menuBtn"
+            type="button"
             class="md:hidden p-2 rounded-lg border border-gray-200"
             aria-label="Toggle menu"
             aria-controls="mobileNav"
@@ -82,609 +250,1309 @@
           >
             ☰
           </button>
+
+          <!-- Desktop Navigation -->
           <nav
             id="nav"
             class="hidden md:flex items-center gap-6 text-sm font-medium"
           >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
-              >Home</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
-              >About</a
-            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
             <a
               class="hover:text-[var(--camp-red)]"
               href="/camp/register-interest.html"
             >
               Register Interest
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
-              >Policies</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
-              >FAQs</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
-              >Contact</a
-            >
-            <a
-              class="inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
-              href="/index.html"
-              >Main Site</a
-            >
+
+            <div class="policies-dropdown">
+              <a
+                class="font-semibold text-[var(--camp-red)] inline-flex items-center gap-1"
+                href="/camp/policies.html"
+                aria-current="page"
+              >
+                Policies
+                <span class="text-[10px]" aria-hidden="true">▼</span>
+              </a>
+
+              <div class="policies-dropdown-menu">
+                <a
+                  class="policy-menu-link font-semibold"
+                  href="/camp/policies.html"
+                >
+                  All Camp Policies
+                </a>
+
+                <div class="my-1 border-t border-[var(--camp-border)]"></div>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/parent-handbook.html"
+                >
+                  Parent Handbook
+                </a>
+
+                <a
+                  class="policy-menu-link font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies/safeguarding.html"
+                >
+                  Camp Safeguarding
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/medical-consent.html"
+                >
+                  Medical &amp; Inclusion
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/refund-cancellations.html"
+                >
+                  Refunds &amp; Cancellations
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/conduct.html">
+                  Code of Conduct / Behaviour
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/privacy.html">
+                  Privacy
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/terms.html">
+                  Terms &amp; Conditions
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/health-and-safety.html"
+                >
+                  Health &amp; Safety
+                </a>
+              </div>
+            </div>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline" href="/index.html"> Main Site </a>
           </nav>
         </div>
-        <!-- Mobile Nav -->
-        <nav
-          id="mobileNav"
-          class="hidden md:hidden border-t border-[var(--camp-border)] py-3"
-        >
+
+        <!-- Mobile Navigation -->
+        <nav id="mobileNav" class="md:hidden overflow-hidden">
           <div class="flex flex-col gap-3 font-medium">
-            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
-              >Home</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
-              >About</a
-            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
             <a
               class="hover:text-[var(--camp-red)]"
               href="/camp/register-interest.html"
             >
               Register Interest
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
-              >Policies</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
-              >FAQs</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
-              >Contact</a
-            >
-            <a
-              class="w-max inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
-              href="/index.html"
-              >Main Site</a
-            >
+
+            <div>
+              <div class="flex items-center justify-between">
+                <a
+                  class="font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies.html"
+                  aria-current="page"
+                >
+                  Policies
+                </a>
+
+                <button
+                  id="mobilePoliciesBtn"
+                  type="button"
+                  class="px-3 py-1 text-[var(--camp-red)]"
+                  aria-label="Show policy links"
+                  aria-controls="mobilePoliciesMenu"
+                  aria-expanded="false"
+                >
+                  +
+                </button>
+              </div>
+
+              <div
+                id="mobilePoliciesMenu"
+                class="pl-4 mt-2 border-l-2 border-[var(--camp-border)]"
+              >
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/parent-handbook.html"
+                >
+                  Parent Handbook
+                </a>
+
+                <a
+                  class="mobile-policy-link font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies/safeguarding.html"
+                >
+                  Camp Safeguarding
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/medical-consent.html"
+                >
+                  Medical &amp; Inclusion
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/refund-cancellations.html"
+                >
+                  Refunds &amp; Cancellations
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/conduct.html"
+                >
+                  Code of Conduct / Behaviour
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/privacy.html"
+                >
+                  Privacy
+                </a>
+
+                <a class="mobile-policy-link" href="/camp/policies/terms.html">
+                  Terms &amp; Conditions
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/health-and-safety.html"
+                >
+                  Health &amp; Safety
+                </a>
+              </div>
+            </div>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline w-max" href="/index.html"> Main Site </a>
           </div>
         </nav>
       </div>
     </header>
 
-    <main id="main-content" class="max-w-4xl mx-auto px-4 py-8">
-      <div class="no-print flex items-center justify-between mb-6">
-        <h1 class="text-2xl sm:text-3xl font-extrabold">
-          Safeguarding & Child Protection Policy
-          <span class="text-gray-600 text-base font-semibold"
-            >(For Parents/Guardians)</span
-          >
-        </h1>
-        <button
-          onclick="window.print()"
-          class="hidden md:inline-flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm shadow-sm hover:shadow transition"
-          aria-label="Print this policy"
+    <!-- =========================
+         POLICY HERO
+    ========================== -->
+    <section class="hero-bg no-print">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12">
+        <a
+          href="/camp/policies.html"
+          class="inline-flex items-center text-sm font-semibold text-[var(--camp-red)] hover:underline"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-4 h-4"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
-            />
-          </svg>
-          Print
-        </button>
-      </div>
+          ← All Camp Policies
+        </a>
 
-      <section class="card bg-white rounded-2xl shadow p-6 sm:p-8">
-        <div class="mb-6">
-          <p class="text-sm text-gray-600">Flag Frenzy Football Camp</p>
-          <p class="text-sm text-gray-600">
-            Effective date: <span id="effective-date">31 August 2025</span>
+        <div class="mt-7">
+          <p
+            class="text-sm font-extrabold tracking-wide uppercase"
+            style="color: var(--camp-green)"
+          >
+            Camp Policies
           </p>
-          <p class="text-sm text-gray-600">Location: United Kingdom</p>
-          <p class="text-sm text-neutral-500">
-            Last updated: <span id="last-updated">15 September 2025</span>
+
+          <h1
+            class="mt-2 text-4xl md:text-5xl font-extrabold"
+            style="color: var(--camp-primary-900)"
+          >
+            Safeguarding &amp; Child Protection
+          </h1>
+
+          <p class="mt-4 text-lg text-gray-700 max-w-3xl">
+            How Flag Frenzy Football Camp works to safeguard and promote the
+            welfare of children attending our camps.
           </p>
         </div>
 
-        <!-- Quick nav pills -->
-        <nav class="no-print grid sm:grid-cols-2 gap-3 mb-8 text-sm">
-          <a
-            href="#introduction"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Introduction</a
-          >
-          <a
-            href="#purpose"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Purpose</a
-          >
-          <a
-            href="#legal"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Legal Framework</a
-          >
-          <a
-            href="#scope"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Scope</a
-          >
-          <a
-            href="#principles"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Key Principles</a
-          >
-          <a
-            href="#roles"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Roles (DSL)</a
-          >
-          <a
-            href="#safer-recruitment"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Safer Recruitment</a
-          >
-          <a
-            href="#conduct"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Code of Conduct</a
-          >
-          <a
-            href="#recognising"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Recognising Abuse</a
-          >
-          <a
-            href="#reporting"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Reporting Concerns</a
-          >
-          <a
-            href="#allegations"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Allegations Against Staff</a
-          >
-          <a
-            href="#records"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Recording & Sharing</a
-          >
-          <a
-            href="#photos"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Photography & Social</a
-          >
-          <a
-            href="#online"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Online Safety</a
-          >
-          <a
-            href="#supervision"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Ratios & Supervision</a
-          >
-          <a
-            href="#site"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Site Security & Dismissal</a
-          >
-          <a
-            href="#training"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Training</a
-          >
-          <a
-            href="#review"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Review</a
-          >
-          <a
-            href="#related"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Related Policies</a
-          >
-          <a
-            href="#contact"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Contacts</a
-          >
-          <a
-            href="#disclaimer"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Disclaimer</a
-          >
-        </nav>
+        <!-- Policy information -->
+        <div class="mt-8 grid sm:grid-cols-3 gap-3 text-sm">
+          <div class="rounded-xl border border-slate-200 bg-white/80 p-4">
+            <p class="text-slate-500">Applies to</p>
+            <p class="mt-1 font-semibold">Flag Frenzy Football Camp</p>
+          </div>
 
-        <section id="introduction" class="space-y-4">
-          <h2 class="text-xl font-bold">1) Introduction</h2>
-          <p>
-            Flag Frenzy Football Camp is committed to safeguarding and promoting
-            the welfare of all children and young people who attend our camps.
-            Every child has the right to feel safe, valued, and respected, and
-            to be free from harm.
-          </p>
-        </section>
-        <hr class="my-6" />
+          <div class="rounded-xl border border-slate-200 bg-white/80 p-4">
+            <p class="text-slate-500">Last reviewed</p>
+            <p class="mt-1 font-semibold">September 2026</p>
+          </div>
 
-        <section id="purpose" class="space-y-4">
-          <h2 class="text-xl font-bold">2) Purpose of this Policy</h2>
-          <p>
-            This policy sets out our approach to safeguarding and the procedures
-            we follow so that children’s welfare is always our top priority.
-          </p>
-        </section>
-        <hr class="my-6" />
+          <div class="rounded-xl border border-slate-200 bg-white/80 p-4">
+            <p class="text-slate-500">Review cycle</p>
+            <p class="mt-1 font-semibold">At least annually</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section id="legal" class="space-y-4">
-          <h2 class="text-xl font-bold">3) Legal & Guidance Framework</h2>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>Children Act 1989 and Children Act 2004</li>
-            <li>Working Together to Safeguard Children (UK)</li>
-            <li>Keeping Children Safe in Out‑of‑School Settings (DfE)</li>
-            <li>NSPCC & CPSU (Child Protection in Sport Unit) guidance</li>
-          </ul>
-          <p class="text-sm text-neutral-600">
-            We aim to align with current national guidance; this policy is
-            reviewed and updated when requirements change.
-          </p>
-        </section>
-        <hr class="my-6" />
+    <!-- Print heading -->
+    <div class="hidden print:block max-w-4xl mx-auto pt-8">
+      <h1 class="text-3xl font-bold">Flag Frenzy Football Camp</h1>
 
-        <section id="scope" class="space-y-4">
-          <h2 class="text-xl font-bold">4) Scope</h2>
-          <p>
-            This policy applies to all staff, coaches, volunteers, contractors
-            and anyone working on behalf of Flag Frenzy Football Camp.
-          </p>
-        </section>
-        <hr class="my-6" />
+      <h2 class="mt-2 text-2xl font-bold">
+        Safeguarding &amp; Child Protection Policy
+      </h2>
 
-        <section id="principles" class="space-y-4">
-          <h2 class="text-xl font-bold">5) Key Principles</h2>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>The welfare of the child is paramount.</li>
-            <li>All children have the right to protection from abuse.</li>
-            <li>Safeguarding is everyone’s responsibility.</li>
-            <li>
-              Concerns and allegations are taken seriously and acted on
-              promptly.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+      <p class="mt-3 text-sm">Last reviewed: September 2026</p>
+    </div>
 
-        <section id="roles" class="space-y-4">
-          <h2 class="text-xl font-bold">6) Roles & Responsibilities</h2>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>
-              <strong>Designated Safeguarding Lead (DSL)</strong>:
-              <span class="font-medium"
-                >Jasene Trotman Taylor — Camp Director/DSL</span
+    <!-- =========================
+         POLICY CONTENT
+    ========================== -->
+    <main
+      id="main-content"
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14"
+    >
+      <div class="grid lg:grid-cols-12 gap-8">
+        <!-- CONTENTS -->
+        <aside class="lg:col-span-3 no-print">
+          <div class="lg:sticky lg:top-6">
+            <div
+              class="bg-white rounded-2xl shadow-sm ring-1 ring-slate-200 p-5"
+            >
+              <p
+                class="text-xs font-extrabold tracking-wider uppercase"
+                style="color: var(--camp-green)"
               >
-              — Email:
-              <a class="underline" href="mailto:info@flagfrenzyfootball.co.uk"
-                >info@flagfrenzyfootball.co.uk</a
+                Safeguarding Policy
+              </p>
+
+              <h2 class="mt-1 text-sm font-bold text-slate-700">
+                On this page
+              </h2>
+
+              <nav
+                class="mt-3 text-sm space-y-1"
+                aria-label="Safeguarding policy contents"
               >
-              — Phone: <span class="font-medium">[Your Number]</span>.
-            </li>
-            <li>
-              <strong>Deputy DSL(s)</strong>:
-              <span class="font-medium">[Name/Role]</span>.
-            </li>
-            <li>
-              All staff/volunteers: complete safeguarding induction and follow
-              this policy.
-            </li>
-            <li>
-              Parents/guardians: share relevant info to help keep children safe
-              and raise concerns without delay.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+                <a class="toc-link" href="#commitment"> Our Commitment </a>
 
-        <section id="safer-recruitment" class="space-y-4">
-          <h2 class="text-xl font-bold">7) Safer Recruitment</h2>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>
-              DBS checks for eligible roles, identity and reference checks.
-            </li>
-            <li>
-              Safeguarding questions during recruitment and a signed code of
-              conduct.
-            </li>
-            <li>
-              Role‑specific training before working directly with children.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+                <a class="toc-link" href="#purpose"> Purpose &amp; Scope </a>
 
-        <section id="conduct" class="space-y-4">
-          <h2 class="text-xl font-bold">8) Staff Code of Conduct</h2>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>
-              Treat all children with respect and kindness; model positive
-              behaviour.
-            </li>
-            <li>
-              Avoid being alone with a child in a closed or unobservable space
-              wherever possible.
-            </li>
-            <li>
-              Maintain professional boundaries; no personal contact details or
-              private messaging.
-            </li>
-            <li>
-              Report concerns immediately to the DSL; do not delay or
-              investigate alone.
-            </li>
-          </ul>
-          <p class="text-sm text-neutral-600">
-            See also our separate
-            <a class="underline" href="/camp/policies/behaviour.html"
-              >Code of Conduct/Behaviour Policy</a
-            >.
-          </p>
-        </section>
-        <hr class="my-6" />
+                <a class="toc-link" href="#framework">
+                  Safeguarding Framework
+                </a>
 
-        <section id="recognising" class="space-y-4">
-          <h2 class="text-xl font-bold">9) Recognising Abuse & Neglect</h2>
-          <p>
-            We remain alert to physical, emotional and sexual abuse, and
-            neglect, including bullying and online harms. Indicators may include
-            unexplained injuries, changes in behaviour, fearfulness, or
-            disclosures by a child.
-          </p>
-          <ul class="list-disc pl-5 space-y-1">
-            <li><strong>Physical abuse</strong></li>
-            <li><strong>Emotional abuse</strong></li>
-            <li><strong>Sexual abuse</strong></li>
-            <li><strong>Neglect</strong></li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+                <a class="toc-link" href="#principles"> Key Principles </a>
 
-        <section id="reporting" class="space-y-4">
-          <h2 class="text-xl font-bold">10) Reporting a Concern</h2>
-          <ol class="list-decimal pl-5 space-y-1">
-            <li>
-              <strong>Immediate safety first:</strong> If a child is at risk of
-              significant harm, call emergency services.
-            </li>
-            <li>
-              <strong>Report promptly:</strong> Share concerns with the DSL (or
-              deputy) the same day. If the concern involves a DSL, escalate to
-              the Camp Director/owner.
-            </li>
-            <li>
-              <strong>Record accurately:</strong> Use the
-              <span class="font-medium">Safeguarding Concern Form</span> with
-              factual notes (who/what/when/where). Avoid leading questions; do
-              not promise confidentiality.
-            </li>
-            <li>
-              <strong>Next steps:</strong> The DSL assesses and may consult with
-              the Local Authority, police or other agencies as appropriate.
-            </li>
-          </ol>
-          <p class="text-sm text-neutral-600">
-            Parents are informed where appropriate unless doing so increases
-            risk. We retain clear, dated records.
-          </p>
-        </section>
-        <hr class="my-6" />
+                <a class="toc-link" href="#dsl"> Safeguarding Lead </a>
 
-        <section id="allegations" class="space-y-4">
-          <h2 class="text-xl font-bold">
-            11) Allegations Against Staff/Volunteers
-          </h2>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>
-              Remove the person from unsupervised duties if necessary to protect
-              children.
-            </li>
-            <li>
-              Notify the DSL/Camp Director immediately. Seek advice from the
-              Local Authority Designated Officer (LADO) where appropriate.
-            </li>
-            <li>Keep clear, confidential records and follow fair processes.</li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+                <a class="toc-link" href="#suitability">
+                  Staff &amp; Volunteer Suitability
+                </a>
 
-        <section id="records" class="space-y-4">
-          <h2 class="text-xl font-bold">12) Recording & Information Sharing</h2>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>
-              Safeguarding records are stored securely and shared on a
-              need‑to‑know basis.
-            </li>
-            <li>
-              Information may be shared with agencies if it helps protect a
-              child (UK GDPR permits this where necessary).
-            </li>
-            <li>
-              Retention follows our
-              <a class="underline" href="/camp/policies/privacy.html"
-                >Privacy Policy</a
-              >
-              and any legal/insurer requirements.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+                <a class="toc-link" href="#conduct"> Professional Conduct </a>
 
-        <section id="photos" class="space-y-4">
-          <h2 class="text-xl font-bold">
-            13) Photography, Social Media & Communications
-          </h2>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>
-              Parental consent is collected for photos/videos; we respect any
-              opt‑out at all times.
-            </li>
-            <li>
-              Images are used appropriately for promotion and never with
-              identifying details without consent.
-            </li>
-            <li>
-              Staff do not contact children directly via personal accounts or
-              share personal contact details.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+                <a class="toc-link" href="#recognising">
+                  Recognising Concerns
+                </a>
 
-        <section id="online" class="space-y-4">
-          <h2 class="text-xl font-bold">14) Online Safety</h2>
-          <p>
-            We maintain appropriate controls for any digital tools used by the
-            camp and expect respectful online behaviour aligned with our Code of
-            Conduct.
-          </p>
-        </section>
-        <hr class="my-6" />
+                <a class="toc-link" href="#responding">
+                  Responding to a Concern
+                </a>
 
-        <section id="supervision" class="space-y-4">
-          <h2 class="text-xl font-bold">15) Ratios, Toilets & Supervision</h2>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>
-              We plan staffing to meet safe ratios for age and activity.
-              Children remain with their group leaders.
-            </li>
-            <li>
-              Clear procedures for toilet breaks, changing areas and one‑to‑one
-              situations to reduce risk.
-            </li>
-            <li>
-              Missing child procedures in place (immediate search, site lockdown
-              as needed, parents/police informed).
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+                <a class="toc-link" href="#allegations">
+                  Concerns About Adults
+                </a>
 
-        <section id="site" class="space-y-4">
-          <h2 class="text-xl font-bold">
-            16) Site Security, Arrival & Dismissal
-          </h2>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>Controlled entry/exit points and sign‑in/out processes.</li>
-            <li>
-              Only authorised adults can collect children; ID may be requested.
-            </li>
-            <li>
-              Late collection procedures and contact steps are communicated to
-              parents.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+                <a class="toc-link" href="#records">
+                  Records &amp; Information Sharing
+                </a>
 
-        <section id="training" class="space-y-4">
-          <h2 class="text-xl font-bold">17) Training</h2>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>
-              All staff complete safeguarding induction and
-              <strong>annual</strong> refreshers.
-            </li>
-            <li>
-              Specialist roles (DSL, first aiders) maintain up‑to‑date,
-              role‑appropriate training.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+                <a class="toc-link" href="#photos">
+                  Photography &amp; Online Safety
+                </a>
 
-        <section id="review" class="space-y-4">
-          <h2 class="text-xl font-bold">18) Review</h2>
-          <p>
-            This policy is reviewed at least annually (target review month:
-            August) and when guidance changes. The latest version is posted on
-            our website.
-          </p>
-        </section>
-        <hr class="my-6" />
+                <a class="toc-link" href="#supervision">
+                  Supervision &amp; Site Safety
+                </a>
 
-        <section id="related" class="space-y-4">
-          <h2 class="text-xl font-bold">Related Policies</h2>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>
-              <a class="underline" href="/camp/policies/health-and-safety.html"
-                >Health & Safety</a
-              >
-            </li>
-            <li>
-              <a class="underline" href="/camp/policies/behaviour.html"
-                >Code of Conduct/Behaviour</a
-              >
-            </li>
-            <li>
-              <a class="underline" href="/camp/policies/medical-consent.html"
-                >Medical & Inclusion</a
-              >
-            </li>
-            <li>
+                <a class="toc-link" href="#training">
+                  Training &amp; Awareness
+                </a>
+
+                <a class="toc-link" href="#contact"> Safeguarding Contact </a>
+
+                <a class="toc-link" href="#review"> Review </a>
+
+                <a class="toc-link" href="#related"> Related Policies </a>
+              </nav>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <a
+                  href="#contact"
+                  class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-semibold text-white"
+                  style="background: var(--camp-red)"
+                >
+                  Report a concern
+                </a>
+
+                <button
+                  type="button"
+                  onclick="window.print()"
+                  class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-semibold border border-slate-300 hover:bg-slate-50"
+                >
+                  Print
+                </button>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- POLICY -->
+        <article class="lg:col-span-9 space-y-6">
+          <!-- Commitment -->
+          <section id="commitment" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Our Commitment
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Safeguarding Children</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Flag Frenzy Football Camp is committed to safeguarding and
+              promoting the welfare of every child and young person who attends
+              our camps.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Children should be able to participate in camp in an environment
+              where they feel safe, respected, supported and able to raise
+              concerns. Safeguarding is taken seriously throughout the planning
+              and delivery of our activities.
+            </p>
+
+            <div class="policy-callout policy-callout-important mt-5">
+              <p class="text-sm leading-relaxed">
+                <strong>
+                  The welfare and safety of the child comes first.
+                </strong>
+                Concerns about a child's welfare will be taken seriously and
+                acted upon appropriately.
+              </p>
+            </div>
+          </section>
+
+          <!-- Purpose & Scope -->
+          <section id="purpose" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              01
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Purpose &amp; Scope</h2>
+
+            <p class="mt-4 leading-relaxed">
+              This policy explains the safeguarding arrangements used by Flag
+              Frenzy Football Camp and how concerns relating to the safety or
+              welfare of a child will be managed.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              It applies to people working on behalf of the camp, including
+              coaches, staff, volunteers and helpers, according to their role
+              and responsibilities.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Parents and guardians are also encouraged to share information
+              that may help us support and safeguard their child and to raise
+              any concerns promptly.
+            </p>
+          </section>
+
+          <!-- Framework -->
+          <section id="framework" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              02
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Safeguarding Framework</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Our safeguarding approach is informed by relevant legislation and
+              current safeguarding guidance applicable in England, including:
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>Children Act 1989 and Children Act 2004.</li>
+
+              <li>Working Together to Safeguard Children.</li>
+
+              <li>
+                Department for Education safeguarding guidance for providers of
+                out-of-school settings.
+              </li>
+
+              <li>Relevant Disclosure and Barring Service guidance.</li>
+
+              <li>
+                Relevant child protection and safeguarding guidance for sport
+                and physical activity.
+              </li>
+            </ul>
+
+            <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+              Guidance and legal requirements may change. Flag Frenzy Football
+              Camp will review its safeguarding arrangements and this policy
+              where relevant changes affect the camp.
+            </p>
+          </section>
+
+          <!-- Principles -->
+          <section id="principles" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              03
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Key Safeguarding Principles</h2>
+
+            <ul class="mt-4 space-y-3 list-disc list-outside pl-5">
+              <li>The welfare of children is a priority.</li>
+
+              <li>
+                Children have the right to be protected from abuse, neglect,
+                exploitation and harm.
+              </li>
+
+              <li>Children should be treated with dignity and respect.</li>
+
+              <li>Safeguarding is everyone's responsibility.</li>
+
+              <li>
+                Concerns and allegations should be taken seriously and dealt
+                with promptly.
+              </li>
+
+              <li>
+                Information should be shared appropriately where this is
+                necessary to safeguard a child.
+              </li>
+
+              <li>
+                Children should know that they can speak to an adult at camp if
+                something is worrying them.
+              </li>
+            </ul>
+          </section>
+
+          <!-- DSL -->
+          <section id="dsl" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              04
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Designated Safeguarding Lead
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              The Designated Safeguarding Lead (DSL) for Flag Frenzy Football
+              Camp is:
+            </p>
+
+            <div
+              class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5"
+            >
+              <p class="font-bold text-lg">Jasene Trotman Taylor</p>
+
+              <p class="mt-1 text-slate-700">
+                Camp Director &amp; Designated Safeguarding Lead
+              </p>
+
+              <div class="mt-4 space-y-1 text-sm">
+                <p>
+                  <strong>Email:</strong>
+                  <a href="mailto:info@flagfrenzyfootball.co.uk">
+                    info@flagfrenzyfootball.co.uk
+                  </a>
+                </p>
+
+                <p>
+                  <strong>Phone:</strong>
+                  <a href="tel:+447481029204"> 07481 029204 </a>
+                </p>
+              </div>
+            </div>
+
+            <p class="mt-5 leading-relaxed">
+              The DSL has responsibility for overseeing safeguarding
+              arrangements at camp, receiving safeguarding concerns, maintaining
+              appropriate records and taking or seeking appropriate advice about
+              next steps.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Where a concern relates directly to the DSL, the concern should
+              not be reported only to the person who is the subject of it.
+              Appropriate external safeguarding advice should be sought without
+              delay.
+            </p>
+          </section>
+
+          <!-- Suitability -->
+          <section id="suitability" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              05
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Staff, Coaches, Volunteers &amp; Helpers
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Flag Frenzy Football Camp considers the suitability and
+              safeguarding responsibilities of people who work or volunteer at
+              camp according to the duties they will perform.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Recruitment and deployment arrangements may include, where
+              appropriate to the role:
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>Identity and suitability checks.</li>
+
+              <li>References or other appropriate recruitment checks.</li>
+
+              <li>
+                Disclosure and Barring Service checks at the appropriate level
+                where the role is eligible.
+              </li>
+
+              <li>
+                Consideration of whether duties constitute regulated activity
+                with children.
+              </li>
+
+              <li>
+                Safeguarding information, induction and clear role expectations.
+              </li>
+
+              <li>Appropriate supervision and allocation of duties.</li>
+            </ul>
+
+            <div class="policy-callout mt-5">
+              <p class="text-sm leading-relaxed">
+                <strong>Young helpers and volunteers:</strong>
+                a person's age, duties, frequency of involvement and the nature
+                of their contact with children will be considered when deciding
+                what responsibilities they may undertake and what safeguarding
+                arrangements are appropriate.
+              </p>
+            </div>
+          </section>
+
+          <!-- Professional Conduct -->
+          <section id="conduct" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              06
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Professional Conduct &amp; Boundaries
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Adults and helpers working at camp are expected to maintain
+              appropriate professional boundaries and behave in a way that
+              supports children's safety and wellbeing.
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>Treat children fairly, respectfully and with kindness.</li>
+
+              <li>Never inflict physical or psychological harm on a child.</li>
+
+              <li>Use appropriate language and behaviour.</li>
+
+              <li>
+                Avoid unnecessary one-to-one situations in isolated or
+                unobservable spaces.
+              </li>
+
+              <li>Maintain appropriate physical and emotional boundaries.</li>
+
+              <li>
+                Do not exchange personal contact details with children or
+                privately message children through personal social media
+                accounts.
+              </li>
+
+              <li>
+                Report safeguarding concerns promptly rather than attempting to
+                investigate them independently.
+              </li>
+            </ul>
+
+            <p class="mt-4 text-sm text-slate-600">
+              See also our
+              <a href="/camp/policies/conduct.html">
+                Code of Conduct / Behaviour Policy </a
+              >.
+            </p>
+          </section>
+
+          <!-- Recognising Concerns -->
+          <section id="recognising" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              07
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Recognising Safeguarding Concerns
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Safeguarding concerns can arise in different ways. They may relate
+              to something a child says, an injury, a change in behaviour,
+              interactions between children, the behaviour of an adult,
+              information provided by another person or something observed
+              during camp.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Concerns may include, but are not limited to:
+            </p>
+
+            <div class="mt-5 grid sm:grid-cols-2 gap-3">
+              <div class="rounded-xl border border-slate-200 p-4">
+                Physical abuse
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                Emotional abuse
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                Sexual abuse
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">Neglect</div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                Bullying and child-on-child harm
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                Online harm
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                Exploitation or grooming
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                Other behaviour that may place a child at risk
+              </div>
+            </div>
+          </section>
+
+          <!-- Responding -->
+          <section id="responding" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              08
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Responding to a Safeguarding Concern
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              If a safeguarding concern is identified or a child makes a
+              disclosure, the priority is the child's immediate safety and
+              welfare.
+            </p>
+
+            <ol class="mt-5 space-y-4 list-decimal list-outside pl-5">
+              <li>
+                <strong>Listen and remain calm.</strong>
+                Allow the child to speak without pressuring them or asking
+                unnecessary or leading questions.
+              </li>
+
+              <li>
+                <strong>Do not promise secrecy.</strong>
+                Explain, in an age-appropriate way, that information may need to
+                be shared with people who can help keep them safe.
+              </li>
+
+              <li>
+                <strong>Consider immediate safety.</strong>
+                If a child is in immediate danger or requires urgent medical
+                assistance, emergency services should be contacted.
+              </li>
+
+              <li>
+                <strong>Report the concern promptly.</strong>
+                Concerns should be reported to the DSL as soon as possible.
+              </li>
+
+              <li>
+                <strong>Make an accurate record.</strong>
+                Record relevant facts, including what was seen, heard or
+                disclosed, using the child's own words where appropriate.
+              </li>
+
+              <li>
+                <strong>Take appropriate next steps.</strong>
+                The DSL will consider the information and seek advice or make a
+                referral to relevant safeguarding services where appropriate.
+              </li>
+            </ol>
+
+            <p class="mt-5 leading-relaxed">
+              Parents or guardians will normally be involved where appropriate,
+              unless doing so could place a child at greater risk or interfere
+              with appropriate safeguarding action.
+            </p>
+          </section>
+
+          <!-- Concerns about adults -->
+          <section id="allegations" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              09
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Concerns or Allegations About an Adult
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Any concern or allegation that a coach, member of staff,
+              volunteer, helper or other adult may have harmed a child, behaved
+              inappropriately towards a child or may present a safeguarding risk
+              will be taken seriously.
+            </p>
+
+            <p class="mt-3 leading-relaxed">Appropriate steps may include:</p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>
+                Taking immediate action where necessary to protect children.
+              </li>
+
+              <li>Recording the concern accurately and confidentially.</li>
+
+              <li>
+                Seeking advice from the appropriate local authority safeguarding
+                service, including the Local Authority Designated Officer (LADO)
+                where applicable.
+              </li>
+
+              <li>
+                Contacting the police or other statutory agencies where
+                appropriate.
+              </li>
+
+              <li>
+                Reviewing the person's duties while safeguarding concerns are
+                considered.
+              </li>
+            </ul>
+
+            <div class="policy-callout policy-callout-important mt-5">
+              <p class="text-sm leading-relaxed">
+                If a concern relates to the Designated Safeguarding Lead,
+                appropriate external safeguarding advice should be sought rather
+                than relying on the DSL to manage the concern about themselves.
+              </p>
+            </div>
+          </section>
+
+          <!-- Records -->
+          <section id="records" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              10
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Recording &amp; Information Sharing
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Safeguarding records will be handled carefully and access will be
+              limited to those who need the information for legitimate
+              safeguarding or legal purposes.
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>
+                Safeguarding concerns should be recorded factually, clearly and
+                as soon as reasonably possible.
+              </li>
+
+              <li>
+                Records should include relevant dates, times, people involved
+                and actions taken.
+              </li>
+
+              <li>
+                Safeguarding information may be shared with relevant agencies
+                where this is necessary and appropriate to protect a child.
+              </li>
+
+              <li>
+                Safeguarding information will not be shared more widely than
+                necessary.
+              </li>
+            </ul>
+
+            <p class="mt-4 text-sm text-slate-600">
+              Personal information is also handled in accordance with our
+              <a href="/camp/policies/privacy.html"> Privacy Policy </a>.
+            </p>
+          </section>
+
+          <!-- Photos & Online -->
+          <section id="photos" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              11
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Photography, Communication &amp; Online Safety
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Flag Frenzy Football Camp aims to use photography, video, digital
+              communication and online platforms in a responsible way that
+              protects children's privacy and welfare.
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>
+                Parent or guardian permissions relating to photography and video
+                will be respected.
+              </li>
+
+              <li>
+                Images of children will not intentionally be paired with
+                unnecessary identifying information.
+              </li>
+
+              <li>
+                Camp-related communication with families should use appropriate
+                communication channels.
+              </li>
+
+              <li>
+                Adults working at camp must not use personal social media
+                accounts or private messaging to develop inappropriate personal
+                communication with children.
+              </li>
+
+              <li>
+                Any online safeguarding concern relating to a child attending
+                camp should be reported to the DSL.
+              </li>
+            </ul>
+          </section>
+
+          <!-- Supervision -->
+          <section id="supervision" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              12
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Supervision, Arrival &amp; Site Safety
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Camp arrangements are planned with children's safety, the
+              activity, the venue and the needs of the group in mind.
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>
+                Staffing and supervision arrangements will be considered
+                according to the number and ages of children, the activities
+                taking place and the environment.
+              </li>
+
+              <li>
+                Children should remain within the agreed camp areas and follow
+                instructions from the camp team.
+              </li>
+
+              <li>
+                Arrival and collection procedures will be used to help ensure
+                children are released appropriately.
+              </li>
+
+              <li>
+                Only authorised people should collect a child, subject to the
+                collection arrangements supplied by the parent or guardian.
+              </li>
+
+              <li>
+                Identification or another safeguarding check may be requested
+                where necessary.
+              </li>
+
+              <li>
+                Toilet breaks and situations involving individual children will
+                be managed with privacy, dignity and safeguarding in mind.
+              </li>
+
+              <li>
+                If a child cannot be located, immediate steps will be taken to
+                search for them, secure the relevant area and contact the
+                parent, police or other appropriate services depending on the
+                circumstances.
+              </li>
+            </ul>
+          </section>
+
+          <!-- Training -->
+          <section id="training" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              13
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Safeguarding Training &amp; Awareness
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              People working or volunteering at camp will receive safeguarding
+              information, instruction or training appropriate to their role and
+              responsibilities.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              This may include information about:
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>recognising and reporting safeguarding concerns;</li>
+
+              <li>professional boundaries and expected conduct;</li>
+
+              <li>what to do if a child makes a disclosure;</li>
+
+              <li>who the Designated Safeguarding Lead is;</li>
+
+              <li>
+                camp-specific safeguarding and emergency arrangements; and
+              </li>
+
+              <li>
+                responsibilities relevant to the person's particular role.
+              </li>
+            </ul>
+
+            <p class="mt-4 leading-relaxed">
+              The DSL will maintain safeguarding knowledge and training
+              appropriate to the role and refresh this as appropriate, including
+              when relevant guidance or camp arrangements change.
+            </p>
+          </section>
+
+          <!-- Contact -->
+          <section id="contact" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-red)"
+            >
+              Safeguarding Contact
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Reporting a Concern</h2>
+
+            <p class="mt-4 leading-relaxed">
+              If you have a safeguarding concern relating to a child attending
+              Flag Frenzy Football Camp, please contact the Designated
+              Safeguarding Lead.
+            </p>
+
+            <div
+              class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5"
+            >
+              <p class="font-bold text-lg">Jasene Trotman Taylor</p>
+
+              <p class="mt-1">
+                Camp Director &amp; Designated Safeguarding Lead
+              </p>
+
+              <div class="mt-4 space-y-2">
+                <p>
+                  <strong>Email:</strong>
+                  <a href="mailto:info@flagfrenzyfootball.co.uk">
+                    info@flagfrenzyfootball.co.uk
+                  </a>
+                </p>
+
+                <p>
+                  <strong>Phone:</strong>
+                  <a href="tel:+447481029204"> 07481 029204 </a>
+                </p>
+              </div>
+            </div>
+
+            <div class="policy-callout policy-callout-important mt-5">
+              <p class="text-sm leading-relaxed">
+                <strong>Immediate danger:</strong>
+                If a child is in immediate danger or there is an emergency
+                requiring urgent assistance, contact the emergency services on
+                999.
+              </p>
+            </div>
+
+            <p class="mt-5 leading-relaxed">
+              Where a concern requires external safeguarding support, advice or
+              referral, the DSL will contact the relevant local authority
+              children's services, safeguarding service, police or other
+              appropriate agency according to the circumstances.
+            </p>
+          </section>
+
+          <!-- Review -->
+          <section id="review" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              14
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Policy Review</h2>
+
+            <p class="mt-4 leading-relaxed">
+              This policy will be reviewed at least annually and sooner where
+              necessary, including following a significant safeguarding
+              incident, a material change to camp arrangements or relevant
+              changes to safeguarding legislation or guidance.
+            </p>
+
+            <div class="mt-5 grid sm:grid-cols-2 gap-3 text-sm">
+              <div class="rounded-xl border border-slate-200 p-4">
+                <p class="text-slate-500">Last reviewed</p>
+                <p class="mt-1 font-semibold">September 2026</p>
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                <p class="text-slate-500">Responsible person</p>
+                <p class="mt-1 font-semibold">Camp Director / DSL</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Related -->
+          <section id="related" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Supporting Information
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Related Camp Policies</h2>
+
+            <p class="mt-4 leading-relaxed">
+              This policy should be read alongside other relevant Flag Frenzy
+              Football Camp information and policies.
+            </p>
+
+            <div class="mt-5 grid sm:grid-cols-2 gap-3">
               <a
-                class="underline"
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/parent-handbook.html"
+              >
+                Parent Handbook
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/medical-consent.html"
+              >
+                Medical &amp; Inclusion
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/conduct.html"
+              >
+                Code of Conduct / Behaviour
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/privacy.html"
+              >
+                Privacy
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/health-and-safety.html"
+              >
+                Health &amp; Safety
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies.html"
+              >
+                All Camp Policies
+              </a>
+            </div>
+          </section>
+
+          <!-- =========================
+               VIEW ANOTHER POLICY
+          ========================== -->
+          <section
+            class="no-print rounded-2xl border border-[var(--camp-border)] bg-white p-6 sm:p-8"
+          >
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Camp Policies
+            </p>
+
+            <h2 class="mt-2 text-xl font-bold" style="color: var(--camp-ink)">
+              View another policy
+            </h2>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <a
+                href="/camp/policies/parent-handbook.html"
+                class="btn btn-outline"
+              >
+                Parent Handbook
+              </a>
+
+              <a
+                href="/camp/policies/medical-consent.html"
+                class="btn btn-outline"
+              >
+                Medical &amp; Inclusion
+              </a>
+
+              <a
                 href="/camp/policies/refund-cancellations.html"
-                >Refunds & Cancellations</a
+                class="btn btn-outline"
               >
-            </li>
-            <li>
-              <a class="underline" href="/camp/policies/privacy.html"
-                >Privacy Policy</a
+                Refunds
+              </a>
+
+              <a href="/camp/policies/conduct.html" class="btn btn-outline">
+                Behaviour
+              </a>
+
+              <a href="/camp/policies/privacy.html" class="btn btn-outline">
+                Privacy
+              </a>
+
+              <a href="/camp/policies/terms.html" class="btn btn-outline">
+                Terms
+              </a>
+
+              <a
+                href="/camp/policies/health-and-safety.html"
+                class="btn btn-outline"
               >
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+                Health &amp; Safety
+              </a>
+            </div>
 
-        <section id="contact" class="space-y-4">
-          <h2 class="text-xl font-bold">Contacts</h2>
-          <address class="not-italic">
-            <strong>Designated Safeguarding Lead (DSL)</strong>:
-            <span class="font-medium">Jasene Trotman Taylor</span><br />
-            Email:
-            <a class="underline" href="mailto:info@flagfrenzyfootball.co.uk"
-              >info@flagfrenzyfootball.co.uk</a
-            ><br />
-            Phone: <span class="font-medium">[Your Number]</span><br />
-            Local Authority (for advice):
-            <span class="font-medium">[Local Authority / LADO contact]</span>
-          </address>
-        </section>
-        <hr class="my-6" />
-
-        <section id="disclaimer" class="space-y-4">
-          <h2 class="text-xl font-bold">Disclaimer</h2>
-          <p>
-            This policy is for general guidance and does not replace statutory
-            guidance. Consider an independent review to ensure alignment with
-            local procedures and current UK safeguarding guidance.
-          </p>
-        </section>
-      </section>
-
-      <p class="text-xs text-gray-500 mt-6">
-        © <span id="year"></span> Flag Frenzy Football Ltd. All rights reserved.
-      </p>
+            <div class="mt-6">
+              <a
+                href="/camp/policies.html"
+                class="font-semibold text-[var(--camp-red)] hover:underline"
+              >
+                ← Back to all Camp Policies
+              </a>
+            </div>
+          </section>
+        </article>
+      </div>
     </main>
 
     <!-- =========================
-     COMPACT FOOTER
-========================== -->
+         FOOTER
+    ========================== -->
     <footer class="footer bg-[var(--camp-red)] text-white">
-      <!-- Main Footer -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7">
         <div class="grid gap-6 md:grid-cols-[1fr_1.4fr_1fr]">
-          <!-- Brand -->
           <div>
             <h3 class="font-semibold text-lg text-white">
               Flag Frenzy Football Camp
@@ -695,12 +1563,10 @@
             </p>
           </div>
 
-          <!-- Quick Links -->
           <div>
             <h4 class="font-semibold text-white">Quick Links</h4>
 
             <div class="mt-2 flex gap-8 text-sm">
-              <!-- Column 1 -->
               <ul class="space-y-1.5">
                 <li>
                   <a
@@ -739,7 +1605,6 @@
                 </li>
               </ul>
 
-              <!-- Column 2 -->
               <ul class="space-y-1.5">
                 <li>
                   <a
@@ -771,7 +1636,6 @@
             </div>
           </div>
 
-          <!-- Contact -->
           <div>
             <h4 class="font-semibold text-white">Contact</h4>
 
@@ -800,7 +1664,6 @@
         </div>
       </div>
 
-      <!-- Bottom Legal Bar -->
       <div class="border-t border-white/20">
         <div
           class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-white/70"
@@ -808,7 +1671,6 @@
           <div
             class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
           >
-            <!-- Company Information -->
             <div>
               <div>
                 &copy;
@@ -816,7 +1678,6 @@
                 Flag Frenzy Football Ltd. All rights reserved.
               </div>
 
-              <!-- Desktop Legal Details -->
               <div class="hidden md:block mt-1 text-white/60">
                 Company No. 16566783
                 <span class="mx-1">•</span>
@@ -825,7 +1686,6 @@
                 Registered Office: 128 City Road, London, EC1V 2NX
               </div>
 
-              <!-- Mobile Legal Details -->
               <div class="md:hidden mt-1 leading-relaxed text-white/60">
                 Company No. 16566783 • Registered in England &amp; Wales
                 <br />
@@ -833,58 +1693,64 @@
               </div>
             </div>
 
-            <!-- Community Text -->
             <div class="md:text-right">Built for the community.</div>
           </div>
         </div>
       </div>
     </footer>
 
-    <!-- Mobile floating print button -->
-    <button
-      onclick="window.print()"
-      class="no-print md:hidden fixed bottom-4 right-4 rounded-full border bg-white p-3 shadow-lg hover:shadow-xl transition"
-      aria-label="Print this policy"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="w-5 h-5"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        aria-hidden="true"
+    <!-- =========================
+         FLOATING CONTROLS
+    ========================== -->
+    <div class="floating-controls no-print">
+      <a
+        href="#top"
+        class="floating-control"
+        aria-label="Back to top"
+        title="Back to top"
       >
-        <path
-          d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
-        />
-      </svg>
-      <span class="sr-only">Print this policy</span>
-    </button>
+        ↑
+      </a>
 
-    <script>
-      // Footer year
-      document.getElementById("year").textContent = new Date().getFullYear();
-      // Auto "Last updated" (UK format) & mobile nav toggle
-      (function () {
-        const node = document.getElementById("last-updated");
-        if (node) {
-          const d = new Date();
-          node.textContent = d.toLocaleDateString("en-GB", {
-            day: "2-digit",
-            month: "long",
-            year: "numeric",
-          });
-        }
-        const btn = document.getElementById("menuBtn");
-        const mob = document.getElementById("mobileNav");
-        if (btn && mob) {
-          btn.addEventListener("click", () => {
-            const isHidden = mob.classList.contains("hidden");
-            mob.classList.toggle("hidden", !isHidden);
-            btn.setAttribute("aria-expanded", String(isHidden));
-          });
-        }
-      })();
-    </script>
+      <button
+        type="button"
+        onclick="window.print()"
+        class="floating-control"
+        aria-label="Print safeguarding policy"
+        title="Print safeguarding policy"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2H2v-5a2 2 0 0 1 2-2Zm4 8v3h8v-3H8Z"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Shared Camp JS -->
     <script src="/camp/js/main.js"></script>
+
+    <!-- Mobile Policies Dropdown -->
+    <script>
+      const mobilePoliciesBtn = document.getElementById("mobilePoliciesBtn");
+
+      const mobilePoliciesMenu = document.getElementById("mobilePoliciesMenu");
+
+      if (mobilePoliciesBtn && mobilePoliciesMenu) {
+        mobilePoliciesBtn.addEventListener("click", () => {
+          const isOpen = mobilePoliciesMenu.classList.toggle("is-open");
+
+          mobilePoliciesBtn.setAttribute("aria-expanded", String(isOpen));
+
+          mobilePoliciesBtn.textContent = isOpen ? "−" : "+";
+        });
+      }
+    </script>
   </body>
 </html>
