@@ -2,64 +2,231 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terms and Conditions | Flag Frenzy Football Camp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Terms &amp; Conditions | Flag Frenzy Football Camp</title>
+
     <meta
       name="description"
-      content="Terms and Conditions Policy for Flag Frenzy Football Camp."
+      content="Terms and Conditions for Flag Frenzy Football Camp, covering eligibility, registration, payment, cancellations, behaviour, medical information, participation, liability, photography, privacy and website use."
     />
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/camp/css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="/camp/css/style.css" />
+
     <style>
+      :root {
+        --accent: var(--camp-red, #a73926);
+      }
+
       html {
         scroll-behavior: smooth;
       }
-      body {
-        font-family: "Poppins", sans-serif;
+
+      .policy-section {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        scroll-margin-top: 1.5rem;
       }
-      :root {
-        --camp-red: #c7352d;
-        --camp-border: rgba(20, 20, 20, 0.12);
+
+      @media (min-width: 640px) {
+        .policy-section {
+          padding: 2rem;
+        }
       }
+
+      .policy-section h2 {
+        color: var(--camp-ink);
+      }
+
+      .policy-section a {
+        color: var(--camp-red);
+        font-weight: 600;
+      }
+
+      .policy-section a:hover {
+        text-decoration: underline;
+      }
+
+      .toc-link {
+        display: block;
+        padding: 0.3rem 0;
+        transition: color 0.15s ease;
+      }
+
+      .toc-link:hover {
+        color: var(--accent);
+      }
+
+      .policy-callout {
+        border: 1px solid #e2e8f0;
+        background: #f8fafc;
+        border-radius: 0.75rem;
+        padding: 1rem;
+      }
+
+      .policy-callout-important {
+        border-color: rgba(167, 57, 38, 0.2);
+        background: rgba(167, 57, 38, 0.04);
+      }
+
+      /* Desktop Policies dropdown */
+      .policies-dropdown {
+        position: relative;
+      }
+
+      .policies-dropdown-menu {
+        position: absolute;
+        top: calc(100% + 0.75rem);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 18rem;
+        padding: 0.5rem;
+        background: #ffffff;
+        border: 1px solid var(--camp-border);
+        border-radius: 0.85rem;
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.18s ease,
+          visibility 0.18s ease;
+        z-index: 50;
+      }
+
+      .policies-dropdown:hover .policies-dropdown-menu,
+      .policies-dropdown:focus-within .policies-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .policies-dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -0.75rem;
+        left: 0;
+        right: 0;
+        height: 0.75rem;
+      }
+
+      .policy-menu-link {
+        display: block;
+        padding: 0.65rem 0.8rem;
+        border-radius: 0.55rem;
+        font-size: 0.82rem;
+        color: var(--camp-ink);
+        transition:
+          background-color 0.15s ease,
+          color 0.15s ease;
+      }
+
+      .policy-menu-link:hover {
+        background: rgba(167, 57, 38, 0.06);
+        color: var(--camp-red);
+      }
+
+      /* Mobile Policies submenu */
+      #mobilePoliciesMenu {
+        display: none;
+      }
+
+      #mobilePoliciesMenu.is-open {
+        display: block;
+      }
+
+      .mobile-policy-link {
+        display: block;
+        padding: 0.45rem 0;
+        font-size: 0.875rem;
+        color: #4b5563;
+      }
+
+      .mobile-policy-link:hover {
+        color: var(--camp-red);
+      }
+
+      /* Floating controls */
+      .floating-controls {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 40;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .floating-control {
+        width: 2.75rem;
+        height: 2.75rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .floating-control:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+      }
+
       @media print {
+        .no-print,
         header,
         footer,
-        #mobileNav,
-        .no-print {
+        .floating-controls {
           display: none !important;
         }
+
         body {
-          color: #000;
-          background: #fff;
+          background: #ffffff !important;
+          color: #000000 !important;
         }
-        a {
-          text-decoration: none;
-          color: #000;
-        }
-        .card {
-          box-shadow: none !important;
-          border: 1px solid #ddd;
-        }
+
         main {
           max-width: 100% !important;
           padding: 0 !important;
         }
+
+        .policy-section {
+          box-shadow: none !important;
+          border: 1px solid #dddddd;
+          break-inside: avoid;
+        }
+
+        a {
+          color: #000000 !important;
+          text-decoration: none !important;
+        }
       }
     </style>
   </head>
-  <body class="bg-[#F6EADB] text-gray-800">
-    <a
-      href="#main-content"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white border rounded px-3 py-2 shadow"
-      >Skip to content</a
-    >
 
-    <!-- Header -->
-    <header class="bg-white shadow-md">
+  <body class="bg-slate-50 text-slate-900 antialiased" id="top">
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="bg-white shadow-md no-print">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="h-16 flex items-center justify-between">
           <a href="/camp/index.html" class="flex items-center gap-3">
@@ -68,12 +235,15 @@
               alt="Flag Frenzy Football Camp logo"
               class="h-10 w-10"
             />
-            <span class="text-xl font-extrabold" style="color: var(--camp-red)"
-              >Flag Frenzy Football Camp</span
-            >
+
+            <span class="text-xl font-extrabold" style="color: var(--camp-red)">
+              Flag Frenzy Football Camp
+            </span>
           </a>
+
           <button
             id="menuBtn"
+            type="button"
             class="md:hidden p-2 rounded-lg border border-gray-200"
             aria-label="Toggle menu"
             aria-controls="mobileNav"
@@ -81,517 +251,1378 @@
           >
             ☰
           </button>
+
+          <!-- Desktop Navigation -->
           <nav
             id="nav"
             class="hidden md:flex items-center gap-6 text-sm font-medium"
           >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
-              >Home</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
-              >About</a
-            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
             <a
               class="hover:text-[var(--camp-red)]"
               href="/camp/register-interest.html"
             >
               Register Interest
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
-              >Policies</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
-              >FAQs</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
-              >Contact</a
-            >
-            <a
-              class="inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
-              href="/index.html"
-              >Main Site</a
-            >
+
+            <div class="policies-dropdown">
+              <a
+                class="font-semibold text-[var(--camp-red)] inline-flex items-center gap-1"
+                href="/camp/policies.html"
+                aria-current="page"
+              >
+                Policies
+                <span class="text-[10px]" aria-hidden="true">▼</span>
+              </a>
+
+              <div class="policies-dropdown-menu">
+                <a
+                  class="policy-menu-link font-semibold"
+                  href="/camp/policies.html"
+                >
+                  All Camp Policies
+                </a>
+
+                <div class="my-1 border-t border-[var(--camp-border)]"></div>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/parent-handbook.html"
+                >
+                  Parent Handbook
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/safeguarding.html"
+                >
+                  Camp Safeguarding
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/medical-consent.html"
+                >
+                  Medical &amp; Inclusion
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/refund-cancellations.html"
+                >
+                  Refunds &amp; Cancellations
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/conduct.html">
+                  Code of Conduct / Behaviour
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/privacy.html">
+                  Privacy
+                </a>
+
+                <a
+                  class="policy-menu-link font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies/terms.html"
+                >
+                  Terms &amp; Conditions
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/health-and-safety.html"
+                >
+                  Health &amp; Safety
+                </a>
+              </div>
+            </div>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline" href="/index.html">Main Site</a>
           </nav>
         </div>
-        <nav
-          id="mobileNav"
-          class="hidden md:hidden border-t border-[var(--camp-border)] py-3"
-        >
+
+        <!-- Mobile Navigation -->
+        <nav id="mobileNav" class="md:hidden overflow-hidden">
           <div class="flex flex-col gap-3 font-medium">
-            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
-              >Home</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
-              >About</a
-            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
             <a
               class="hover:text-[var(--camp-red)]"
               href="/camp/register-interest.html"
             >
               Register Interest
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
-              >Policies</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
-              >FAQs</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
-              >Contact</a
-            >
-            <a
-              class="w-max inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
-              href="/index.html"
-              >Main Site</a
-            >
+
+            <div>
+              <div class="flex items-center justify-between">
+                <a
+                  class="font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies.html"
+                  aria-current="page"
+                >
+                  Policies
+                </a>
+
+                <button
+                  id="mobilePoliciesBtn"
+                  type="button"
+                  class="px-3 py-1 text-[var(--camp-red)]"
+                  aria-label="Show policy links"
+                  aria-controls="mobilePoliciesMenu"
+                  aria-expanded="false"
+                >
+                  +
+                </button>
+              </div>
+
+              <div
+                id="mobilePoliciesMenu"
+                class="pl-4 mt-2 border-l-2 border-[var(--camp-border)]"
+              >
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/parent-handbook.html"
+                >
+                  Parent Handbook
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/safeguarding.html"
+                >
+                  Camp Safeguarding
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/medical-consent.html"
+                >
+                  Medical &amp; Inclusion
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/refund-cancellations.html"
+                >
+                  Refunds &amp; Cancellations
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/conduct.html"
+                >
+                  Code of Conduct / Behaviour
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/privacy.html"
+                >
+                  Privacy
+                </a>
+
+                <a
+                  class="mobile-policy-link font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies/terms.html"
+                >
+                  Terms &amp; Conditions
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/health-and-safety.html"
+                >
+                  Health &amp; Safety
+                </a>
+              </div>
+            </div>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline w-max" href="/index.html">Main Site</a>
           </div>
         </nav>
       </div>
     </header>
 
-    <main id="main-content" class="max-w-4xl mx-auto px-4 py-8">
-      <div class="no-print flex items-center justify-between mb-6">
-        <h1 class="text-2xl sm:text-3xl font-extrabold">
-          Terms and Conditions
-          <span class="text-gray-600 text-base font-semibold"
-            >(For Parents/Guardians)</span
-          >
-        </h1>
-        <button
-          onclick="window.print()"
-          class="hidden md:inline-flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm shadow-sm hover:shadow transition"
-          aria-label="Print this policy"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-4 h-4"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
-            />
-          </svg>
-          Print
-        </button>
-      </div>
+    <!-- =========================
+         POLICY HERO
+    ========================== -->
 
-      <section class="card bg-white rounded-2xl shadow p-6 sm:p-8">
-        <div class="mb-6">
-          <p class="text-sm text-gray-600">Flag Frenzy Football Camp</p>
-          <p class="text-sm text-gray-600">
-            Effective date: <span id="effective-date">31 August 2025</span>
+    <section class="hero-bg no-print">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12">
+        <a
+          href="/camp/policies.html"
+          class="inline-flex items-center text-sm font-semibold text-[var(--camp-red)] hover:underline"
+        >
+          ← All Camp Policies
+        </a>
+
+        <div class="mt-7">
+          <p
+            class="text-sm font-extrabold tracking-wide uppercase"
+            style="color: var(--camp-green)"
+          >
+            Camp Policies
           </p>
-          <p class="text-sm text-gray-600">Location: United Kingdom</p>
-          <p class="text-sm text-neutral-500">
-            Last updated: <span id="last-updated">15 September 2025</span>
+
+          <h1
+            class="mt-2 text-4xl md:text-5xl font-extrabold"
+            style="color: var(--camp-primary-900)"
+          >
+            Terms &amp; Conditions
+          </h1>
+
+          <p class="mt-4 text-lg text-gray-700 max-w-3xl">
+            The terms that apply when a parent or guardian books a place for a
+            child at Flag Frenzy Football Camp and uses our camp services.
           </p>
         </div>
 
-        <!-- Quick nav (match Refunds & Cancellations style) -->
-        <nav class="no-print grid sm:grid-cols-2 gap-3 mb-8 text-sm">
-          <a
-            href="#about-us"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >About Us</a
-          >
-          <a
-            href="#eligibility"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Eligibility</a
-          >
-          <a
-            href="#registration-payment"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Registration &amp; Payment</a
-          >
-          <a
-            href="#refunds"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Refunds &amp; Cancellations</a
-          >
-          <a
-            href="#safety"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Safety &amp; Behaviour</a
-          >
-          <a
-            href="#medical"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Medical &amp; Emergency</a
-          >
-          <a
-            href="#liability"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Liability</a
-          >
-          <a
-            href="#media"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Photography &amp; Media</a
-          >
-          <a
-            href="#website-use"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Website Use</a
-          >
-          <a
-            href="#ip"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Intellectual Property</a
-          >
-          <a
-            href="#privacy"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Privacy &amp; Data</a
-          >
-          <a
-            href="#complaints"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Complaints</a
-          >
-          <a
-            href="#changes"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Changes</a
-          >
-          <a
-            href="#law"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Governing Law</a
-          >
-        </nav>
-
-        <section id="about-us" class="space-y-4">
-          <h2 class="text-xl font-bold">1. About Us</h2>
-          <div class="space-y-2 text-neutral-700">
-            <p>
-              <span class="font-medium">Flag Frenzy Football Ltd</span> (“we”,
-              “our”, “us”) is a company registered in England &amp; Wales.
-            </p>
-            <p>
-              Registered office:
-              <span class="font-medium">[Registered Office]</span>
-            </p>
-            <p>
-              Company number: <span class="font-medium">[Company Number]</span>
-            </p>
-            <p>
-              Contact:
-              <a href="mailto:info@flagfrenzyfootball.co.uk" class="underline"
-                >info@flagfrenzyfootball.co.uk</a
-              >
-            </p>
+        <!-- Policy information -->
+        <div class="mt-8 grid sm:grid-cols-3 gap-3 text-sm">
+          <div class="rounded-xl border border-slate-200 bg-white/80 p-4">
+            <p class="text-slate-500">Applies to</p>
+            <p class="mt-1 font-semibold">Camp bookings &amp; participation</p>
           </div>
-        </section>
-        <hr class="my-6" />
 
-        <section id="eligibility" class="space-y-4">
-          <h2 class="text-xl font-bold">2. Eligibility</h2>
-          <ul class="list-disc pl-5 space-y-1 text-neutral-700">
-            <li>
-              Camps are open to children aged
-              <span class="font-medium">7–15 years old</span>.
-            </li>
-            <li>
-              Parents/guardians must complete registration and payment for
-              under-18s.
-            </li>
-            <li>
-              By using our services, you confirm you are legally able to enter
-              contracts under UK law.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+          <div class="rounded-xl border border-slate-200 bg-white/80 p-4">
+            <p class="text-slate-500">Last reviewed</p>
+            <p class="mt-1 font-semibold">September 2026</p>
+          </div>
 
-        <section id="registration-payment" class="space-y-4">
-          <h2 class="text-xl font-bold">3. Registration &amp; Payment</h2>
-          <div class="space-y-3 text-neutral-700">
-            <p>
-              Places are offered on a first-come, first-served basis and are
-              limited to <span class="font-medium">25</span>. A waiting list may
-              operate when capacity is reached.
-            </p>
-            <div class="rounded-lg border border-neutral-200 bg-white p-4">
-              <h3 class="text-lg font-semibold">Camp Fees</h3>
-              <div class="mt-3 overflow-x-auto">
-                <table class="w-full text-sm">
-                  <thead>
-                    <tr class="text-left border-b border-neutral-200">
-                      <th class="py-2 pr-4 font-medium text-neutral-700">
-                        Option
-                      </th>
-                      <th class="py-2 pr-4 font-medium text-neutral-700">
-                        Price
-                      </th>
-                      <th class="py-2 font-medium text-neutral-700">Notes</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="border-b border-neutral-100">
-                      <td class="py-2 pr-4">Day Pass</td>
-                      <td class="py-2 pr-4 font-medium">£35 per day</td>
-                      <td class="py-2">
-                        Select one or more days (subject to availability).
-                      </td>
-                    </tr>
-                    <tr class="border-b border-neutral-100">
-                      <td class="py-2 pr-4">Full Week</td>
-                      <td class="py-2 pr-4 font-medium">£150</td>
-                      <td class="py-2">
-                        Covers all scheduled camp days in the week.
-                      </td>
-                    </tr>
-                    <tr class="border-b border-neutral-100">
-                      <td class="py-2 pr-4">Early-Bird (Full Week)</td>
-                      <td class="py-2 pr-4 font-medium">£135</td>
-                      <td class="py-2">
-                        Available if booked and paid by
-                        <span class="font-medium">30 September 2025</span>.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="py-2 pr-4">Sibling Discount</td>
-                      <td class="py-2 pr-4 font-medium">£10 off</td>
-                      <td class="py-2">
-                        Per additional sibling booked for the same dates
-                        (applied once per additional sibling).
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+          <div class="rounded-xl border border-slate-200 bg-white/80 p-4">
+            <p class="text-slate-500">Review cycle</p>
+            <p class="mt-1 font-semibold">At least annually</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Print heading -->
+    <div class="hidden print:block max-w-4xl mx-auto pt-8">
+      <h1 class="text-3xl font-bold">Flag Frenzy Football Camp</h1>
+
+      <h2 class="mt-2 text-2xl font-bold">Terms &amp; Conditions</h2>
+
+      <p class="mt-3 text-sm">Last reviewed: September 2026</p>
+    </div>
+
+    <!-- =========================
+         POLICY CONTENT
+    ========================== -->
+
+    <main
+      id="main-content"
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14"
+    >
+      <div class="grid lg:grid-cols-12 gap-8">
+        <!-- CONTENTS -->
+        <aside class="lg:col-span-3 no-print">
+          <div class="lg:sticky lg:top-6">
+            <div
+              class="bg-white rounded-2xl shadow-sm ring-1 ring-slate-200 p-5"
+            >
+              <p
+                class="text-xs font-extrabold tracking-wider uppercase"
+                style="color: var(--camp-green)"
+              >
+                Terms &amp; Conditions
+              </p>
+
+              <h2 class="mt-1 text-sm font-bold text-slate-700">
+                On this page
+              </h2>
+
+              <nav
+                class="mt-3 text-sm space-y-1"
+                aria-label="Terms and conditions contents"
+              >
+                <a class="toc-link" href="#overview">Overview</a>
+                <a class="toc-link" href="#about">About Us</a>
+                <a class="toc-link" href="#eligibility">Eligibility</a>
+                <a class="toc-link" href="#interest">Register Interest</a>
+                <a class="toc-link" href="#booking"
+                  >Registration &amp; Booking</a
+                >
+                <a class="toc-link" href="#payment">Payment</a>
+                <a class="toc-link" href="#information"
+                  >Information You Provide</a
+                >
+                <a class="toc-link" href="#refunds"
+                  >Refunds &amp; Cancellations</a
+                >
+                <a class="toc-link" href="#changes">Camp Changes</a>
+                <a class="toc-link" href="#behaviour">Behaviour</a>
+                <a class="toc-link" href="#medical">Medical &amp; Inclusion</a>
+                <a class="toc-link" href="#participation"
+                  >Participation &amp; Safety</a
+                >
+                <a class="toc-link" href="#property">Personal Property</a>
+                <a class="toc-link" href="#liability">Our Responsibility</a>
+                <a class="toc-link" href="#media">Photography &amp; Media</a>
+                <a class="toc-link" href="#privacy">Privacy &amp; Data</a>
+                <a class="toc-link" href="#website">Website Use</a>
+                <a class="toc-link" href="#ip">Intellectual Property</a>
+                <a class="toc-link" href="#complaints">Complaints</a>
+                <a class="toc-link" href="#law">Governing Law</a>
+                <a class="toc-link" href="#review">Review</a>
+                <a class="toc-link" href="#related">Related Policies</a>
+              </nav>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <a
+                  href="#contact"
+                  class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-semibold text-white"
+                  style="background: var(--camp-red)"
+                >
+                  Contact us
+                </a>
+
+                <button
+                  type="button"
+                  onclick="window.print()"
+                  class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-semibold border border-slate-300 hover:bg-slate-50"
+                >
+                  Print
+                </button>
               </div>
-              <p class="mt-3 text-xs text-neutral-500">
-                All prices are in GBP and include any applicable VAT if charged.
+            </div>
+          </div>
+        </aside>
+
+        <!-- POLICY -->
+        <article class="lg:col-span-9 space-y-6">
+          <!-- Overview -->
+          <section id="overview" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Terms of Booking
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Flag Frenzy Football Camp</h2>
+
+            <p class="mt-4 leading-relaxed">
+              These Terms &amp; Conditions explain the basis on which Flag
+              Frenzy Football Ltd provides Flag Frenzy Football Camp services to
+              parents, guardians and participating children.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              When a parent or guardian completes a camp booking, they agree to
+              these Terms &amp; Conditions and to the relevant camp policies
+              that form part of our arrangements for safe and effective camp
+              delivery.
+            </p>
+
+            <div class="policy-callout policy-callout-important mt-5">
+              <p class="text-sm leading-relaxed">
+                <strong>Registering your interest is not a booking.</strong>
+                Submitting a Register Interest form does not reserve a place,
+                create a payment obligation or guarantee that a camp or
+                particular place will be available.
               </p>
             </div>
-            <ul class="list-disc pl-5 space-y-1">
+          </section>
+
+          <!-- About -->
+          <section id="about" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              01
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">About Us</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Flag Frenzy Football Camp is operated by
+              <strong>Flag Frenzy Football Ltd</strong>, a company registered in
+              England &amp; Wales.
+            </p>
+
+            <div
+              class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5"
+            >
+              <p><strong>Company:</strong> Flag Frenzy Football Ltd</p>
+
+              <p class="mt-2"><strong>Company number:</strong> 16566783</p>
+
+              <p class="mt-2">
+                <strong>Registered office:</strong>
+                128 City Road, London, EC1V 2NX
+              </p>
+
+              <p class="mt-2">
+                <strong>Email:</strong>
+                <a href="mailto:info@flagfrenzyfootball.co.uk">
+                  info@flagfrenzyfootball.co.uk
+                </a>
+              </p>
+
+              <p class="mt-2">
+                <strong>Phone:</strong>
+                <a href="tel:+447481029204">07481 029204</a>
+              </p>
+            </div>
+          </section>
+
+          <!-- Eligibility -->
+          <section id="eligibility" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              02
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Eligibility</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Flag Frenzy Football Camp is intended for children within the age
+              range stated for the relevant camp.
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
               <li>
-                Payment is taken at registration via secure checkout (e.g.,
-                Stripe/PayPal).
+                Our standard camp age range is
+                <strong>7–15 years old</strong>, unless a particular camp is
+                advertised differently.
               </li>
+
               <li>
-                Your child’s place is confirmed only once payment is
-                successfully completed and you receive a confirmation email.
+                A booking for a child must be made by a parent, guardian or
+                other adult who has authority to make the booking and provide
+                the necessary information about the child.
               </li>
+
               <li>
-                Discounts cannot be combined beyond what is automatically
-                offered at checkout unless expressly stated.
+                Children must meet any age or other eligibility requirements
+                stated for the particular camp or activity booked.
               </li>
+
               <li>
-                If a discount code is required (e.g., sibling), it must be
-                applied at checkout—codes cannot be retro-applied after
-                purchase.
-              </li>
-              <li>
-                We reserve the right to verify eligibility for any discount and
-                to refuse or cancel orders if misuse is detected.
+                Participation may also depend on whether we can safely and
+                reasonably meet any relevant medical, support or additional
+                needs.
               </li>
             </ul>
-          </div>
-        </section>
-        <hr class="my-6" />
+          </section>
 
-        <section id="refunds" class="space-y-4">
-          <h2 class="text-xl font-bold">4. Refunds &amp; Cancellations</h2>
-          <p>
-            Our refunds and cancellations are governed by our
-            <a
-              data-policy-link="refunds"
-              href="/camp/policies/refund-cancellations.html"
-              class="underline"
-              >Refunds &amp; Cancellations Policy</a
-            >. Where these Terms and that policy differ, the policy will apply
-            to refund amounts and timelines.
-          </p>
-        </section>
-        <hr class="my-6" />
+          <!-- Register Interest -->
+          <section id="interest" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              03
+            </p>
 
-        <section id="safety" class="space-y-4">
-          <h2 class="text-xl font-bold">5. Safety &amp; Behaviour</h2>
-          <ul class="list-disc pl-5 space-y-1 text-neutral-700">
-            <li>
-              All staff/volunteers involved with camps are DBS-checked and
-              follow safeguarding procedures.
-            </li>
-            <li>
-              Participants must follow staff instructions and behave
-              respectfully towards others and equipment.
-            </li>
-            <li>
-              Serious or persistent unsafe behaviour (including bullying or
-              violence) may result in removal without refund.
-            </li>
-            <li>
-              Our safeguarding and H&amp;S approaches are outlined in the
-              <a
-                data-policy-link="safeguarding"
-                href="/camp/policies/safeguarding.html"
-                class="underline"
-                >Safeguarding Policy</a
-              >
-              and
-              <a
-                data-policy-link="health-safety"
-                href="/camp/policies/health-and-safety.html"
-                class="underline"
-                >Health &amp; Safety Policy</a
+            <h2 class="mt-2 text-2xl font-bold">Register Your Interest</h2>
+
+            <p class="mt-4 leading-relaxed">
+              We may use a Register Interest form before registration or
+              bookings for a particular camp are opened.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Registering interest allows you to tell us that you may be
+              interested in a future camp and enables us to contact you with
+              relevant information.
+            </p>
+
+            <div class="policy-callout mt-5">
+              <p class="text-sm leading-relaxed">
+                <strong>A Register Interest submission is non-binding.</strong>
+                It is not a camp registration, booking, reservation or payment,
+                and it does not guarantee priority or a place when bookings
+                open.
+              </p>
+            </div>
+
+            <p class="mt-4 leading-relaxed">
+              A separate registration and booking process must be completed when
+              places are made available.
+            </p>
+          </section>
+
+          <!-- Booking -->
+          <section id="booking" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              04
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Registration &amp; Booking</h2>
+
+            <p class="mt-4 leading-relaxed">
+              When bookings are open, the parent or guardian must complete the
+              required registration process and provide the information
+              requested for the child.
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>
+                Places are subject to availability and may be limited for
+                staffing, safety or operational reasons.
+              </li>
+
+              <li>
+                Completing a registration form alone does not necessarily mean
+                that a place has been confirmed.
+              </li>
+
+              <li>
+                Unless we expressly state otherwise, a booking is confirmed once
+                the required payment has been successfully received and we have
+                issued confirmation of the booking.
+              </li>
+
+              <li>
+                If capacity is reached, we may operate a waiting list or invite
+                families to consider another available date or option.
+              </li>
+            </ul>
+
+            <p class="mt-4 leading-relaxed">
+              Parents and guardians should check the booking confirmation and
+              contact us promptly if any important information appears to be
+              incorrect.
+            </p>
+          </section>
+
+          <!-- Payment -->
+          <section id="payment" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              05
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Payment</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Camp prices, available booking options, discounts and any
+              applicable promotional offers will be displayed or communicated as
+              part of the relevant camp registration and booking process.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              We do not use this Terms &amp; Conditions page to permanently set
+              camp prices because prices and offers may differ between camps.
+              The price shown when you make the relevant booking will apply to
+              that booking, subject to any correction of an obvious error before
+              the booking is accepted.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Online payments are processed securely through
+              <strong>Stripe</strong>. Flag Frenzy Football Ltd does not need to
+              receive or store your full payment card details in order for
+              Stripe to process the transaction.
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>
+                Payment must be completed in accordance with the payment
+                instructions provided during registration.
+              </li>
+
+              <li>
+                Where a discount or promotional offer has conditions attached,
+                those conditions must be met for the discount to apply.
+              </li>
+
+              <li>
+                We may correct an obvious pricing or discount error before
+                accepting a booking and will contact you where this affects your
+                proposed booking.
+              </li>
+            </ul>
+          </section>
+
+          <!-- Information -->
+          <section id="information" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              06
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Information You Provide</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Parents and guardians are responsible for providing information
+              that is accurate and sufficiently complete for us to administer
+              the booking and support the child safely.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              The registration form may collect information including contact
+              details, emergency contacts and relevant information about the
+              child's medical conditions, allergies, medication, disabilities,
+              SEND or additional support needs.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Parents and guardians should tell us promptly if relevant
+              information changes before or during the camp period.
+            </p>
+
+            <div class="policy-callout policy-callout-important mt-5">
+              <p class="text-sm leading-relaxed">
+                <strong>Medical and support information matters.</strong>
+                Information that could affect a child's health, safety,
+                wellbeing or participation should be disclosed during
+                registration so that appropriate arrangements can be considered.
+              </p>
+            </div>
+          </section>
+
+          <!-- Refunds -->
+          <section id="refunds" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              07
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Refunds, Cancellations &amp; Booking Changes
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Cancellations, refunds, credits and requested changes to bookings
+              are handled in accordance with our
+              <a href="/camp/policies/refund-cancellations.html">
+                Refunds &amp; Cancellations Policy </a
               >.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+            </p>
 
-        <section id="medical" class="space-y-4">
-          <h2 class="text-xl font-bold">6. Medical &amp; Emergency</h2>
-          <ul class="list-disc pl-5 space-y-1 text-neutral-700">
-            <li>
-              Parents/guardians must provide accurate medical, allergy, and
-              emergency contact details during registration and keep them up to
-              date.
-            </li>
-            <li>
-              We cannot accept responsibility for undeclared conditions or
-              needs.
-            </li>
-            <li>
-              In an emergency we may administer basic first aid and/or contact
-              emergency services and the parent/guardian.
-            </li>
-            <li>
+            <p class="mt-3 leading-relaxed">
+              That policy explains the applicable cancellation windows,
+              administration fee, credits, transfers, booking changes,
+              medical-related cancellations and what happens if Flag Frenzy
+              Football Camp cancels or changes a camp.
+            </p>
+
+            <div class="policy-callout mt-5">
+              <p class="text-sm leading-relaxed">
+                Because camp bookings relate to leisure activities provided on
+                specified dates or during a specified period, the usual
+                statutory 14-day cancellation right that applies to many
+                distance contracts may not apply. Our own cancellation
+                arrangements are therefore set out clearly in the Refunds &amp;
+                Cancellations Policy.
+              </p>
+            </div>
+          </section>
+
+          <!-- Camp changes -->
+          <section id="changes" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              08
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Changes to Camp Arrangements
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Camp arrangements may occasionally need to change for operational,
+              safety or circumstances outside our reasonable control.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              This could include reasonable changes to activity schedules,
+              coaches, staffing arrangements, facilities or how particular
+              activities are delivered.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              If a significant change affects a booked service, we will
+              communicate with affected parents or guardians and consider the
+              appropriate options in the circumstances, including any rights
+              available under our Refunds &amp; Cancellations Policy and
+              applicable consumer law.
+            </p>
+          </section>
+
+          <!-- Behaviour -->
+          <section id="behaviour" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              09
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Behaviour &amp; Code of Conduct
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Children are expected to follow reasonable instructions, treat
+              other children and adults respectfully, use equipment
+              appropriately and behave in a way that supports a safe and
+              positive camp environment.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Bullying, discrimination, harassment, violence, serious
+              aggression, deliberate unsafe behaviour or other serious or
+              persistent misconduct may require intervention.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Our response will depend on the circumstances and may include
+              discussion with the child, temporary removal from an activity,
+              contacting a parent or guardian, or requiring the child to leave
+              camp in serious or repeated cases.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Where removal from camp occurs, any refund or credit will be
+              considered in accordance with our
+              <a href="/camp/policies/refund-cancellations.html">
+                Refunds &amp; Cancellations Policy </a
+              >.
+            </p>
+
+            <p class="mt-4 text-sm text-slate-600">
               See our
+              <a href="/camp/policies/conduct.html">
+                Code of Conduct &amp; Behaviour Policy
+              </a>
+              for full details.
+            </p>
+          </section>
+
+          <!-- Medical -->
+          <section id="medical" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              10
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Medical, Health &amp; Inclusion
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Parents and guardians should provide relevant medical, allergy,
+              medication, disability, SEND and additional support information
+              through the registration form.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              We may contact you before camp where further information is
+              required to understand a child's needs or determine whether
+              appropriate arrangements can be made.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Standard camp attendance does not automatically include dedicated
+              one-to-one support. Where a child has substantial or individual
+              support needs, these should be discussed with us before
+              attendance.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              If a child becomes ill or injured during camp, we may provide or
+              arrange an appropriate response, which may include first aid,
+              stopping or adapting activity, contacting the parent or guardian,
+              requesting collection or contacting emergency services.
+            </p>
+
+            <p class="mt-4 text-sm text-slate-600">
+              Full details are available in our
+              <a href="/camp/policies/medical-consent.html">
+                Medical &amp; Inclusion Policy </a
+              >.
+            </p>
+          </section>
+
+          <!-- Participation -->
+          <section id="participation" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              11
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Participation, Sport &amp; Safety
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Flag football and camp activities involve physical movement and,
+              like other sports and physical activities, cannot be made
+              completely free from the possibility of accidents or injury.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Flag Frenzy Football Camp will take reasonable steps to plan and
+              deliver activities safely and will expect children to follow
+              safety instructions and camp rules.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Activities may be adapted, paused or stopped where this is
+              considered appropriate for safety, weather, participant welfare,
+              facilities or other operational reasons.
+            </p>
+
+            <p class="mt-4 text-sm text-slate-600">
+              Please also read our
+              <a href="/camp/policies/health-and-safety.html">
+                Health &amp; Safety Policy
+              </a>
+              and
+              <a href="/camp/policies/safeguarding.html">
+                Safeguarding Policy </a
+              >.
+            </p>
+          </section>
+
+          <!-- Property -->
+          <section id="property" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              12
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Personal Belongings &amp; Property
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Children should avoid bringing unnecessary valuables to camp.
+              Parents and guardians are encouraged to clearly label belongings
+              where appropriate.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              We will take reasonable care in the operation of the camp, but
+              cannot guarantee that personal items brought to camp will not be
+              lost, misplaced or damaged.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Nothing in these Terms excludes responsibility where loss or
+              damage results from something for which Flag Frenzy Football Ltd
+              is legally responsible.
+            </p>
+          </section>
+
+          <!-- Liability -->
+          <section id="liability" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              13
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Our Responsibility</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Flag Frenzy Football Ltd will provide camp services with
+              reasonable care and skill and will take reasonable steps to
+              support the safety and welfare of children attending camp.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Nothing in these Terms &amp; Conditions excludes or restricts
+              liability where doing so would be unlawful, including liability
+              for death or personal injury caused by negligence.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Nothing in these Terms is intended to remove or reduce any
+              statutory rights or remedies that a consumer is entitled to under
+              applicable law.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              We are not responsible for loss or damage merely because an event
+              occurred during camp. Responsibility will depend on the
+              circumstances, including whether Flag Frenzy Football Ltd failed
+              to exercise the care or meet the obligations legally required of
+              it.
+            </p>
+          </section>
+
+          <!-- Photography -->
+          <section id="media" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              14
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Photography &amp; Media</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Photos or videos may be taken during camp for appropriate camp,
+              promotional or communication purposes where the necessary
+              permission has been obtained.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Parents and guardians can indicate the relevant photography or
+              media choice through the registration process. A child's ability
+              to attend camp does not depend on agreeing to promotional
+              photography.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Where we rely on consent for identifiable promotional images,
+              consent may be withdrawn for future use by contacting us. This may
+              not always allow us to recall material that has already been
+              lawfully published or distributed before withdrawal.
+            </p>
+
+            <p class="mt-4 text-sm text-slate-600">
+              Further information about how personal information is handled is
+              available in our
+              <a href="/camp/policies/privacy.html">Privacy Policy</a>.
+            </p>
+          </section>
+
+          <!-- Privacy -->
+          <section id="privacy" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              15
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Privacy &amp; Data Protection
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Flag Frenzy Football Ltd processes personal information in
+              connection with enquiries, Register Interest submissions,
+              registration, bookings, payments, camp administration, safety and
+              communication.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              This can include information relating to a child, including
+              relevant medical and health information provided through the
+              registration form.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Payment transactions are processed through Stripe. Stripe
+              processes payment information in accordance with its own
+              applicable privacy and security arrangements.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Our
+              <a href="/camp/policies/privacy.html">Privacy Policy</a>
+              explains in more detail what information we collect, why we use
+              it, how it may be shared and protected, retention and data
+              protection rights.
+            </p>
+          </section>
+
+          <!-- Website -->
+          <section id="website" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              16
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Website Use</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Information on the Flag Frenzy Football and Flag Frenzy Football
+              Camp websites is provided to help users understand our services,
+              activities, policies and opportunities.
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>
+                Users must not attempt to gain unauthorised access to the
+                website, systems, forms or data.
+              </li>
+
+              <li>
+                Users must not knowingly introduce malicious software or use the
+                website in a way intended to disrupt or damage its operation.
+              </li>
+
+              <li>
+                Website information may be updated as camp arrangements,
+                services or policies change.
+              </li>
+            </ul>
+
+            <p class="mt-4 leading-relaxed">
+              Where information relates to a particular booking, the information
+              communicated or confirmed for that booking should also be checked
+              carefully.
+            </p>
+          </section>
+
+          <!-- IP -->
+          <section id="ip" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              17
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Intellectual Property</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Flag Frenzy Football Ltd's branding, logos, original website
+              content, written materials and other original materials are
+              protected by applicable intellectual property rights.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Content may be viewed and used for normal personal purposes
+              connected with our services, but it must not be copied,
+              republished, commercially exploited or presented as someone else's
+              material without appropriate permission, unless the law permits
+              that use.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Third-party names, logos, images or other material remain the
+              property of their respective owners where applicable.
+            </p>
+          </section>
+
+          <!-- Complaints -->
+          <section id="complaints" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              18
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Concerns &amp; Complaints</h2>
+
+            <p class="mt-4 leading-relaxed">
+              If you have a concern about a booking, camp service or another
+              matter connected with Flag Frenzy Football Camp, please contact us
+              with enough information for us to understand and consider the
+              issue.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              We aim to deal with concerns fairly and as promptly as reasonably
+              possible. More complex matters may require additional time to
+              investigate or obtain relevant information.
+            </p>
+
+            <div
+              id="contact"
+              class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5"
+            >
+              <p>
+                <strong>Email:</strong>
+                <a href="mailto:info@flagfrenzyfootball.co.uk">
+                  info@flagfrenzyfootball.co.uk
+                </a>
+              </p>
+
+              <p class="mt-2">
+                <strong>Phone:</strong>
+                <a href="tel:+447481029204">07481 029204</a>
+              </p>
+            </div>
+          </section>
+
+          <!-- Governing Law -->
+          <section id="law" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              19
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Governing Law</h2>
+
+            <p class="mt-4 leading-relaxed">
+              These Terms &amp; Conditions are governed by the laws of England
+              and Wales.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Nothing in this section is intended to remove any rights a
+              consumer may have regarding where a dispute can lawfully be
+              brought.
+            </p>
+          </section>
+
+          <!-- Updates -->
+          <section id="updates" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              20
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Changes to These Terms</h2>
+
+            <p class="mt-4 leading-relaxed">
+              These Terms &amp; Conditions may be updated where our services,
+              booking arrangements, policies, guidance or legal requirements
+              change.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              The version that applies to a confirmed booking will normally be
+              the version in effect when that booking was made, except where a
+              later change must apply for legal, regulatory, safeguarding or
+              safety reasons.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Significant changes that materially affect an existing booking
+              will be communicated where appropriate.
+            </p>
+          </section>
+
+          <!-- Review -->
+          <section id="review" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              21
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Policy Review</h2>
+
+            <p class="mt-4 leading-relaxed">
+              These Terms &amp; Conditions were last reviewed in
+              <strong>September 2026</strong> and will be reviewed at least
+              annually, or sooner where changes to camp arrangements, consumer
+              requirements, legal obligations or experience indicate that an
+              earlier review is appropriate.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              <strong>Policy owner:</strong>
+              Camp Director, Flag Frenzy Football Camp.
+            </p>
+          </section>
+
+          <!-- Related -->
+          <section id="related" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Related Camp Policies
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Read Alongside These Terms</h2>
+
+            <p class="mt-4 leading-relaxed">
+              These Terms &amp; Conditions should be read alongside the relevant
+              Flag Frenzy Football Camp policies and information provided as
+              part of your booking.
+            </p>
+
+            <div class="mt-5 grid sm:grid-cols-2 gap-3">
               <a
-                data-policy-link="medical"
-                href="/camp/policies/medical-consent.html"
-                class="underline"
-                >Medical &amp; Inclusion Policies</a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/parent-handbook.html"
               >
-              for more detail.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+                Parent Handbook
+              </a>
 
-        <section id="liability" class="space-y-4">
-          <h2 class="text-xl font-bold">7. Liability</h2>
-          <ul class="list-disc pl-5 space-y-1 text-neutral-700">
-            <li>
-              We hold Public Liability Insurance appropriate for youth sports
-              activities.
-            </li>
-            <li>
-              Personal belongings brought to camp are at the owner’s risk.
-            </li>
-            <li>
-              Except for death or personal injury caused by our negligence, our
-              total liability is limited to the fees you paid for the affected
-              services.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/safeguarding.html"
+              >
+                Camp Safeguarding
+              </a>
 
-        <section id="media" class="space-y-4">
-          <h2 class="text-xl font-bold">8. Photography &amp; Media</h2>
-          <p>
-            We may take photos/videos during camp for promotional purposes. You
-            can opt out on the registration form and/or by contacting us at any
-            time. We will respect your choice.
-          </p>
-        </section>
-        <hr class="my-6" />
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/medical-consent.html"
+              >
+                Medical &amp; Inclusion
+              </a>
 
-        <section id="website-use" class="space-y-4">
-          <h2 class="text-xl font-bold">
-            9. Website Use (Main Site &amp; Camp Site)
-          </h2>
-          <ul class="list-disc pl-5 space-y-1 text-neutral-700">
-            <li>
-              Information on our websites is provided in good faith; we aim for
-              accuracy but cannot guarantee completeness or real-time updates.
-            </li>
-            <li>
-              You must not misuse our sites (e.g., attempt unauthorised access,
-              introduce malware, scrape content).
-            </li>
-            <li>
-              We may update, suspend, or remove content or features at any time.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/refund-cancellations.html"
+              >
+                Refunds &amp; Cancellations
+              </a>
 
-        <section id="ip" class="space-y-4">
-          <h2 class="text-xl font-bold">10. Intellectual Property</h2>
-          <p>
-            Logos, branding, copy, images, and other materials are the property
-            of Flag Frenzy Football Ltd (or our licensors). You may not copy,
-            distribute, or reuse them without written permission.
-          </p>
-        </section>
-        <hr class="my-6" />
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/conduct.html"
+              >
+                Code of Conduct / Behaviour
+              </a>
 
-        <section id="privacy" class="space-y-4">
-          <h2 class="text-xl font-bold">11. Privacy &amp; Data Protection</h2>
-          <p>
-            We process personal data in line with our
-            <a
-              data-policy-link="privacy"
-              href="/camp/policies/privacy.html"
-              class="underline"
-              >Privacy Policy</a
-            >. By registering, you consent to us using your data to administer
-            bookings, communicate important updates, and ensure safety.
-          </p>
-        </section>
-        <hr class="my-6" />
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/privacy.html"
+              >
+                Privacy
+              </a>
 
-        <section id="complaints" class="space-y-4">
-          <h2 class="text-xl font-bold">12. Complaints</h2>
-          <p>
-            If you have a concern or complaint, please email
-            <a href="mailto:info@flagfrenzyfootball.co.uk" class="underline"
-              >info@flagfrenzyfootball.co.uk</a
-            >. We aim to acknowledge within 5 working days and respond as
-            quickly as possible.
-          </p>
-        </section>
-        <hr class="my-6" />
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/health-and-safety.html"
+              >
+                Health &amp; Safety
+              </a>
 
-        <section id="changes" class="space-y-4">
-          <h2 class="text-xl font-bold">13. Changes to these Terms</h2>
-          <p>
-            We may update these Terms occasionally. The effective date will be
-            shown at the top of this page. Material changes will be highlighted
-            for a reasonable period.
-          </p>
-        </section>
-        <hr class="my-6" />
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies.html"
+              >
+                All Camp Policies
+              </a>
+            </div>
+          </section>
 
-        <section id="law" class="space-y-4">
-          <h2 class="text-xl font-bold">14. Governing Law</h2>
-          <p>
-            These Terms are governed by the laws of England &amp; Wales. The
-            courts of England &amp; Wales have exclusive jurisdiction over any
-            dispute.
-          </p>
-        </section>
-      </section>
+          <!-- Other policies -->
+          <section
+            class="no-print rounded-2xl border border-[var(--camp-border)] bg-white p-6 sm:p-8"
+          >
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Camp Policies
+            </p>
 
-      <p class="text-xs text-gray-500 mt-6">
-        © <span id="year"></span> Flag Frenzy Football Ltd. All rights reserved.
-      </p>
+            <h2 class="mt-2 text-xl font-bold" style="color: var(--camp-ink)">
+              View another policy
+            </h2>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <a
+                href="/camp/policies/parent-handbook.html"
+                class="btn btn-outline"
+              >
+                Parent Handbook
+              </a>
+
+              <a
+                href="/camp/policies/safeguarding.html"
+                class="btn btn-outline"
+              >
+                Safeguarding
+              </a>
+
+              <a
+                href="/camp/policies/medical-consent.html"
+                class="btn btn-outline"
+              >
+                Medical
+              </a>
+
+              <a
+                href="/camp/policies/refund-cancellations.html"
+                class="btn btn-outline"
+              >
+                Refunds
+              </a>
+
+              <a href="/camp/policies/conduct.html" class="btn btn-outline">
+                Behaviour
+              </a>
+
+              <a href="/camp/policies/privacy.html" class="btn btn-outline">
+                Privacy
+              </a>
+
+              <a
+                href="/camp/policies/health-and-safety.html"
+                class="btn btn-outline"
+              >
+                Health &amp; Safety
+              </a>
+            </div>
+
+            <div class="mt-6">
+              <a
+                href="/camp/policies.html"
+                class="font-semibold text-[var(--camp-red)] hover:underline"
+              >
+                ← Back to all Camp Policies
+              </a>
+            </div>
+          </section>
+        </article>
+      </div>
     </main>
 
     <!-- =========================
-     COMPACT FOOTER
-========================== -->
+         FOOTER
+    ========================== -->
+
     <footer class="footer bg-[var(--camp-red)] text-white">
-      <!-- Main Footer -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7">
         <div class="grid gap-6 md:grid-cols-[1fr_1.4fr_1fr]">
-          <!-- Brand -->
           <div>
             <h3 class="font-semibold text-lg text-white">
               Flag Frenzy Football Camp
@@ -602,12 +1633,10 @@
             </p>
           </div>
 
-          <!-- Quick Links -->
           <div>
             <h4 class="font-semibold text-white">Quick Links</h4>
 
             <div class="mt-2 flex gap-8 text-sm">
-              <!-- Column 1 -->
               <ul class="space-y-1.5">
                 <li>
                   <a
@@ -646,7 +1675,6 @@
                 </li>
               </ul>
 
-              <!-- Column 2 -->
               <ul class="space-y-1.5">
                 <li>
                   <a
@@ -678,7 +1706,6 @@
             </div>
           </div>
 
-          <!-- Contact -->
           <div>
             <h4 class="font-semibold text-white">Contact</h4>
 
@@ -707,7 +1734,6 @@
         </div>
       </div>
 
-      <!-- Bottom Legal Bar -->
       <div class="border-t border-white/20">
         <div
           class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-white/70"
@@ -715,15 +1741,13 @@
           <div
             class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
           >
-            <!-- Company Information -->
             <div>
               <div>
-                &copy;
+                ©
                 <span id="year"></span>
                 Flag Frenzy Football Ltd. All rights reserved.
               </div>
 
-              <!-- Desktop Legal Details -->
               <div class="hidden md:block mt-1 text-white/60">
                 Company No. 16566783
                 <span class="mx-1">•</span>
@@ -732,7 +1756,6 @@
                 Registered Office: 128 City Road, London, EC1V 2NX
               </div>
 
-              <!-- Mobile Legal Details -->
               <div class="md:hidden mt-1 leading-relaxed text-white/60">
                 Company No. 16566783 • Registered in England &amp; Wales
                 <br />
@@ -740,55 +1763,65 @@
               </div>
             </div>
 
-            <!-- Community Text -->
             <div class="md:text-right">Built for the community.</div>
           </div>
         </div>
       </div>
     </footer>
 
-    <button
-      onclick="window.print()"
-      class="no-print md:hidden fixed bottom-4 right-4 rounded-full border bg-white p-3 shadow-lg hover:shadow-xl transition"
-      aria-label="Print this policy"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="w-5 h-5"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        aria-hidden="true"
-      >
-        <path
-          d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
-        />
-      </svg>
-      <span class="sr-only">Print this policy</span>
-    </button>
+    <!-- =========================
+         FLOATING CONTROLS
+    ========================== -->
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-      (function () {
-        const node = document.getElementById("last-updated");
-        if (node) {
-          const d = new Date();
-          node.textContent = d.toLocaleDateString("en-GB", {
-            day: "2-digit",
-            month: "long",
-            year: "numeric",
-          });
-        }
-        const btn = document.getElementById("menuBtn");
-        const mob = document.getElementById("mobileNav");
-        if (btn && mob) {
-          btn.addEventListener("click", () => {
-            const isHidden = mob.classList.contains("hidden");
-            mob.classList.toggle("hidden", !isHidden);
-            btn.setAttribute("aria-expanded", String(isHidden));
-          });
-        }
-      })();
-    </script>
+    <div class="floating-controls no-print">
+      <a
+        href="#top"
+        class="floating-control"
+        aria-label="Back to top"
+        title="Back to top"
+      >
+        ↑
+      </a>
+
+      <button
+        type="button"
+        onclick="window.print()"
+        class="floating-control"
+        aria-label="Print Terms and Conditions"
+        title="Print Terms and Conditions"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Shared Camp JS -->
     <script src="/camp/js/main.js"></script>
+
+    <!-- Mobile Policies Dropdown -->
+    <script>
+      const mobilePoliciesBtn = document.getElementById("mobilePoliciesBtn");
+
+      const mobilePoliciesMenu = document.getElementById("mobilePoliciesMenu");
+
+      if (mobilePoliciesBtn && mobilePoliciesMenu) {
+        mobilePoliciesBtn.addEventListener("click", () => {
+          const isOpen = mobilePoliciesMenu.classList.toggle("is-open");
+
+          mobilePoliciesBtn.setAttribute("aria-expanded", String(isOpen));
+
+          mobilePoliciesBtn.textContent = isOpen ? "−" : "+";
+        });
+      }
+    </script>
   </body>
 </html>
