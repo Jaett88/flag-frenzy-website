@@ -3,65 +3,230 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Health & Safety — Flag Frenzy Football Camp</title>
+
+    <title>Health &amp; Safety Policy | Flag Frenzy Football Camp</title>
+
     <meta
       name="description"
-      content="Health & Safety policy for Flag Frenzy Football Camp, including responsibilities, venue safety, first aid, supervision and review."
+      content="Health and Safety Policy for Flag Frenzy Football Camp, covering risk assessment, facilities, equipment, supervision, first aid, emergencies, weather, accidents and safe camp operations."
     />
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/camp/css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="/camp/css/style.css" />
+
     <style>
+      :root {
+        --accent: var(--camp-red, #a73926);
+      }
+
       html {
         scroll-behavior: smooth;
       }
-      body {
-        font-family: "Poppins", sans-serif;
+
+      .policy-section {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        scroll-margin-top: 1.5rem;
       }
-      /* Fallbacks in case CSS variables aren't defined in /camp/css/style.css */
-      :root {
-        --camp-red: #c7352d;
-        --camp-border: rgba(20, 20, 20, 0.12);
+
+      @media (min-width: 640px) {
+        .policy-section {
+          padding: 2rem;
+        }
       }
+
+      .policy-section h2,
+      .policy-section h3 {
+        color: var(--camp-ink);
+      }
+
+      .policy-section a {
+        color: var(--camp-red);
+        font-weight: 600;
+      }
+
+      .policy-section a:hover {
+        text-decoration: underline;
+      }
+
+      .toc-link {
+        display: block;
+        padding: 0.3rem 0;
+        transition: color 0.15s ease;
+      }
+
+      .toc-link:hover {
+        color: var(--accent);
+      }
+
+      .policy-callout {
+        border: 1px solid #e2e8f0;
+        background: #f8fafc;
+        border-radius: 0.75rem;
+        padding: 1rem;
+      }
+
+      .policy-callout-important {
+        border-color: rgba(167, 57, 38, 0.2);
+        background: rgba(167, 57, 38, 0.04);
+      }
+
+      /* Desktop Policies dropdown */
+      .policies-dropdown {
+        position: relative;
+      }
+
+      .policies-dropdown-menu {
+        position: absolute;
+        top: calc(100% + 0.75rem);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 18rem;
+        padding: 0.5rem;
+        background: #ffffff;
+        border: 1px solid var(--camp-border);
+        border-radius: 0.85rem;
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.18s ease,
+          visibility 0.18s ease;
+        z-index: 50;
+      }
+
+      .policies-dropdown:hover .policies-dropdown-menu,
+      .policies-dropdown:focus-within .policies-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .policies-dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -0.75rem;
+        left: 0;
+        right: 0;
+        height: 0.75rem;
+      }
+
+      .policy-menu-link {
+        display: block;
+        padding: 0.65rem 0.8rem;
+        border-radius: 0.55rem;
+        font-size: 0.82rem;
+        color: var(--camp-ink);
+        transition:
+          background-color 0.15s ease,
+          color 0.15s ease;
+      }
+
+      .policy-menu-link:hover {
+        background: rgba(167, 57, 38, 0.06);
+        color: var(--camp-red);
+      }
+
+      /* Mobile Policies submenu */
+      #mobilePoliciesMenu {
+        display: none;
+      }
+
+      #mobilePoliciesMenu.is-open {
+        display: block;
+      }
+
+      .mobile-policy-link {
+        display: block;
+        padding: 0.45rem 0;
+        font-size: 0.875rem;
+        color: #4b5563;
+      }
+
+      .mobile-policy-link:hover {
+        color: var(--camp-red);
+      }
+
+      /* Floating controls */
+      .floating-controls {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 40;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .floating-control {
+        width: 2.75rem;
+        height: 2.75rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .floating-control:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+      }
+
       @media print {
         .no-print,
         header,
         footer,
-        #mobileNav {
+        .floating-controls {
           display: none !important;
         }
+
         body {
-          color: #000;
-          background: #fff;
+          background: #ffffff !important;
+          color: #000000 !important;
         }
-        a {
-          text-decoration: none;
-          color: #000;
-        }
-        .card {
-          box-shadow: none !important;
-          border: 1px solid #ddd;
-        }
+
         main {
           max-width: 100% !important;
           padding: 0 !important;
         }
+
+        .policy-section {
+          box-shadow: none !important;
+          border: 1px solid #dddddd;
+          break-inside: avoid;
+        }
+
+        a {
+          color: #000000 !important;
+          text-decoration: none !important;
+        }
       }
     </style>
   </head>
-  <body class="bg-[#F6EADB] text-gray-800">
-    <!-- Skip link -->
-    <a
-      href="#main-content"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white border rounded px-3 py-2 shadow"
-      >Skip to content</a
-    >
 
-    <!-- Header -->
-    <header class="bg-white shadow-md">
+  <body class="bg-slate-50 text-slate-900 antialiased" id="top">
+    <!-- =========================
+       HEADER
+  ========================== -->
+    <header class="bg-white shadow-md no-print">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="h-16 flex items-center justify-between">
           <a href="/camp/index.html" class="flex items-center gap-3">
@@ -70,12 +235,15 @@
               alt="Flag Frenzy Football Camp logo"
               class="h-10 w-10"
             />
-            <span class="text-xl font-extrabold" style="color: var(--camp-red)"
-              >Flag Frenzy Football Camp</span
-            >
+
+            <span class="text-xl font-extrabold" style="color: var(--camp-red)">
+              Flag Frenzy Football Camp
+            </span>
           </a>
+
           <button
             id="menuBtn"
+            type="button"
             class="md:hidden p-2 rounded-lg border border-gray-200"
             aria-label="Toggle menu"
             aria-controls="mobileNav"
@@ -83,297 +251,1281 @@
           >
             ☰
           </button>
+
           <nav
             id="nav"
             class="hidden md:flex items-center gap-6 text-sm font-medium"
           >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
-              >Home</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
-              >About</a
-            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
             <a
               class="hover:text-[var(--camp-red)]"
               href="/camp/register-interest.html"
             >
               Register Interest
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
-              >Policies</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
-              >FAQs</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
-              >Contact</a
-            >
-            <!-- Inline Tailwind button for consistency with other pages -->
-            <a
-              class="inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
-              href="/index.html"
-              >Main Site</a
-            >
+
+            <div class="policies-dropdown">
+              <a
+                class="font-semibold text-[var(--camp-red)] inline-flex items-center gap-1"
+                href="/camp/policies.html"
+                aria-current="page"
+              >
+                Policies
+                <span class="text-[10px]" aria-hidden="true">▼</span>
+              </a>
+
+              <div class="policies-dropdown-menu">
+                <a
+                  class="policy-menu-link font-semibold"
+                  href="/camp/policies.html"
+                >
+                  All Camp Policies
+                </a>
+
+                <div class="my-1 border-t border-[var(--camp-border)]"></div>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/parent-handbook.html"
+                >
+                  Parent Handbook
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/safeguarding.html"
+                >
+                  Camp Safeguarding
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/medical-consent.html"
+                >
+                  Medical &amp; Inclusion
+                </a>
+
+                <a
+                  class="policy-menu-link"
+                  href="/camp/policies/refund-cancellations.html"
+                >
+                  Refunds &amp; Cancellations
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/conduct.html">
+                  Code of Conduct / Behaviour
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/privacy.html">
+                  Privacy
+                </a>
+
+                <a class="policy-menu-link" href="/camp/policies/terms.html">
+                  Terms &amp; Conditions
+                </a>
+
+                <a
+                  class="policy-menu-link font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies/health-and-safety.html"
+                >
+                  Health &amp; Safety
+                </a>
+              </div>
+            </div>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline" href="/index.html"> Main Site </a>
           </nav>
         </div>
-        <!-- Mobile Nav -->
-        <nav
-          id="mobileNav"
-          class="hidden md:hidden border-t border-[var(--camp-border)] py-3"
-        >
+
+        <!-- Mobile Navigation -->
+        <nav id="mobileNav" class="md:hidden overflow-hidden">
           <div class="flex flex-col gap-3 font-medium">
-            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html"
-              >Home</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html"
-              >About</a
-            >
+            <a class="hover:text-[var(--camp-red)]" href="/camp/index.html">
+              Home
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/about.html">
+              About
+            </a>
+
             <a
               class="hover:text-[var(--camp-red)]"
               href="/camp/register-interest.html"
             >
               Register Interest
             </a>
-            <a class="hover:text-[var(--camp-red)]" href="/camp/policies.html"
-              >Policies</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html"
-              >FAQs</a
-            >
-            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html"
-              >Contact</a
-            >
-            <a
-              class="w-max inline-flex items-center justify-center rounded-2xl px-3 py-2 text-sm font-medium border border-neutral-200 hover:shadow transition bg-white"
-              href="/index.html"
-              >Main Site</a
-            >
+
+            <div>
+              <div class="flex items-center justify-between">
+                <a
+                  class="font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies.html"
+                  aria-current="page"
+                >
+                  Policies
+                </a>
+
+                <button
+                  id="mobilePoliciesBtn"
+                  type="button"
+                  class="px-3 py-1 text-[var(--camp-red)]"
+                  aria-label="Show policy links"
+                  aria-controls="mobilePoliciesMenu"
+                  aria-expanded="false"
+                >
+                  +
+                </button>
+              </div>
+
+              <div
+                id="mobilePoliciesMenu"
+                class="pl-4 mt-2 border-l-2 border-[var(--camp-border)]"
+              >
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/parent-handbook.html"
+                >
+                  Parent Handbook
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/safeguarding.html"
+                >
+                  Camp Safeguarding
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/medical-consent.html"
+                >
+                  Medical &amp; Inclusion
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/refund-cancellations.html"
+                >
+                  Refunds &amp; Cancellations
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/conduct.html"
+                >
+                  Code of Conduct / Behaviour
+                </a>
+
+                <a
+                  class="mobile-policy-link"
+                  href="/camp/policies/privacy.html"
+                >
+                  Privacy
+                </a>
+
+                <a class="mobile-policy-link" href="/camp/policies/terms.html">
+                  Terms &amp; Conditions
+                </a>
+
+                <a
+                  class="mobile-policy-link font-semibold text-[var(--camp-red)]"
+                  href="/camp/policies/health-and-safety.html"
+                >
+                  Health &amp; Safety
+                </a>
+              </div>
+            </div>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/faqs.html">
+              FAQs
+            </a>
+
+            <a class="hover:text-[var(--camp-red)]" href="/camp/contact.html">
+              Contact
+            </a>
+
+            <a class="btn btn-outline w-max" href="/index.html"> Main Site </a>
           </div>
         </nav>
       </div>
     </header>
 
-    <main id="main-content" class="max-w-4xl mx-auto px-4 py-8">
-      <div class="no-print flex items-center justify-between mb-6">
-        <h1 class="text-2xl sm:text-3xl font-extrabold">
-          Health & Safety Policy
-          <span class="text-gray-600 text-base font-semibold"
-            >(For Parents/Guardians)</span
-          >
-        </h1>
-        <button
-          onclick="window.print()"
-          class="hidden md:inline-flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm shadow-sm hover:shadow transition"
-          aria-label="Print this policy"
+    <!-- =========================
+       POLICY HERO
+  ========================== -->
+    <section class="hero-bg no-print">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12">
+        <a
+          href="/camp/policies.html"
+          class="inline-flex items-center text-sm font-semibold text-[var(--camp-red)] hover:underline"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-4 h-4"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
-            />
-          </svg>
-          Print
-        </button>
-      </div>
+          ← All Camp Policies
+        </a>
 
-      <section class="card bg-white rounded-2xl shadow p-6 sm:p-8">
-        <div class="mb-6">
-          <p class="text-sm text-gray-600">Flag Frenzy Football Camp</p>
-          <p class="text-sm text-gray-600">
-            Effective date: <span id="effective-date">31 August 2025</span>
+        <div class="mt-7">
+          <p
+            class="text-sm font-extrabold tracking-wide uppercase"
+            style="color: var(--camp-green)"
+          >
+            Camp Policies
           </p>
-          <p class="text-sm text-gray-600">Location: United Kingdom</p>
-          <p class="text-sm text-neutral-500">
-            Last updated: <span id="last-updated">15 September 2025</span>
+
+          <h1
+            class="mt-2 text-4xl md:text-5xl font-extrabold"
+            style="color: var(--camp-primary-900)"
+          >
+            Health &amp; Safety
+          </h1>
+
+          <p class="mt-4 text-lg text-gray-700 max-w-3xl">
+            How Flag Frenzy Football Camp plans, manages and reviews health and
+            safety arrangements to support a safe environment for children,
+            staff, volunteers and visitors.
           </p>
         </div>
 
-        <!-- Quick nav pills -->
-        <nav class="no-print grid sm:grid-cols-2 gap-3 mb-8 text-sm">
-          <a
-            href="#overview"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Overview</a
-          >
-          <a
-            href="#responsibilities"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Responsibilities</a
-          >
-          <a
-            href="#venue-equipment"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Venue & Equipment</a
-          >
-          <a
-            href="#emergencies-first-aid"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Emergencies & First Aid</a
-          >
-          <a
-            href="#child-supervision"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Child Supervision</a
-          >
-          <a
-            href="#review"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Review</a
-          >
-          <a
-            href="#related"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Related Policies</a
-          >
-          <a
-            href="#contact"
-            class="rounded-xl border bg-[#F6EADB] px-3 py-2 hover:shadow"
-            >Contact</a
-          >
-        </nav>
+        <div class="mt-8 grid sm:grid-cols-3 gap-3 text-sm">
+          <div class="rounded-xl border border-slate-200 bg-white/80 p-4">
+            <p class="text-slate-500">Applies to</p>
+            <p class="mt-1 font-semibold">Camp operations &amp; activities</p>
+          </div>
 
-        <section id="overview" class="space-y-4">
-          <h2 class="text-xl font-bold">Overview</h2>
-          <p>
-            Flag Frenzy Football Ltd is committed to providing a safe and
-            enjoyable environment for all participants, staff and visitors at
-            our camps. This Health & Safety Policy sets out how we manage safety
-            before and during camp.
-          </p>
-        </section>
-        <hr class="my-6" />
+          <div class="rounded-xl border border-slate-200 bg-white/80 p-4">
+            <p class="text-slate-500">Last reviewed</p>
+            <p class="mt-1 font-semibold">September 2026</p>
+          </div>
 
-        <section id="responsibilities" class="space-y-2">
-          <h2 class="text-xl font-bold">1. Responsibilities</h2>
-          <ul class="mt-3 list-disc pl-5 text-neutral-700 space-y-2">
-            <li>
-              The Camp Director holds overall responsibility for health and
-              safety.
-            </li>
-            <li>
-              All staff are trained in safeguarding, first aid and emergency
-              procedures.
-            </li>
-            <li>
-              Parents/guardians must provide accurate medical and emergency
-              details.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+          <div class="rounded-xl border border-slate-200 bg-white/80 p-4">
+            <p class="text-slate-500">Review cycle</p>
+            <p class="mt-1 font-semibold">At least annually</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section id="venue-equipment" class="space-y-2">
-          <h2 class="text-xl font-bold">2. Venue & Equipment Safety</h2>
-          <ul class="mt-3 list-disc pl-5 text-neutral-700 space-y-2">
-            <li>Venues are risk-assessed before camp begins.</li>
-            <li>Playing areas are checked daily for hazards.</li>
-            <li>
-              Equipment is age-appropriate, regularly inspected, and used
-              safely.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+    <!-- PRINT HEADING -->
+    <div class="hidden print:block max-w-4xl mx-auto pt-8">
+      <h1 class="text-3xl font-bold">Flag Frenzy Football Camp</h1>
 
-        <section id="emergencies-first-aid" class="space-y-2">
-          <h2 class="text-xl font-bold">3. Emergencies & First Aid</h2>
-          <ul class="mt-3 list-disc pl-5 text-neutral-700 space-y-2">
-            <li>A qualified first aider is present at all times.</li>
-            <li>First aid kits are accessible at every camp location.</li>
-            <li>
-              In serious cases, emergency services will be contacted immediately
-              and parents informed.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+      <h2 class="mt-2 text-2xl font-bold">Health &amp; Safety Policy</h2>
 
-        <section id="child-supervision" class="space-y-2">
-          <h2 class="text-xl font-bold">4. Child Supervision</h2>
-          <ul class="mt-3 list-disc pl-5 text-neutral-700 space-y-2">
-            <li>
-              Staff-to-child ratios meet or exceed recommended guidelines.
-            </li>
-            <li>Children are supervised at all times during activities.</li>
-            <li>
-              Clear procedures are in place for drop-off, pick-up, and
-              sign-in/out.
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
+      <p class="mt-3 text-sm">Last reviewed: September 2026</p>
+    </div>
 
-        <section id="review" class="space-y-2">
-          <h2 class="text-xl font-bold">5. Review</h2>
-          <p class="mt-3 text-neutral-700">
-            This policy is reviewed before each camp and updated if needed to
-            ensure ongoing compliance and best practice.
-          </p>
-        </section>
-        <hr class="my-6" />
-
-        <section id="related" class="space-y-2">
-          <h2 class="text-xl font-bold">Related Policies</h2>
-          <ul class="list-disc pl-5 space-y-1">
-            <li>
-              <a class="underline" href="/camp/policies/safeguarding.html"
-                >Safeguarding Policy</a
-              >
-            </li>
-            <li>
-              <a class="underline" href="/camp/policies/medical-consent.html"
-                >Medical & Inclusion Policies</a
-              >
-            </li>
-            <li>
-              <a class="underline" href="/camp/policies/conduct.html"
-                >Code of Conduct/Behaviour</a
-              >
-            </li>
-            <li>
-              <a
-                class="underline"
-                href="/camp/policies/refund-cancellations.html"
-                >Refunds & Cancellations</a
-              >
-            </li>
-          </ul>
-        </section>
-        <hr class="my-6" />
-
-        <section id="contact" class="space-y-2">
-          <h2 class="text-xl font-bold">Contact</h2>
-          <address class="not-italic">
-            Flag Frenzy Football Ltd<br />
-            Email:
-            <a class="underline" href="mailto:info@flagfrenzyfootball.co.uk"
-              >info@flagfrenzyfootball.co.uk</a
-            ><br />
-            Website:
-            <a class="underline" href="https://flagfrenzyfootball.co.uk/camp"
-              >flagfrenzyfootball.co.uk/camp</a
+    <!-- =========================
+       POLICY CONTENT
+  ========================== -->
+    <main
+      id="main-content"
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14"
+    >
+      <div class="grid lg:grid-cols-12 gap-8">
+        <!-- CONTENTS -->
+        <aside class="lg:col-span-3 no-print">
+          <div class="lg:sticky lg:top-6">
+            <div
+              class="bg-white rounded-2xl shadow-sm ring-1 ring-slate-200 p-5"
             >
-          </address>
-        </section>
-      </section>
+              <p
+                class="text-xs font-extrabold tracking-wider uppercase"
+                style="color: var(--camp-green)"
+              >
+                Health &amp; Safety
+              </p>
 
-      <p class="text-xs text-gray-500 mt-6">
-        © <span id="year"></span> Flag Frenzy Football Ltd. All rights reserved.
-      </p>
+              <h2 class="mt-1 text-sm font-bold text-slate-700">
+                On this page
+              </h2>
+
+              <nav
+                class="mt-3 text-sm space-y-1"
+                aria-label="Health and Safety Policy contents"
+              >
+                <a class="toc-link" href="#commitment"> Our Commitment </a>
+
+                <a class="toc-link" href="#responsibility"> Responsibility </a>
+
+                <a class="toc-link" href="#risk-assessment">
+                  Risk Assessment
+                </a>
+
+                <a class="toc-link" href="#site-checks">
+                  Site &amp; Playing Area Checks
+                </a>
+
+                <a class="toc-link" href="#equipment"> Equipment </a>
+
+                <a class="toc-link" href="#activities">
+                  Activities &amp; Sessions
+                </a>
+
+                <a class="toc-link" href="#supervision"> Supervision </a>
+
+                <a class="toc-link" href="#first-aid"> First Aid </a>
+
+                <a class="toc-link" href="#medical"> Medical Information </a>
+
+                <a class="toc-link" href="#emergencies">
+                  Emergency Procedures
+                </a>
+
+                <a class="toc-link" href="#weather">
+                  Weather &amp; Environment
+                </a>
+
+                <a class="toc-link" href="#sign-in">
+                  Sign-In &amp; Collection
+                </a>
+
+                <a class="toc-link" href="#incidents">
+                  Accidents &amp; Incidents
+                </a>
+
+                <a class="toc-link" href="#children">
+                  Children's Responsibilities
+                </a>
+
+                <a class="toc-link" href="#staff"> Staff &amp; Volunteers </a>
+
+                <a class="toc-link" href="#review"> Review </a>
+
+                <a class="toc-link" href="#related"> Related Policies </a>
+              </nav>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <a
+                  href="#contact"
+                  class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-semibold text-white"
+                  style="background: var(--camp-red)"
+                >
+                  Contact us
+                </a>
+
+                <button
+                  type="button"
+                  onclick="window.print()"
+                  class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-semibold border border-slate-300 hover:bg-slate-50"
+                >
+                  Print
+                </button>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- POLICY -->
+        <article class="lg:col-span-9 space-y-6">
+          <!-- Commitment -->
+          <section id="commitment" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Our Commitment
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Safe, Active &amp; Enjoyable Participation
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Flag Frenzy Football Ltd is committed to taking reasonable and
+              proportionate steps to protect the health, safety and welfare of
+              children, staff, volunteers and visitors involved in Flag Frenzy
+              Football Camp.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Flag football is an active sport and physical activity cannot be
+              made completely free from risk. Our approach is therefore to
+              identify reasonably foreseeable hazards, assess risks and put
+              proportionate measures in place so that activities can be
+              delivered as safely as reasonably practicable.
+            </p>
+
+            <div class="policy-callout policy-callout-important mt-5">
+              <p class="text-sm leading-relaxed">
+                Safety is a shared responsibility. Camp leaders, coaches,
+                volunteers and participants are expected to follow the safety
+                arrangements, instructions and boundaries relevant to their
+                roles.
+              </p>
+            </div>
+          </section>
+
+          <!-- Responsibility -->
+          <section id="responsibility" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              01
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Responsibility for Health &amp; Safety
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Overall responsibility for health and safety arrangements at Flag
+              Frenzy Football Camp sits with Flag Frenzy Football Ltd.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              The Camp Director, or another person authorised to lead the camp,
+              is responsible for overseeing the practical implementation of
+              health and safety arrangements during camp operations.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Coaches, staff and volunteers must cooperate with relevant safety
+              arrangements, report hazards or concerns promptly and work within
+              the responsibilities and instructions given to them.
+            </p>
+          </section>
+
+          <!-- Risk Assessment -->
+          <section id="risk-assessment" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              02
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Risk Assessment &amp; Planning
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Appropriate risk assessment and safety planning will be undertaken
+              for each camp, taking account of the venue, activities, equipment,
+              participants and other relevant circumstances.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Risk assessment may consider matters including:
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>Playing surfaces, boundaries and surrounding areas.</li>
+
+              <li>Access, exits and emergency arrangements.</li>
+
+              <li>Sports equipment and other equipment being used.</li>
+
+              <li>The nature and intensity of planned activities.</li>
+
+              <li>Participant age and group arrangements.</li>
+
+              <li>Supervision and staffing.</li>
+
+              <li>
+                Relevant medical, disability or additional support information
+                known to us.
+              </li>
+
+              <li>Weather and environmental conditions.</li>
+
+              <li>First-aid and emergency-response arrangements.</li>
+
+              <li>Any venue-specific hazards or restrictions.</li>
+            </ul>
+
+            <p class="mt-4 leading-relaxed">
+              Risk assessments are working documents and may be reviewed or
+              updated where circumstances change or new hazards are identified.
+            </p>
+          </section>
+
+          <!-- Site checks -->
+          <section id="site-checks" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              03
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Venue, Site &amp; Playing Area Checks
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Before activities begin, reasonable checks will be made of the
+              areas being used for camp.
+            </p>
+
+            <p class="mt-3 leading-relaxed">Checks may include:</p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>The condition of the playing surface.</li>
+
+              <li>Obvious trip, slip or collision hazards.</li>
+
+              <li>Litter, broken glass, sharp objects or other debris.</li>
+
+              <li>Holes, uneven ground or unsafe surface conditions.</li>
+
+              <li>
+                Goalposts, fences, structures or fixed objects near activity
+                areas.
+              </li>
+
+              <li>
+                Access to toilets, drinking water and other facilities where
+                applicable.
+              </li>
+
+              <li>Access and exit routes.</li>
+
+              <li>
+                Any temporary hazards arising from weather, other venue users or
+                site conditions.
+              </li>
+            </ul>
+
+            <p class="mt-4 leading-relaxed">
+              Where an identified hazard cannot be removed immediately, the
+              affected area may be avoided, restricted or activities may be
+              adapted, moved, delayed or stopped as appropriate.
+            </p>
+          </section>
+
+          <!-- Equipment -->
+          <section id="equipment" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              04
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Equipment Safety</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Equipment used for camp activities should be suitable for its
+              intended purpose and used in an appropriate manner.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Reasonable checks will be made so that visibly damaged, defective
+              or unsuitable equipment is not knowingly used for activities.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Children will be given appropriate instructions about how
+              equipment should be used and must not deliberately misuse
+              equipment in a way that could place themselves or another person
+              at risk.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Equipment identified as unsafe should be removed from use until it
+              can be repaired, replaced or otherwise made suitable.
+            </p>
+          </section>
+
+          <!-- Activities -->
+          <section id="activities" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              05
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Safe Delivery of Activities</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Activities will be planned and delivered with consideration for
+              the age and experience of participants, the environment and the
+              nature of the activity.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Coaches may use demonstrations, instructions, activity boundaries,
+              progressions, rest periods, group organisation and other
+              reasonable measures to support safe participation.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Children should participate within their ability and tell a coach
+              or another responsible adult if they feel unwell, are injured or
+              do not understand an instruction.
+            </p>
+
+            <div class="policy-callout mt-5">
+              <p class="text-sm leading-relaxed">
+                A coach or camp leader may adapt, pause or stop an activity
+                where they consider this appropriate for safety, participant
+                welfare, weather, facilities or other operational reasons.
+              </p>
+            </div>
+          </section>
+
+          <!-- Supervision -->
+          <section id="supervision" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              06
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Supervision</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Camp staffing and supervision arrangements will be planned with
+              regard to factors such as participant numbers, ages, activities,
+              venue layout and identified needs.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Children should remain within designated camp areas and follow
+              instructions relating to group movement, breaks and activity
+              boundaries.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Children must not leave the camp area during the booked session
+              unless this is part of an authorised camp arrangement or they are
+              being appropriately collected or released.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Supervision arrangements may be adjusted during the day where
+              participant numbers, activities or circumstances require it.
+            </p>
+          </section>
+
+          <!-- First Aid -->
+          <section id="first-aid" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              07
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">First-Aid Arrangements</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Appropriate first-aid arrangements will be considered as part of
+              planning for each camp.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              The level of first-aid provision will be determined with regard to
+              the circumstances of the camp, including the activities, venue,
+              participant and staffing arrangements, identified hazards and
+              access to professional medical assistance.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Arrangements will include access to appropriate first-aid supplies
+              and a person responsible for taking charge of first-aid
+              arrangements, including obtaining professional or emergency
+              assistance where necessary.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Where the needs assessment identifies that appropriately trained
+              first-aid personnel are required, suitable arrangements will be
+              made as part of camp planning.
+            </p>
+
+            <div class="policy-callout policy-callout-important mt-5">
+              <p class="text-sm leading-relaxed">
+                Serious injuries, significant illness or situations beyond the
+                competence of the available first-aid arrangements will be
+                referred to appropriate medical or emergency services.
+              </p>
+            </div>
+          </section>
+
+          <!-- Medical -->
+          <section id="medical" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              08
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Medical Information &amp; Participant Needs
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Parents and guardians are responsible for providing relevant and
+              accurate medical, allergy, medication, disability and additional
+              support information through the camp registration process.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              This information helps us consider appropriate arrangements and
+              respond more effectively if a child becomes unwell or requires
+              assistance.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Parents and guardians should tell us before attendance if relevant
+              information changes after registration.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Where a child's needs require arrangements beyond those normally
+              available within standard camp provision, we may discuss those
+              needs with the parent or guardian before attendance.
+            </p>
+
+            <p class="mt-4 text-sm text-slate-600">
+              Please see our
+              <a href="/camp/policies/medical-consent.html">
+                Medical &amp; Inclusion Policy
+              </a>
+              for further information.
+            </p>
+          </section>
+
+          <!-- Emergencies -->
+          <section id="emergencies" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              09
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Emergency Procedures</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Emergency arrangements will be considered as part of camp planning
+              and will take account of the venue and activities being delivered.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Depending on the circumstances, an emergency response may include:
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>Stopping an activity and making the immediate area safe.</li>
+
+              <li>Providing appropriate first-aid assistance.</li>
+
+              <li>Contacting a parent, guardian or emergency contact.</li>
+
+              <li>
+                Calling 999 or otherwise obtaining professional medical
+                assistance.
+              </li>
+
+              <li>Moving participants to an appropriate safe area.</li>
+
+              <li>
+                Following relevant venue evacuation or emergency procedures.
+              </li>
+
+              <li>Recording the incident and relevant action taken.</li>
+            </ul>
+
+            <p class="mt-4 leading-relaxed">
+              Staff and volunteers should follow instructions from the person
+              leading the emergency response and from emergency services where
+              applicable.
+            </p>
+          </section>
+
+          <!-- Weather -->
+          <section id="weather" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              10
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Weather &amp; Environmental Conditions
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Weather and environmental conditions will be considered when
+              deciding whether and how outdoor activities can safely proceed.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              This may include consideration of:
+            </p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>Excessive heat or strong sun.</li>
+
+              <li>Heavy rain or waterlogged surfaces.</li>
+
+              <li>Thunderstorms or lightning.</li>
+
+              <li>Strong winds.</li>
+
+              <li>Ice, snow or unusually slippery conditions.</li>
+
+              <li>
+                Other conditions that could make the site or activity unsafe.
+              </li>
+            </ul>
+
+            <p class="mt-4 leading-relaxed">
+              Activities may be modified, moved, delayed, suspended or cancelled
+              where conditions make this reasonably necessary for safety.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Children should arrive with suitable clothing and personal items
+              appropriate to the expected conditions, in accordance with
+              information provided to families before camp.
+            </p>
+          </section>
+
+          <!-- Sign in -->
+          <section id="sign-in" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              11
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Sign-In, Sign-Out &amp; Collection
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Attendance arrangements help us know which children are in our
+              care during the camp day.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Children should be signed in and collected in accordance with the
+              procedures communicated for the relevant camp.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Parents and guardians should provide accurate emergency contact
+              and collection information and tell us promptly about relevant
+              changes.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              We may seek clarification or contact a parent or guardian where
+              there is uncertainty about whether a person is authorised to
+              collect a child.
+            </p>
+
+            <div class="policy-callout mt-5">
+              <p class="text-sm leading-relaxed">
+                A child will not knowingly be released to a person where we have
+                reasonable grounds to believe that doing so would place the
+                child at risk.
+              </p>
+            </div>
+          </section>
+
+          <!-- Incidents -->
+          <section id="incidents" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              12
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Accidents, Injuries &amp; Safety Incidents
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Accidents, injuries and significant safety incidents will be
+              handled according to the circumstances and recorded where
+              appropriate.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              A parent or guardian will be informed about significant injuries
+              or incidents affecting their child and may be contacted during the
+              camp day where collection, medical advice or another response is
+              required.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Serious incidents may be reviewed afterwards to determine whether
+              risk assessments, procedures, equipment or other arrangements need
+              to be changed.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              Where an incident also raises a safeguarding concern, it will be
+              managed in accordance with our
+              <a href="/camp/policies/safeguarding.html">
+                Safeguarding Policy </a
+              >.
+            </p>
+          </section>
+
+          <!-- Children -->
+          <section id="children" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              13
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Children's Role in Safety</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Children attending camp are expected, in an age-appropriate way,
+              to contribute to a safe environment.
+            </p>
+
+            <p class="mt-3 leading-relaxed">This includes:</p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>
+                Listening to and following reasonable safety instructions.
+              </li>
+
+              <li>Staying within designated activity and camp areas.</li>
+
+              <li>Using equipment appropriately.</li>
+
+              <li>
+                Avoiding deliberate behaviour that could injure themselves or
+                someone else.
+              </li>
+
+              <li>
+                Telling a responsible adult if they are injured, unwell or feel
+                unsafe.
+              </li>
+
+              <li>
+                Reporting hazards, damaged equipment or unsafe behaviour they
+                notice.
+              </li>
+            </ul>
+
+            <p class="mt-4 text-sm text-slate-600">
+              Behaviour expectations are explained further in our
+              <a href="/camp/policies/conduct.html">
+                Code of Conduct &amp; Behaviour Policy </a
+              >.
+            </p>
+          </section>
+
+          <!-- Staff -->
+          <section id="staff" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              14
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Staff &amp; Volunteer Responsibilities
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Staff, coaches and volunteers are expected to work within the role
+              and responsibilities assigned to them and to follow relevant camp
+              procedures and safety instructions.
+            </p>
+
+            <p class="mt-3 leading-relaxed">They should:</p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>
+                Take reasonable care of their own health and safety and that of
+                others who may be affected by their actions.
+              </li>
+
+              <li>Follow activity and venue safety arrangements.</li>
+
+              <li>
+                Report hazards, defective equipment, accidents and safety
+                concerns promptly.
+              </li>
+
+              <li>
+                Avoid undertaking tasks or responsibilities for which they have
+                not been authorised or appropriately prepared.
+              </li>
+
+              <li>
+                Cooperate with emergency, first-aid and safeguarding procedures.
+              </li>
+            </ul>
+
+            <p class="mt-4 leading-relaxed">
+              Relevant information, instructions or briefings will be provided
+              according to the person's role and the arrangements for the
+              particular camp.
+            </p>
+          </section>
+
+          <!-- Review -->
+          <section id="review" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              15
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Monitoring &amp; Review</h2>
+
+            <p class="mt-4 leading-relaxed">
+              Health and safety arrangements will be monitored during camp and
+              reviewed where necessary.
+            </p>
+
+            <p class="mt-3 leading-relaxed">A review may be prompted by:</p>
+
+            <ul class="mt-4 space-y-2 list-disc list-outside pl-5">
+              <li>An accident, injury or significant incident.</li>
+
+              <li>Identification of a new or changed hazard.</li>
+
+              <li>Changes to the venue or facilities.</li>
+
+              <li>Changes to activities or equipment.</li>
+
+              <li>
+                Feedback or concerns from staff, volunteers, parents or
+                participants.
+              </li>
+
+              <li>Changes to relevant guidance or legal requirements.</li>
+            </ul>
+
+            <p class="mt-5 leading-relaxed">
+              This policy was last reviewed in
+              <strong>September 2026</strong> and will be formally reviewed at
+              least annually, or sooner where circumstances indicate that an
+              earlier review is appropriate.
+            </p>
+
+            <p class="mt-3 leading-relaxed">
+              <strong>Policy owner:</strong>
+              Camp Director, Flag Frenzy Football Camp.
+            </p>
+          </section>
+
+          <!-- Contact -->
+          <section id="contact" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Contact
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">
+              Health &amp; Safety Questions or Concerns
+            </h2>
+
+            <p class="mt-4 leading-relaxed">
+              Parents, guardians or other relevant people can contact us if they
+              have a health and safety question or wish to raise a concern about
+              camp arrangements.
+            </p>
+
+            <div
+              class="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5"
+            >
+              <p class="font-bold text-lg">Flag Frenzy Football Ltd</p>
+
+              <div class="mt-4 space-y-2 text-sm">
+                <p>
+                  <strong>Email:</strong>
+                  <a href="mailto:info@flagfrenzyfootball.co.uk">
+                    info@flagfrenzyfootball.co.uk
+                  </a>
+                </p>
+
+                <p>
+                  <strong>Phone:</strong>
+                  <a href="tel:+447481029204"> 07481 029204 </a>
+                </p>
+
+                <p>
+                  <strong>Registered office:</strong>
+                  128 City Road, London, EC1V 2NX
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Related -->
+          <section id="related" class="policy-section">
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Related Camp Policies
+            </p>
+
+            <h2 class="mt-2 text-2xl font-bold">Read Alongside This Policy</h2>
+
+            <p class="mt-4 leading-relaxed">
+              This Health &amp; Safety Policy works alongside our other camp
+              policies and procedures.
+            </p>
+
+            <div class="mt-5 grid sm:grid-cols-2 gap-3">
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/parent-handbook.html"
+              >
+                Parent Handbook
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/safeguarding.html"
+              >
+                Camp Safeguarding
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/medical-consent.html"
+              >
+                Medical &amp; Inclusion
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/conduct.html"
+              >
+                Code of Conduct / Behaviour
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/privacy.html"
+              >
+                Privacy
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies/terms.html"
+              >
+                Terms &amp; Conditions
+              </a>
+
+              <a
+                class="rounded-xl border border-slate-200 p-4 hover:border-[color:var(--accent)] transition"
+                href="/camp/policies.html"
+              >
+                All Camp Policies
+              </a>
+            </div>
+          </section>
+
+          <!-- View another policy -->
+          <section
+            class="no-print rounded-2xl border border-[var(--camp-border)] bg-white p-6 sm:p-8"
+          >
+            <p
+              class="text-xs font-extrabold tracking-wider uppercase"
+              style="color: var(--camp-green)"
+            >
+              Camp Policies
+            </p>
+
+            <h2 class="mt-2 text-xl font-bold" style="color: var(--camp-ink)">
+              View another policy
+            </h2>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <a
+                href="/camp/policies/parent-handbook.html"
+                class="btn btn-outline"
+              >
+                Parent Handbook
+              </a>
+
+              <a
+                href="/camp/policies/safeguarding.html"
+                class="btn btn-outline"
+              >
+                Safeguarding
+              </a>
+
+              <a
+                href="/camp/policies/medical-consent.html"
+                class="btn btn-outline"
+              >
+                Medical
+              </a>
+
+              <a
+                href="/camp/policies/refund-cancellations.html"
+                class="btn btn-outline"
+              >
+                Refunds
+              </a>
+
+              <a href="/camp/policies/conduct.html" class="btn btn-outline">
+                Behaviour
+              </a>
+
+              <a href="/camp/policies/privacy.html" class="btn btn-outline">
+                Privacy
+              </a>
+
+              <a href="/camp/policies/terms.html" class="btn btn-outline">
+                Terms
+              </a>
+            </div>
+
+            <div class="mt-6">
+              <a
+                href="/camp/policies.html"
+                class="font-semibold text-[var(--camp-red)] hover:underline"
+              >
+                ← Back to all Camp Policies
+              </a>
+            </div>
+          </section>
+        </article>
+      </div>
     </main>
 
     <!-- =========================
-     COMPACT FOOTER
-========================== -->
+       FOOTER
+  ========================== -->
     <footer class="footer bg-[var(--camp-red)] text-white">
-      <!-- Main Footer -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7">
         <div class="grid gap-6 md:grid-cols-[1fr_1.4fr_1fr]">
-          <!-- Brand -->
           <div>
             <h3 class="font-semibold text-lg text-white">
               Flag Frenzy Football Camp
@@ -384,12 +1536,10 @@
             </p>
           </div>
 
-          <!-- Quick Links -->
           <div>
             <h4 class="font-semibold text-white">Quick Links</h4>
 
             <div class="mt-2 flex gap-8 text-sm">
-              <!-- Column 1 -->
               <ul class="space-y-1.5">
                 <li>
                   <a
@@ -428,7 +1578,6 @@
                 </li>
               </ul>
 
-              <!-- Column 2 -->
               <ul class="space-y-1.5">
                 <li>
                   <a
@@ -460,7 +1609,6 @@
             </div>
           </div>
 
-          <!-- Contact -->
           <div>
             <h4 class="font-semibold text-white">Contact</h4>
 
@@ -489,7 +1637,6 @@
         </div>
       </div>
 
-      <!-- Bottom Legal Bar -->
       <div class="border-t border-white/20">
         <div
           class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-white/70"
@@ -497,15 +1644,13 @@
           <div
             class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
           >
-            <!-- Company Information -->
             <div>
               <div>
-                &copy;
+                ©
                 <span id="year"></span>
                 Flag Frenzy Football Ltd. All rights reserved.
               </div>
 
-              <!-- Desktop Legal Details -->
               <div class="hidden md:block mt-1 text-white/60">
                 Company No. 16566783
                 <span class="mx-1">•</span>
@@ -514,7 +1659,6 @@
                 Registered Office: 128 City Road, London, EC1V 2NX
               </div>
 
-              <!-- Mobile Legal Details -->
               <div class="md:hidden mt-1 leading-relaxed text-white/60">
                 Company No. 16566783 • Registered in England &amp; Wales
                 <br />
@@ -522,59 +1666,64 @@
               </div>
             </div>
 
-            <!-- Community Text -->
             <div class="md:text-right">Built for the community.</div>
           </div>
         </div>
       </div>
     </footer>
 
-    <!-- Mobile floating print button -->
-    <button
-      onclick="window.print()"
-      class="no-print md:hidden fixed bottom-4 right-4 rounded-full border bg-white p-3 shadow-lg hover:shadow-xl transition"
-      aria-label="Print this policy"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="w-5 h-5"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        aria-hidden="true"
+    <!-- =========================
+       FLOATING CONTROLS
+  ========================== -->
+    <div class="floating-controls no-print">
+      <a
+        href="#top"
+        class="floating-control"
+        aria-label="Back to top"
+        title="Back to top"
       >
-        <path
-          d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
-        />
-      </svg>
-      <span class="sr-only">Print this policy</span>
-    </button>
+        ↑
+      </a>
 
-    <script>
-      // Footer year
-      document.getElementById("year").textContent = new Date().getFullYear();
-      // Auto "Last updated" (UK format)
-      (function () {
-        const node = document.getElementById("last-updated");
-        if (node) {
-          const d = new Date();
-          node.textContent = d.toLocaleDateString("en-GB", {
-            day: "2-digit",
-            month: "long",
-            year: "numeric",
-          });
-        }
-        // Mobile nav toggle fallback
-        const btn = document.getElementById("menuBtn");
-        const mob = document.getElementById("mobileNav");
-        if (btn && mob) {
-          btn.addEventListener("click", () => {
-            const isHidden = mob.classList.contains("hidden");
-            mob.classList.toggle("hidden", !isHidden);
-            btn.setAttribute("aria-expanded", String(isHidden));
-          });
-        }
-      })();
-    </script>
+      <button
+        type="button"
+        onclick="window.print()"
+        class="floating-control"
+        aria-label="Print Health and Safety Policy"
+        title="Print Health and Safety Policy"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M6 7V3h12v4H6Zm10 0V5H8v2h8Zm-2 9h2v5H8v-5h6ZM4 8h16a2 2 0 0 1 2 2v5h-4a2 2 0 0 0-2 2v3H8v-3a2 2 0 0 0-2-2H2v-5a2 2 0 0 1 2-2Z"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Shared Camp JS -->
     <script src="/camp/js/main.js"></script>
+
+    <!-- Mobile Policies Dropdown -->
+    <script>
+      const mobilePoliciesBtn = document.getElementById("mobilePoliciesBtn");
+
+      const mobilePoliciesMenu = document.getElementById("mobilePoliciesMenu");
+
+      if (mobilePoliciesBtn && mobilePoliciesMenu) {
+        mobilePoliciesBtn.addEventListener("click", () => {
+          const isOpen = mobilePoliciesMenu.classList.toggle("is-open");
+
+          mobilePoliciesBtn.setAttribute("aria-expanded", String(isOpen));
+
+          mobilePoliciesBtn.textContent = isOpen ? "−" : "+";
+        });
+      }
+    </script>
   </body>
 </html>
